@@ -121,9 +121,14 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
                                                                                                                                           "vD_dvD", "vD"))
   return(aqol6d_items_tb)
 }
-add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb, disvalues_lup_tb = aqol6d_adult_disv_lup_tb,
+add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb,
+                                            disvalues_lup_tb = NULL,
                                             pfx_1L_chr)
 {
+  if(is.null(disvalues_lup_tb)){
+    utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
+    disvalues_lup_tb <- aqol6d_adult_disv_lup_tb
+  }
   aqol6d_items_tb <- purrr::reduce(1:20, .init = aqol6d_items_tb,
                                    ~{
                                      q_1L_chr <- paste0(pfx_1L_chr, .y)
