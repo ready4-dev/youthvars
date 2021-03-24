@@ -2,6 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
+  Replication_DS: Replication_DS.html
+  Utility_Scoring: Utility_Scoring.html
   youthvars: youthvars.html
-last_built: 2021-03-24T21:51Z
+last_built: 2021-03-24T23:42Z
 

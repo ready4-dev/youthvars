@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -96,6 +96,21 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/Replication_DS.html">Replication Dataset</a>
+    </li>
+    <li>
+      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -132,7 +147,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -153,6 +168,12 @@
           <p><code><a href="adol_dim_scalg_eqs_lup.html">adol_dim_scalg_eqs_lup</a></code> </p>
         </td>
         <td><p>AQoL6D (adolescent) item worst weightings equations lookup table</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="aqol_scrg_dict_r3.html">aqol_scrg_dict_r3</a></code> </p>
+        </td>
+        <td><p>Data dictionary for AQoL scoring</p></td>
       </tr><tr>
         
         <td>
@@ -204,213 +225,46 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="is_youthvars_aqol6d_adol.html">is_youthvars_aqol6d_adol()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_bads.html">is_youthvars_bads()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_gad7.html">is_youthvars_gad7()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_k6.html">is_youthvars_k6()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_oasis.html">is_youthvars_oasis()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_phq9.html">is_youthvars_phq9()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_scared.html">is_youthvars_scared()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_youthvars_sofas.html">is_youthvars_sofas()</a></code> </p>
-        </td>
-        <td><p>Is First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_aqol6d_adol.html">make_new_youthvars_aqol6d_adol()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_bads.html">make_new_youthvars_bads()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_gad7.html">make_new_youthvars_gad7()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_k6.html">make_new_youthvars_k6()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_oasis.html">make_new_youthvars_oasis()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_phq9.html">make_new_youthvars_phq9()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_scared.html">make_new_youthvars_scared()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_new_youthvars_sofas.html">make_new_youthvars_sofas()</a></code> </p>
-        </td>
-        <td><p>Make new First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_aqol6d_adol.html">make_pt_youthvars_aqol6d_adol()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_bads.html">make_pt_youthvars_bads()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_gad7.html">make_pt_youthvars_gad7()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_k6.html">make_pt_youthvars_k6()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_oasis.html">make_pt_youthvars_oasis()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_phq9.html">make_pt_youthvars_phq9()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_scared.html">make_pt_youthvars_scared()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_pt_youthvars_sofas.html">make_pt_youthvars_sofas()</a></code> </p>
-        </td>
-        <td><p>Make prototype First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="prototype_lup.html">prototype_lup</a></code> </p>
         </td>
         <td><p>Class prototype lookup table</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="validate_youthvars_aqol6d_adol.html">validate_youthvars_aqol6d_adol()</a></code> </p>
+          <p><code><a href="replication_popl_tb.html">replication_popl_tb</a></code> </p>
         </td>
-        <td><p>Validate First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))</p></td>
+        <td><p>Synthetic population replication dataset</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="validate_youthvars_bads.html">validate_youthvars_bads()</a></code> </p>
+          <p><code><a href="repln_ds_dict_r3.html">repln_ds_dict_r3</a></code> </p>
         </td>
-        <td><p>Validate First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_gad7.html">validate_youthvars_gad7()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_k6.html">validate_youthvars_k6()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_oasis.html">validate_youthvars_oasis()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_phq9.html">validate_youthvars_phq9()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_scared.html">validate_youthvars_scared()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="validate_youthvars_sofas.html">validate_youthvars_sofas()</a></code> </p>
-        </td>
-        <td><p>Validate First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="youthvars-package.html">youthvars-package</a></code> </p>
-        </td>
-        <td><p>youthvars: Youth Mental Health Variables Modelling Toolkit</p></td>
-      </tr><tr>
+        <td><p>Data dictionary for study population dataset</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-classes" class="hasAnchor"><a href="#section-classes" class="anchor"></a>Classes</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="youthvars_aqol6d_adol.html">youthvars_aqol6d_adol()</a></code> </p>
         </td>
         <td><p>First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="youthvars_phq9.html">youthvars_phq9()</a></code> </p>
+        </td>
+        <td><p>First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
       </tr><tr>
         
         <td>
@@ -426,21 +280,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="youthvars_k6.html">youthvars_k6()</a></code> </p>
-        </td>
-        <td><p>First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="youthvars_oasis.html">youthvars_oasis()</a></code> </p>
         </td>
         <td><p>First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="youthvars_phq9.html">youthvars_phq9()</a></code> </p>
-        </td>
-        <td><p>First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores</p></td>
       </tr><tr>
         
         <td>
@@ -450,9 +292,34 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="youthvars_k6.html">youthvars_k6()</a></code> </p>
+        </td>
+        <td><p>First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="youthvars_sofas.html">youthvars_sofas()</a></code> </p>
         </td>
         <td><p>First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-functions" class="hasAnchor"><a href="#section-functions" class="anchor"></a>Functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="add_adol6d_scores.html">add_adol6d_scores()</a></code> </p>
+        </td>
+        <td><p>Add adol6d scores</p></td>
       </tr>
     </tbody>
     </table>
