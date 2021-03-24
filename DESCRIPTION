@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Youth Mental Health Variables Modelling Toolkit
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -43,7 +43,26 @@ RoxygenNote: 7.1.1
 Imports: 
     testthat,
     knitr,
-    lifecycle
+    lifecycle,
+    knitrBootstrap,
+    ready4show (>= 0.0.0.9013),
+    ready4use (>= 0.0.0.9111),
+    dplyr,
+    Hmisc,
+    magrittr,
+    methods,
+    mice,
+    purrr,
+    rlang,
+    simstudy,
+    stats,
+    stringr,
+    tibble,
+    tidyselect,
+    utils
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
+Remotes: 
+    ready4-dev/ready4show,
+    ready4-dev/ready4use
