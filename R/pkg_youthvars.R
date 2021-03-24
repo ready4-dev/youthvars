@@ -1,8 +1,8 @@
 #' youthvars: Youth Mental Health Variables Modelling Toolkit
 #'
-#' Tools for specifying the structural properties of
-#' variables commonly present in youth mental health datasets and some
-#' (where freely available) related scoring algorithms.  This development
+#' Tools for specifying the structural properties of variables
+#' commonly present in youth mental health datasets and some (where
+#' freely available) related scoring algorithms.  This development
 #' version of the youthvars package has been made available as part of
 #' the process of testing and documenting the package. The tools
 #' contained in this development release automate a number of tasks which

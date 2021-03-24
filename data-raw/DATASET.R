@@ -254,8 +254,6 @@ scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     prefix_1L_chr = "aqol6d_q",
                                     id_var_nm_1L_chr = "fkClientID",
                                     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
-## Pick up here.
-## Need to reorder dictionary for reorderd and expanded scored_data_tb
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
                                                       var_cat_chr = c("Identifier","Temporal","Temporal",
                                                                       rep("Demographic",10),
