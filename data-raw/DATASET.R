@@ -56,7 +56,8 @@ pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c(paste0(name_pfx_1L_ch
                                                            "dim","disv","eq","lev",
                                                            "q",
                                                            "scrg",
-                                                           "unscrd"),
+                                                           "unscrd",
+                                                           "vldn"),
                                         long_name_chr = c(classes_to_make_tb$class_desc_chr,
                                                           "adolescent",
                                                           "Assessment of Quality of Life",
@@ -68,10 +69,12 @@ pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c(paste0(name_pfx_1L_ch
                                                           "level",
                                                           "question",
                                                           "scoring",
-                                                          "unscored"),
+                                                          "unscored",
+                                                          "validation"),
                                         no_plural_chr = c("Assessment of Quality of Life",
                                                           "Assessment of Quality of Life Six Dimension",
-                                                          "Assessment of Quality of Life Six Dimension Health Utility"),
+                                                          "Assessment of Quality of Life Six Dimension Health Utility",
+                                                          "validation"),
                                         #custom_plural_ls = ,
                                         url_1L_chr = NA_character_,
                                         seed_lup = ready4show::abbreviations_lup) # CHANGE
@@ -238,7 +241,15 @@ pkg_dss_tb <- read.csv("data-raw/csvs/aqol_valid_stata.csv") %>%
 ##
 replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
   dplyr::mutate(c_sofas = as.integer(round(c_sofas,0))) %>%
-  transform_raw_aqol_tb_to_aqol6d_tb()
+  dplyr::mutate(round = factor(round, labels = c("Baseline",
+                                                 "Follow-up"))) %>%
+  youthu::add_dates_from_dist(bl_start_date_dtm = Sys.Date() - lubridate::days(600),
+                              bl_end_date_dtm = Sys.Date() - lubridate::days(420),
+                              duration_args_ls = list(a = 60, b = 140, mean = 90, sd = 10),
+                              duration_fn = truncnorm::rtruncnorm,
+                              date_var_nm_1L_chr = "d_interview_date") %>%
+  dplyr::select(-duration_prd) %>%
+  transform_raw_ds_for_analysis()
 scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     prefix_1L_chr = "aqol6d_q",
                                     id_var_nm_1L_chr = "fkClientID",
@@ -246,12 +257,11 @@ scored_data_tb <- add_adol6d_scores(replication_popl_tb,
 ## Pick up here.
 ## Need to reorder dictionary for reorderd and expanded scored_data_tb
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
-                                                      var_cat_chr = c("Identifier","Temporal",
-                                                                      "Clinical","Service","Clinical",
-                                                                      rep("Demographic",11),
-                                                                      rep("Clinical",6),
+                                                      var_cat_chr = c("Identifier","Temporal","Temporal",
+                                                                      rep("Demographic",10),
+                                                                      rep("Clinical",8),
                                                                       "Functioning",
-                                                                      rep("Demographic",3),
+                                                                      #rep("Demographic",3),
                                                                       rep("Utility Questionaire Response",20),
                                                                       rep("Utility Item Disvalue",20),
                                                                       rep("Utility Dimension Disvalue",6),
@@ -265,20 +275,22 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                       ),
                                                       var_desc_chr = c("Unique Client Identifier",
                                                                        "Round of Data Collection",
-                                                                       "Primary Diagnosis",
-                                                                       "Centre Name",
-                                                                       "Clinical Stage",
+                                                                       "Date of Data Collection",
                                                                        "Age",
                                                                        "Age Group",
-                                                                       "Gender",
+                                                                       "Gender",#"Gender (Grouped)",
                                                                        "Sex at Birth",
                                                                        "Sexual Orientation",
-                                                                       "Country Of Birth",
                                                                        "Aboriginal or Torres Strait Islander",
-                                                                       "Speaks English At Home",
-                                                                       "Native English Speaker",
-                                                                       "Relationship Status",
-                                                                       "Education and Employment Status",
+                                                                       "Culturally And Linguistically Diverse",
+                                                                       #"Country Of Birth",
+                                                                       #"Speaks English At Home",
+                                                                       # "Native English Speaker",
+                                                                       "Region of Residence (Metropolitan or Regional)",
+                                                                      "Education and Employment Status",
+                                                                      "Relationship Status",
+                                                                       "Primary Diagnosis",
+                                                                       "Clinical Stage",
                                                                        "Kessler Psychological Distress Scale (6 Dimension)",
                                                                        "Patient Health Questionnaire",
                                                                        "Behavioural Activation for Depression Scale",
@@ -286,12 +298,9 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                                        "Overall Anxiety Severity and Impairment Scale",
                                                                        "Screen for Child Anxiety Related Disorders",
                                                                        "Social and Occupational Functioning Assessment Scale",
-                                                                       "Gender (Grouped)",
-                                                                       "Region of Residence (Metropolitan or Regional)",
-                                                                       "Culturally And Linguistically Diverse",
                                                                        paste0("Assessment of Quality of Life (6 Dimension) Question ",1:20),
                                                                        paste0("Assessment of Quality of Life (6 Dimension) Item Disvalue",1:20),
-                                                                       lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,66),rep(T,19)))
+                                                                       lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,62),rep(T,19)))
                                                       ),
                                                       var_type_chr = names(scored_data_tb) %>% purrr::map_chr(~{
                                                         class_chr <- class(scored_data_tb %>% dplyr::pull(.x))
@@ -337,4 +346,5 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 update_pkgdown_1L_lgl = T)
 ##
 ## PART FOUR
+##
 devtools::build_vignettes()

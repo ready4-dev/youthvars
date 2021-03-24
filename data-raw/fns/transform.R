@@ -9,10 +9,12 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw
     dplyr::mutate(Region = as.factor(ifelse(s_centre == "Canberra" |
                                               s_centre == "Southport" | s_centre == "Knox", "Metro",
                                             "Regional"))) %>%
-    dplyr::mutate(CALD = factor(ifelse(d_country_bir_s == "Other" | d_english_home == "No" | d_english_native == "No" #| d_ATSI == "Yes", "Yes", "No"
+    dplyr::mutate(CALD = factor(ifelse(d_country_bir_s == "Other" | d_english_home == "No" | d_english_native == "No", #| d_ATSI == "Yes",
+                                       "Yes",
+                                       "No"
                                        ))) %>%
     dplyr::mutate(d_sexual_ori_s = dplyr::case_when(d_sexual_ori_s == "Straight" ~ "Heterosexual",
-                                                    T - d_sexual_ori_s)) %>%
+                                                    T ~ d_sexual_ori_s)) %>%
     dplyr::select(fkClientID, round, d_interview_date,
                   d_age, d_agegroup, Gender,#d_gender,
                   d_sex_birth_s, d_sexual_ori_s,
