@@ -17,3 +17,5 @@
 ^data-raw/fns/transform\.R$
 ^data-raw/gnrcs/generics\.R$
 ^initial_setup\.R$
+^doc$
+^Meta$

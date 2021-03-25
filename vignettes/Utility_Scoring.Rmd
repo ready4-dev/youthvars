@@ -45,7 +45,10 @@ Labels from the new data dictionary can then be added to our updated (scored) da
 scored_data_tb <- scored_data_tb %>%
   ready4use::add_labels_from_dictionary(dictionary_tb)
 ```
-
+```{r echo=FALSE}
+scored_data_tb<- scored_data_tb %>%
+  dplyr::select(-d_relation_s)
+```
 The following lines then print the first six lines of the updated dataset as a table, using variable labels as column names.
 
 ```{r scoredds}

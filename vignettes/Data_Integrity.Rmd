@@ -1,0 +1,226 @@
+---
+title: "Data Integrity Tools"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data Integrity Tools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r echo = F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r }
+library(youthvars)
+```
+
+## The role of classes in assuring data integrity
+The youthvars package defines a number of classes that can be used to help assure the quality of input data used for modelling and prediction tasks. 
+
+Within the R scripting language, a class is a named data structure that comprises a definition of required properties (e.g. whether numeric, minimum or maximum values) and tools for creating and validating instances of this data structure. These classes have two main purposes:
+
+1) to facilitate automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results;
+2) to automate the selection of the appropriate method to apply to each data type (e.g. selecting the transfer to utility model to use based on the predictors supplied to a method).
+
+## Included classes
+
+The classes included in the youthvars package currently include one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the six predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
+
+Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values. Future releases of youthvars will include and expanded number of classes that allow for missing values, extending the potential application of these classes.
+
+### Assessment of Quality of Life Six Dimension (Adolescent) Health Utility 
+
+The `youthvars_aqol6d_adol`{.R} class is defined for numeric vectors with a minimum value of 0.03 and maximum value of 1.0.
+
+```{r}
+youthvars_aqol6d_adol(0.4)
+```
+
+```{r}
+youthvars_aqol6d_adol(c(0.03,0.2,1))
+```
+
+Non numeric objects and values outside these ranges will produce errors.
+
+```{r error = T}
+youthvars_aqol6d_adol("0.5")
+```
+
+```{r error = T}
+youthvars_aqol6d_adol(-0.1)
+```
+
+```{r, error = T}
+youthvars_aqol6d_adol(1.2)
+```
+
+### Behavioural Activation for Depression Scale (BADS)
+
+The `youthvars_bads`{.R} class is defined for integer vectors with a minimum value of 0 and maximum value of 150.
+
+```{r}
+youthvars_bads(143L)
+```
+
+```{r}
+youthvars_bads(as.integer(c(1,15,150)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_bads(22.5)
+```
+
+```{r, error = T}
+youthvars_bads(-1L)
+```
+
+```{r error = T}
+youthvars_bads(160L)
+```
+
+### Generalised Anxiety Disorder Scale (GAD-7)
+
+The `youthvars_gad7`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 21.
+
+```{r}
+youthvars_gad7(15L)
+```
+
+```{r}
+youthvars_gad7(as.integer(c(0,14,21)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_gad7(14.6)
+```
+
+```{r error = T}
+youthvars_gad7(-1L)
+```
+
+```{r error = T}
+youthvars_gad7(22L)
+```
+### Kessler Psychological Distress Scale (K6) - US Scoring System
+
+The `youthvars_k6`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 24.
+
+```{r}
+youthvars_k6(21L)
+```
+
+```{r}
+youthvars_k6(as.integer(c(0,13,24)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_k6(11.2)
+```
+
+```{r error = T}
+youthvars_k6(-1L)
+```
+
+```{r error = T}
+youthvars_k6(25L)
+```
+### Overall Anxiety Severity and Impairment Scale (OASIS)
+
+The `youthvars_oasis`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 20.
+
+```{r}
+youthvars_oasis(15L)
+```
+
+```{r}
+youthvars_oasis(as.integer(c(0,12,20)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_oasis(14.2)
+```
+
+```{r error = T}
+youthvars_oasis(-1L)
+```
+
+```{r error = T}
+youthvars_oasis(21L)
+```
+### Patient Health Questionnaire (PHQ-9)
+
+The `youthvars_phq9`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 27.
+
+```{r}
+youthvars_phq9(11L)
+```
+
+```{r}
+youthvars_phq9(as.integer(c(0,13,27)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_phq9(15.2)
+```
+```{r, error = T}
+youthvars_phq9(-1L)
+```
+```{r error = T}
+youthvars_phq9(28L)
+```
+
+###  Screen for Child Anxiety Related Disorders (SCARED)
+
+The `youthvars_scared`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 82.
+
+```{r}
+youthvars_scared(77L)
+```
+
+```{r}
+youthvars_scared(as.integer(c(0,42,82)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_scared(33.2)
+```
+```{r, error = T}
+youthvars_scared(-1L)
+```
+```{r error = T}
+youthvars_scared(83)
+```
+###  Social and Occupational Functioning Assessment Scale (SOFAS)
+
+The `youthvars_sofas`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 100.
+
+```{r}
+youthvars_sofas(44L)
+```
+
+```{r}
+youthvars_sofas(as.integer(c(0,23,89)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_sofas(73.2)
+```
+```{r, error = T}
+youthvars_sofas(-1L)
+```
+```{r error = T}
+youthvars_sofas(103L)
+```
