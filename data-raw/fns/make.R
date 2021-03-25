@@ -1,6 +1,6 @@
 make_adol_aqol6d_disv_lup <- function ()
 {
-  utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
+  utils::data("aqol6d_adult_disv_lup_tb", package = "youthvars", envir = environment())
   adol_aqol6d_disv_lup <- aqol6d_adult_disv_lup_tb %>%
     dplyr::mutate(Answer_4_dbl = dplyr::case_when(Question_chr == "Q18" ~ 0.622,
                                                   TRUE ~ Answer_4_dbl),

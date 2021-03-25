@@ -19,3 +19,4 @@
 ^initial_setup\.R$
 ^doc$
 ^Meta$
+^data-raw/fns/calculate\.R$

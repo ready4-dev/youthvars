@@ -1,6 +1,7 @@
 add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
 {
   utils::data("adol_dim_scalg_eqs_lup",
+              package = "youthvars",
               envir = environment())
   for (var in adol_dim_scalg_eqs_lup$Dim_scal) {
     expression = adol_dim_scalg_eqs_lup[adol_dim_scalg_eqs_lup$Dim_scal ==
@@ -126,7 +127,9 @@ add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb,
                                             pfx_1L_chr)
 {
   if(is.null(disvalues_lup_tb)){
-    utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
+    utils::data("aqol6d_adult_disv_lup_tb",
+                package = "youthvars",
+                envir = environment())
     disvalues_lup_tb <- aqol6d_adult_disv_lup_tb
   }
   aqol6d_items_tb <- purrr::reduce(1:20, .init = aqol6d_items_tb,
@@ -149,8 +152,8 @@ add_unwtd_dim_tots <- function (items_tb, domain_items_ls, domain_pfx_1L_chr)
 add_wtd_dim_tots <- function (unwtd_dim_tb, domain_items_ls, domain_unwtd_pfx_1L_chr,
                               domain_wtd_pfx_1L_chr)
 {
-  utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
-  utils::data("aqol6d_domain_qs_lup_tb", envir = environment())
+  utils::data("aqol6d_adult_disv_lup_tb", package = "youthvars", envir = environment())
+  utils::data("aqol6d_domain_qs_lup_tb", package = "youthvars", envir = environment())
   min_vals_dbl <- purrr::map_dbl(domain_items_ls, ~length(.x)) %>%
     unname()
   max_vals_dbl <- purrr::map2_dbl(domain_items_ls, names(domain_items_ls),
