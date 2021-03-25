@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores — is_youthvars_bads • youthvars</title>
+<title>Calculate adult Assessment of Quality of Life Six Dimension Health Utility — calculate_adult_aqol6dU • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores — is_youthvars_bads" />
-<meta property="og:description" content="Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores" />
+<meta property="og:title" content="Calculate adult Assessment of Quality of Life Six Dimension Health Utility — calculate_adult_aqol6dU" />
+<meta property="og:description" content="calculate_adult_aqol6dU() is a Calculate function that imputes data. Specifically, this function implements an algorithm to calculate adult assessment of quality of life six dimension health utility. The function returns Assessment of Quality of Life Six Dimension Health Utility (a double vector)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,32 +137,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/C3_youthvars_bads.R'><code>R/C3_youthvars_bads.R</code></a></small>
-    <div class="hidden name"><code>is_youthvars_bads.Rd</code></div>
+    <h1>Calculate adult Assessment of Quality of Life Six Dimension Health Utility</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_calculate.R'><code>R/fn_calculate.R</code></a></small>
+    <div class="hidden name"><code>calculate_adult_aqol6dU.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
+    <p>calculate_adult_aqol6dU() is a Calculate function that imputes data. Specifically, this function implements an algorithm to calculate adult assessment of quality of life six dimension health utility. The function returns Assessment of Quality of Life Six Dimension Health Utility (a double vector).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_youthvars_bads</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>calculate_adult_aqol6dU</span><span class='op'>(</span>
+  <span class='va'>aqol6d_items_tb</span>,
+  <span class='va'>prefix_1L_chr</span>,
+  coeffs_lup_tb <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dim_sclg_con_lup_tb <span class='op'>=</span> <span class='cn'>NULL</span>,
+  disvalues_lup_tb <span class='op'>=</span> <span class='cn'>NULL</span>,
+  itm_wrst_wghts_lup_tb <span class='op'>=</span> <span class='va'>aqol6d_adult_itm_wrst_wghts_lup_tb</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object of any type</p></td>
+      <th>aqol6d_items_tb</th>
+      <td><p>Assessment of Quality of Life Six Dimension items (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>prefix_1L_chr</th>
+      <td><p>Prefix (a character vector of length one)</p></td>
+    </tr>
+    <tr>
+      <th>coeffs_lup_tb</th>
+      <td><p>Coeffs lookup table (a tibble), Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>dim_sclg_con_lup_tb</th>
+      <td><p>Dimension sclg con lookup table (a tibble), Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>disvalues_lup_tb</th>
+      <td><p>Disvalues lookup table (a tibble), Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>itm_wrst_wghts_lup_tb</th>
+      <td><p>Itm wrst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value, TRUE if a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
+    <p>Assessment of Quality of Life Six Dimension Health Utility (a double vector)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

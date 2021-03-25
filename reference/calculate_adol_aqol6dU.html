@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores — is_youthvars_bads • youthvars</title>
+<title>Calculate adolescent Assessment of Quality of Life Six Dimension Health Utility — calculate_adol_aqol6dU • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores — is_youthvars_bads" />
-<meta property="og:description" content="Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores" />
+<meta property="og:title" content="Calculate adolescent Assessment of Quality of Life Six Dimension Health Utility — calculate_adol_aqol6dU" />
+<meta property="og:description" content="calculate_adol_aqol6dU() is a Calculate function that imputes data. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,32 +137,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/C3_youthvars_bads.R'><code>R/C3_youthvars_bads.R</code></a></small>
-    <div class="hidden name"><code>is_youthvars_bads.Rd</code></div>
+    <h1>Calculate adolescent Assessment of Quality of Life Six Dimension Health Utility</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_calculate.R'><code>R/fn_calculate.R</code></a></small>
+    <div class="hidden name"><code>calculate_adol_aqol6dU.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
+    <p>calculate_adol_aqol6dU() is a Calculate function that imputes data. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_youthvars_bads</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>calculate_adol_aqol6dU</span><span class='op'>(</span>
+  <span class='va'>unscored_aqol_tb</span>,
+  prefix_1L_chr <span class='op'>=</span> <span class='st'>"aqol6d_q"</span>,
+  id_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"fkClientID"</span>,
+  wtd_aqol_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"aqol6d_total_w"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object of any type</p></td>
+      <th>unscored_aqol_tb</th>
+      <td><p>Unscored Assessment of Quality of Life (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>prefix_1L_chr</th>
+      <td><p>Prefix (a character vector of length one), Default: 'aqol6d_q'</p></td>
+    </tr>
+    <tr>
+      <th>id_var_nm_1L_chr</th>
+      <td><p>Id var name (a character vector of length one), Default: 'fkClientID'</p></td>
+    </tr>
+    <tr>
+      <th>wtd_aqol_var_nm_1L_chr</th>
+      <td><p>Wtd Assessment of Quality of Life var name (a character vector of length one), Default: 'aqol6d_total_w'</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value, TRUE if a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores</p>
+    <p>Adolescent Assessment of Quality of Life Six Dimension (a double vector)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
