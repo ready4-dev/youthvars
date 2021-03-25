@@ -244,6 +244,8 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
   dplyr::mutate(c_sofas = as.integer(round(c_sofas,0))) %>%
   dplyr::mutate(round = factor(round, labels = c("Baseline",
                                                  "Follow-up"))) %>%
+  dplyr::mutate(d_relation_s = dplyr::case_when(d_relation_s %in% c("REPLACE_ME_1","REPLACE_ME_2") ~ "Not in a relationship",
+                                   T ~ "In a relationship")) %>%
   youthu::add_dates_from_dist(bl_start_date_dtm = Sys.Date() - lubridate::days(600),
                               bl_end_date_dtm = Sys.Date() - lubridate::days(420),
                               duration_args_ls = list(a = 60, b = 140, mean = 90, sd = 10),

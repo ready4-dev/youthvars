@@ -7,7 +7,6 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 ```{r message=F}
-library(magrittr)
 library(youthvars)
 ```
 ## Origin and purpose of the youthvars replication dataset
@@ -50,10 +49,6 @@ raw_data_tb <- raw_data_tb %>%
 ```
 
 The first six cases from the replication dataset are reproduced below, using variable labels as column headings.
-```{r echo=FALSE}
-raw_data_tb <- raw_data_tb %>%
-  dplyr::select(-d_relation_s)
-```
 
 ```{r repds}
 raw_data_tb %>%
