@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9004</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9005</span>
       </span>
     </div>
 
@@ -320,6 +320,62 @@ character
 </tr>
 <tr>
 <td style="text-align:left;">
+d_country_bir_s
+</td>
+<td style="text-align:right;">
+Demographic
+</td>
+<td style="text-align:right;">
+Country Of Birth
+</td>
+<td style="text-align:right;">
+character
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+d_english_home
+</td>
+<td style="text-align:right;">
+Demographic
+</td>
+<td style="text-align:right;">
+Speaks English At Home
+</td>
+<td style="text-align:right;">
+character
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+d_english_native
+</td>
+<td style="text-align:right;">
+Demographic
+</td>
+<td style="text-align:right;">
+Native English Speaker
+</td>
+<td style="text-align:right;">
+character
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+d_gender
+</td>
+<td style="text-align:right;">
+Demographic
+</td>
+<td style="text-align:right;">
+Gender
+</td>
+<td style="text-align:right;">
+character
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 d_relation_s
 </td>
 <td style="text-align:right;">
@@ -382,7 +438,7 @@ Gender
 Demographic
 </td>
 <td style="text-align:right;">
-Gender
+Gender (Grouped)
 </td>
 <td style="text-align:right;">
 factor
@@ -425,6 +481,20 @@ Identifier
 </td>
 <td style="text-align:right;">
 Unique Client Identifier
+</td>
+<td style="text-align:right;">
+character
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+s_centre
+</td>
+<td style="text-align:right;">
+Service
+</td>
+<td style="text-align:right;">
+Service Centre Name
 </td>
 <td style="text-align:right;">
 character
@@ -783,30 +853,33 @@ Date of Data Collection
 Age
 </th>
 <th style="text-align:right;">
-Age Group
-</th>
-<th style="text-align:right;">
 Gender
 </th>
-<th style="text-align:left;">
+<th style="text-align:right;">
 Sex at Birth
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Sexual Orientation
 </th>
 <th style="text-align:right;">
 Aboriginal or Torres Strait Islander
 </th>
 <th style="text-align:right;">
-Culturally And Linguistically Diverse
+Country Of Birth
 </th>
 <th style="text-align:right;">
-Region of Residence (Metropolitan or Regional)
+Speaks English At Home
+</th>
+<th style="text-align:right;">
+Native English Speaker
 </th>
 <th style="text-align:right;">
 Education and Employment Status
 </th>
 <th style="text-align:left;">
+Service Centre Name
+</th>
+<th style="text-align:right;">
 Primary Diagnosis
 </th>
 <th style="text-align:right;">
@@ -821,10 +894,10 @@ Patient Health Questionnaire
 <th style="text-align:right;">
 Behavioural Activation for Depression Scale
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Generalised Anxiety Disorder Scale
 </th>
-<th style="text-align:left;">
+<th style="text-align:right;">
 Overall Anxiety Severity and Impairment Scale
 </th>
 <th style="text-align:right;">
@@ -839,10 +912,10 @@ Assessment of Quality of Life (6 Dimension) Question 1
 <th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 2
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Assessment of Quality of Life (6 Dimension) Question 3
 </th>
-<th style="text-align:left;">
+<th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 4
 </th>
 <th style="text-align:right;">
@@ -857,10 +930,10 @@ Assessment of Quality of Life (6 Dimension) Question 7
 <th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 8
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Assessment of Quality of Life (6 Dimension) Question 9
 </th>
-<th style="text-align:left;">
+<th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 10
 </th>
 <th style="text-align:right;">
@@ -875,10 +948,10 @@ Assessment of Quality of Life (6 Dimension) Question 13
 <th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 14
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 Assessment of Quality of Life (6 Dimension) Question 15
 </th>
-<th style="text-align:left;">
+<th style="text-align:right;">
 Assessment of Quality of Life (6 Dimension) Question 16
 </th>
 <th style="text-align:right;">
@@ -903,36 +976,39 @@ Participant_1
 Baseline
 </td>
 <td style="text-align:right;">
-2019-08-16
+2019-11-05
 </td>
 <td style="text-align:right;">
 14
 </td>
 <td style="text-align:right;">
-Age 12-17
+Male
 </td>
 <td style="text-align:right;">
 Male
 </td>
 <td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
 Heterosexual
 </td>
 <td style="text-align:right;">
 No
 </td>
 <td style="text-align:right;">
-No
+Australia
 </td>
 <td style="text-align:right;">
-Metro
+Yes
+</td>
+<td style="text-align:right;">
+Yes
 </td>
 <td style="text-align:right;">
 Not studying or working
 </td>
 <td style="text-align:left;">
+Southport
+</td>
+<td style="text-align:right;">
 Other
 </td>
 <td style="text-align:right;">
@@ -947,10 +1023,10 @@ Other
 <td style="text-align:right;">
 96
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 6
 </td>
 <td style="text-align:right;">
@@ -965,10 +1041,10 @@ Other
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
@@ -983,10 +1059,10 @@ Other
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -1001,10 +1077,10 @@ Other
 <td style="text-align:right;">
 4
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
@@ -1028,36 +1104,39 @@ Participant_2
 Baseline
 </td>
 <td style="text-align:right;">
-2019-09-19
+2019-08-11
 </td>
 <td style="text-align:right;">
 19
 </td>
 <td style="text-align:right;">
-Age 18-26
+Female
 </td>
 <td style="text-align:right;">
 Female
 </td>
 <td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
 Heterosexual
 </td>
 <td style="text-align:right;">
 Yes
 </td>
 <td style="text-align:right;">
-Yes
+Other
 </td>
 <td style="text-align:right;">
-Regional
+No
+</td>
+<td style="text-align:right;">
+No
 </td>
 <td style="text-align:right;">
 Studying only
 </td>
 <td style="text-align:left;">
+Regional Centre
+</td>
+<td style="text-align:right;">
 Anxiety
 </td>
 <td style="text-align:right;">
@@ -1072,10 +1151,10 @@ Anxiety
 <td style="text-align:right;">
 63
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 12
 </td>
 <td style="text-align:right;">
@@ -1090,10 +1169,10 @@ Anxiety
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1108,28 +1187,28 @@ Anxiety
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
 <td style="text-align:left;">
-4
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
@@ -1153,21 +1232,18 @@ Participant_3
 Baseline
 </td>
 <td style="text-align:right;">
-2019-12-26
+2020-01-01
 </td>
 <td style="text-align:right;">
 21
 </td>
 <td style="text-align:right;">
-Age 18-26
+Female
 </td>
 <td style="text-align:right;">
 Female
 </td>
 <td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
 Other
 </td>
 <td style="text-align:right;">
@@ -1177,12 +1253,18 @@ NA
 NA
 </td>
 <td style="text-align:right;">
-Metro
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 <td style="text-align:right;">
 Studying only
 </td>
 <td style="text-align:left;">
+Canberra
+</td>
+<td style="text-align:right;">
 Anxiety
 </td>
 <td style="text-align:right;">
@@ -1197,10 +1279,10 @@ Anxiety
 <td style="text-align:right;">
 72
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 16
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 12
 </td>
 <td style="text-align:right;">
@@ -1215,10 +1297,10 @@ Anxiety
 <td style="text-align:right;">
 3
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
@@ -1233,10 +1315,10 @@ Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
@@ -1251,10 +1333,10 @@ Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1278,36 +1360,39 @@ Participant_4
 Baseline
 </td>
 <td style="text-align:right;">
-2019-12-02
+2020-01-24
 </td>
 <td style="text-align:right;">
 12
 </td>
 <td style="text-align:right;">
-Age 12-17
+Female
 </td>
 <td style="text-align:right;">
 Female
 </td>
 <td style="text-align:left;">
-Female
-</td>
-<td style="text-align:right;">
 Heterosexual
 </td>
 <td style="text-align:right;">
 Yes
 </td>
 <td style="text-align:right;">
-Yes
+Other
 </td>
 <td style="text-align:right;">
-Metro
+No
+</td>
+<td style="text-align:right;">
+No
 </td>
 <td style="text-align:right;">
 Not studying or working
 </td>
 <td style="text-align:left;">
+Southport
+</td>
+<td style="text-align:right;">
 Depression and Anxiety
 </td>
 <td style="text-align:right;">
@@ -1322,10 +1407,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 75
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 12
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 10
 </td>
 <td style="text-align:right;">
@@ -1340,10 +1425,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1358,10 +1443,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 4
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 4
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -1376,10 +1461,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1403,36 +1488,39 @@ Participant_5
 Baseline
 </td>
 <td style="text-align:right;">
-2020-01-13
+2019-11-11
 </td>
 <td style="text-align:right;">
 19
 </td>
 <td style="text-align:right;">
-Age 18-26
+Male
 </td>
 <td style="text-align:right;">
 Male
 </td>
 <td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
 Heterosexual
 </td>
 <td style="text-align:right;">
 Yes
 </td>
 <td style="text-align:right;">
-Yes
+Other
 </td>
 <td style="text-align:right;">
-Metro
+No
+</td>
+<td style="text-align:right;">
+No
 </td>
 <td style="text-align:right;">
 Not studying or working
 </td>
 <td style="text-align:left;">
+Southport
+</td>
+<td style="text-align:right;">
 Depression and Anxiety
 </td>
 <td style="text-align:right;">
@@ -1447,10 +1535,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 82
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 14
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 14
 </td>
 <td style="text-align:right;">
@@ -1465,10 +1553,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -1483,10 +1571,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 5
 </td>
 <td style="text-align:right;">
@@ -1501,10 +1589,10 @@ Depression and Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
@@ -1528,36 +1616,39 @@ Participant_6
 Baseline
 </td>
 <td style="text-align:right;">
-2019-12-30
+2020-01-08
 </td>
 <td style="text-align:right;">
 19
 </td>
 <td style="text-align:right;">
-Age 18-26
+Male
 </td>
 <td style="text-align:right;">
 Male
 </td>
 <td style="text-align:left;">
-Male
-</td>
-<td style="text-align:right;">
 Heterosexual
 </td>
 <td style="text-align:right;">
 Yes
 </td>
 <td style="text-align:right;">
-Yes
+Other
 </td>
 <td style="text-align:right;">
-Regional
+No
+</td>
+<td style="text-align:right;">
+No
 </td>
 <td style="text-align:right;">
 Studying only
 </td>
 <td style="text-align:left;">
+Regional Centre
+</td>
+<td style="text-align:right;">
 Anxiety
 </td>
 <td style="text-align:right;">
@@ -1572,10 +1663,10 @@ Anxiety
 <td style="text-align:right;">
 105
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 8
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -1590,10 +1681,10 @@ Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 2
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 1
 </td>
 <td style="text-align:right;">
@@ -1608,10 +1699,10 @@ Anxiety
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 3
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
@@ -1626,10 +1717,10 @@ Anxiety
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1
 </td>
-<td style="text-align:left;">
+<td style="text-align:right;">
 2
 </td>
 <td style="text-align:right;">
