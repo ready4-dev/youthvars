@@ -6,14 +6,16 @@
 \alias{youthvars-package}
 \title{youthvars: Youth Mental Health Variables Modelling Toolkit}
 \description{
-Tools for specifying the structural properties of variables
+Classes that describe the structural properties of variables
 commonly present in youth mental health datasets and some (where
-freely available) related scoring algorithms.  This development
-version of the youthvars package has been made available as part of
-the process of testing and documenting the package. The tools
-contained in this development release automate a number of tasks which
-MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.  Therefore you
-should only trial this software if you feel confident that you
+freely available) related scoring algorithms.  The main motivation for
+this package is to enable data integrity tools that ensure that
+methods are applied to the appropriate data structures.  This
+development version of the youthvars package has been made available
+as part of the process of testing and documenting the package. The
+tools contained in this development release automate a number of tasks
+which MODIFY THE DIRECTORY STRUCTURE OF YOUR LOCAL MACHINE.  Therefore
+you should only trial this software if you feel confident that you
 understand what it does and have created a sandpit area in which you
 can safely undertake testing. If you have any questions, please
 contact the authors (matthew.hamilton@orygen.org.au).  The

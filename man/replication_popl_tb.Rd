@@ -5,7 +5,7 @@
 \alias{replication_popl_tb}
 \title{Synthetic population replication dataset}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1711 rows and 42 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 1711 rows and 43 columns.
 }
 \usage{
 replication_popl_tb
@@ -21,15 +21,16 @@ A tibble
 \item{round}{Round of Data Collection}
 \item{d_interview_date}{Date of Data Collection}
 \item{d_age}{Age}
-\item{d_agegroup}{Age Group}
-\item{Gender}{Gender}
+\item{d_gender}{Gender}
 \item{d_sex_birth_s}{Sex at Birth}
 \item{d_sexual_ori_s}{Sexual Orientation}
 \item{d_ATSI}{Aboriginal or Torres Strait Islander}
-\item{CALD}{Culturally And Linguistically Diverse}
-\item{Region}{Region of Residence (Metropolitan or Regional)}
+\item{d_country_bir_s}{Country Of Birth}
+\item{d_english_home}{Speaks English At Home}
+\item{d_english_native}{Native English Speaker}
 \item{d_studying_working}{Education and Employment Status}
 \item{d_relation_s}{Relationship Status}
+\item{s_centre}{Service Centre Name}
 \item{c_p_diag_s}{Primary Diagnosis}
 \item{c_clinical_staging_s}{Clinical Stage}
 \item{K6}{Kessler Psychological Distress Scale (6 Dimension)}

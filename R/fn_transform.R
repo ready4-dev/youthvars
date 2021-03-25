@@ -22,8 +22,9 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb)
         "No", "Yes", "No"))) %>% dplyr::mutate(d_sexual_ori_s = dplyr::case_when(d_sexual_ori_s == 
         "Straight" ~ "Heterosexual", T ~ d_sexual_ori_s)) %>% 
         dplyr::select(fkClientID, round, d_interview_date, d_age, 
-            d_agegroup, Gender, d_sex_birth_s, d_sexual_ori_s, 
-            d_ATSI, CALD, Region, d_studying_working, d_relation_s, 
+            d_agegroup, Gender, d_gender, d_sex_birth_s, d_sexual_ori_s, 
+            d_ATSI, CALD, d_country_bir_s, d_english_home, d_english_native, 
+            Region, d_studying_working, d_relation_s, s_centre, 
             c_p_diag_s, c_clinical_staging_s, k6_total, phq9_total, 
             bads_total, gad7_total, oasis_total, scared_total, 
             c_sofas, dplyr::contains("aqol6d")) %>% dplyr::rename(PHQ9 = phq9_total, 
