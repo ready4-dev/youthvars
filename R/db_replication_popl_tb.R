@@ -21,13 +21,13 @@
 #'   \item{s_centre}{Service Centre Name}
 #'   \item{c_p_diag_s}{Primary Diagnosis}
 #'   \item{c_clinical_staging_s}{Clinical Stage}
-#'   \item{K6}{Kessler Psychological Distress Scale (6 Dimension)}
-#'   \item{PHQ9}{Patient Health Questionnaire}
-#'   \item{BADS}{Behavioural Activation for Depression Scale}
-#'   \item{GAD7}{Generalised Anxiety Disorder Scale}
-#'   \item{OASIS}{Overall Anxiety Severity and Impairment Scale}
-#'   \item{SCARED}{Screen for Child Anxiety Related Disorders}
-#'   \item{SOFAS}{Social and Occupational Functioning Assessment Scale}
+#'   \item{k6_total}{Kessler Psychological Distress Scale (6 Dimension)}
+#'   \item{phq9_total}{Patient Health Questionnaire}
+#'   \item{bads_total}{Behavioural Activation for Depression Scale}
+#'   \item{gad7_total}{Generalised Anxiety Disorder Scale}
+#'   \item{oasis_total}{Overall Anxiety Severity and Impairment Scale}
+#'   \item{scared_total}{Screen for Child Anxiety Related Disorders}
+#'   \item{c_sofas}{Social and Occupational Functioning Assessment Scale}
 #'   \item{aqol6d_q1}{Assessment of Quality of Life (6 Dimension) Question 1}
 #'   \item{aqol6d_q2}{Assessment of Quality of Life (6 Dimension) Question 2}
 #'   \item{aqol6d_q3}{Assessment of Quality of Life (6 Dimension) Question 3}

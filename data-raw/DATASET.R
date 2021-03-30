@@ -113,7 +113,8 @@ utils::data("fn_type_lup_tb")
 fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = ready4fun::make_fn_nms()[1],
                                               undocumented_fns_dir_chr = ready4fun::make_undmtd_fns_dir_chr()[1],
                                               custom_dmt_ls = list(details_ls = NULL,
-                                                                   inc_for_main_user_lgl_ls = list(force_true_chr = c("add_adol6d_scores"),
+                                                                   inc_for_main_user_lgl_ls = list(force_true_chr = c("add_adol6d_scores",
+                                                                                                                      "make_tfd_repln_ds_dict_r3"),
                                                                                                    force_false_chr = NA_character_),
                                                                    args_ls_ls = NULL),
                                               fn_type_lup_tb = fn_type_lup_tb,
@@ -252,7 +253,14 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
                               duration_fn = truncnorm::rtruncnorm,
                               date_var_nm_1L_chr = "d_interview_date") %>%
   dplyr::select(-duration_prd) %>%
-  transform_raw_ds_for_analysis()
+  transform_raw_ds_for_analysis() %>%
+  dplyr::rename(phq9_total = PHQ9,
+                bads_total = BADS,
+                gad7_total = GAD7,
+                oasis_total = OASIS,
+                scared_total = SCARED,
+                k6_total = K6,
+                c_sofas = SOFAS)
 scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     prefix_1L_chr = "aqol6d_q",
                                     id_var_nm_1L_chr = "fkClientID",

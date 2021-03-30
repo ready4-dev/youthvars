@@ -30,3 +30,4 @@ reference:
 - title: "Functions"
 - contents:
   - add_adol6d_scores
+  - make_tfd_repln_ds_dict_r3
