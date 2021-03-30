@@ -14,7 +14,7 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw
                                        "No"
                                        ))) %>%
     dplyr::mutate(d_sexual_ori_s = dplyr::case_when(d_sexual_ori_s == "Straight" ~ "Heterosexual",
-                                                    T ~ d_sexual_ori_s)) %>%
+                                                    T ~ as.character(d_sexual_ori_s)) %>% factor()) %>%
     dplyr::select(fkClientID, round, d_interview_date,
                   d_age, d_agegroup, Gender, d_gender,
                   d_sex_birth_s, d_sexual_ori_s,

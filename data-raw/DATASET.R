@@ -352,4 +352,4 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 ##
 ## PART FOUR
 ##
-devtools::build_vignettes()
+#devtools::build_vignettes()
