@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Youth Mental Health Variables Modelling Toolkit
-Version: 0.0.0.9010
+Version: 0.0.0.9011
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
