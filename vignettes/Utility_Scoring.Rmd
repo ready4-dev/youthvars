@@ -52,7 +52,7 @@ scored_data_tb <- scored_data_tb %>%
 ```
 The following lines then print the first six lines of the updated dataset as a table, using variable labels as column names.
 
-```{r scoredds}
+```{r scoredds, results='asis'}
 scored_data_tb %>%
   head() %>%
   ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),

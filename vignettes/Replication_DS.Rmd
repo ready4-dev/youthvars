@@ -15,6 +15,9 @@ vignette: >
 ---
 ```{r message=F}
 library(youthvars)
+library(xtable)
+options(xtable.floating = FALSE)
+options(xtable.timestamp = "")
 ```
 ## Origin and purpose of the youthvars replication dataset
 The replication dataset distributed with the youthvars package is a purely synthetic (entirely fake) dataset that is nonetheless representative (in terms of constituent variables and their uni-variate and [to some extent] joint distributions) of the original study dataset from which we developped the initial set of classes and functions included in youthvars. The purpose of the replication dataset is two-fold:
@@ -34,7 +37,7 @@ dictionary_tb <- repln_ds_dict_r3
 
 \blandscape
 
-```{r ddic, echo = knitr::is_html_output(), results='asis'}
+```{r ddic, eval = knitr::is_html_output(), results='asis'}
 dictionary_tb %>%
   ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"), 
                           caption_1L_chr = "Data dictionary",  
@@ -48,8 +51,6 @@ dictionary_tb %>%
                                                            paste("\\\\\n"))),
                           mkdn_tbl_ref_1L_chr = "tab:ddic")
 ```
-
-\elandscape
 
 ## Accessing the replication dataset
 The replication dataset itself can be accessed using the following command.
