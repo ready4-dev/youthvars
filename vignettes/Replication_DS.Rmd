@@ -1,6 +1,13 @@
 ---
 title: "Replication Dataset"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    includes:
+      in_header: preamble.tex
+    number_sections: no
 vignette: >
   %\VignetteIndexEntry{Replication Dataset}
   %\VignetteEngine{knitr::rmarkdown}
@@ -25,13 +32,24 @@ data("repln_ds_dict_r3", package = "youthvars")
 dictionary_tb <- repln_ds_dict_r3
 ```
 
-```{r ddic}
+\blandscape
+
+```{r ddic, echo = knitr::is_html_output(), results='asis'}
 dictionary_tb %>%
-  ready4show::print_table(output_type_1L_chr = "HTML", 
+  ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"), 
                           caption_1L_chr = "Data dictionary",  
                           use_lbls_as_col_nms_1L_lgl = T, 
+                          hline_after_ls = c(-1),
+                          add_to_row_ls = list(pos = list(-1,nrow(dictionary_tb)),
+                                               command = c(Hmisc::label(dictionary_tb) %>%
+                                                             Hmisc::latexTranslate() %>%
+                                                             paste0(collapse = " & ") %>%
+                                                             paste0("\\\\\n"),
+                                                           paste("\\\\\n"))),
                           mkdn_tbl_ref_1L_chr = "tab:ddic")
 ```
+
+\elandscape
 
 ## Accessing the replication dataset
 The replication dataset itself can be accessed using the following command.
@@ -50,11 +68,23 @@ raw_data_tb <- raw_data_tb %>%
 
 The first six cases from the replication dataset are reproduced below, using variable labels as column headings.
 
-```{r repds}
+\blandscape
+
+```{r repds, echo = knitr::is_html_output(), results='asis'}
 raw_data_tb %>%
   head() %>%
-  ready4show::print_table(output_type_1L_chr = "HTML",
+  dplyr::mutate(d_interview_date = as.character(d_interview_date)) %>%
+  ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
                           caption_1L_chr = "Replication dataset", 
                           use_lbls_as_col_nms_1L_lgl = T, 
+                          hline_after_ls = c(-1),
+                          add_to_row_ls = list(pos = list(-1,nrow(raw_data_tb %>%
+  head())),
+                                               command = c(Hmisc::label(raw_data_tb) %>%
+                                                             Hmisc::latexTranslate() %>%
+                                                             paste0(collapse = " & ") %>%
+                                                             paste0("\\\\\n"),
+                                                           paste("\\\\\n"))),
                           mkdn_tbl_ref_1L_chr = "tab:repds") 
 ```
+\elandscape

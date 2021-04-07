@@ -1,6 +1,11 @@
 ---
 title: "Health Utility Scoring Tools"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+  pdf_document:
+    highlight: null
+    number_sections: yes
 vignette: >
   %\VignetteIndexEntry{Health Utility Scoring Tools}
   %\VignetteEngine{knitr::rmarkdown}
@@ -50,7 +55,7 @@ The following lines then print the first six lines of the updated dataset as a t
 ```{r scoredds}
 scored_data_tb %>%
   head() %>%
-  ready4show::print_table(output_type_1L_chr = "HTML",
+  ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
                           use_rdocx_1L_lgl = F,
                           caption_1L_chr = "Replication dataset with AQoL scores", 
                           use_lbls_as_col_nms_1L_lgl = T, 
