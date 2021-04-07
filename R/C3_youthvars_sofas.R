@@ -44,14 +44,16 @@ integer(0)
 #' @export 
 
 validate_youthvars_sofas <- function(x){
-if(any(x < 0)){
-stop("All values in valid youthvars_sofas object must be greater than or equal to 0.",
+if(any(x[!is.na(x)] < 0)){
+stop("All non-missing values in valid youthvars_sofas object must be greater than or equal to 0.",
 call. = FALSE)
 }
- if(any(x > 100)){
-stop("All values in valid youthvars_sofas object must be less than or equal to 100.",
+
+ if(any(x[!is.na(x)] > 100)){
+stop("All non-missing values in valid youthvars_sofas object must be less than or equal to 100.",
 call. = FALSE)
 }
+
 x}
 #' Is First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @description Check whether an object is a valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
