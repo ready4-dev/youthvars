@@ -15,10 +15,13 @@ vignette: >
 ---
 ```{r message=F}
 library(youthvars)
+```
+```{r eval = !knitr::is_html_output(), echo = !knitr::is_html_output()}
 library(xtable)
 options(xtable.floating = FALSE)
 options(xtable.timestamp = "")
 ```
+
 ## Origin and purpose of the youthvars replication dataset
 The replication dataset distributed with the youthvars package is a purely synthetic (entirely fake) dataset that is nonetheless representative (in terms of constituent variables and their uni-variate and [to some extent] joint distributions) of the original study dataset from which we developped the initial set of classes and functions included in youthvars. The purpose of the replication dataset is two-fold:
 
