@@ -107,7 +107,10 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/youthvars/">youthvars</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/youthvars/">youthvars</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://xtable.r-forge.r-project.org/">xtable</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>xtable.floating <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>xtable.timestamp <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
 <div id="origin-and-purpose-of-the-youthvars-replication-dataset" class="section level2">
 <h2 class="hasAnchor">
 <a href="#origin-and-purpose-of-the-youthvars-replication-dataset" class="anchor"></a>Origin and purpose of the youthvars replication dataset</h2>
@@ -124,11 +127,19 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"repln_ds_dict_r3"</span>, package <span class="op">=</span> <span class="st">"youthvars"</span><span class="op">)</span>
 <span class="va">dictionary_tb</span> <span class="op">&lt;-</span> <span class="va">repln_ds_dict_r3</span></code></pre></div>
+
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dictionary_tb</span> <span class="op">%&gt;%</span>
-  <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="st">"HTML"</span>, 
+  <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/output_type.html">is_html_output</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"HTML"</span>,<span class="st">"PDF"</span><span class="op">)</span>, 
                           caption_1L_chr <span class="op">=</span> <span class="st">"Data dictionary"</span>,  
                           use_lbls_as_col_nms_1L_lgl <span class="op">=</span> <span class="cn">T</span>, 
+                          hline_after_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,
+                          add_to_row_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span><span class="op">)</span>,
+                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span>,
+                                                           <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
                           mkdn_tbl_ref_1L_chr <span class="op">=</span> <span class="st">"tab:ddic"</span><span class="op">)</span></code></pre></div>
 <table class="table  lightable-paper lightable-hover">
 <caption>
@@ -827,12 +838,22 @@ integer
 <code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op">&lt;-</span> <span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
   <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/add_labels_from_dictionary.html">add_labels_from_dictionary</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span></code></pre></div>
 <p>The first six cases from the replication dataset are reproduced below, using variable labels as column headings.</p>
+
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="st">"HTML"</span>,
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>d_interview_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">d_interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/output_type.html">is_html_output</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"HTML"</span>,<span class="st">"PDF"</span><span class="op">)</span>,
                           caption_1L_chr <span class="op">=</span> <span class="st">"Replication dataset"</span>, 
                           use_lbls_as_col_nms_1L_lgl <span class="op">=</span> <span class="cn">T</span>, 
+                          hline_after_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,
+                          add_to_row_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
+                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">raw_data_tb</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span>,
+                                                           <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
                           mkdn_tbl_ref_1L_chr <span class="op">=</span> <span class="st">"tab:repds"</span><span class="op">)</span> </code></pre></div>
 <table class="table  lightable-paper lightable-hover">
 <caption>
@@ -840,133 +861,133 @@ Replication dataset
 </caption>
 <thead><tr>
 <th style="text-align:left;">
-Unique Client Identifier
+fkClientID
 </th>
 <th style="text-align:right;">
-Round of Data Collection
+round
 </th>
 <th style="text-align:right;">
-Date of Data Collection
+d_interview_date
 </th>
 <th style="text-align:right;">
-Age
+d_age
 </th>
 <th style="text-align:right;">
-Gender
+d_gender
 </th>
 <th style="text-align:right;">
-Sex at Birth
+d_sex_birth_s
 </th>
 <th style="text-align:left;">
-Sexual Orientation
+d_sexual_ori_s
 </th>
 <th style="text-align:right;">
-Aboriginal or Torres Strait Islander
+d_ATSI
 </th>
 <th style="text-align:right;">
-Country Of Birth
+d_country_bir_s
 </th>
 <th style="text-align:right;">
-Speaks English At Home
+d_english_home
 </th>
 <th style="text-align:right;">
-Native English Speaker
+d_english_native
 </th>
 <th style="text-align:right;">
-Education and Employment Status
+d_studying_working
 </th>
 <th style="text-align:left;">
-Relationship Status
+d_relation_s
 </th>
 <th style="text-align:right;">
-Service Centre Name
+s_centre
 </th>
 <th style="text-align:right;">
-Primary Diagnosis
+c_p_diag_s
 </th>
 <th style="text-align:right;">
-Clinical Stage
+c_clinical_staging_s
 </th>
 <th style="text-align:right;">
-Kessler Psychological Distress Scale (6 Dimension)
+k6_total
 </th>
 <th style="text-align:right;">
-Patient Health Questionnaire
+phq9_total
 </th>
 <th style="text-align:left;">
-Behavioural Activation for Depression Scale
+bads_total
 </th>
 <th style="text-align:right;">
-Generalised Anxiety Disorder Scale
+gad7_total
 </th>
 <th style="text-align:right;">
-Overall Anxiety Severity and Impairment Scale
+oasis_total
 </th>
 <th style="text-align:right;">
-Screen for Child Anxiety Related Disorders
+scared_total
 </th>
 <th style="text-align:right;">
-Social and Occupational Functioning Assessment Scale
+c_sofas
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 1
+aqol6d_q1
 </th>
 <th style="text-align:left;">
-Assessment of Quality of Life (6 Dimension) Question 2
+aqol6d_q2
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 3
+aqol6d_q3
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 4
+aqol6d_q4
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 5
+aqol6d_q5
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 6
+aqol6d_q6
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 7
+aqol6d_q7
 </th>
 <th style="text-align:left;">
-Assessment of Quality of Life (6 Dimension) Question 8
+aqol6d_q8
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 9
+aqol6d_q9
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 10
+aqol6d_q10
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 11
+aqol6d_q11
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 12
+aqol6d_q12
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 13
+aqol6d_q13
 </th>
 <th style="text-align:left;">
-Assessment of Quality of Life (6 Dimension) Question 14
+aqol6d_q14
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 15
+aqol6d_q15
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 16
+aqol6d_q16
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 17
+aqol6d_q17
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 18
+aqol6d_q18
 </th>
 <th style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 19
+aqol6d_q19
 </th>
 <th style="text-align:left;">
-Assessment of Quality of Life (6 Dimension) Question 20
+aqol6d_q20
 </th>
 </tr></thead>
 <tbody>
