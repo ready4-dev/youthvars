@@ -1,3 +1,9 @@
+home:
+  links:
+  - text: User manual (PDF)
+    href: https://github.com/ready4-dev/youthvars/files/6269202/youthvars_user_0.0.0.9013.pdf
+  - text: Developer version of usual manual (PDF)
+    href: https://github.com/ready4-dev/youthvars/files/6269206/ready4use_developer_0.0.0.9119.pdf
 development:
   mode: auto
 reference:
