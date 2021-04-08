@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{make_pt_youthvars_gad7}
 \alias{make_pt_youthvars_gad7}
-\title{Make prototype First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{Make prototype youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 make_pt_youthvars_gad7()
 }
 \value{
-A prototype for First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+A prototype for youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+Create a new prototype for the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \details{
-First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{is_youthvars_sofas}
 \alias{is_youthvars_sofas}
-\title{Is First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{Is youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 is_youthvars_sofas(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_sofas(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A logical value, TRUE if a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+Check whether an object is a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \details{
-First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }

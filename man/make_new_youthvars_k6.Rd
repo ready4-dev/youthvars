@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{make_new_youthvars_k6}
 \alias{make_new_youthvars_k6}
-\title{Make new First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{Make new youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 make_new_youthvars_k6(x)
 }
 \arguments{
-\item{x}{A prototype for the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\item{x}{A prototype for the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 }
 \value{
-An unvalidated instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+An unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \description{
-Create a new unvalidated instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+Create a new unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \details{
-First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }

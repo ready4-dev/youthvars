@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{is_youthvars_bads}
 \alias{is_youthvars_bads}
-\title{Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{Is youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 is_youthvars_bads(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_bads(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A logical value, TRUE if a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+Check whether an object is a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \details{
-First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }

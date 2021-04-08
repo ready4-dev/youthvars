@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{make_pt_youthvars_oasis}
 \alias{make_pt_youthvars_oasis}
-\title{Make prototype First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\title{Make prototype youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 make_pt_youthvars_oasis()
 }
 \value{
-A prototype for First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+A prototype for youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+Create a new prototype for the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \details{
-First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }

@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{make_pt_youthvars_scared}
 \alias{make_pt_youthvars_scared}
-\title{Make prototype First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{Make prototype youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 make_pt_youthvars_scared()
 }
 \value{
-A prototype for First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+Create a new prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \details{
-First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }

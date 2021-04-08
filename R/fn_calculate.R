@@ -2,8 +2,8 @@
 #' @description calculate_adol_aqol6dU() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
 #' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
-#' @param id_var_nm_1L_chr Id var name (a character vector of length one), Default: 'fkClientID'
-#' @param wtd_aqol_var_nm_1L_chr Wtd Assessment of Quality of Life var name (a character vector of length one), Default: 'aqol6d_total_w'
+#' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
+#' @param wtd_aqol_var_nm_1L_chr Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'
 #' @return Adolescent Assessment of Quality of Life Six Dimension (a double vector)
 #' @rdname calculate_adol_aqol6dU
 #' @export 
@@ -22,8 +22,8 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @description calculate_adult_aqol6dU() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate adult assessment of quality of life six dimension health utility. The function returns Assessment of Quality of Life Six Dimension Health Utility (a double vector).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param prefix_1L_chr Prefix (a character vector of length one)
-#' @param coeffs_lup_tb Coeffs lookup table (a tibble), Default: NULL
-#' @param dim_sclg_con_lup_tb Dimension sclg con lookup table (a tibble), Default: NULL
+#' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
+#' @param dim_sclg_con_lup_tb Dimension sclg constant lookup table (a tibble), Default: NULL
 #' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
 #' @param itm_wrst_wghts_lup_tb Itm wrst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb
 #' @return Assessment of Quality of Life Six Dimension Health Utility (a double vector)
@@ -32,12 +32,12 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @importFrom utils data
 #' @importFrom hutils longest_prefix
 #' @keywords internal
-calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coeffs_lup_tb = NULL, 
+calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_tb = NULL, 
     dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb) 
 {
-    if (is.null(coeffs_lup_tb)) {
-        utils::data("aqol6d_from_8d_coeffs_lup_tb", envir = environment())
-        coeffs_lup_tb <- aqol6d_from_8d_coeffs_lup_tb
+    if (is.null(coefs_lup_tb)) {
+        utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
+        coefs_lup_tb <- aqol6d_from_8d_coefs_lup_tb
     }
     if (is.null(dim_sclg_con_lup_tb)) {
         utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
@@ -61,7 +61,7 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coeffs_lup_
             pfx_1L_chr = item_pfx_1L_chr) %>% add_dim_disv_to_aqol6d_items_tb(domain_items_ls = domain_items_ls, 
         domains_chr = domains_chr, dim_sclg_con_lup_tb = dim_sclg_con_lup_tb, 
         itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb) %>% add_dim_scores_to_aqol6d_items_tb(domain_items_ls = domain_items_ls) %>% 
-        add_aqol6dU_to_aqol6d_items_tb(coeffs_lup_tb = coeffs_lup_tb)
+        add_aqol6dU_to_aqol6d_items_tb(coefs_lup_tb = coefs_lup_tb)
     aqol6dU_dbl <- aqol6d_items_tb$aqol6dU
     return(aqol6dU_dbl)
 }

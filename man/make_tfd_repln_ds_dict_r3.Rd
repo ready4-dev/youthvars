@@ -2,16 +2,16 @@
 % Please edit documentation in R/fn_make.R
 \name{make_tfd_repln_ds_dict_r3}
 \alias{make_tfd_repln_ds_dict_r3}
-\title{Make transformed repln dataset dict}
+\title{Make transformed replication dataset dictionary}
 \usage{
 make_tfd_repln_ds_dict_r3(repln_ds_dict_r3 = NULL)
 }
 \arguments{
-\item{repln_ds_dict_r3}{Repln dataset dict (a ready4 S3), Default: NULL}
+\item{repln_ds_dict_r3}{Replication dataset dictionary (a ready4 S3), Default: NULL}
 }
 \value{
-Transformed repln dataset dict (a ready4 S3)
+Transformed replication dataset dictionary (a ready4 S3)
 }
 \description{
-make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed repln dataset dict ready4 s3. The function returns Transformed repln dataset dict (a ready4 S3).
+make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed replication dataset dictionary ready4 s3. The function returns Transformed replication dataset dictionary (a ready4 S3).
 }

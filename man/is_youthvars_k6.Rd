@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{is_youthvars_k6}
 \alias{is_youthvars_k6}
-\title{Is First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{Is youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 is_youthvars_k6(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_k6(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+A logical value, TRUE if a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+Check whether an object is a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \details{
-First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }

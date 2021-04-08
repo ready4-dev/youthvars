@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{is_youthvars_phq9}
 \alias{is_youthvars_phq9}
-\title{Is First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{Is youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 is_youthvars_phq9(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_phq9(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+A logical value, TRUE if a valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+Check whether an object is a valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \details{
-First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }

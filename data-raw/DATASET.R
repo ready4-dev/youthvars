@@ -85,7 +85,7 @@ pkg_dss_tb <- fns_dmt_tb %>%
                               pkg_dss_tb = pkg_dss_tb)
 ##
 pkg_dss_tb <- tibble::tribble(
-  ~var_name_chr, ~coeff_dbl,
+  ~var_name_chr, ~coef_dbl,
   "vD1", 0.0719264,
   "vD2", 0.1027818,
   "vD3", 0.2519563,
@@ -93,7 +93,7 @@ pkg_dss_tb <- tibble::tribble(
   "vD5", 0.1288289,
   "vD6", 0.2052164,
   "Constant", - 0.0444493
-) %>% ready4fun::write_and_doc_ds(db_1L_chr = "aqol6d_from_8d_coeffs_lup_tb",
+) %>% ready4fun::write_and_doc_ds(db_1L_chr = "aqol6d_from_8d_coefs_lup_tb",
                                   title_1L_chr = "Model 2A Coefficients To Weight AQoL6D",
                                   desc_1L_chr = "Coefficients for model to predict AQoL-6D utility score from AQoL-8D. The optimal model is Model 2A (see Richardson et al (2011, 18-19)*/",
                                   url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms",

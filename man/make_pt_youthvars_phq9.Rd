@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{make_pt_youthvars_phq9}
 \alias{make_pt_youthvars_phq9}
-\title{Make prototype First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{Make prototype youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 make_pt_youthvars_phq9()
 }
 \value{
-A prototype for First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+A prototype for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+Create a new prototype for the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \details{
-First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }

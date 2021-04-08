@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{youthvars_aqol6d_adol}
 \alias{youthvars_aqol6d_adol}
-\title{First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 youthvars_aqol6d_adol(x = make_pt_youthvars_aqol6d_adol())
 }
 \arguments{
-\item{x}{A prototype for the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)), Default: make_pt_youthvars_aqol6d_adol()}
+\item{x}{A prototype for the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)), Default: make_pt_youthvars_aqol6d_adol()}
 }
 \value{
-A validated instance of the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A validated instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \description{
-Create a new valid instance of the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+Create a new valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \details{
-First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }

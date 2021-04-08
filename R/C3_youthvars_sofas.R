@@ -1,20 +1,20 @@
 
-#' First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Create a new valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x A prototype for the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()
-#' @return A validated instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Create a new valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()
+#' @return A validated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname youthvars_sofas
 #' @export 
 
 youthvars_sofas <- function(x = make_pt_youthvars_sofas()){ 
 validate_youthvars_sofas(make_new_youthvars_sofas(x))
 }
-#' Make new First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Create a new unvalidated instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x A prototype for the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @return An unvalidated instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' Make new youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Create a new unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname make_new_youthvars_sofas
 #' @export 
 
@@ -24,22 +24,22 @@ class(x) <- append(c("youthvars_sofas",setdiff(make_pt_youthvars_sofas() %>% cla
 class(x))
 x
 }
-#' Make prototype First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Create a new prototype for the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' Make prototype youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Create a new prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 
-#' @return A prototype for First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A prototype for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname make_pt_youthvars_sofas
 #' @export 
 
 make_pt_youthvars_sofas <- function(){ 
 integer(0)
 }
-#' Validate First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Validate an instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x An unvalidated instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @return A prototpe for First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' Validate youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Validate an instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A prototpe for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname validate_youthvars_sofas
 #' @export 
 
@@ -55,11 +55,11 @@ call. = FALSE)
 }
 
 x}
-#' Is First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Check whether an object is a valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' Is youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Check whether an object is a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname is_youthvars_sofas
 #' @export 
 

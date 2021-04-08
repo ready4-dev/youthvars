@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{make_pt_youthvars_aqol6d_adol}
 \alias{make_pt_youthvars_aqol6d_adol}
-\title{Make prototype First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{Make prototype youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 make_pt_youthvars_aqol6d_adol()
 }
 \value{
-A prototype for First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A prototype for youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+Create a new prototype for the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \details{
-First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }

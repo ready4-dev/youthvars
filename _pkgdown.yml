@@ -1,9 +1,3 @@
-home:
-  links:
-  - text: User manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/files/6269202/youthvars_user_0.0.0.9013.pdf
-  - text: Developer version of usual manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/files/6269206/ready4use_developer_0.0.0.9119.pdf
 development:
   mode: auto
 reference:
@@ -18,6 +12,7 @@ reference:
   - aqol6d_dim_sclg_con_lup_tb
   - aqol6d_domain_qs_lup_tb
   - aqol6d_from_8d_coeffs_lup_tb
+  - aqol6d_from_8d_coefs_lup_tb
   - fn_type_lup_tb
   - fns_dmt_tb
   - prototype_lup
@@ -35,5 +30,4 @@ reference:
   - youthvars_sofas
 - title: "Functions"
 - contents:
-  - add_adol6d_scores
   - make_tfd_repln_ds_dict_r3

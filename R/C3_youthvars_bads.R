@@ -1,20 +1,20 @@
 
-#' First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Create a new valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @param x A prototype for the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores, Default: make_pt_youthvars_bads()
-#' @return A validated instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @description Create a new valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @param x A prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores, Default: make_pt_youthvars_bads()
+#' @return A validated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname youthvars_bads
 #' @export 
 
 youthvars_bads <- function(x = make_pt_youthvars_bads()){ 
 validate_youthvars_bads(make_new_youthvars_bads(x))
 }
-#' Make new First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Create a new unvalidated instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @param x A prototype for the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @return An unvalidated instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' Make new youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @description Create a new unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @param x A prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @return An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname make_new_youthvars_bads
 #' @export 
 
@@ -24,22 +24,22 @@ class(x) <- append(c("youthvars_bads",setdiff(make_pt_youthvars_bads() %>% class
 class(x))
 x
 }
-#' Make prototype First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Create a new prototype for the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' Make prototype youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @description Create a new prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 
-#' @return A prototype for First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @return A prototype for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname make_pt_youthvars_bads
 #' @export 
 
 make_pt_youthvars_bads <- function(){ 
 integer(0)
 }
-#' Validate First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Validate an instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @param x An unvalidated instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @return A prototpe for First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' Validate youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @description Validate an instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @param x An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @return A prototpe for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname validate_youthvars_bads
 #' @export 
 
@@ -55,11 +55,11 @@ call. = FALSE)
 }
 
 x}
-#' Is First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Check whether an object is a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' Is youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @description Check whether an object is a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname is_youthvars_bads
 #' @export 
 

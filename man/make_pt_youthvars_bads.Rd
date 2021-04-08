@@ -2,16 +2,16 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{make_pt_youthvars_bads}
 \alias{make_pt_youthvars_bads}
-\title{Make prototype First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{Make prototype youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 make_pt_youthvars_bads()
 }
 \value{
-A prototype for First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A prototype for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \description{
-Create a new prototype for the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+Create a new prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \details{
-First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }

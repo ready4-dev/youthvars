@@ -5,8 +5,8 @@
 #' A tibble
 #' 
 #' \describe{
-#'   \item{var_name_chr}{Var name (a character vector)}
-#'   \item{coeff_dbl}{Coeff (a double vector)}
+#'   \item{var_name_chr}{Variable name (a character vector)}
+#'   \item{coef_dbl}{Coefficient (a double vector)}
 #' }
 #' @source \url{https://www.aqol.com.au/index.php/scoring-algorithms}
-"aqol6d_from_8d_coeffs_lup_tb"
+"aqol6d_from_8d_coefs_lup_tb"

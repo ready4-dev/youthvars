@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{is_youthvars_aqol6d_adol}
 \alias{is_youthvars_aqol6d_adol}
-\title{Is First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{Is youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 is_youthvars_aqol6d_adol(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_aqol6d_adol(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A logical value, TRUE if a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+Check whether an object is a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \details{
-First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }

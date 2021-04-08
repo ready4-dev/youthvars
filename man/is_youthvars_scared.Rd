@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{is_youthvars_scared}
 \alias{is_youthvars_scared}
-\title{Is First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{Is youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 is_youthvars_scared(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_scared(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+Check whether an object is a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \details{
-First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }

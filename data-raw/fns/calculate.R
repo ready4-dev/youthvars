@@ -7,14 +7,14 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
   return(adol_aqol6d_dbl)
 }
 calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr,
-                                     coeffs_lup_tb = NULL,
+                                     coefs_lup_tb = NULL,
                                      dim_sclg_con_lup_tb = NULL,
                                      disvalues_lup_tb = NULL,
                                      itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb)
 {
-  if(is.null(coeffs_lup_tb)){
-    utils::data("aqol6d_from_8d_coeffs_lup_tb", envir = environment())
-    coeffs_lup_tb <- aqol6d_from_8d_coeffs_lup_tb
+  if(is.null(coefs_lup_tb)){
+    utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
+    coefs_lup_tb <- aqol6d_from_8d_coefs_lup_tb
   }
   if(is.null(dim_sclg_con_lup_tb)){
     utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
@@ -38,7 +38,7 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr,
                                    pfx_1L_chr = item_pfx_1L_chr) %>% add_dim_disv_to_aqol6d_items_tb(domain_items_ls = domain_items_ls,
                                                                                                      domains_chr = domains_chr, dim_sclg_con_lup_tb = dim_sclg_con_lup_tb,
                                                                                                      itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb) %>% add_dim_scores_to_aqol6d_items_tb(domain_items_ls = domain_items_ls) %>%
-    add_aqol6dU_to_aqol6d_items_tb(coeffs_lup_tb = coeffs_lup_tb)
+    add_aqol6dU_to_aqol6d_items_tb(coefs_lup_tb = coefs_lup_tb)
   aqol6dU_dbl <- aqol6d_items_tb$aqol6dU
   return(aqol6dU_dbl)
 }

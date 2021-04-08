@@ -25,6 +25,7 @@
 "abbr","abbreviation",FALSE
 "abbrs","abbreviations",TRUE
 "adol","adolescent",FALSE
+"adol6d","Assessment of Quality of Life Six Dimension (Adolescent version)",NA
 "adols","adolescents",TRUE
 "alg","algorithm",FALSE
 "algs","algorithms",TRUE
@@ -41,6 +42,10 @@
 "arr_r4","ready4 S4 collection of arrays",FALSE
 "artl","article",FALSE
 "artls","articles",TRUE
+"bl","baseline",FALSE
+"bls","baselines",TRUE
+"bnml","binomial",FALSE
+"bnmls","binomials",TRUE
 "cdn","condition",FALSE
 "cdns","conditions",TRUE
 "chkr","checker",FALSE
@@ -53,10 +58,22 @@
 "chr_r4","ready4 S4 collection of character vectors",FALSE
 "cls","class",FALSE
 "clss","classes",TRUE
+"cmprsn","comparison",FALSE
+"cmprsns","comparisons",TRUE
+"cnstr","constraint",FALSE
+"cnstrs","constraints",TRUE
 "cnt","content",FALSE
 "cnts","contents",TRUE
+"coef","coefficient",FALSE
+"coefs","coefficients",TRUE
 "col","column",FALSE
 "cols","columns",TRUE
+"con","constant",FALSE
+"cons","constants",TRUE
+"cor","correlation",FALSE
+"cors","correlations",TRUE
+"covar","covariate",FALSE
+"covars","covariates",TRUE
 "csv","comma separated variables file",FALSE
 "csvs","comma separated variables files",TRUE
 "curr","current",FALSE
@@ -83,6 +100,8 @@
 "df_r3_ls","list of ready4 S3 extension of data.frames",FALSE
 "df_r3_r4","ready4 S4 collection of ready4 S3 extension of data.frames",FALSE
 "df_r4","ready4 S4 collection of data.frames",FALSE
+"dict","dictionary",FALSE
+"dicts","dictionaries",TRUE
 "dif","different",FALSE
 "difs","differents",TRUE
 "dim","dimension",FALSE
@@ -130,6 +149,8 @@
 "gtrs","getters",TRUE
 "hline","horizonal line",FALSE
 "hlines","horizonal lines",TRUE
+"id","identity",FALSE
+"ids","identities",TRUE
 "idx","index",FALSE
 "idxs","indices",TRUE
 "imp","import",FALSE
@@ -156,10 +177,14 @@
 "int_r3_ls","list of ready4 S3 extension of integer vectors",FALSE
 "int_r3_r4","ready4 S4 collection of ready4 S3 extension of integer vectors",FALSE
 "int_r4","ready4 S4 collection of integer vectors",FALSE
+"iter","iteration",FALSE
+"iters","iterations",TRUE
 "lbl","label",FALSE
 "lbls","labels",TRUE
 "lev","level",FALSE
 "levs","levels",TRUE
+"lgd","legend",FALSE
+"lgds","legends",TRUE
 "lgl","logical vector",FALSE
 "lgl_ls","list of logical vectors",FALSE
 "lgl_r3","ready4 S3 extension of logical vector",FALSE
@@ -188,18 +213,27 @@
 "mat_r3_ls","list of ready4 S3 extension of matrices",FALSE
 "mat_r3_r4","ready4 S4 collection of ready4 S3 extension of matrices",FALSE
 "mat_r4","ready4 S4 collection of matrices",FALSE
+"max","maximum",FALSE
+"maxs","maximums",TRUE
 "mdl","model",FALSE
 "mdl_ls","list of models",FALSE
 "mdl_r3","ready4 S3 extension of model",FALSE
 "mdl_r3_ls","list of ready4 S3 extension of models",FALSE
 "mdl_r3_r4","ready4 S4 collection of ready4 S3 extension of models",FALSE
 "mdl_r4","ready4 S4 collection of models",FALSE
+"mdls","models",TRUE
+"min","minimum",FALSE
+"mins","minimums",TRUE
 "mk","make",FALSE
 "mkdn","markdown",FALSE
 "mkdns","markdowns",TRUE
 "mks","makes",TRUE
+"msrmnt","measurement",FALSE
+"msrmnts","measurements",TRUE
 "mthd","method",FALSE
 "mthds","methods",TRUE
+"nbr","number",FALSE
+"nbrs","numbers",TRUE
 "nm","name",FALSE
 "nms","names",TRUE
 "ns","namespace",FALSE
@@ -216,6 +250,9 @@
 "phrs","phrases",TRUE
 "pkg","package",FALSE
 "pkgs","packages",TRUE
+"predn","prediction",NA
+"predr","predictor",FALSE
+"predrs","predictors",TRUE
 "proc","process",FALSE
 "procs","processs",TRUE
 "prsn","person",FALSE
@@ -251,6 +288,8 @@
 "ready4_script_data","ready4 S4 class containing data to be passed to a function that constructs a spatial object from a lookup table.",NA
 "ref","reference",FALSE
 "refs","references",TRUE
+"repln","replication",FALSE
+"replns","replications",TRUE
 "reqd","required",FALSE
 "reqds","requireds",TRUE
 "ret","return",FALSE
@@ -261,6 +300,12 @@
 "rgx_r3_ls","list of ready4 S3 extension of regular expression vectors",FALSE
 "rgx_r3_r4","ready4 S4 collection of ready4 S3 extension of regular expression vectors",FALSE
 "rgx_r4","ready4 S4 collection of regular expression vectors",FALSE
+"rltv","relative",FALSE
+"rltvs","relatives",TRUE
+"rmd","R Markdown",FALSE
+"rmds","R Markdowns",TRUE
+"rmv","remove",FALSE
+"rmvs","removes",TRUE
 "rpl","replace",FALSE
 "rpls","replaces",TRUE
 "rprt","report",FALSE
@@ -283,6 +328,8 @@
 "sf_r4","ready4 S4 collection of simple features objects",FALSE
 "sfcs","suffices",TRUE
 "sfx","suffix",FALSE
+"smry","summary",FALSE
+"smrys","summarys",TRUE
 "src","source",FALSE
 "srcs","sources",TRUE
 "std","standard",FALSE
@@ -301,10 +348,19 @@
 "tbss","tibbless",TRUE
 "tf","transform",FALSE
 "tfd","transformed",NA
+"tfmn","transformation",FALSE
+"tfmns","transformations",TRUE
 "tfs","transforms",TRUE
 "tmp","temporary",NA
+"tot","total",FALSE
+"tots","totals",TRUE
 "tpl","template",FALSE
 "tpls","templates",TRUE
+"ts","time series",NA
+"TTU_predictors_lup","TTU S3 class for candidate predictors lookup table",FALSE
+"TTU_predictors_lups","TTU S3 class for candidate predictors lookup tables",TRUE
+"uid","unique identifier",FALSE
+"uids","unique identifiers",TRUE
 "undmtd","undocumented",NA
 "unexp","unexported",NA
 "unscrd","unscored",FALSE
@@ -312,29 +368,28 @@
 "unvd","unvalidated",NA
 "upd","update",FALSE
 "upds","updates",TRUE
+"utl","utility",FALSE
+"utls","utilities",TRUE
 "val","value",FALSE
 "vals","values",TRUE
+"var","variable",FALSE
+"vars","variables",TRUE
 "vld","valid",NA
 "vldd","validated",NA
 "vldn","validation",NA
 "ws","workspace",FALSE
 "wss","workspaces",TRUE
+"wt","weight",FALSE
+"wtd","weighted",NA
+"wts","weights",TRUE
 "xls","Excel workbook",FALSE
 "xlss","Excel workbooks",TRUE
 "xx","output object of multiple potential types",FALSE
-"youthvars_aqol6d_adol","First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))",FALSE
-"youthvars_aqol6d_adols","First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))s",TRUE
-"youthvars_bads","First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores",FALSE
-"youthvars_badss","First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scoress",TRUE
-"youthvars_gad7","First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores",FALSE
-"youthvars_gad7s","First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scoress",TRUE
-"youthvars_k6","First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores",FALSE
-"youthvars_k6s","First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scoress",TRUE
-"youthvars_oasis","First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores",FALSE
-"youthvars_oasiss","First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scoress",TRUE
-"youthvars_phq9","First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores",FALSE
-"youthvars_phq9s","First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scoress",TRUE
-"youthvars_scared","First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores",FALSE
-"youthvars_scareds","First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scoress",TRUE
-"youthvars_sofas","First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)",FALSE
-"youthvars_sofass","First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)s",TRUE
+"youthvars_aqol6d_adol","youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))",NA
+"youthvars_bads","youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores",NA
+"youthvars_gad7","youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores",NA
+"youthvars_k6","youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores",NA
+"youthvars_oasis","youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores",NA
+"youthvars_phq9","youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores",NA
+"youthvars_scared","youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores",NA
+"youthvars_sofas","youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)",NA

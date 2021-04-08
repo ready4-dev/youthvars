@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{validate_youthvars_bads}
 \alias{validate_youthvars_bads}
-\title{Validate First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{Validate youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 validate_youthvars_bads(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\item{x}{An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 }
 \value{
-A prototpe for First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A prototpe for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \description{
-Validate an instance of the First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+Validate an instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
 \details{
-First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores
+youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }

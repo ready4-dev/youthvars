@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{youthvars_phq9}
 \alias{youthvars_phq9}
-\title{First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 youthvars_phq9(x = make_pt_youthvars_phq9())
 }
 \arguments{
-\item{x}{A prototype for the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores, Default: make_pt_youthvars_phq9()}
+\item{x}{A prototype for the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores, Default: make_pt_youthvars_phq9()}
 }
 \value{
-A validated instance of the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+A validated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
-Create a new valid instance of the First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+Create a new valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \details{
-First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores
+youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }

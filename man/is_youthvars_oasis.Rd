@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{is_youthvars_oasis}
 \alias{is_youthvars_oasis}
-\title{Is First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\title{Is youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 is_youthvars_oasis(x)
 }
@@ -10,11 +10,11 @@ is_youthvars_oasis(x)
 \item{x}{An object of any type}
 }
 \value{
-A logical value, TRUE if a valid instance of the First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+A logical value, TRUE if a valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \description{
-Check whether an object is a valid instance of the First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+Check whether an object is a valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \details{
-First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }

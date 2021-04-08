@@ -7,7 +7,7 @@
 calculate_adult_aqol6dU(
   aqol6d_items_tb,
   prefix_1L_chr,
-  coeffs_lup_tb = NULL,
+  coefs_lup_tb = NULL,
   dim_sclg_con_lup_tb = NULL,
   disvalues_lup_tb = NULL,
   itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb
@@ -18,9 +18,9 @@ calculate_adult_aqol6dU(
 
 \item{prefix_1L_chr}{Prefix (a character vector of length one)}
 
-\item{coeffs_lup_tb}{Coeffs lookup table (a tibble), Default: NULL}
+\item{coefs_lup_tb}{Coefficients lookup table (a tibble), Default: NULL}
 
-\item{dim_sclg_con_lup_tb}{Dimension sclg con lookup table (a tibble), Default: NULL}
+\item{dim_sclg_con_lup_tb}{Dimension sclg constant lookup table (a tibble), Default: NULL}
 
 \item{disvalues_lup_tb}{Disvalues lookup table (a tibble), Default: NULL}
 

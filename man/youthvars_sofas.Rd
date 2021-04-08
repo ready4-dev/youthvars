@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{youthvars_sofas}
 \alias{youthvars_sofas}
-\title{First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 youthvars_sofas(x = make_pt_youthvars_sofas())
 }
 \arguments{
-\item{x}{A prototype for the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()}
+\item{x}{A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()}
 }
 \value{
-A validated instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A validated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \description{
-Create a new valid instance of the First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+Create a new valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \details{
-First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }

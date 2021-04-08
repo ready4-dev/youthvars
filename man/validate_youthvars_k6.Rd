@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{validate_youthvars_k6}
 \alias{validate_youthvars_k6}
-\title{Validate First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{Validate youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 validate_youthvars_k6(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\item{x}{An unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 }
 \value{
-A prototpe for First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+A prototpe for youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \description{
-Validate an instance of the First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+Validate an instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
 \details{
-First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }

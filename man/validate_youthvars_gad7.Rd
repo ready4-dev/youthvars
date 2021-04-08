@@ -2,19 +2,19 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{validate_youthvars_gad7}
 \alias{validate_youthvars_gad7}
-\title{Validate First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{Validate youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 validate_youthvars_gad7(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\item{x}{An unvalidated instance of the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 }
 \value{
-A prototpe for First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+A prototpe for youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \description{
-Validate an instance of the First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+Validate an instance of the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \details{
-First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }

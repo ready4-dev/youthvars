@@ -16,9 +16,9 @@ calculate_adol_aqol6dU(
 
 \item{prefix_1L_chr}{Prefix (a character vector of length one), Default: 'aqol6d_q'}
 
-\item{id_var_nm_1L_chr}{Id var name (a character vector of length one), Default: 'fkClientID'}
+\item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 
-\item{wtd_aqol_var_nm_1L_chr}{Wtd Assessment of Quality of Life var name (a character vector of length one), Default: 'aqol6d_total_w'}
+\item{wtd_aqol_var_nm_1L_chr}{Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'}
 }
 \value{
 Adolescent Assessment of Quality of Life Six Dimension (a double vector)

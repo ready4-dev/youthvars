@@ -17,10 +17,10 @@ make_adol_aqol6d_disv_lup <- function ()
         "Q1" ~ 0.073, TRUE ~ Answer_5_dbl))
     return(adol_aqol6d_disv_lup)
 }
-#' Make transformed repln dataset dict
-#' @description make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed repln dataset dict ready4 s3. The function returns Transformed repln dataset dict (a ready4 S3).
-#' @param repln_ds_dict_r3 Repln dataset dict (a ready4 S3), Default: NULL
-#' @return Transformed repln dataset dict (a ready4 S3)
+#' Make transformed replication dataset dictionary
+#' @description make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed replication dataset dictionary ready4 s3. The function returns Transformed replication dataset dictionary (a ready4 S3).
+#' @param repln_ds_dict_r3 Replication dataset dictionary (a ready4 S3), Default: NULL
+#' @return Transformed replication dataset dictionary (a ready4 S3)
 #' @rdname make_tfd_repln_ds_dict_r3
 #' @export 
 #' @importFrom dplyr mutate across case_when
