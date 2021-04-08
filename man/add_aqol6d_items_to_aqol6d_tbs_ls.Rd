@@ -6,7 +6,7 @@
 \usage{
 add_aqol6d_items_to_aqol6d_tbs_ls(
   aqol6d_tbs_ls,
-  aqol_items_props_tbs_ls,
+  aqol_items_prpns_tbs_ls,
   prefix_chr,
   aqol_tots_var_nms_chr,
   id_var_nm_1L_chr = "fkClientID",
@@ -16,7 +16,7 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
 \arguments{
 \item{aqol6d_tbs_ls}{Assessment of Quality of Life Six Dimension tibbles (a list)}
 
-\item{aqol_items_props_tbs_ls}{Assessment of Quality of Life items props tibbles (a list)}
+\item{aqol_items_prpns_tbs_ls}{Assessment of Quality of Life items proportions tibbles (a list)}
 
 \item{prefix_chr}{Prefix (a character vector)}
 

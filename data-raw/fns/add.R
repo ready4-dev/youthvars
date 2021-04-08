@@ -13,10 +13,10 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
   }
   return(unscored_aqol_tb)
 }
-add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_props_tbs_ls, prefix_chr,
+add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, prefix_chr,
                                                aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID", scaling_cnst_dbl = 5)
 {
-  updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_props_tbs_ls,
+  updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_prpns_tbs_ls,
                                        ~{
                                          nbr_obs_1L_int <- nrow(.x) * scaling_cnst_dbl
                                          transposed_items_props_tb <- .y %>% dplyr::select(-Question) %>%
@@ -103,7 +103,7 @@ add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, d
   aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
   kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr,
                                    dim_sclg_con_lup_tb = dim_sclg_con_lup_tb)
-  w_dbl_ls <- make_item_wrst_wghts_ls_ls(domain_items_ls = domain_items_ls,
+  w_dbl_ls <- make_make_item_wrst_wts_ls_ls(domain_items_ls = domain_items_ls,
                                          itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb)
   aqol6d_items_tb <- purrr::reduce(1:length(domain_items_ls),
                                    .init = aqol6d_items_tb, ~{

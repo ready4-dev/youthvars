@@ -53,7 +53,7 @@ pkg_dss_tb <- classes_to_make_tb %>%
                                           output_dir_1L_chr = "R",
                                           file_exists_cdn_1L_chr = "overwrite",
                                           abbreviations_lup = abbreviations_lup,
-                                          init_class_pt_lup = ready4use::prototype_lup)  %>% #
+                                          init_class_pt_lup = ready4fun::get_rds_from_dv("prototype_lup"))  %>% #
   ready4fun::write_and_doc_ds(db_1L_chr = "prototype_lup",
                               title_1L_chr = "Class prototype lookup table",
                               desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
@@ -222,7 +222,7 @@ scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     id_var_nm_1L_chr = "fkClientID",
                                     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
-                                                      var_cat_chr = c("Identifier","Temporal","Temporal",
+                                                      var_ctg_chr = c("Identifier","Temporal","Temporal",
                                                                       rep("Demographic",14),
                                                                       "Service",
                                                                       rep("Clinical",8),
@@ -276,7 +276,7 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                       })) %>% ready4use::ready4_dictionary()
 Hmisc::label(dictionary_tb) = as.list(c("Variable","Category", "Description", "Class"))
 dictionary_tb <- dictionary_tb %>%
-  dplyr::arrange(var_cat_chr,var_nm_chr)
+  dplyr::arrange(var_ctg_chr,var_nm_chr)
 pkg_dss_tb <- dictionary_tb %>%
   dplyr::filter(var_nm_chr %in% names(replication_popl_tb)) %>%
   ready4fun::write_and_doc_ds(db_1L_chr = "repln_ds_dict_r3",

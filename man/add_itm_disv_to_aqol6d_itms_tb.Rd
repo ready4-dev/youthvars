@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_itm_disv_to_aqol6d_itms_tb}
 \alias{add_itm_disv_to_aqol6d_itms_tb}
-\title{Add itm disvalue to Assessment of Quality of Life Six Dimension itms}
+\title{Add item disvalue to Assessment of Quality of Life Six Dimension items}
 \usage{
 add_itm_disv_to_aqol6d_itms_tb(
   aqol6d_items_tb,
@@ -21,6 +21,6 @@ add_itm_disv_to_aqol6d_itms_tb(
 Assessment of Quality of Life Six Dimension items (a tibble)
 }
 \description{
-add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add itm disvalue to assessment of quality of life six dimension itms tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 }
 \keyword{internal}

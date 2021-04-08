@@ -62,7 +62,7 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
 #' Add Assessment of Quality of Life Six Dimension items to Assessment of Quality of Life Six Dimension tibbles
 #' @description add_aqol6d_items_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension items to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Updated Assessment of Quality of Life Six Dimension tibbles (a list).
 #' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
-#' @param aqol_items_props_tbs_ls Assessment of Quality of Life items props tibbles (a list)
+#' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
 #' @param prefix_chr Prefix (a character vector)
 #' @param aqol_tots_var_nms_chr Assessment of Quality of Life totals variable names (a character vector)
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
@@ -77,10 +77,10 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
 #' @importFrom rlang sym
 #' @importFrom tibble rowid_to_column
 #' @keywords internal
-add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_props_tbs_ls, prefix_chr, 
+add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, prefix_chr, 
     aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID", scaling_cnst_dbl = 5) 
 {
-    updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_props_tbs_ls, 
+    updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, 
         ~{
             nbr_obs_1L_int <- nrow(.x) * scaling_cnst_dbl
             transposed_items_props_tb <- .y %>% dplyr::select(-Question) %>% 
@@ -157,8 +157,8 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @param domains_chr Domains (a character vector)
-#' @param dim_sclg_con_lup_tb Dimension sclg constant lookup table (a tibble), Default: aqol6d_dim_sclg_con_lup_tb
-#' @param itm_wrst_wghts_lup_tb Itm wrst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb
+#' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: aqol6d_dim_sclg_con_lup_tb
+#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_dim_disv_to_aqol6d_items_tb
 #' @export 
@@ -172,7 +172,7 @@ add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, d
     aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
     kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr, 
         dim_sclg_con_lup_tb = dim_sclg_con_lup_tb)
-    w_dbl_ls <- make_item_wrst_wghts_ls_ls(domain_items_ls = domain_items_ls, 
+    w_dbl_ls <- make_make_item_wrst_wts_ls_ls(domain_items_ls = domain_items_ls, 
         itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb)
     aqol6d_items_tb <- purrr::reduce(1:length(domain_items_ls), 
         .init = aqol6d_items_tb, ~{
@@ -201,8 +201,8 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
         "vD_dvD", "vD"))
     return(aqol6d_items_tb)
 }
-#' Add itm disvalue to Assessment of Quality of Life Six Dimension itms
-#' @description add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add itm disvalue to assessment of quality of life six dimension itms tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+#' Add item disvalue to Assessment of Quality of Life Six Dimension items
+#' @description add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
 #' @param pfx_1L_chr Prefix (a character vector of length one)
