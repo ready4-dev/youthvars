@@ -24,6 +24,6 @@ calculate_adol_aqol6dU(
 Adolescent Assessment of Quality of Life Six Dimension (a double vector)
 }
 \description{
-calculate_adol_aqol6dU() is a Calculate function that imputes data. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector).
+calculate_adol_aqol6dU() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector).
 }
 \keyword{internal}

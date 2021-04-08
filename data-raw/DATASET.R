@@ -39,47 +39,14 @@ ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Youth Mental Health Variables Mo
 ##
 ## PART THREE
 ##
-classes_to_make_tb <- ready4class::ready4_constructor_tbl() %>%
-  dplyr::bind_rows(tibble::tribble(
-    ~ make_s3_lgl, ~ name_stub_chr, ~ pt_ls, ~ pt_chkr_pfx_ls, ~ pt_ns_ls, ~ vals_ls, ~ allowed_vals_ls, ~ min_max_vals_ls, ~ start_end_vals_ls, ~ class_desc_chr, ~ parent_class_chr, ~ slots_ls, ~ meaningful_nms_ls, ~ inc_clss_ls, ~ asserts_ls,
-    TRUE, "aqol6d_adol", list("numeric"), list("is."),list("base"), NULL, NULL,list(c(0.03, 1)), NULL, "First Bounce S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "phq9", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 27)), NULL, "First Bounce S3 class for Patient Health Questionnaire (PHQ-9) scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "bads", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 150)), NULL, "First Bounce S3 class for Behavioural Activation for Depression Scale (BADS) scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "gad7", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 21)), NULL, "First Bounce S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "oasis", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 20)), NULL, "First Bounce S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "scared", list("integer"), list("is."),list("base"),NULL, NULL,list(c(0, 82)), NULL, "First Bounce S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "k6", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 24)), NULL, "First Bounce S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores", NA_character_, NULL, NULL, NULL, NULL,
-    TRUE, "sofas", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 100)), NULL, "First Bounce S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)", NA_character_, NULL, NULL, NULL, NULL)
-  )
-name_pfx_1L_chr <- "youthvars_"
-pkg_dss_tb <- ready4fun::write_abbr_lup(short_name_chr = c(paste0(name_pfx_1L_chr,classes_to_make_tb$name_stub_chr),
-                                                           "adol","aqol","aqol6d","aqol6dU",
-                                                           "dim","disv","eq","lev",
-                                                           "q",
-                                                           "scrg",
-                                                           "unscrd",
-                                                           "vldn"),
-                                        long_name_chr = c(classes_to_make_tb$class_desc_chr,
-                                                          "adolescent",
-                                                          "Assessment of Quality of Life",
-                                                          "Assessment of Quality of Life Six Dimension",
-                                                          "Assessment of Quality of Life Six Dimension Health Utility",
-                                                          "dimension",
-                                                          "disvalue",
-                                                          "equation",
-                                                          "level",
-                                                          "question",
-                                                          "scoring",
-                                                          "unscored",
-                                                          "validation"),
-                                        no_plural_chr = c("Assessment of Quality of Life",
-                                                          "Assessment of Quality of Life Six Dimension",
-                                                          "Assessment of Quality of Life Six Dimension Health Utility",
-                                                          "validation"),
-                                        #custom_plural_ls = ,
-                                        url_1L_chr = NA_character_,
-                                        seed_lup = ready4show::abbreviations_lup) # CHANGE
+source("data-raw/MAKE_CLASSES.R")
+# 5. Create a lookup table of abbreviations used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
+pkg_dss_tb <- ready4fun::get_rds_from_dv("abbreviations_lup") %>%
+  ready4fun::write_abbr_lup()
 utils::data("abbreviations_lup")
+#
+# 6. Make classes
+##
 pkg_dss_tb <- classes_to_make_tb %>%
   ready4class::write_classes_and_make_lup(dev_pkg_ns_1L_chr = ready4fun::get_dev_pkg_nm(),
                                           name_pfx_1L_chr = name_pfx_1L_chr,
@@ -92,20 +59,9 @@ pkg_dss_tb <- classes_to_make_tb %>%
                               desc_1L_chr = "Metadata on classes used in readyforwhatsnext suite",
                               pkg_dss_tb = pkg_dss_tb)
 ##
-# 5. Create function types and generics look-up tables
-# 5.1 Create a lookup table of function types used in this package and save it as a package dataset (data gets saved in the data directory, documentation script is created in R directory).
-utils::data("fn_type_lup_tb",package = "ready4show")
-# ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
-#                             fn_type_lup_tb = fn_type_lup_tb)
-pkg_dss_tb <- fn_type_lup_tb %>%
-  ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
-                                                                                  fn_type_lup_tb = fn_type_lup_tb),
-                                     fn_type_desc_chr = c("Imputes data."),
-                                     is_generic_lgl = F,
-                                     is_method_lgl = F) %>% # Add to ready4fun template.
-  dplyr::arrange(fn_type_nm_chr) %>%
-  ready4fun::write_dmtd_fn_type_lup(url_1L_chr = NA_character_,
-                                    abbreviations_lup = abbreviations_lup,
+# 8. Create function types look-up table and save it as a package dataset
+pkg_dss_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb") %>%
+  ready4fun::write_dmtd_fn_type_lup(abbreviations_lup = abbreviations_lup,
                                     pkg_dss_tb = pkg_dss_tb)
 utils::data("fn_type_lup_tb")
 #
@@ -359,6 +315,13 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 update_pkgdown_1L_lgl = T)
 ##
 ## PART FOUR
+data("prototype_lup")
+if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
+  prototype_lup %>%
+    ready4use::write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
+                              desc_1L_chr = "Prototypes lookup table")
+}
+# Note: Remember to review and publish updated dataset
 ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6269202/youthvars_user_0.0.0.9013.pdf",
                                    developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6269206/ready4use_developer_0.0.0.9119.pdf")
 ##
