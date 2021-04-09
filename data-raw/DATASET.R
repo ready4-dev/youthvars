@@ -203,7 +203,7 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
                                                  "Follow-up"))) %>%
   dplyr::mutate(d_relation_s = dplyr::case_when(d_relation_s %in% c("REPLACE_ME_1","REPLACE_ME_2") ~ "Not in a relationship",
                                    T ~ "In a relationship")) %>%
-  youthu::add_dates_from_dist(bl_start_date_dtm = Sys.Date() - lubridate::days(600),
+  youthu::add_dates_from_dstr(bl_start_date_dtm = Sys.Date() - lubridate::days(600),
                               bl_end_date_dtm = Sys.Date() - lubridate::days(420),
                               duration_args_ls = list(a = 60, b = 140, mean = 90, sd = 10),
                               duration_fn = truncnorm::rtruncnorm,
@@ -322,7 +322,7 @@ if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
                               desc_1L_chr = "Prototypes lookup table")
 }
 # Note: Remember to review and publish updated dataset
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6276259/youthvars_user_0.0.0.9017.pdf",
-                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6276261/youthvars_developer_0.0.0.9017.pdf")
+ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9017/youthvars_user_0.0.0.9017.pdf",
+                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9017/youthvars_developer_0.0.0.9017.pdf")
 ##
 #devtools::build_vignettes()
