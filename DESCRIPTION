@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Youth Mental Health Variables Modelling Toolkit
-Version: 0.0.0.9018
+Version: 0.0.0.9019
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -43,7 +43,11 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
+    arsenal,
     dplyr,
+    ggplot2,
+    ggpubr,
+    gridExtra,
     Hmisc,
     hutils,
     knitr,
@@ -53,11 +57,13 @@ Imports:
     methods,
     mice,
     purrr,
-    ready4show (>= 0.0.0.9019),
-    ready4use (>= 0.0.0.9122),
+    ready4show (>= 0.0.0.9022),
+    ready4use (>= 0.0.0.9126),
     rlang,
+    scales,
     simstudy,
     stats,
+    stringi,
     stringr,
     testthat,
     tibble,
