@@ -42,10 +42,16 @@
 "arr_r4","ready4 S4 collection of arrays",FALSE
 "artl","article",FALSE
 "artls","articles",TRUE
+"auto","automatic",FALSE
+"autos","automatics",TRUE
 "bl","baseline",FALSE
 "bls","baselines",TRUE
 "bnml","binomial",FALSE
 "bnmls","binomials",TRUE
+"brm","bayesian regression model",FALSE
+"brms","bayesian regression models",TRUE
+"bw","black and white",FALSE
+"bws","black and whites",TRUE
 "cdn","condition",FALSE
 "cdns","conditions",TRUE
 "chkr","checker",FALSE
@@ -56,10 +62,16 @@
 "chr_r3_ls","list of ready4 S3 extension of character vectors",FALSE
 "chr_r3_r4","ready4 S4 collection of ready4 S3 extension of character vectors",FALSE
 "chr_r4","ready4 S4 collection of character vectors",FALSE
+"clg","complementary log",FALSE
+"clgs","complementary logs",TRUE
+"cll","complementary log log",FALSE
+"clls","complementary log logs",TRUE
 "cls","class",FALSE
 "clss","classes",TRUE
 "cmprsn","comparison",FALSE
 "cmprsns","comparisons",TRUE
+"cndt","candidate",FALSE
+"cndts","candidates",TRUE
 "cnstr","constraint",FALSE
 "cnstrs","constraints",TRUE
 "cnt","content",FALSE
@@ -76,6 +88,8 @@
 "covars","covariates",TRUE
 "csv","comma separated variables file",FALSE
 "csvs","comma separated variables files",TRUE
+"ctg","category categories",FALSE
+"ctgs","category categoriess",TRUE
 "curr","current",FALSE
 "currs","currents",TRUE
 "db","database",FALSE
@@ -92,6 +106,8 @@
 "depnts","dependents",TRUE
 "desc","description",FALSE
 "descs","descriptions",TRUE
+"descv","descriptive",FALSE
+"descvs","descriptives",TRUE
 "dev","development",FALSE
 "devs","developments",TRUE
 "df","data.frame",FALSE
@@ -112,6 +128,8 @@
 "disvs","disvalues",TRUE
 "dmt","documentation",NA
 "dmtd","documented",NA
+"dnst","density",FALSE
+"dnsts","densitys",TRUE
 "doc","document",FALSE
 "docs","documents",TRUE
 "ds","dataset",FALSE
@@ -126,6 +144,8 @@
 "dvpr","developer",FALSE
 "dvprs","developers",TRUE
 "dvs","dataverses",TRUE
+"elmt","element",FALSE
+"elmts","elements",TRUE
 "eq","equation",FALSE
 "eqs","equations",TRUE
 "fct","factor vector",FALSE
@@ -134,6 +154,8 @@
 "fct_r3_ls","list of ready4 S3 extension of factor vectors",FALSE
 "fct_r3_r4","ready4 S4 collection of ready4 S3 extension of factor vectors",FALSE
 "fct_r4","ready4 S4 collection of factor vectors",FALSE
+"fctr","factor",FALSE
+"fctrs","factors",TRUE
 "fl","file",FALSE
 "fls","files",TRUE
 "fn","function",FALSE
@@ -145,6 +167,9 @@
 "gens","generates",TRUE
 "gnrc","generic",FALSE
 "gnrcs","generics",TRUE
+"grp","group",FALSE
+"grps","groups",TRUE
+"gsn","gaussian",NA
 "gtr","getter",FALSE
 "gtrs","getters",TRUE
 "hline","horizonal line",FALSE
@@ -179,6 +204,8 @@
 "int_r4","ready4 S4 collection of integer vectors",FALSE
 "iter","iteration",FALSE
 "iters","iterations",TRUE
+"itm","item",FALSE
+"itms","items",TRUE
 "lbl","label",FALSE
 "lbls","labels",TRUE
 "lev","level",FALSE
@@ -191,6 +218,10 @@
 "lgl_r3_ls","list of ready4 S3 extension of logical vectors",FALSE
 "lgl_r3_r4","ready4 S4 collection of ready4 S3 extension of logical vectors",FALSE
 "lgl_r4","ready4 S4 collection of logical vectors",FALSE
+"lm","linear model",FALSE
+"lms","linear models",TRUE
+"lnr","linear",FALSE
+"lnrs","linears",TRUE
 "lnt","length",FALSE
 "lnts","lengths",TRUE
 "loc","local",FALSE
@@ -221,6 +252,7 @@
 "mdl_r3_ls","list of ready4 S3 extension of models",FALSE
 "mdl_r3_r4","ready4 S4 collection of ready4 S3 extension of models",FALSE
 "mdl_r4","ready4 S4 collection of models",FALSE
+"mdlng","modelling",NA
 "mdls","models",TRUE
 "min","minimum",FALSE
 "mins","minimums",TRUE
@@ -228,6 +260,7 @@
 "mkdn","markdown",FALSE
 "mkdns","markdowns",TRUE
 "mks","makes",TRUE
+"msng","missing",NA
 "msrmnt","measurement",FALSE
 "msrmnts","measurements",TRUE
 "mthd","method",FALSE
@@ -240,21 +273,33 @@
 "nss","namespaces",TRUE
 "obj","object",FALSE
 "objs","objects",TRUE
+"obsd","observed",NA
 "outp","output",FALSE
 "outps","outputs",TRUE
 "par","parameter",FALSE
 "pars","parameters",TRUE
+"pdef","positive definite",NA
 "pfx","prefix",FALSE
 "pfxs","prefixes",TRUE
 "phr","phrase",FALSE
 "phrs","phrases",TRUE
 "pkg","package",FALSE
 "pkgs","packages",TRUE
+"plt","plot",FALSE
+"plts","plots",TRUE
+"popl","population",NA
+"predd","predicted",FALSE
+"predds","predicteds",TRUE
 "predn","prediction",NA
 "predr","predictor",FALSE
 "predrs","predictors",TRUE
+"prefd","preferred",NA
+"prob","probability",FALSE
+"probs","probabilities",TRUE
 "proc","process",FALSE
 "procs","processs",TRUE
+"prpn","proportion",FALSE
+"prpns","proportions",TRUE
 "prsn","person",FALSE
 "prsn_ls","list of persons",FALSE
 "prsn_r3","ready4 S3 extension of person",FALSE
@@ -304,12 +349,16 @@
 "rltvs","relatives",TRUE
 "rmd","R Markdown",FALSE
 "rmds","R Markdowns",TRUE
+"rmse","root mean square error",FALSE
+"rmses","root mean square errors",TRUE
 "rmv","remove",FALSE
 "rmvs","removes",TRUE
 "rpl","replace",FALSE
 "rpls","replaces",TRUE
 "rprt","report",FALSE
 "rprts","reports",TRUE
+"rsl","resolution",FALSE
+"rsls","resolutions",TRUE
 "rt","root",FALSE
 "rts","roots",TRUE
 "s3","S3",FALSE
@@ -318,8 +367,14 @@
 "s4","S4",FALSE
 "s4_ls","list of S4s",FALSE
 "s4_r4","ready4 S4 collection of S4s",FALSE
+"scl","scale",FALSE
+"sclg","scaling",FALSE
+"sclgs","scalings",TRUE
+"scls","scales",TRUE
 "scrg","scoring",FALSE
 "scrgs","scorings",TRUE
+"sctr","scatter",FALSE
+"sctrs","scatters",TRUE
 "sf","simple features object",FALSE
 "sf_ls","list of simple features objects",FALSE
 "sf_r3","ready4 S3 extension of simple features object",FALSE
@@ -328,14 +383,21 @@
 "sf_r4","ready4 S4 collection of simple features objects",FALSE
 "sfcs","suffices",TRUE
 "sfx","suffix",FALSE
+"signft","significant",NA
 "smry","summary",FALSE
 "smrys","summarys",TRUE
+"sngl","single",FALSE
+"sngls","singles",TRUE
 "src","source",FALSE
 "srcs","sources",TRUE
+"stat","statistic",FALSE
+"stats","statistics",TRUE
 "std","standard",FALSE
 "stds","standards",TRUE
 "str","setter",FALSE
 "strs","setters",TRUE
+"synth","synthetic",FALSE
+"synths","synthetics",TRUE
 "tb","tibble",FALSE
 "tb_ls","list of tibbles",FALSE
 "tb_r3","ready4 S3 extension of tibble",FALSE
@@ -346,17 +408,21 @@
 "tbls","tables",TRUE
 "tbs","tibbles",FALSE
 "tbss","tibbless",TRUE
+"temp","temporary",NA
 "tf","transform",FALSE
 "tfd","transformed",NA
 "tfmn","transformation",FALSE
 "tfmns","transformations",TRUE
 "tfs","transforms",TRUE
 "tmp","temporary",NA
+"tmpl","template",FALSE
+"tmpls","templates",TRUE
 "tot","total",FALSE
 "tots","totals",TRUE
 "tpl","template",FALSE
 "tpls","templates",TRUE
 "ts","time series",NA
+"tstng","testing",NA
 "TTU_predictors_lup","TTU S3 class for candidate predictors lookup table",FALSE
 "TTU_predictors_lups","TTU S3 class for candidate predictors lookup tables",TRUE
 "uid","unique identifier",FALSE
@@ -374,9 +440,12 @@
 "vals","values",TRUE
 "var","variable",FALSE
 "vars","variables",TRUE
+"vec","vector",FALSE
+"vecs","vectors",TRUE
 "vld","valid",NA
 "vldd","validated",NA
 "vldn","validation",NA
+"wrst","worst",NA
 "ws","workspace",FALSE
 "wss","workspaces",TRUE
 "wt","weight",FALSE

@@ -1,3 +1,14 @@
+transform_ds_for_item_plt <- function(data_tb,
+                                      var_nm_1L_chr,
+                                      round_var_nm_1L_chr = "round"){
+  tfd_data_tb <- data_tb %>%
+    dplyr::filter(!is.na(!!as.name(var_nm_1L_chr) )) %>%
+    dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr), !!as.name(var_nm_1L_chr) ) %>%
+    dplyr::summarise(n = dplyr::n()) %>%
+    dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr)) %>%
+    dplyr::mutate(y = n/sum(n))
+  return(tfd_data_tb)
+}
 transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw_aqol_tb_to_aqol6d_tb
 {
   transformed_ds_tb <- raw_ds_tb %>% dplyr::mutate(d_agegroup = cut(d_age,

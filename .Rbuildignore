@@ -28,3 +28,4 @@
 ^data-raw/MAKE_HOUSESTYLE_DSS\.R$
 ^data-raw/dataverse/prototype_lup/prototype_lup\.csv$
 ^data-raw/dataverse/prototype_lup/prototype_lup\.RDS$
+^data-raw/fns/write\.R$

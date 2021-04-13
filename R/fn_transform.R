@@ -1,3 +1,22 @@
+#' Transform dataset for item
+#' @description transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. Function argument data_tb specifies the object to be updated. Argument var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param var_nm_1L_chr Variable name (a character vector of length one)
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
+#' @return Transformed data (a tibble)
+#' @rdname transform_ds_for_item_plt
+#' @export 
+#' @importFrom dplyr filter group_by summarise n mutate
+#' @importFrom rlang sym
+#' @keywords internal
+transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round") 
+{
+    tfd_data_tb <- data_tb %>% dplyr::filter(!is.na(!!as.name(var_nm_1L_chr))) %>% 
+        dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr), !!as.name(var_nm_1L_chr)) %>% 
+        dplyr::summarise(n = dplyr::n()) %>% dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr)) %>% 
+        dplyr::mutate(y = n/sum(n))
+    return(tfd_data_tb)
+}
 #' Transform raw dataset for analysis
 #' @description transform_raw_ds_for_analysis() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform raw dataset for analysis. Function argument raw_ds_tb specifies the object to be updated. The function returns Transformed dataset (a tibble).
 #' @param raw_ds_tb Raw dataset (a tibble)
