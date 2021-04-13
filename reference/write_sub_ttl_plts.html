@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores — is_youthvars_k6 • youthvars</title>
+<title>Write sub ttl plots — write_sub_ttl_plts • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Is youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores — is_youthvars_k6" />
-<meta property="og:description" content="Check whether an object is a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores" />
+<meta property="og:title" content="Write sub ttl plots — write_sub_ttl_plts" />
+<meta property="og:description" content="write_sub_ttl_plts() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write sub ttl plots. The function returns Composite (a plot)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,32 +137,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/C3_youthvars_k6.R'><code>R/C3_youthvars_k6.R</code></a></small>
-    <div class="hidden name"><code>is_youthvars_k6.Rd</code></div>
+    <h1>Write sub ttl plots</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_write.R'><code>R/fn_write.R</code></a></small>
+    <div class="hidden name"><code>write_sub_ttl_plts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Check whether an object is a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p>
+    <p>write_sub_ttl_plts() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write sub ttl plots. The function returns Composite (a plot).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>is_youthvars_k6</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>write_sub_ttl_plts</span><span class='op'>(</span>
+  <span class='va'>data_tb</span>,
+  <span class='va'>col_nms_chr</span>,
+  <span class='va'>plot_rows_cols_pair_int</span>,
+  round_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"round"</span>,
+  make_log_log_tfmn_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
+  <span class='va'>heights_int</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object of any type</p></td>
+      <th>data_tb</th>
+      <td><p>Data (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>col_nms_chr</th>
+      <td><p>Column names (a character vector)</p></td>
+    </tr>
+    <tr>
+      <th>plot_rows_cols_pair_int</th>
+      <td><p>Plot rows columns pair (an integer vector)</p></td>
+    </tr>
+    <tr>
+      <th>round_var_nm_1L_chr</th>
+      <td><p>Round variable name (a character vector of length one), Default: 'round'</p></td>
+    </tr>
+    <tr>
+      <th>make_log_log_tfmn_1L_lgl</th>
+      <td><p>Make log log transformation (a logical vector of length one), Default: F</p></td>
+    </tr>
+    <tr>
+      <th>heights_int</th>
+      <td><p>Heights (an integer vector)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value, TRUE if a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores</p>
+    <p>Composite (a plot)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
