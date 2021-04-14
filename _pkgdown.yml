@@ -38,4 +38,7 @@ reference:
 - title: "Functions"
 - contents:
   - add_adol6d_scores
+  - make_descv_stats_tbl
+  - make_qstn_resp_plts
+  - make_sub_ttl_plts
   - make_tfd_repln_ds_dict_r3

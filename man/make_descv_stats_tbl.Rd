@@ -32,4 +32,3 @@ Descriptive statistics table (a tibble)
 \description{
 make_descv_stats_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make descriptive statistics table. The function returns Descriptive statistics table (a tibble).
 }
-\keyword{internal}
