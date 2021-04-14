@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate Assessment of Quality of Life Six Dimension dimension 1 disvalue — calculate_aqol6d_dim_1_disv • youthvars</title>
+<title>Make formula — make_formula • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Calculate Assessment of Quality of Life Six Dimension dimension 1 disvalue — calculate_aqol6d_dim_1_disv" />
-<meta property="og:description" content="calculate_aqol6d_dim_1_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 1 disvalue. The function returns DvD1 (a double vector)." />
+<meta property="og:title" content="Make formula — make_formula" />
+<meta property="og:description" content="make_formula() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make formula. The function is called for its side effects and does not return a value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,37 +137,41 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate Assessment of Quality of Life Six Dimension dimension 1 disvalue</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_calculate.R'><code>R/fn_calculate.R</code></a></small>
-    <div class="hidden name"><code>calculate_aqol6d_dim_1_disv.Rd</code></div>
+    <h1>Make formula</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_make.R'><code>R/fn_make.R</code></a></small>
+    <div class="hidden name"><code>make_formula.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>calculate_aqol6d_dim_1_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 1 disvalue. The function returns DvD1 (a double vector).</p>
+    <p>make_formula() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make formula. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calculate_aqol6d_dim_1_disv</span><span class='op'>(</span><span class='va'>dvQs_tb</span>, <span class='va'>kD_1L_dbl</span>, <span class='va'>w_dbl</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_formula</span><span class='op'>(</span>
+  <span class='va'>depnt_var_nm_1L_chr</span>,
+  <span class='va'>predictors_chr</span>,
+  environment_env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dvQs_tb</th>
-      <td><p>DvQs (a tibble)</p></td>
+      <th>depnt_var_nm_1L_chr</th>
+      <td><p>Dependent variable name (a character vector of length one)</p></td>
     </tr>
     <tr>
-      <th>kD_1L_dbl</th>
-      <td><p>KD (a double vector of length one)</p></td>
+      <th>predictors_chr</th>
+      <td><p>Predictors (a character vector)</p></td>
     </tr>
     <tr>
-      <th>w_dbl</th>
-      <td><p>W (a double vector)</p></td>
+      <th>environment_env</th>
+      <td><p>Environment (an environment), Default: parent.frame()</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>DvD1 (a double vector)</p>
+    <p>NA ()</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
