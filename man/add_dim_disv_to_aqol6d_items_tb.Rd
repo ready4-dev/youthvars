@@ -8,8 +8,8 @@ add_dim_disv_to_aqol6d_items_tb(
   aqol6d_items_tb,
   domain_items_ls,
   domains_chr,
-  dim_sclg_con_lup_tb = aqol6d_dim_sclg_con_lup_tb,
-  itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb
+  dim_sclg_con_lup_tb = NULL,
+  itm_wrst_wghts_lup_tb = NULL
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ add_dim_disv_to_aqol6d_items_tb(
 
 \item{domains_chr}{Domains (a character vector)}
 
-\item{dim_sclg_con_lup_tb}{Dimension scaling constant lookup table (a tibble), Default: aqol6d_dim_sclg_con_lup_tb}
+\item{dim_sclg_con_lup_tb}{Dimension scaling constant lookup table (a tibble), Default: NULL}
 
-\item{itm_wrst_wghts_lup_tb}{Item worst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb}
+\item{itm_wrst_wghts_lup_tb}{Item worst wghts lookup table (a tibble), Default: NULL}
 }
 \value{
 Assessment of Quality of Life Six Dimension items (a tibble)

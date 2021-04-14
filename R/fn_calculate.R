@@ -25,7 +25,7 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
 #' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: NULL
 #' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
-#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb
+#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension Health Utility (a double vector)
 #' @rdname calculate_adult_aqol6dU
 #' @export 
@@ -33,7 +33,7 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @importFrom hutils longest_prefix
 #' @keywords internal
 calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_tb = NULL, 
-    dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb) 
+    dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wghts_lup_tb = NULL) 
 {
     if (is.null(coefs_lup_tb)) {
         utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
@@ -41,7 +41,7 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_t
     }
     if (is.null(dim_sclg_con_lup_tb)) {
         utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
-        disvalues_lup_tb <- dim_sclg_con_lup_tb
+        dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
     }
     if (is.null(disvalues_lup_tb)) {
         utils::data("aqol6d_adult_disv_lup_tb", envir = environment())

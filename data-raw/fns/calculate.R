@@ -10,7 +10,7 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr,
                                      coefs_lup_tb = NULL,
                                      dim_sclg_con_lup_tb = NULL,
                                      disvalues_lup_tb = NULL,
-                                     itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb)
+                                     itm_wrst_wghts_lup_tb = NULL)
 {
   if(is.null(coefs_lup_tb)){
     utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
@@ -18,7 +18,7 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr,
   }
   if(is.null(dim_sclg_con_lup_tb)){
     utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
-    disvalues_lup_tb <- dim_sclg_con_lup_tb
+    dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
   }
   if(is.null(disvalues_lup_tb)){
     utils::data("aqol6d_adult_disv_lup_tb", envir = environment())

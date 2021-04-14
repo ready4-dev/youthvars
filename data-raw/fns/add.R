@@ -97,9 +97,17 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
                                                                                                        prefix_1L_chr = prefix_1L_chr, id_var_nm_1L_chr = id_var_nm_1L_chr)))
   return(aqol6d_tbs_ls)
 }
-add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = aqol6d_dim_sclg_con_lup_tb,
-                                             itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb)
+add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = NULL,
+                                             itm_wrst_wghts_lup_tb = NULL)
 {
+  if(is.null(dim_sclg_con_lup_tb)){
+    utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
+    dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
+  }
+  if(is.null(itm_wrst_wghts_lup_tb)){
+    utils::data("aqol6d_adult_itm_wrst_wghts_lup_tb", envir = environment())
+    itm_wrst_wghts_lup_tb <- aqol6d_adult_itm_wrst_wghts_lup_tb
+  }
   aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
   kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr,
                                    dim_sclg_con_lup_tb = dim_sclg_con_lup_tb)

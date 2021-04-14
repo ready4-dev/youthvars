@@ -157,18 +157,27 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @param domains_chr Domains (a character vector)
-#' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: aqol6d_dim_sclg_con_lup_tb
-#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: aqol6d_adult_itm_wrst_wghts_lup_tb
+#' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: NULL
+#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_dim_disv_to_aqol6d_items_tb
 #' @export 
+#' @importFrom utils data
 #' @importFrom purrr reduce
 #' @importFrom dplyr select mutate
 #' @importFrom rlang sym exec
 #' @keywords internal
-add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = aqol6d_dim_sclg_con_lup_tb, 
-    itm_wrst_wghts_lup_tb = aqol6d_adult_itm_wrst_wghts_lup_tb) 
+add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = NULL, 
+    itm_wrst_wghts_lup_tb = NULL) 
 {
+    if (is.null(dim_sclg_con_lup_tb)) {
+        utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
+        dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
+    }
+    if (is.null(itm_wrst_wghts_lup_tb)) {
+        utils::data("aqol6d_adult_itm_wrst_wghts_lup_tb", envir = environment())
+        itm_wrst_wghts_lup_tb <- aqol6d_adult_itm_wrst_wghts_lup_tb
+    }
     aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
     kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr, 
         dim_sclg_con_lup_tb = dim_sclg_con_lup_tb)
