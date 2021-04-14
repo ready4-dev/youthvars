@@ -16,7 +16,7 @@ write_qstn_resp_plts <- function(data_tb,
                                   var_nm_1L_chr = i,
                                   round_var_nm_1L_chr = round_var_nm_1L_chr,
                                   label_1L_chr = labelx,
-                                  y_scale_scl = scales::percent_format(),
+                                  y_scale_scl_fn = scales::percent_format(),
                                   use_bw_theme_1L_lgl = T,
                                   legend_position_1L_chr = "none")
   }
@@ -24,7 +24,7 @@ write_qstn_resp_plts <- function(data_tb,
                             var_nm_1L_chr = i,
                             round_var_nm_1L_chr = round_var_nm_1L_chr,
                             label_1L_chr = labelx,
-                            y_scale_scl = NULL,
+                            y_scale_scl_fn = NULL,
                             use_bw_theme_1L_lgl = F,
                             legend_position_1L_chr = "bottom")
   legend_ls <- extract_guide_box_lgd(plot_plt)
