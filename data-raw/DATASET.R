@@ -76,6 +76,7 @@ fns_dmt_tb <- ready4fun::make_dmt_for_all_fns(paths_ls = ready4fun::make_fn_nms(
                                               custom_dmt_ls = list(details_ls = NULL,
                                                                    inc_for_main_user_lgl_ls = list(force_true_chr = c("add_adol6d_scores",
                                                                                                                       "make_descv_stats_tbl",
+                                                                                                                      "make_formula",
                                                                                                                       "make_itm_resp_plts",
                                                                                                                       "make_sub_tot_plts",
                                                                                                                       "make_tfd_repln_ds_dict_r3"),

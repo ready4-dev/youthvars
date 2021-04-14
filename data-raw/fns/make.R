@@ -19,6 +19,14 @@ make_descv_stats_tbl <- function(data_tb,
   descv_stats_tbl_tb <- make_tableby_ls(data_tb,  key_var_nm_1L_chr = key_var_nm_1L_chr, variable_nms_chr = variable_nms_chr, test_1L_lgl = test_1L_lgl) %>% as.data.frame() %>% dplyr::select(c("label", tidyselect::all_of(key_var_vals_chr),ifelse(test_1L_lgl,"p.value",character(0))) %>% purrr::discard(is.na))
   return(descv_stats_tbl_tb)
 }
+make_formula <- function(depnt_var_nm_1L_chr,
+                         predictors_chr,
+                         environment_env = parent.frame()){
+  formula_fml <- stats::formula(paste0(depnt_var_nm_1L_chr,
+                                       " ~ ",
+                                       paste0(predictors_chr, collapse = " + ")), env = environment_env)
+  return(formula_fml)
+}
 make_item_plt <- function(tfd_data_tb,
                           var_nm_1L_chr,
                           round_var_nm_1L_chr = "round",

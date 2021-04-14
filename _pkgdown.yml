@@ -39,6 +39,7 @@ reference:
 - contents:
   - add_adol6d_scores
   - make_descv_stats_tbl
+  - make_formula
   - make_itm_resp_plts
   - make_sub_tot_plts
   - make_tfd_repln_ds_dict_r3

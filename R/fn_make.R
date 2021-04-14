@@ -40,6 +40,21 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", make_des
         ifelse(test_1L_lgl, "p.value", character(0))) %>% purrr::discard(is.na))
     return(descv_stats_tbl_tb)
 }
+#' Make formula
+#' @description make_formula() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make formula. The function is called for its side effects and does not return a value.
+#' @param depnt_var_nm_1L_chr Dependent variable name (a character vector of length one)
+#' @param predictors_chr Predictors (a character vector)
+#' @param environment_env Environment (an environment), Default: parent.frame()
+#' @return NA ()
+#' @rdname make_formula
+#' @export 
+#' @importFrom stats formula
+make_formula <- function (depnt_var_nm_1L_chr, predictors_chr, environment_env = parent.frame()) 
+{
+    formula_fml <- stats::formula(paste0(depnt_var_nm_1L_chr, 
+        " ~ ", paste0(predictors_chr, collapse = " + ")), env = environment_env)
+    return(formula_fml)
+}
 #' Make item
 #' @description make_item_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item plot. The function returns Item (a plot).
 #' @param tfd_data_tb Transformed data (a tibble)
