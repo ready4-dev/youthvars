@@ -5,9 +5,7 @@ object_type_lup <- ready4fun::get_rds_from_dv("object_type_lup")
 abbreviations_lup <- ready4fun::get_rds_from_dv("abbreviations_lup")
 fn_type_lup_tb <- ready4fun::get_rds_from_dv("fn_type_lup_tb")
 # Edits go here
-abbreviations_lup <- abbreviations_lup %>%
-  ready4fun::update_abbr_lup(short_name_chr = c("bw","descv","scl","stat"),
-                             long_name_chr = c("black and white","descriptive","scale","statistic"))
+
 # Push updates to dataverse
 abbreviations_lup %>%
   ready4use::write_paired_ds_fls_to_dv(fl_nm_1L_chr = "abbreviations_lup",
@@ -41,6 +39,9 @@ fn_type_lup_tb %>%
 #                                                "Assessment of Quality of Life Six Dimension",
 #                                                "Assessment of Quality of Life Six Dimension Health Utility",
 #                                                "validation"))
+# abbreviations_lup <- abbreviations_lup %>%
+#   ready4fun::update_abbr_lup(short_name_chr = c("bw","descv","scl","stat"),
+#                              long_name_chr = c("black and white","descriptive","scale","statistic"))
 # fn_type_lup_tb <- fn_type_lup_tb %>%
 #   ready4fun::add_rows_to_fn_type_lup(fn_type_nm_chr = ready4fun::get_new_fn_types(abbreviations_lup = abbreviations_lup,
 #                                                                                   fn_type_lup_tb = fn_type_lup_tb,

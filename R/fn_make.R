@@ -77,8 +77,8 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
         ggplot2::scale_fill_manual(values = c("#de2d26", "#fc9272"))
     return(item_plt)
 }
-#' Make qstn resp plots
-#' @description make_qstn_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make qstn resp plots. The function returns Composite (a plot).
+#' Make item resp plots
+#' @description make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item resp plots. The function returns Composite (a plot).
 #' @param data_tb Data (a tibble)
 #' @param col_nms_chr Column names (a character vector)
 #' @param lbl_nms_chr Label names (a character vector)
@@ -86,12 +86,12 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
 #' @param heights_int Heights (an integer vector)
 #' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @return Composite (a plot)
-#' @rdname make_qstn_resp_plts
+#' @rdname make_itm_resp_plts
 #' @export 
 #' @importFrom scales percent_format
 #' @importFrom gridExtra grid.arrange
 #' @importFrom ggpubr ggarrange
-make_qstn_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_cols_pair_int, 
+make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_cols_pair_int, 
     heights_int, round_var_nm_1L_chr = "round") 
 {
     plots_ls <- list()
@@ -115,8 +115,8 @@ make_qstn_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_co
         legend_ls, nrow = length(heights_int), heights = heights_int)
     return(composite_plt)
 }
-#' Make sub ttl plots
-#' @description make_sub_ttl_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make sub ttl plots. The function returns Composite (a plot).
+#' Make sub total plots
+#' @description make_sub_tot_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make sub total plots. The function returns Composite (a plot).
 #' @param data_tb Data (a tibble)
 #' @param col_nms_chr Column names (a character vector)
 #' @param plot_rows_cols_pair_int Plot rows columns pair (an integer vector)
@@ -124,14 +124,14 @@ make_qstn_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_co
 #' @param make_log_log_tfmn_1L_lgl Make log log transformation (a logical vector of length one), Default: F
 #' @param heights_int Heights (an integer vector)
 #' @return Composite (a plot)
-#' @rdname make_sub_ttl_plts
+#' @rdname make_sub_tot_plts
 #' @export 
 #' @importFrom dplyr mutate
 #' @importFrom stringr str_sub
 #' @importFrom stringi stri_locate_last_fixed
 #' @importFrom gridExtra grid.arrange
 #' @importFrom ggpubr ggarrange
-make_sub_ttl_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, round_var_nm_1L_chr = "round", 
+make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, round_var_nm_1L_chr = "round", 
     make_log_log_tfmn_1L_lgl = F, heights_int) 
 {
     plots_ls <- list()

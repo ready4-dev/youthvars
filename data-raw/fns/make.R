@@ -54,7 +54,7 @@ make_item_plt <- function(tfd_data_tb,
     ggplot2::scale_fill_manual(values = c("#de2d26","#fc9272"))
   return(item_plt)
 }
-make_qstn_resp_plts <- function(data_tb,
+make_itm_resp_plts <- function(data_tb,
                                 col_nms_chr,
                                 lbl_nms_chr,
                                 plot_rows_cols_pair_int,
@@ -126,7 +126,7 @@ make_subtotal_plt <- function(data_tb,
     ggplot2::scale_fill_manual(values = c("#de2d26","#fc9272"))
   return(subtotal_plt)
 }
-make_sub_ttl_plts <- function(data_tb,
+make_sub_tot_plts <- function(data_tb,
                               col_nms_chr,
                               plot_rows_cols_pair_int,
                               round_var_nm_1L_chr = "round",
