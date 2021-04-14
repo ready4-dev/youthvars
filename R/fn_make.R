@@ -124,7 +124,7 @@ make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_col
     plot_plt <- make_item_plt(tfd_data_tb, var_nm_1L_chr = i, 
         round_var_nm_1L_chr = round_var_nm_1L_chr, x_label_1L_chr = labelx, 
         y_scale_scl_fn = NULL, use_bw_theme_1L_lgl = F, legend_position_1L_chr = "bottom")
-    legend_ls <- extract_guide_box_lgd(plot_plt)
+    legend_ls <- get_guide_box_lgd(plot_plt)
     composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
         nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
         legend_ls, nrow = length(heights_int), heights = heights_int)
@@ -171,7 +171,7 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
     plot_for_lgd_plt <- make_subtotal_plt(data_tb, var_nm_1L_chr = i, 
         x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
         label_fill_1L_chr = "Data collection")
-    legend_ls <- extract_guide_box_lgd(plot_for_lgd_plt)
+    legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
     composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
         nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
         legend_ls, nrow = length(heights_int), heights = heights_int)
