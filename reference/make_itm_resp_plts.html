@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>STATA comparison validation synthetic population — aqol6d_adult_vldn_pop_with_STATA_scores_tb • youthvars</title>
+<title>Make item resp plots — make_itm_resp_plts • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="STATA comparison validation synthetic population — aqol6d_adult_vldn_pop_with_STATA_scores_tb" />
-<meta property="og:description" content="Synthetic population following application of STATA adult scoring algorithm." />
+<meta property="og:title" content="Make item resp plots — make_itm_resp_plts" />
+<meta property="og:description" content="make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item resp plots. The function returns Composite (a plot)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,118 +137,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>STATA comparison validation synthetic population</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/db_aqol6d_adult_vldn_pop_with_STATA_scores_tb.R'><code>R/db_aqol6d_adult_vldn_pop_with_STATA_scores_tb.R</code></a></small>
-    <div class="hidden name"><code>aqol6d_adult_vldn_pop_with_STATA_scores_tb.Rd</code></div>
+    <h1>Make item resp plots</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_make.R'><code>R/fn_make.R</code></a></small>
+    <div class="hidden name"><code>make_itm_resp_plts.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Synthetic population following application of STATA adult scoring algorithm.</p>
+    <p>make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item resp plots. The function returns Composite (a plot).</p>
     </div>
 
-    <pre class="usage"><span class='va'>aqol6d_adult_vldn_pop_with_STATA_scores_tb</span></pre>
+    <pre class="usage"><span class='fu'>make_itm_resp_plts</span><span class='op'>(</span>
+  <span class='va'>data_tb</span>,
+  <span class='va'>col_nms_chr</span>,
+  <span class='va'>lbl_nms_chr</span>,
+  <span class='va'>plot_rows_cols_pair_int</span>,
+  <span class='va'>heights_int</span>,
+  round_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"round"</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data_tb</th>
+      <td><p>Data (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>col_nms_chr</th>
+      <td><p>Column names (a character vector)</p></td>
+    </tr>
+    <tr>
+      <th>lbl_nms_chr</th>
+      <td><p>Label names (a character vector)</p></td>
+    </tr>
+    <tr>
+      <th>plot_rows_cols_pair_int</th>
+      <td><p>Plot rows columns pair (an integer vector)</p></td>
+    </tr>
+    <tr>
+      <th>heights_int</th>
+      <td><p>Heights (an integer vector)</p></td>
+    </tr>
+    <tr>
+      <th>round_var_nm_1L_chr</th>
+      <td><p>Round variable name (a character vector of length one), Default: 'round'</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class <code>data.frame</code> with 1711 rows and 87 columns.</p>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://www.aqol.com.au/index.php/scoring-algorithms'>https://www.aqol.com.au/index.php/scoring-algorithms</a></p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A tibble</p>
-<dl>
-<dt>v1</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol1</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol2</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol3</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol4</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol5</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol6</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol7</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol8</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol9</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol10</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol11</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol12</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol13</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol14</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol15</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol16</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol17</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol18</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol19</dt><dd><p>NO MATCH</p></dd>
-<dt>aqol20</dt><dd><p>NO MATCH</p></dd>
-<dt>Q1</dt><dd><p>NO MATCH</p></dd>
-<dt>Q2</dt><dd><p>NO MATCH</p></dd>
-<dt>Q3</dt><dd><p>NO MATCH</p></dd>
-<dt>Q4</dt><dd><p>NO MATCH</p></dd>
-<dt>Q5</dt><dd><p>NO MATCH</p></dd>
-<dt>Q6</dt><dd><p>NO MATCH</p></dd>
-<dt>Q7</dt><dd><p>NO MATCH</p></dd>
-<dt>Q8</dt><dd><p>NO MATCH</p></dd>
-<dt>Q9</dt><dd><p>NO MATCH</p></dd>
-<dt>Q10</dt><dd><p>NO MATCH</p></dd>
-<dt>Q11</dt><dd><p>NO MATCH</p></dd>
-<dt>Q12</dt><dd><p>NO MATCH</p></dd>
-<dt>Q13</dt><dd><p>NO MATCH</p></dd>
-<dt>Q14</dt><dd><p>NO MATCH</p></dd>
-<dt>Q15</dt><dd><p>NO MATCH</p></dd>
-<dt>Q16</dt><dd><p>NO MATCH</p></dd>
-<dt>Q17</dt><dd><p>NO MATCH</p></dd>
-<dt>Q18</dt><dd><p>NO MATCH</p></dd>
-<dt>Q19</dt><dd><p>NO MATCH</p></dd>
-<dt>Q20</dt><dd><p>NO MATCH</p></dd>
-<dt>DILmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DILmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>DRLmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DRLmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>DMHmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DMHmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>DCOPmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DCOPmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>DPmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DPmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>DSENmiss</dt><dd><p>NO MATCH</p></dd>
-<dt>DSENmissno</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ1</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ2</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ3</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ4</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ5</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ6</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ7</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ8</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ9</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ10</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ11</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ12</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ13</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ14</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ15</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ16</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ17</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ18</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ19</dt><dd><p>NO MATCH</p></dd>
-<dt>dvQ20</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD1</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD2</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD3</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD4</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD5</dt><dd><p>NO MATCH</p></dd>
-<dt>dvD6</dt><dd><p>NO MATCH</p></dd>
-<dt>vD1</dt><dd><p>NO MATCH</p></dd>
-<dt>vD2</dt><dd><p>NO MATCH</p></dd>
-<dt>vD3</dt><dd><p>NO MATCH</p></dd>
-<dt>vD4</dt><dd><p>NO MATCH</p></dd>
-<dt>vD5</dt><dd><p>NO MATCH</p></dd>
-<dt>vD6</dt><dd><p>NO MATCH</p></dd>
-<dt>uaqol6Dusing8D</dt><dd><p>NO MATCH</p></dd>
-<dt>uaqol6Dusing8Da</dt><dd><p>NO MATCH</p></dd>
-
-</dl>
-
+    <p>Composite (a plot)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
