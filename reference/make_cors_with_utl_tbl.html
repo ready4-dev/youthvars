@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make adolescent Assessment of Quality of Life Six Dimension disvalue — make_adol_aqol6d_disv_lup • youthvars</title>
+<title>Make correlations with utility table — make_cors_with_utl_tbl • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Make adolescent Assessment of Quality of Life Six Dimension disvalue — make_adol_aqol6d_disv_lup" />
-<meta property="og:description" content="make_adol_aqol6d_disv_lup() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make adolescent assessment of quality of life six dimension disvalue lookup table. The function returns Adolescent Assessment of Quality of Life Six Dimension disvalue (a lookup table)." />
+<meta property="og:title" content="Make correlations with utility table — make_cors_with_utl_tbl" />
+<meta property="og:description" content="make_cors_with_utl_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make correlations with utility table. The function returns Correlations with utility (a tibble)." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,21 +137,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make adolescent Assessment of Quality of Life Six Dimension disvalue</h1>
+    <h1>Make correlations with utility table</h1>
     <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_make.R'><code>R/fn_make.R</code></a></small>
-    <div class="hidden name"><code>make_adol_aqol6d_disv_lup.Rd</code></div>
+    <div class="hidden name"><code>make_cors_with_utl_tbl.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>make_adol_aqol6d_disv_lup() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make adolescent assessment of quality of life six dimension disvalue lookup table. The function returns Adolescent Assessment of Quality of Life Six Dimension disvalue (a lookup table).</p>
+    <p>make_cors_with_utl_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make correlations with utility table. The function returns Correlations with utility (a tibble).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_adol_aqol6d_disv_lup</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>make_cors_with_utl_tbl</span><span class='op'>(</span>
+  <span class='va'>data_tb</span>,
+  <span class='va'>ds_descvs_ls</span>,
+  dictionary_tb <span class='op'>=</span> <span class='cn'>NULL</span>,
+  cor_type_1L_chr <span class='op'>=</span> <span class='st'>"pearson"</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data_tb</th>
+      <td><p>Data (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>ds_descvs_ls</th>
+      <td><p>Dataset descriptives (a list)</p></td>
+    </tr>
+    <tr>
+      <th>dictionary_tb</th>
+      <td><p>Dictionary (a tibble), Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>cor_type_1L_chr</th>
+      <td><p>Correlation type (a character vector of length one), Default: 'pearson'</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Adolescent Assessment of Quality of Life Six Dimension disvalue (a lookup table)</p>
+    <p>Correlations with utility (a tibble)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
