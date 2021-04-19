@@ -22,6 +22,7 @@ reference:
   - aqol6d_from_8d_coefs_lup_tb
   - fn_type_lup_tb
   - fns_dmt_tb
+  - predictors_lup
   - prototype_lup
   - replication_popl_tb
   - repln_ds_dict_r3

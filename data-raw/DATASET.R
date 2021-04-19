@@ -34,7 +34,7 @@ ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Youth Mental Health Variables Mo
                                  github_repo = "ready4-dev/youthvars",
                                  lifecycle_stage_1L_chr = "experimental",
                                  badges_lup = ready4fun::badges_lup,
-                                 addl_badges_ls = list(ready4 = "modelling"))
+                                 addl_badges_ls = list(ready4 = "description"))
 # PAUSE FOR INTERACTIVE
 ##
 ## PART THREE
@@ -321,6 +321,21 @@ pkg_dss_tb <- replication_popl_tb %>%
                                                                  plural_lgl = F),
                               object_type_lup = object_type_lup,
                               simple_lup_1L_lgl = T,#
+                              pkg_dss_tb = pkg_dss_tb)
+pkg_dss_tb <- tibble::tibble(short_name_chr = c("BADS","GAD7","K6","OASIS","PHQ9","SCARED","SOFAS"),
+                             long_name_chr = short_name_chr %>% purrr::map_chr(~paste0(.x, " total score")),
+                             min_val_dbl = rep(0,7),
+                             max_val_dbl = c(150,21,24,20,27,82,100),
+                             class_chr = "integer",
+                             increment_dbl = rep(1,7),
+                             class_fn_chr = paste0("youthvars::youthvars_",tolower(short_name_chr)),
+                             mdl_scaling_dbl = 0.01,
+                             covariate_lgl = c(rep(F,6),T)) %>%
+  ready4fun::write_and_doc_ds(db_1L_chr = "predictors_lup",
+                              title_1L_chr = "Predictors lookup table",
+                              desc_1L_chr = "A lookup table of the short name and long name of each predictor used in the models included with the youthu package.",
+                              abbreviations_lup = abbreviations_lup,
+                              object_type_lup = object_type_lup,
                               pkg_dss_tb = pkg_dss_tb)
 ##
 usethis::use_build_ignore("initial_setup.R")
