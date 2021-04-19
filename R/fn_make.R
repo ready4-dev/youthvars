@@ -17,27 +17,127 @@ make_adol_aqol6d_disv_lup <- function ()
         "Q1" ~ 0.073, TRUE ~ Answer_5_dbl))
     return(adol_aqol6d_disv_lup)
 }
+#' Make correlations with utility table
+#' @description make_cors_with_utl_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make correlations with utility table. The function returns Correlations with utility (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param ds_descvs_ls Dataset descriptives (a list)
+#' @param dictionary_tb Dictionary (a tibble), Default: NULL
+#' @param cor_type_1L_chr Correlation type (a character vector of length one), Default: 'pearson'
+#' @return Correlations with utility (a tibble)
+#' @rdname make_cors_with_utl_tbl
+#' @export 
+#' @importFrom purrr map map2_dfc map_chr
+#' @importFrom dplyr filter select mutate everything
+#' @importFrom rlang sym syms
+#' @importFrom Hmisc rcorr
+#' @importFrom tibble tibble
+#' @importFrom ready4fun get_from_lup_obj
+#' @keywords internal
+make_cors_with_utl_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb = NULL, cor_type_1L_chr = "pearson") 
+{
+    cors_with_utl_tb <- purrr::map(ds_descvs_ls$round_vals_chr, 
+        ~data_tb %>% dplyr::filter(!!rlang::sym(ds_descvs_ls$round_var_nm_1L_chr) == 
+            .x) %>% dplyr::select(!!!rlang::syms(c(ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+            ds_descvs_ls$candidate_predrs_chr))) %>% as.matrix() %>% 
+            Hmisc::rcorr(type = cor_type_1L_chr)) %>% purrr::map2_dfc(ds_descvs_ls$round_vals_chr, 
+        ~tibble::tibble(`:=`(!!rlang::sym(paste0(.y, "_cor_dbl")), 
+            .x[[1]][2:(length(ds_descvs_ls$candidate_predrs_chr) + 
+                1)]), `:=`(!!rlang::sym(paste0(.y, "_sig_dbl")), 
+            .x[[3]][2:(length(ds_descvs_ls$candidate_predrs_chr) + 
+                1)]))) %>% dplyr::mutate(variable_chr = ds_descvs_ls$candidate_predrs_chr) %>% 
+        dplyr::select(variable_chr, dplyr::everything())
+    if (!is.null(dictionary_tb)) {
+        cors_with_utl_tb <- cors_with_utl_tb %>% dplyr::mutate(variable_chr = variable_chr %>% 
+            purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb, 
+                target_var_nm_1L_chr = "var_desc_chr", match_var_nm_1L_chr = "var_nm_chr", 
+                match_value_xx = .x, evaluate_lgl = F)))
+    }
+    return(cors_with_utl_tb)
+}
 #' Make descriptive statistics table
 #' @description make_descv_stats_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make descriptive statistics table. The function returns Descriptive statistics table (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param key_var_nm_1L_chr Key variable name (a character vector of length one), Default: 'round'
-#' @param make_descv_stats_tbl PARAM_DESCRIPTION
 #' @param key_var_vals_chr Key variable values (a character vector)
 #' @param variable_nms_chr Variable names (a character vector)
+#' @param dictionary_tb Dictionary (a tibble), Default: NULL
 #' @param test_1L_lgl Test (a logical vector of length one), Default: F
+#' @param sections_as_row_1L_lgl Sections as row (a logical vector of length one), Default: F
+#' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: NA
 #' @return Descriptive statistics table (a tibble)
 #' @rdname make_descv_stats_tbl
 #' @export 
-#' @importFrom dplyr select
+#' @importFrom dplyr select mutate filter pull across
 #' @importFrom tidyselect all_of
-#' @importFrom purrr discard
-make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", make_descv_stats_tbl, 
-    key_var_vals_chr, variable_nms_chr, test_1L_lgl = F) 
+#' @importFrom purrr discard map_chr map2_dbl pmap map flatten_chr map2_chr
+#' @importFrom ready4fun get_from_lup_obj
+make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr, 
+    variable_nms_chr, dictionary_tb = NULL, test_1L_lgl = F, 
+    sections_as_row_1L_lgl = F, nbr_of_digits_1L_int = NA_integer_) 
 {
     descv_stats_tbl_tb <- make_tableby_ls(data_tb, key_var_nm_1L_chr = key_var_nm_1L_chr, 
         variable_nms_chr = variable_nms_chr, test_1L_lgl = test_1L_lgl) %>% 
-        as.data.frame() %>% dplyr::select(c("label", tidyselect::all_of(key_var_vals_chr), 
-        ifelse(test_1L_lgl, "p.value", character(0))) %>% purrr::discard(is.na))
+        as.data.frame() %>% dplyr::select(c("variable", "label", 
+        tidyselect::all_of(key_var_vals_chr), ifelse(test_1L_lgl, 
+            "p.value", character(0))) %>% purrr::discard(is.na))
+    if (!is.null(dictionary_tb)) {
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(variable = variable %>% 
+            purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb, 
+                target_var_nm_1L_chr = "var_desc_chr", match_var_nm_1L_chr = "var_nm_chr", 
+                match_value_xx = .x, evaluate_lgl = F)))
+    }
+    vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == 
+        "Median (Q1, Q3)") %>% dplyr::pull(variable)
+    descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(key_var_vals_chr, 
+        ~.x %>% purrr::map2_dbl(variable, ~ifelse(.y %in% vars_with_mdns_chr, 
+            ifelse(.x[[1]] == "", NA_real_, .x[[1]]), ifelse(.x[[1]] == 
+                "", NA_real_, .x[[1]]))), .names = "{col}_val_1_dbl"), 
+        dplyr::across(key_var_vals_chr, ~list(.x, variable, label) %>% 
+            purrr::pmap(~{
+                if (..2 %in% vars_with_mdns_chr) {
+                  if (..3 == "Median (Q1, Q3)") {
+                    return_dbl <- c(..1[[2]], ..1[[3]])
+                  }
+                  else {
+                    return_dbl <- ifelse(length(..1) == 1, NA_real_, 
+                      ..1[[2]])
+                  }
+                }
+                else {
+                  return_dbl <- ifelse(length(..1) == 1, NA_real_, 
+                    ifelse(..1[[2]] == "", NA_real_, ..1[[2]]))
+                }
+            }), .names = "{col}_val_2_ls")) %>% dplyr::select(variable, 
+        label, key_var_vals_chr %>% purrr::map(~c(paste0(.x, 
+            c("_val_1_dbl", "_val_2_ls")))) %>% purrr::flatten_chr(), 
+        ifelse(test_1L_lgl, "p.value", character(0)) %>% purrr::discard(is.na))
+    if (sections_as_row_1L_lgl) {
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::select(-variable)
+    }
+    else {
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::filter(label != 
+            variable)
+    }
+    if (!is.na(nbr_of_digits_1L_int)) {
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(c(key_var_vals_chr %>% 
+            purrr::map(~c(paste0(.x, c("_val_1_dbl", "_val_2_ls")))) %>% 
+            purrr::flatten_chr(), ifelse(test_1L_lgl, "p.value", 
+            character(0)) %>% purrr::discard(is.na)), ~.x %>% 
+            purrr::map_chr(~{
+                ifelse(length(.x) == 1, ifelse(is.na(.x), "", 
+                  paste0("", format(round(.x, nbr_of_digits_1L_int), 
+                    nsmall = nbr_of_digits_1L_int), "")), paste0("", 
+                  .x %>% purrr::map_chr(~format(round(.x, nbr_of_digits_1L_int), 
+                    nsmall = nbr_of_digits_1L_int)) %>% paste0(collapse = ", "), 
+                  ""))
+            }))) %>% dplyr::mutate(dplyr::across(paste0(key_var_vals_chr, 
+            "_val_2_ls"), ~{
+            .x %>% purrr::map2_chr(label, ~ifelse(.x == "" | 
+                .y == "Min - Max", .x, paste0("(", .x, ifelse(.y %in% 
+                c("Mean (SD)", "Median (Q1, Q3)", "Missing"), 
+                "", "%"), ")")))
+        }))
+    }
     return(descv_stats_tbl_tb)
 }
 #' Make formula
@@ -129,6 +229,72 @@ make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_col
         nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
         legend_ls, nrow = length(heights_int), heights = heights_int)
     return(composite_plt)
+}
+#' Make predictor parameters and correlations table
+#' @description make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor parameters and correlations table. The function returns Predictor parameters and correlations (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param ds_descvs_ls Dataset descriptives (a list)
+#' @param dictionary_tb Dictionary (a tibble)
+#' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 2
+#' @param predictors_lup Predictors (a lookup table), Default: NULL
+#' @return Predictor parameters and correlations (a tibble)
+#' @rdname make_predr_pars_and_cors_tbl
+#' @export 
+#' @importFrom dplyr mutate slice across rename_with select everything filter
+#' @importFrom ready4fun get_from_lup_obj
+#' @importFrom purrr map_dfr map_chr
+#' @importFrom rlang syms
+#' @importFrom stringr str_replace
+#' @importFrom tibble add_case
+#' @keywords internal
+make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb, nbr_of_digits_1L_int = 2L, 
+    predictors_lup = NULL) 
+{
+    predr_pars_and_cors_tb <- make_cors_with_utl_tbl(data_tb, 
+        ds_descvs_ls = ds_descvs_ls, dictionary_tb = dictionary_tb) %>% 
+        dplyr::mutate(label = paste0("Correlation with ", ready4fun::get_from_lup_obj(dictionary_tb, 
+            match_var_nm_1L_chr = "var_nm_chr", match_value_xx = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+            target_var_nm_1L_chr = "var_desc_chr", evaluate_lgl = F)))
+    predr_pars_and_cors_tb <- purrr::map_dfr(1:nrow(predr_pars_and_cors_tb), 
+        ~predr_pars_and_cors_tb %>% dplyr::slice(.x) %>% dplyr::mutate(dplyr::across(paste0(ds_descvs_ls$round_vals_chr, 
+            "_sig_dbl"), ~format(round(.x, nbr_of_digits_1L_int), 
+            nsmall = nbr_of_digits_1L_int))) %>% dplyr::mutate(p.value = paste0(c(!!!rlang::syms(paste0(ds_descvs_ls$round_vals_chr, 
+            "_sig_dbl"))), collapse = ", "))) %>% dplyr::mutate(dplyr::across(paste0(ds_descvs_ls$round_vals_chr, 
+        "_sig_dbl"), ~"")) %>% dplyr::mutate(dplyr::across(paste0(ds_descvs_ls$round_vals_chr, 
+        "_cor_dbl"), ~format(round(.x, nbr_of_digits_1L_int), 
+        nsmall = nbr_of_digits_1L_int))) %>% dplyr::rename_with(~stringr::str_replace(.x, 
+        "_cor_dbl", "_val_1_chr") %>% stringr::str_replace("_sig_dbl", 
+        "_val_2_chr")) %>% dplyr::select(variable_chr, label, 
+        dplyr::everything())
+    main_outc_tbl_tb <- descv_tbl_ls$main_outc_tbl_tb %>% dplyr::filter(label %in% 
+        c("Mean (SD)", "Missing")) %>% dplyr::rename_with(~stringr::str_replace(.x, 
+        "_val_1_dbl", "_val_1_chr") %>% stringr::str_replace("_val_2_ls", 
+        "_val_2_chr") %>% stringr::str_replace("variable", "variable_chr")) %>% 
+        dplyr::filter(variable_chr %in% purrr::map_chr(ds_descvs_ls$candidate_predrs_chr, 
+            ~ready4fun::get_from_lup_obj(dictionary_tb, match_var_nm_1L_chr = "var_nm_chr", 
+                match_value_xx = .x, target_var_nm_1L_chr = "var_desc_chr", 
+                evaluate_lgl = F)))
+    predr_pars_and_cors_tb <- main_outc_tbl_tb$variable_chr %>% 
+        unique() %>% purrr::map_dfr(~tibble::add_case(main_outc_tbl_tb %>% 
+        dplyr::filter(variable_chr == .x), predr_pars_and_cors_tb %>% 
+        dplyr::filter(variable_chr == .x)))
+    if (!is.null(predictors_lup)) {
+        predr_pars_and_cors_tb <- predr_pars_and_cors_tb %>% 
+            dplyr::mutate(variable_chr = purrr::map_chr(variable_chr, 
+                ~{
+                  var_nm_1L_chr <- ready4fun::get_from_lup_obj(dictionary_tb, 
+                    match_var_nm_1L_chr = "var_desc_chr", match_value_xx = .x, 
+                    target_var_nm_1L_chr = "var_nm_chr", evaluate_lgl = F)
+                  paste0(.x, " (", ready4fun::get_from_lup_obj(predictors_lup, 
+                    match_var_nm_1L_chr = "short_name_chr", match_value_xx = var_nm_1L_chr, 
+                    target_var_nm_1L_chr = "min_val_dbl", evaluate_lgl = F), 
+                    "-", ready4fun::get_from_lup_obj(predictors_lup, 
+                      match_var_nm_1L_chr = "short_name_chr", 
+                      match_value_xx = var_nm_1L_chr, target_var_nm_1L_chr = "max_val_dbl", 
+                      evaluate_lgl = F), ")")
+                }))
+    }
+    return(predr_pars_and_cors_tb)
 }
 #' Make sub total plots
 #' @description make_sub_tot_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make sub total plots. The function returns Composite (a plot).

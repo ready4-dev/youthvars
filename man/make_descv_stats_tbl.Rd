@@ -7,10 +7,12 @@
 make_descv_stats_tbl(
   data_tb,
   key_var_nm_1L_chr = "round",
-  make_descv_stats_tbl,
   key_var_vals_chr,
   variable_nms_chr,
-  test_1L_lgl = F
+  dictionary_tb = NULL,
+  test_1L_lgl = F,
+  sections_as_row_1L_lgl = F,
+  nbr_of_digits_1L_int = NA_integer_
 )
 }
 \arguments{
@@ -18,13 +20,17 @@ make_descv_stats_tbl(
 
 \item{key_var_nm_1L_chr}{Key variable name (a character vector of length one), Default: 'round'}
 
-\item{make_descv_stats_tbl}{PARAM_DESCRIPTION}
-
 \item{key_var_vals_chr}{Key variable values (a character vector)}
 
 \item{variable_nms_chr}{Variable names (a character vector)}
 
+\item{dictionary_tb}{Dictionary (a tibble), Default: NULL}
+
 \item{test_1L_lgl}{Test (a logical vector of length one), Default: F}
+
+\item{sections_as_row_1L_lgl}{Sections as row (a logical vector of length one), Default: F}
+
+\item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: NA}
 }
 \value{
 Descriptive statistics table (a tibble)
