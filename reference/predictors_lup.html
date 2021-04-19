@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AQoL6D (adult version) item disvalues lookup table — aqol6d_adult_disv_lup_tb • youthvars</title>
+<title>Predictors lookup table — predictors_lup • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="AQoL6D (adult version) item disvalues lookup table — aqol6d_adult_disv_lup_tb" />
-<meta property="og:description" content="Disutility weights for individual AQoL6D (adult version) items." />
+<meta property="og:title" content="Predictors lookup table — predictors_lup" />
+<meta property="og:description" content="A lookup table of the short name and long name of each predictor used in the models included with the youthu package." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,35 +137,34 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>AQoL6D (adult version) item disvalues lookup table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/db_aqol6d_adult_disv_lup_tb.R'><code>R/db_aqol6d_adult_disv_lup_tb.R</code></a></small>
-    <div class="hidden name"><code>aqol6d_adult_disv_lup_tb.Rd</code></div>
+    <h1>Predictors lookup table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/db_predictors_lup.R'><code>R/db_predictors_lup.R</code></a></small>
+    <div class="hidden name"><code>predictors_lup.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Disutility weights for individual AQoL6D (adult version) items.</p>
+    <p>A lookup table of the short name and long name of each predictor used in the models included with the youthu package.</p>
     </div>
 
-    <pre class="usage"><span class='va'>aqol6d_adult_disv_lup_tb</span></pre>
+    <pre class="usage"><span class='va'>predictors_lup</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 20 rows and 7 columns.</p>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://www.aqol.com.au/index.php/scoring-algorithms'>https://www.aqol.com.au/index.php/scoring-algorithms</a></p>
+    <p>An object of class <code>tbl_df</code> (inherits from <code>tbl</code>, <code>data.frame</code>) with 7 rows and 9 columns.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>A tibble</p>
 <dl>
-<dt>Question_chr</dt><dd><p>Question (a character vector)</p></dd>
-<dt>Answer_1_dbl</dt><dd><p>Answer 1 (a double vector)</p></dd>
-<dt>Answer_2_dbl</dt><dd><p>Answer 2 (a double vector)</p></dd>
-<dt>Answer_3_dbl</dt><dd><p>Answer 3 (a double vector)</p></dd>
-<dt>Answer_4_dbl</dt><dd><p>Answer 4 (a double vector)</p></dd>
-<dt>Answer_5_dbl</dt><dd><p>Answer 5 (a double vector)</p></dd>
-<dt>Answer_6_dbl</dt><dd><p>Answer 6 (a double vector)</p></dd>
+<dt>short_name_chr</dt><dd><p>Short name (a character vector)</p></dd>
+<dt>long_name_chr</dt><dd><p>Long name (a character vector)</p></dd>
+<dt>min_val_dbl</dt><dd><p>Minimum value (a double vector)</p></dd>
+<dt>max_val_dbl</dt><dd><p>Maximum value (a double vector)</p></dd>
+<dt>class_chr</dt><dd><p>Class (a character vector)</p></dd>
+<dt>increment_dbl</dt><dd><p>Increment (a double vector)</p></dd>
+<dt>class_fn_chr</dt><dd><p>Class function (a character vector)</p></dd>
+<dt>mdl_scaling_dbl</dt><dd><p>Model scaling (a double vector)</p></dd>
+<dt>covariate_lgl</dt><dd><p>Covariate (a logical vector)</p></dd>
 
 </dl>
 
