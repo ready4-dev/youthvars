@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Youth Mental Health Variables Modelling Toolkit
-Version: 0.0.0.9029
+Version: 0.0.0.9030
 Authors@R: 
     c(person(given = "Matthew",
              family = "Hamilton",
@@ -57,9 +57,9 @@ Imports:
     methods,
     mice,
     purrr,
-    ready4fun (>= 0.0.0.9292),
-    ready4show (>= 0.0.0.9023),
-    ready4use (>= 0.0.0.9128),
+    ready4fun (>= 0.0.0.9294),
+    ready4show (>= 0.0.0.9024),
+    ready4use (>= 0.0.0.9131),
     rlang,
     scales,
     simstudy,
