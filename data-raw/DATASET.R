@@ -237,7 +237,9 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
 scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     prefix_1L_chr = "aqol6d_q",
                                     id_var_nm_1L_chr = "fkClientID",
-                                    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
+                                    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
+                                    total_aqol_var_nm_1L_chr = "aqol6d_total_c")
+Hmisc::label(scored_data_tb[, "aqol6d_total_c"]) <- "AQOL-6D Total Score"
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
                                                       var_ctg_chr = c("Identifier","Temporal","Temporal",
                                                                       rep("Demographic",14),
@@ -245,7 +247,7 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                                       rep("Clinical",8),
                                                                       "Functioning",
                                                                       #rep("Demographic",3),
-                                                                      rep("Utility Questionaire Response",20),
+                                                                      rep("Multi-Attribute Utility Instrument Question",20),
                                                                       rep("Utility Item Disvalue",20),
                                                                       rep("Utility Dimension Disvalue",6),
                                                                       rep("Utility Dimension Score (Adult)",6),
@@ -254,7 +256,8 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                                       rep("Utility Overall Score (Adolescent Disutility Scale)",2), # Includes Testing Duplicate
                                                                       "Utility Overall Score (Instrument)",
                                                                       "Utility Overall Score (Instrument - Rotated)",
-                                                                      "Utility Overall Score (Final Weighted)"
+                                                                      "Utility Overall Score (Final Weighted)",
+                                                                      "Multi-Attribute Utility Instrument Unweighted Total Score"
                                                       ),
                                                       var_desc_chr = c("Unique Client Identifier",
                                                                        "Round of Data Collection",
@@ -285,7 +288,7 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                                        "Social and Occupational Functioning Assessment Scale",
                                                                        paste0("Assessment of Quality of Life (6 Dimension) Question ",1:20),
                                                                        paste0("Assessment of Quality of Life (6 Dimension) Item Disvalue",1:20),
-                                                                       lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,67),rep(T,19)))
+                                                                       lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,67),rep(T,20)))
                                                       ),
                                                       var_type_chr = names(scored_data_tb) %>% purrr::map_chr(~{
                                                         class_chr <- class(scored_data_tb %>% dplyr::pull(.x))

@@ -10,6 +10,67 @@ make_adol_aqol6d_disv_lup <- function ()
                                                   TRUE ~ Answer_5_dbl))
   return(adol_aqol6d_disv_lup)
 }
+make_aqol6d_adol_pop_tbs_ls <- function (aqol_items_prpns_tbs_ls, aqol_scores_pars_ls, series_names_chr,
+                                         synth_data_spine_ls, temporal_cors_ls, id_var_nm_1L_chr = "fkClientID",
+                                         prefix_chr = c(uid = "Participant_", aqol_item = "aqol6d_q",
+                                                        domain_unwtd_pfx_1L_chr = "aqol6d_subtotal_c_", domain_wtd_pfx_1L_chr = "aqol6d_subtotal_w_"))
+{ # MIGRATED FROM TTU: REORGANISE
+  item_pfx_1L_chr <- prefix_chr[["aqol_item"]]
+  uid_pfx_1L_chr <- prefix_chr[["uid"]]
+  aqol6d_adol_pop_tbs_ls <- make_synth_series_tbs_ls(synth_data_spine_ls,
+                                                     series_names_chr = series_names_chr) %>% add_cors_and_utls_to_aqol6d_tbs_ls(aqol_scores_pars_ls = aqol_scores_pars_ls,
+                                                                                                                                 aqol_items_prpns_tbs_ls = aqol_items_prpns_tbs_ls, temporal_cors_ls = temporal_cors_ls,
+                                                                                                                                 prefix_chr = prefix_chr, aqol_tots_var_nms_chr = synth_data_spine_ls$aqol_tots_var_nms_chr,
+                                                                                                                                 id_var_nm_1L_chr = id_var_nm_1L_chr) %>% purrr::map(~{
+                                                                                                                                   domain_items_ls <- make_domain_items_ls(domain_qs_lup_tb = aqol6d_domain_qs_lup_tb,
+                                                                                                                                                                           item_pfx_1L_chr = item_pfx_1L_chr)
+                                                                                                                                   domain_items_ls %>% add_unwtd_dim_tots(items_tb = .x,
+                                                                                                                                                                          domain_pfx_1L_chr = prefix_chr[["domain_unwtd_pfx_1L_chr"]]) %>%
+                                                                                                                                     add_wtd_dim_tots(domain_items_ls = domain_items_ls,
+                                                                                                                                                      domain_unwtd_pfx_1L_chr = prefix_chr[["domain_unwtd_pfx_1L_chr"]],
+                                                                                                                                                      domain_wtd_pfx_1L_chr = prefix_chr[["domain_wtd_pfx_1L_chr"]]) %>%
+                                                                                                                                     add_labels_to_aqol6d_tb()
+                                                                                                                                 }) %>% purrr::map(~.x %>% dplyr::select(!!rlang::sym(id_var_nm_1L_chr),
+                                                                                                                                                                         dplyr::starts_with(item_pfx_1L_chr), dplyr::starts_with(prefix_chr[["domain_unwtd_pfx_1L_chr"]]),
+                                                                                                                                                                         dplyr::starts_with(prefix_chr[["domain_wtd_pfx_1L_chr"]]),
+                                                                                                                                                                         dplyr::everything()))
+  return(aqol6d_adol_pop_tbs_ls)
+}
+make_aqol6d_fns_ls <- function (domain_items_ls)
+{ # MIGRATED FROM TTU: REORGANISE
+  aqol6d_disu_fn_ls <- paste0("calculate_aqol6d_dim_", 1:length(domain_items_ls),
+                              "_disv") %>% purrr::map(~rlang::sym(.x))
+  return(aqol6d_disu_fn_ls)
+}
+make_aqol6d_items_tb <- function (aqol_tb, old_pfx_1L_chr, new_pfx_1L_chr)
+{ # MIGRATED FROM TTU: REORGANISE
+  aqol6d_items_tb <- aqol_tb %>% dplyr::select(dplyr::starts_with(old_pfx_1L_chr)) %>%
+    dplyr::rename_all(~{
+      stringr::str_replace(., old_pfx_1L_chr, new_pfx_1L_chr)
+    })
+  return(aqol6d_items_tb)
+}
+make_complete_prpns_tbs_ls <- function (raw_prpns_tbs_ls, question_var_nm_1L_chr = "Question")
+{# UNUSED: MIGRATE OUT
+  complete_prpns_tbs_ls <- raw_prpns_tbs_ls %>% purrr::map(~{
+    .x %>% dplyr::mutate(total_prop_dbl = rowSums(dplyr::select(.,
+                                                                -!!rlang::sym(question_var_nm_1L_chr)), na.rm = T) -
+                           100) %>% dplyr::mutate_if(is.numeric, ~purrr::map2_dbl(.,
+                                                                                  total_prop_dbl, ~ifelse(.x == 100, 1 - .y, .x))) %>%
+      dplyr::select(-total_prop_dbl)
+  })
+  return(complete_prpns_tbs_ls)
+}
+make_correlated_data_tb <- function (synth_data_spine_ls, synth_data_idx_1L_dbl = 1)
+{ # MIGRATED FROM TTU
+  correlated_data_tb <- simstudy::genCorData(synth_data_spine_ls$nbr_obs_dbl[synth_data_idx_1L_dbl],
+                                             mu = synth_data_spine_ls$means_ls[[synth_data_idx_1L_dbl]],
+                                             sigma = synth_data_spine_ls$sds_ls[[synth_data_idx_1L_dbl]],
+                                             corMatrix = make_pdef_cor_mat_mat(synth_data_spine_ls$cor_mat_ls[[synth_data_idx_1L_dbl]]),
+                                             cnames = synth_data_spine_ls$var_names_chr) %>% force_min_max_and_int_cnstrs(var_names_chr = synth_data_spine_ls$var_names_chr,
+                                                                                                                          min_max_ls = synth_data_spine_ls$min_max_ls, discrete_lgl = synth_data_spine_ls$discrete_lgl)
+  return(correlated_data_tb)
+}
 make_cors_with_utl_tbl <- function(data_tb,
                                    ds_descvs_ls,
                                    dictionary_tb = NULL,
@@ -31,6 +92,39 @@ make_cors_with_utl_tbl <- function(data_tb,
 
   }
   return(cors_with_utl_tb)
+}
+make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), removeTriangle_chr = c("upper",
+                                                                                                   "lower"), result_chr = c("none", "html", "latex"))
+{
+  x <- as.matrix(x)
+  correlation_matrix <- Hmisc::rcorr(x, type = method_chr[1])
+  R <- correlation_matrix$r
+  p <- correlation_matrix$P
+  mystars <- ifelse(p < 1e-04, "****", ifelse(p < 0.001, "*** ",
+                                              ifelse(p < 0.01, "**  ", ifelse(p < 0.05, "*   ", "    "))))
+  R <- format(round(cbind(rep(-1.11, ncol(x)), R), 2))[, -1]
+  Rnew <- matrix(paste(R, mystars, sep = ""), ncol = ncol(x))
+  diag(Rnew) <- paste(diag(R), " ", sep = "")
+  rownames(Rnew) <- colnames(x)
+  colnames(Rnew) <- paste(colnames(x), "", sep = "")
+  if (removeTriangle_chr[1] == "upper") {
+    Rnew <- as.matrix(Rnew)
+    Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  else if (removeTriangle_chr[1] == "lower") {
+    Rnew <- as.matrix(Rnew)
+    Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  Rnew <- cbind(Rnew[1:length(Rnew) - 1])
+  if (result_chr[1] == "none")
+    return(Rnew)
+  else {
+    if (result_chr[1] == "html")
+      print(xtable(Rnew), type = "html")
+    else print(xtable(Rnew), type = "latex")
+  }
 }
 make_descv_stats_tbl <- function(data_tb,
                                  key_var_nm_1L_chr = "round",
@@ -57,7 +151,7 @@ make_descv_stats_tbl <- function(data_tb,
                                                                            target_var_nm_1L_chr = "var_desc_chr",
                                                                            match_var_nm_1L_chr = "var_nm_chr",
                                                                            match_value_xx = .x,
-                                                                           evaluate_lgl = F)))
+                                                                           evaluate_lgl = F) %>% as.vector()))
 
   }
   vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == "Median (Q1, Q3)") %>% dplyr::pull(variable)
@@ -150,6 +244,51 @@ make_descv_stats_tbl <- function(data_tb,
   }
   return(descv_stats_tbl_tb)
 }
+make_dim_sclg_cons_dbl <- function (domains_chr, dim_sclg_con_lup_tb)
+{ # MIGRATED FROM TTU : REORGANISE
+  dim_sclg_cons_dbl <- purrr::map_dbl(domains_chr, ~ready4fun::get_from_lup_obj(dim_sclg_con_lup_tb,
+                                                                                match_var_nm_1L_chr = "Dimension_chr", match_value_xx = .x,
+                                                                                target_var_nm_1L_chr = "Constant_dbl", evaluate_lgl = F))
+  return(dim_sclg_cons_dbl)
+}
+make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
+{# MIGRATED FROM TTU : REORGANISE
+  domains_chr <- domain_qs_lup_tb$Domain_chr %>% unique()
+  q_nbrs_ls <- purrr::map(domains_chr, ~domain_qs_lup_tb %>%
+                            dplyr::filter(Domain_chr == .x) %>% dplyr::pull(Question_dbl))
+  domain_items_ls <- purrr::map(q_nbrs_ls, ~paste0(item_pfx_1L_chr,
+                                                   .x)) %>% stats::setNames(domains_chr)
+  return(domain_items_ls)
+}
+make_final_rpln_ds_dict <- function(seed_dictionary_tb = NULL,
+                                    additions_tb = NULL,
+                                    utl_unwtd_var_nm_1L_chr = "aqol6d_total_c"){
+  if(is.null(seed_dictionary_tb)){
+    utils::data("aqol_scrg_dict_r3", package = "youthvars", envir = environment())
+    dictionary_tb <- ready4use::bind_lups(make_tfd_repln_ds_dict_r3(),
+                                          new_ready4_dict_r3 = aqol_scrg_dict_r3)
+  }else{
+    dictionary_tb <- seed_dictionary_tb
+  }
+  if(is.null(additions_tb)){
+    additions_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = c(#utl_unwtd_var_nm_1L_chr,
+                                                                        "bl_date_dtm",
+                                                                        "interval_dbl",
+                                                                        "participation"),
+                                                         var_ctg_chr = c(#"MAUI",
+                                                                         "Temporal", "Temporal", "Temporal"),
+                                                         var_desc_chr = c(#"AQOL-6D Total Score",
+                                                                          "Date of baseline assessment",
+                                                                          "Interval between baseline and follow-up assessments", "Rounds participated in"),
+                                                         var_type_chr = c(#"numeric",
+                                                                          "date","interval", "character")) %>%
+      ready4use::ready4_dictionary()
+  }
+  Hmisc::label(additions_tb) <- as.list(Hmisc::label(dictionary_tb) %>% unname())
+  dictionary_tb <- dictionary_tb %>%
+    ready4use::bind_lups(new_ready4_dict_r3 = additions_tb)
+  return(dictionary_tb)
+}
 make_formula <- function(depnt_var_nm_1L_chr,
                          predictors_chr,
                          environment_env = parent.frame()){
@@ -230,6 +369,44 @@ make_itm_resp_plts <- function(data_tb,
                                            nrow = length(heights_int),
                                            heights = heights_int)
   return(composite_plt)
+}
+make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wghts_lup_tb)
+{ # MIGRATED FROM TTU: REORGANISE
+  make_item_wrst_wts_ls_ls <- domain_items_ls %>% purrr::map(~{
+    purrr::map_dbl(.x, ~{
+      ready4fun::get_from_lup_obj(itm_wrst_wghts_lup_tb,
+                                  match_var_nm_1L_chr = "Question_chr", match_value_xx = .x,
+                                  target_var_nm_1L_chr = "Worst_Weight_dbl", evaluate_lgl = F)
+    })
+  })
+  return(make_item_wrst_wts_ls_ls)
+}
+make_paths_ls <- function(params_ls){
+  paths_ls <- list(path_from_top_level_1L_chr = params_ls$path_from_top_level_1L_chr,
+                   path_to_data_from_top_level_chr = params_ls$path_to_data_from_top_level_chr)
+  #Analyses/AQoL-6D/AQol_6D longitudinal
+  #c('Data cleaning', 'Data','Combined_cleaned_V4.rds')
+  if(!params_ls$use_fake_data_1L_lgl){
+    paths_ls$write_to_dir_nm_1L_chr <- "Real"
+  }else{
+    if(is.null(paths_ls$path_from_top_level_1L_chr)){
+      path_elements_chr <- dirname(getwd()) %>% strsplit("/") %>% purrr::pluck(1)
+      paths_ls$path_from_top_level_1L_chr <- path_elements_chr[length(path_elements_chr)-1]
+    }
+    paths_ls$write_to_dir_nm_1L_chr <- "Fake"
+    paths_ls$path_to_fake_data_1L_chr <- paste0(paths_ls$path_from_top_level_1L_chr,"/",paths_ls$write_to_dir_nm_1L_chr,"/fake_data.rds")
+    paths_ls$path_to_data_from_top_level_chr <- c(paths_ls$path_from_top_level_1L_chr,paths_ls$write_to_dir_nm_1L_chr,"fake_data.rds")
+  }
+  return(paths_ls)
+}
+make_pdef_cor_mat_mat <- function (lower_diag_mat)
+{ # MIGRATED FROM TTU: REORGANISE
+  pdef_cor_mat <- lower_diag_mat %>% Matrix::forceSymmetric(uplo = "L") %>%
+    as.matrix()
+  if (!matrixcalc::is.positive.definite(pdef_cor_mat)) {
+    pdef_cor_mat <- psych::cor.smooth(pdef_cor_mat)
+  }
+  return(pdef_cor_mat)
 }
 make_predr_pars_and_cors_tbl <- function(data_tb,
                                          ds_descvs_ls,
@@ -383,6 +560,13 @@ make_sub_tot_plts <- function(data_tb,
                                            heights = heights_int)
   return(composite_plt)
 }
+make_synth_series_tbs_ls <- function (synth_data_spine_ls, series_names_chr)
+{ # MIGRATED FROM TTU: REORGANISE
+  synth_series_tbs_ls <- 1:length(series_names_chr) %>% purrr::map(~make_correlated_data_tb(synth_data_spine_ls = synth_data_spine_ls,
+                                                                                            synth_data_idx_1L_dbl = .x) %>% replace_with_missing_vals(synth_data_spine_ls = synth_data_spine_ls,
+                                                                                                                                                      idx_int = .x)) %>% stats::setNames(series_names_chr)
+  return(synth_series_tbs_ls)
+}
 make_tableby_cntrls <- function(test_1L_lgl = F){
   tableby_cntrls_ls <- arsenal::tableby.control(
     test = test_1L_lgl,
@@ -459,4 +643,11 @@ make_var_by_round_plt <- function(data_tb,
     ggplot2::scale_fill_manual(values=c("#de2d26","#fc9272"))  +
     ggplot2::theme(legend.position="bottom")
   return(var_by_round_plt)
+}
+make_vec_with_sum_of_int_val <- function (target_int, start_int, end_int, length_int)
+{ # MIGRATED FROM TTU: REORGANISE
+  vec_int <- Surrogate::RandVec(a = start_int, b = end_int,
+                                s = target_int, n = length_int, m = 1) %>% purrr::pluck("RandVecOutput") %>%
+    as.vector() %>% round() %>% as.integer() %>% force_vec_to_sum_to_int(target_1L_int = target_int)
+  return(vec_int)
 }

@@ -9,6 +9,21 @@ transform_ds_for_item_plt <- function(data_tb,
     dplyr::mutate(y = n/sum(n))
   return(tfd_data_tb)
 }
+transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total_w", dep_var_max_val_1L_dbl = 0.999,
+                                    candidate_predrs_chr = NA_character_, covar_var_nms_chr = NA_character_,
+                                    round_var_nm_1L_chr = "round", round_val_1L_chr = "Baseline",
+                                    remove_all_msng_1L_lgl = F)
+{
+  vars_to_keep_chr <- c(depnt_var_nm_1L_chr, candidate_predrs_chr,
+                        covar_var_nms_chr) %>% purrr::discard(is.na)
+  tfd_data_tb <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) ==
+                                             round_val_1L_chr) %>% dplyr::select(!!!rlang::syms(vars_to_keep_chr)) %>%
+    dplyr::mutate(`:=`(!!rlang::sym(depnt_var_nm_1L_chr), ifelse(!!rlang::sym(depnt_var_nm_1L_chr) >
+                                                                   dep_var_max_val_1L_dbl, dep_var_max_val_1L_dbl, !!rlang::sym(depnt_var_nm_1L_chr))))
+  if (remove_all_msng_1L_lgl)
+    tfd_data_tb <- tfd_data_tb %>% stats::na.omit()
+  return(tfd_data_tb)
+}
 transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw_aqol_tb_to_aqol6d_tb
 {
   transformed_ds_tb <- raw_ds_tb %>% dplyr::mutate(d_agegroup = cut(d_age,

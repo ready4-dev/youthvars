@@ -17,4 +17,4 @@
 "duAQoL6D","AQoL-6D Adolescent Disutility Score (Transformed)","ifelse(duAQoL6D_t>1,(1 + (duAQoL6D_t-1)*.25773196), duAQoL6D_t)"
 "uAQoL6D","Instrument utility score","1- duAQoL6D"
 "uAQoL6DRotated","Instrument utility score rotated","uAQoL6D*0.8807+0.1189"
-"uaqol","AQOL 6D Adolescent Utility Score","1-(1-uAQoL6DRotated)**1.19"
+"uaqol","AQOL 6D Adolescent Utility","1-(1-uAQoL6DRotated)**1.19"

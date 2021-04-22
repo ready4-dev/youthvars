@@ -52,7 +52,8 @@ add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_t
 add_adol6d_scores <- function (unscored_aqol_tb,
                                prefix_1L_chr = "aqol6d_q",
                                id_var_nm_1L_chr = "fkClientID",
-                               wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
+                               wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
+                               total_aqol_var_nm_1L_chr = "aqol6d_total_c")
 {
   complete_ds_tb <- unscored_aqol_tb
   unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::select(id_var_nm_1L_chr,
@@ -77,7 +78,9 @@ add_adol6d_scores <- function (unscored_aqol_tb,
                  dplyr::arrange(!!rlang::sym(id_var_nm_1L_chr)) )
 
   tfd_aqol_tb <- dplyr::inner_join(tbs_ls[[1]], tbs_ls[[2]]) %>%
-    dplyr::select(-match_var_chr)
+    dplyr::select(-match_var_chr) %>%
+    dplyr::mutate(!!rlang::sym(total_aqol_var_nm_1L_chr) := rowSums(dplyr::across(dplyr::starts_with(prefix_1L_chr))))
+  tfd_aqol_tb <- tfd_aqol_tb %>% dplyr::filter(!is.na(!!rlang::sym(total_aqol_var_nm_1L_chr)))
   return(tfd_aqol_tb)
 }
 add_aqol6dU_to_aqol6d_items_tb <- function (aqol6d_items_tb, coefs_lup_tb = aqol6d_from_8d_coefs_lup_tb)
@@ -97,6 +100,19 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
                                                                                                        prefix_1L_chr = prefix_1L_chr, id_var_nm_1L_chr = id_var_nm_1L_chr)))
   return(aqol6d_tbs_ls)
 }
+add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_ls, aqol_items_prpns_tbs_ls,
+                                                temporal_cors_ls, prefix_chr, aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID")
+{ # FOR FK DATA GENERATION - REORGANISE
+  aqol6d_tbs_ls <- reorder_tbs_for_target_cors(aqol6d_tbs_ls,
+                                               cor_dbl = temporal_cors_ls[[1]], cor_var_chr = rep(names(temporal_cors_ls)[1],
+                                                                                                  2), id_var_to_rm_1L_chr = "id") %>% add_uids_to_tbs_ls(prefix_1L_chr = prefix_chr[["uid"]],
+                                                                                                                                                         id_var_nm_1L_chr = id_var_nm_1L_chr)
+  aqol6d_tbs_ls <- aqol6d_tbs_ls %>% add_aqol6d_items_to_aqol6d_tbs_ls(aqol_items_prpns_tbs_ls = aqol_items_prpns_tbs_ls,
+                                                                       prefix_chr = prefix_chr, aqol_tots_var_nms_chr = aqol_tots_var_nms_chr,
+                                                                       id_var_nm_1L_chr = id_var_nm_1L_chr)
+  return(aqol6d_tbs_ls)
+}
+
 add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = NULL,
                                              itm_wrst_wghts_lup_tb = NULL)
 {
@@ -130,6 +146,32 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
                                                                                                                                           "vD_dvD", "vD"))
   return(aqol6d_items_tb)
 }
+add_interval_var <- function(data_tb,
+                             id_var_nm_1L_chr = "fkClientID",
+                             msrmnt_date_var_nm_1L_chr = "d_interview_date",
+                             time_unit_1L_chr = "days",
+                             bl_date_var_nm_1L_chr = "bl_date_dtm",
+                             interval_var_nm_1L_chr = "interval_dbl",
+                             temp_row_nbr_var_nm_1L_chr = "temp_row_nbr_int",
+                             drop_bl_date_var_1L_lgl = F){
+  updated_data_tb <- data_tb %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(!!rlang::sym(temp_row_nbr_var_nm_1L_chr) := 1:dplyr::n()) %>%
+    dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>%
+    dplyr::arrange(!!rlang::sym(msrmnt_date_var_nm_1L_chr)) %>%
+    dplyr::mutate(!!rlang::sym(bl_date_var_nm_1L_chr) := !!rlang::sym(msrmnt_date_var_nm_1L_chr) %>% dplyr::first()) %>%
+    dplyr::mutate(interval_dbl = purrr::map2_dbl(!!rlang::sym(bl_date_var_nm_1L_chr),
+                                                 !!rlang::sym(msrmnt_date_var_nm_1L_chr),
+                                                 ~ lubridate::interval(.x, .y) %>%
+                                                   lubridate::time_length(unit = time_unit_1L_chr))) %>%
+    dplyr::ungroup() %>%
+    dplyr::arrange(!!rlang::sym(temp_row_nbr_var_nm_1L_chr)) %>%
+    dplyr::select(-!!rlang::sym(temp_row_nbr_var_nm_1L_chr))
+  if(drop_bl_date_var_1L_lgl)
+    updated_data_tb <-  updated_data_tb %>%
+      dplyr::select(-!!rlang::sym(bl_date_var_nm_1L_chr))
+  return(updated_data_tb)
+}
 add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb,
                                             disvalues_lup_tb = NULL,
                                             pfx_1L_chr)
@@ -148,6 +190,57 @@ add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb,
                                                                         .fns = list(dv = ~disu_dbl[.x]), .names = "{fn}_{col}"))
                                    })
   return(aqol6d_items_tb)
+}
+add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
+{ # MIGRATED FROM TTU - REORGANISE
+  if (is.na(labels_chr))
+    labels_chr <- c(fkClientID = "Unique client identifier",
+                    round = "Data measurement round", d_age = "Age",
+                    d_gender = "Gender", d_sexual_ori_s = "Sexual orientation",
+                    d_studying_working = "Work and study", c_p_diag_s = " Primary diagnosis",
+                    c_clinical_staging_s = "Clinical stage", c_sofas = "SOFAS",
+                    s_centre = "Clinic", d_agegroup = "Age group", d_sex_birth_s = "Sex at birth",
+                    d_country_bir_s = "Country of birth", d_ATSI = "Aboriginal and Torres Strait Islander",
+                    d_english_home = "English spoken at home", d_english_native = "English is native language",
+                    d_relation_s = "Relationship status", aqol6d_total_w = "AQoL health utility",
+                    phq9_total = "PHQ9", bads_total = "BADS", gad7_total = "GAD7",
+                    oasis_total = "OASIS", scared_total = "SCARED", k6_total = "K6",
+                    aqol6d_total_c = "AQoL unweighted total", aqol6d_q1 = "Household tasks",
+                    aqol6d_q2 = "Getting around", aqol6d_q3 = "Mobility",
+                    aqol6d_q4 = "Self care", aqol6d_q5 = "Enjoy close rels",
+                    aqol6d_q6 = "Family rels", aqol6d_q7 = "Community involvement",
+                    aqol6d_q8 = "Despair", aqol6d_q9 = "Worry", aqol6d_q10 = "Sad",
+                    aqol6d_q11 = "Agitated", aqol6d_q12 = "Energy level",
+                    aqol6d_q13 = "Control", aqol6d_q14 = "Coping", aqol6d_q15 = "Frequency of pain",
+                    aqol6d_q16 = "Degree of pain", aqol6d_q17 = "Pain interference",
+                    aqol6d_q18 = "Vision", aqol6d_q19 = "Hearing", aqol6d_q20 = "Communication",
+                    aqol6d_subtotal_c_IL = "Unweighted Independent Living",
+                    aqol6d_subtotal_c_REL = "Unweighted Relationships",
+                    aqol6d_subtotal_c_MH = "Unweighted Mental Health",
+                    aqol6d_subtotal_c_COP = "Unweighted Coping", aqol6d_subtotal_c_P = "Unweighted Pain",
+                    aqol6d_subtotal_c_SEN = "Unweighted Sense", aqol6d_subtotal_w_IL = "Independent Living",
+                    aqol6d_subtotal_w_REL = "Relationships", aqol6d_subtotal_w_MH = "Mental Health",
+                    aqol6d_subtotal_w_COP = "Coping", aqol6d_subtotal_w_P = "Pain",
+                    aqol6d_subtotal_w_SEN = "Sense")
+  Hmisc::label(aqol6d_tb) = as.list(labels_chr[match(names(aqol6d_tb),
+                                                     names(labels_chr))])
+  return(aqol6d_tb)
+}
+add_participation_var <- function(data_tb,
+                                  id_var_nm_1L_chr = "fkClientID",
+                                  fup_round_nmbr_1L_int = 2L){
+  data_tb <- data_tb %>%
+    dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>%
+    dplyr::mutate(nbr_rounds_int = dplyr::n()) %>%
+    dplyr::mutate(participation = ifelse(nbr_rounds_int==1,
+                                         "Baseline only",
+                                         ifelse(nbr_rounds_int==fup_round_nmbr_1L_int,
+                                                "Baseline and follow-up",
+                                                NA_character_))) %>%
+
+    dplyr::ungroup() %>%
+    dplyr::select(-nbr_rounds_int)
+  return(data_tb)
 }
 add_unwtd_dim_tots <- function (items_tb, domain_items_ls, domain_pfx_1L_chr)
 {

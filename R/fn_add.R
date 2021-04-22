@@ -4,16 +4,17 @@
 #' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param wtd_aqol_var_nm_1L_chr Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'
+#' @param total_aqol_var_nm_1L_chr Total Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_c'
 #' @return Transformed Assessment of Quality of Life (a tibble)
 #' @rdname add_adol6d_scores
 #' @export 
-#' @importFrom dplyr select starts_with rename_all rename group_by mutate n ungroup arrange inner_join
+#' @importFrom dplyr select starts_with rename_all rename group_by mutate n ungroup arrange inner_join across filter
 #' @importFrom stringr str_replace
 #' @importFrom tibble as_tibble
 #' @importFrom rlang sym
 #' @importFrom purrr map
 add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_var_nm_1L_chr = "fkClientID", 
-    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w") 
+    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w", total_aqol_var_nm_1L_chr = "aqol6d_total_c") 
 {
     complete_ds_tb <- unscored_aqol_tb
     unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::select(id_var_nm_1L_chr, 
@@ -31,7 +32,9 @@ add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_
         dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% dplyr::mutate(match_var_chr = paste0(!!rlang::sym(id_var_nm_1L_chr), 
         "_", 1:dplyr::n())) %>% dplyr::ungroup() %>% dplyr::arrange(!!rlang::sym(id_var_nm_1L_chr)))
     tfd_aqol_tb <- dplyr::inner_join(tbs_ls[[1]], tbs_ls[[2]]) %>% 
-        dplyr::select(-match_var_chr)
+        dplyr::select(-match_var_chr) %>% dplyr::mutate(`:=`(!!rlang::sym(total_aqol_var_nm_1L_chr), 
+        rowSums(dplyr::across(dplyr::starts_with(prefix_1L_chr)))))
+    tfd_aqol_tb <- tfd_aqol_tb %>% dplyr::filter(!is.na(!!rlang::sym(total_aqol_var_nm_1L_chr)))
     return(tfd_aqol_tb)
 }
 #' Add Assessment of Quality of Life Six Dimension adolescent dimension scoring equations
@@ -152,6 +155,32 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
         prefix_1L_chr = prefix_1L_chr, id_var_nm_1L_chr = id_var_nm_1L_chr)))
     return(aqol6d_tbs_ls)
 }
+#' Add correlations and utilities to Assessment of Quality of Life Six Dimension tibbles
+#' @description add_cors_and_utls_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add correlations and utilities to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
+#' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
+#' @param aqol_scores_pars_ls Assessment of Quality of Life scores parameters (a list)
+#' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
+#' @param temporal_cors_ls Temporal correlations (a list)
+#' @param prefix_chr Prefix (a character vector)
+#' @param aqol_tots_var_nms_chr Assessment of Quality of Life totals variable names (a character vector)
+#' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
+#' @return Assessment of Quality of Life Six Dimension tibbles (a list)
+#' @rdname add_cors_and_utls_to_aqol6d_tbs_ls
+#' @export 
+
+#' @keywords internal
+add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_ls, aqol_items_prpns_tbs_ls, 
+    temporal_cors_ls, prefix_chr, aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID") 
+{
+    aqol6d_tbs_ls <- reorder_tbs_for_target_cors(aqol6d_tbs_ls, 
+        cor_dbl = temporal_cors_ls[[1]], cor_var_chr = rep(names(temporal_cors_ls)[1], 
+            2), id_var_to_rm_1L_chr = "id") %>% add_uids_to_tbs_ls(prefix_1L_chr = prefix_chr[["uid"]], 
+        id_var_nm_1L_chr = id_var_nm_1L_chr)
+    aqol6d_tbs_ls <- aqol6d_tbs_ls %>% add_aqol6d_items_to_aqol6d_tbs_ls(aqol_items_prpns_tbs_ls = aqol_items_prpns_tbs_ls, 
+        prefix_chr = prefix_chr, aqol_tots_var_nms_chr = aqol_tots_var_nms_chr, 
+        id_var_nm_1L_chr = id_var_nm_1L_chr)
+    return(aqol6d_tbs_ls)
+}
 #' Add dimension disvalue to Assessment of Quality of Life Six Dimension items
 #' @description add_dim_disv_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dimension disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
@@ -210,6 +239,43 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
         "vD_dvD", "vD"))
     return(aqol6d_items_tb)
 }
+#' Add interval variable
+#' @description add_interval_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add interval variable. Function argument data_tb specifies the object to be updated. The function returns Updated data (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
+#' @param msrmnt_date_var_nm_1L_chr Measurement date variable name (a character vector of length one), Default: 'd_interview_date'
+#' @param time_unit_1L_chr Time unit (a character vector of length one), Default: 'days'
+#' @param bl_date_var_nm_1L_chr Baseline date variable name (a character vector of length one), Default: 'bl_date_dtm'
+#' @param interval_var_nm_1L_chr Interval variable name (a character vector of length one), Default: 'interval_dbl'
+#' @param temp_row_nbr_var_nm_1L_chr Temporary row number variable name (a character vector of length one), Default: 'temp_row_nbr_int'
+#' @param drop_bl_date_var_1L_lgl Drop baseline date variable (a logical vector of length one), Default: F
+#' @return Updated data (a tibble)
+#' @rdname add_interval_var
+#' @export 
+#' @importFrom dplyr ungroup mutate n group_by arrange first select
+#' @importFrom rlang sym
+#' @importFrom purrr map2_dbl
+#' @importFrom lubridate interval time_length
+#' @keywords internal
+add_interval_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", msrmnt_date_var_nm_1L_chr = "d_interview_date", 
+    time_unit_1L_chr = "days", bl_date_var_nm_1L_chr = "bl_date_dtm", 
+    interval_var_nm_1L_chr = "interval_dbl", temp_row_nbr_var_nm_1L_chr = "temp_row_nbr_int", 
+    drop_bl_date_var_1L_lgl = F) 
+{
+    updated_data_tb <- data_tb %>% dplyr::ungroup() %>% dplyr::mutate(`:=`(!!rlang::sym(temp_row_nbr_var_nm_1L_chr), 
+        1:dplyr::n())) %>% dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% 
+        dplyr::arrange(!!rlang::sym(msrmnt_date_var_nm_1L_chr)) %>% 
+        dplyr::mutate(`:=`(!!rlang::sym(bl_date_var_nm_1L_chr), 
+            !!rlang::sym(msrmnt_date_var_nm_1L_chr) %>% dplyr::first())) %>% 
+        dplyr::mutate(interval_dbl = purrr::map2_dbl(!!rlang::sym(bl_date_var_nm_1L_chr), 
+            !!rlang::sym(msrmnt_date_var_nm_1L_chr), ~lubridate::interval(.x, 
+                .y) %>% lubridate::time_length(unit = time_unit_1L_chr))) %>% 
+        dplyr::ungroup() %>% dplyr::arrange(!!rlang::sym(temp_row_nbr_var_nm_1L_chr)) %>% 
+        dplyr::select(-!!rlang::sym(temp_row_nbr_var_nm_1L_chr))
+    if (drop_bl_date_var_1L_lgl) 
+        updated_data_tb <- updated_data_tb %>% dplyr::select(-!!rlang::sym(bl_date_var_nm_1L_chr))
+    return(updated_data_tb)
+}
 #' Add item disvalue to Assessment of Quality of Life Six Dimension items
 #' @description add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
@@ -238,6 +304,70 @@ add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb, disvalues_lup_tb = 
                 .fns = list(dv = ~disu_dbl[.x]), .names = "{fn}_{col}"))
         })
     return(aqol6d_items_tb)
+}
+#' Add labels to Assessment of Quality of Life Six Dimension
+#' @description add_labels_to_aqol6d_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels to assessment of quality of life six dimension tibble. Function argument aqol6d_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension (a tibble).
+#' @param aqol6d_tb Assessment of Quality of Life Six Dimension (a tibble)
+#' @param labels_chr Labels (a character vector), Default: 'NA'
+#' @return Assessment of Quality of Life Six Dimension (a tibble)
+#' @rdname add_labels_to_aqol6d_tb
+#' @export 
+#' @importFrom Hmisc label
+#' @keywords internal
+add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_) 
+{
+    if (is.na(labels_chr)) 
+        labels_chr <- c(fkClientID = "Unique client identifier", 
+            round = "Data measurement round", d_age = "Age", 
+            d_gender = "Gender", d_sexual_ori_s = "Sexual orientation", 
+            d_studying_working = "Work and study", c_p_diag_s = " Primary diagnosis", 
+            c_clinical_staging_s = "Clinical stage", c_sofas = "SOFAS", 
+            s_centre = "Clinic", d_agegroup = "Age group", d_sex_birth_s = "Sex at birth", 
+            d_country_bir_s = "Country of birth", d_ATSI = "Aboriginal and Torres Strait Islander", 
+            d_english_home = "English spoken at home", d_english_native = "English is native language", 
+            d_relation_s = "Relationship status", aqol6d_total_w = "AQoL health utility", 
+            phq9_total = "PHQ9", bads_total = "BADS", gad7_total = "GAD7", 
+            oasis_total = "OASIS", scared_total = "SCARED", k6_total = "K6", 
+            aqol6d_total_c = "AQoL unweighted total", aqol6d_q1 = "Household tasks", 
+            aqol6d_q2 = "Getting around", aqol6d_q3 = "Mobility", 
+            aqol6d_q4 = "Self care", aqol6d_q5 = "Enjoy close rels", 
+            aqol6d_q6 = "Family rels", aqol6d_q7 = "Community involvement", 
+            aqol6d_q8 = "Despair", aqol6d_q9 = "Worry", aqol6d_q10 = "Sad", 
+            aqol6d_q11 = "Agitated", aqol6d_q12 = "Energy level", 
+            aqol6d_q13 = "Control", aqol6d_q14 = "Coping", aqol6d_q15 = "Frequency of pain", 
+            aqol6d_q16 = "Degree of pain", aqol6d_q17 = "Pain interference", 
+            aqol6d_q18 = "Vision", aqol6d_q19 = "Hearing", aqol6d_q20 = "Communication", 
+            aqol6d_subtotal_c_IL = "Unweighted Independent Living", 
+            aqol6d_subtotal_c_REL = "Unweighted Relationships", 
+            aqol6d_subtotal_c_MH = "Unweighted Mental Health", 
+            aqol6d_subtotal_c_COP = "Unweighted Coping", aqol6d_subtotal_c_P = "Unweighted Pain", 
+            aqol6d_subtotal_c_SEN = "Unweighted Sense", aqol6d_subtotal_w_IL = "Independent Living", 
+            aqol6d_subtotal_w_REL = "Relationships", aqol6d_subtotal_w_MH = "Mental Health", 
+            aqol6d_subtotal_w_COP = "Coping", aqol6d_subtotal_w_P = "Pain", 
+            aqol6d_subtotal_w_SEN = "Sense")
+    Hmisc::label(aqol6d_tb) = as.list(labels_chr[match(names(aqol6d_tb), 
+        names(labels_chr))])
+    return(aqol6d_tb)
+}
+#' Add participation variable
+#' @description add_participation_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add participation variable. Function argument data_tb specifies the object to be updated. The function returns Data (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
+#' @param fup_round_nmbr_1L_int Follow-up round nmbr (an integer vector of length one), Default: 2
+#' @return Data (a tibble)
+#' @rdname add_participation_var
+#' @export 
+#' @importFrom dplyr group_by mutate n ungroup select
+#' @importFrom rlang sym
+#' @keywords internal
+add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup_round_nmbr_1L_int = 2L) 
+{
+    data_tb <- data_tb %>% dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% 
+        dplyr::mutate(nbr_rounds_int = dplyr::n()) %>% dplyr::mutate(participation = ifelse(nbr_rounds_int == 
+        1, "Baseline only", ifelse(nbr_rounds_int == fup_round_nmbr_1L_int, 
+        "Baseline and follow-up", NA_character_))) %>% dplyr::ungroup() %>% 
+        dplyr::select(-nbr_rounds_int)
+    return(data_tb)
 }
 #' Add unwtd dimension totals
 #' @description add_unwtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add unwtd dimension totals. Function argument items_tb specifies the object to be updated. The function returns Items and domains (a tibble).

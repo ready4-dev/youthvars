@@ -17,6 +17,40 @@ transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_c
         dplyr::mutate(y = n/sum(n))
     return(tfd_data_tb)
 }
+#' Transform dataset for testing
+#' @description transform_ds_for_tstng() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for testing. Function argument data_tb specifies the object to be updated. Argument depnt_var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
+#' @param data_tb Data (a tibble)
+#' @param depnt_var_nm_1L_chr Dependent variable name (a character vector of length one), Default: 'aqol6d_total_w'
+#' @param dep_var_max_val_1L_dbl Dep variable maximum value (a double vector of length one), Default: 0.999
+#' @param candidate_predrs_chr Candidate predictors (a character vector), Default: 'NA'
+#' @param covar_var_nms_chr Covariate variable names (a character vector), Default: 'NA'
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
+#' @param round_val_1L_chr Round value (a character vector of length one), Default: 'Baseline'
+#' @param remove_all_msng_1L_lgl Remove all missing (a logical vector of length one), Default: F
+#' @return Transformed data (a tibble)
+#' @rdname transform_ds_for_tstng
+#' @export 
+#' @importFrom purrr discard
+#' @importFrom dplyr filter select mutate
+#' @importFrom rlang sym syms
+#' @importFrom stats na.omit
+#' @keywords internal
+transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total_w", dep_var_max_val_1L_dbl = 0.999, 
+    candidate_predrs_chr = NA_character_, covar_var_nms_chr = NA_character_, 
+    round_var_nm_1L_chr = "round", round_val_1L_chr = "Baseline", 
+    remove_all_msng_1L_lgl = F) 
+{
+    vars_to_keep_chr <- c(depnt_var_nm_1L_chr, candidate_predrs_chr, 
+        covar_var_nms_chr) %>% purrr::discard(is.na)
+    tfd_data_tb <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
+        round_val_1L_chr) %>% dplyr::select(!!!rlang::syms(vars_to_keep_chr)) %>% 
+        dplyr::mutate(`:=`(!!rlang::sym(depnt_var_nm_1L_chr), 
+            ifelse(!!rlang::sym(depnt_var_nm_1L_chr) > dep_var_max_val_1L_dbl, 
+                dep_var_max_val_1L_dbl, !!rlang::sym(depnt_var_nm_1L_chr))))
+    if (remove_all_msng_1L_lgl) 
+        tfd_data_tb <- tfd_data_tb %>% stats::na.omit()
+    return(tfd_data_tb)
+}
 #' Transform raw dataset for analysis
 #' @description transform_raw_ds_for_analysis() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform raw dataset for analysis. Function argument raw_ds_tb specifies the object to be updated. The function returns Transformed dataset (a tibble).
 #' @param raw_ds_tb Raw dataset (a tibble)

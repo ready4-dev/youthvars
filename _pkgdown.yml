@@ -22,10 +22,13 @@ reference:
   - aqol6d_from_8d_coefs_lup_tb
   - fn_type_lup_tb
   - fns_dmt_tb
+  - mdl_types_lup
+  - plt_types_lup
   - predictors_lup
   - prototype_lup
   - replication_popl_tb
   - repln_ds_dict_r3
+  - rprt_lup
 - title: "Classes"
 - contents:
   - youthvars_aqol6d_adol
