@@ -31,6 +31,7 @@ write_all_outp_dirs <- function (paths_ls)
 #' @description write_descv_plots() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write descriptive plots. The function returns Descriptive plots paths (a list).
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
+#' @param descv_outp_dir_1L_chr Descriptive output directory (a character vector of length one)
 #' @param lbl_nms_chr Label names (a character vector), Default: c("Household tasks", "Getting around", "Morbility", "Self care", 
 #'    "Enjoy close rels", "Family rels", "Community involvement", 
 #'    "Despair", "Worry", "Sad", "Agitated", "Energy level", "Control", 
@@ -55,7 +56,7 @@ write_all_outp_dirs <- function (paths_ls)
 #' @importFrom cowplot plot_grid save_plot
 #' @importFrom ggplot2 theme
 #' @keywords internal
-write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household tasks", 
+write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl_nms_chr = c("Household tasks", 
     "Getting around", "Morbility", "Self care", "Enjoy close rels", 
     "Family rels", "Community involvement", "Despair", "Worry", 
     "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain", 

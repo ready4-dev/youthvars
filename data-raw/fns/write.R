@@ -75,6 +75,7 @@ write_descv_tbls <- function(data_tb,
 }
 write_descv_plots <- function(data_tb,
                               ds_descvs_ls,
+                              descv_outp_dir_1L_chr,
                               lbl_nms_chr = c("Household tasks", "Getting around",
                                               "Morbility","Self care","Enjoy close rels",
                                               "Family rels", "Community involvement",
