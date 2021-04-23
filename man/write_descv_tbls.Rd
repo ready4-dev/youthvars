@@ -8,7 +8,7 @@ write_descv_tbls(
   data_tb,
   ds_descvs_ls,
   predictors_lup,
-  descv_oupt_dir_1L_chr,
+  descv_outp_dir_1L_chr,
   nbr_of_digits_1L_int = 2
 )
 }
@@ -19,7 +19,7 @@ write_descv_tbls(
 
 \item{predictors_lup}{Predictors (a lookup table)}
 
-\item{descv_oupt_dir_1L_chr}{Descriptive oupt directory (a character vector of length one)}
+\item{descv_outp_dir_1L_chr}{Descriptive output directory (a character vector of length one)}
 
 \item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 2}
 }

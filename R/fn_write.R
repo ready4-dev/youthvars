@@ -15,15 +15,15 @@ write_all_outp_dirs <- function (paths_ls)
         "/", paths_ls$write_to_dir_nm_1L_chr, "/Reports")
     mkdn_data_dir_1L_chr <- paste0(here::here(paths_ls$path_from_top_level_1L_chr), 
         "/", paths_ls$write_to_dir_nm_1L_chr, "/Markdown")
-    descv_oupt_dir_1L_chr <- paste0(output_data_dir_1L_chr, "/_Descriptives")
+    descv_outp_dir_1L_chr <- paste0(output_data_dir_1L_chr, "/_Descriptives")
     dv_dir_1L_chr <- paste0(output_data_dir_1L_chr, "/H_Dataverse")
     purrr::walk(c(paste0(here::here(paths_ls$path_from_top_level_1L_chr), 
         "/", paths_ls$write_to_dir_nm_1L_chr), mkdn_data_dir_1L_chr, 
-        output_data_dir_1L_chr, reports_dir_1L_chr, descv_oupt_dir_1L_chr, 
+        output_data_dir_1L_chr, reports_dir_1L_chr, descv_outp_dir_1L_chr, 
         dv_dir_1L_chr), ~if (!dir.exists(.x)) 
         dir.create(.x))
     paths_ls <- append(paths_ls, list(output_data_dir_1L_chr = output_data_dir_1L_chr, 
-        mkdn_data_dir_1L_chr = mkdn_data_dir_1L_chr, descv_oupt_dir_1L_chr = descv_oupt_dir_1L_chr, 
+        mkdn_data_dir_1L_chr = mkdn_data_dir_1L_chr, descv_outp_dir_1L_chr = descv_outp_dir_1L_chr, 
         dv_dir_1L_chr = dv_dir_1L_chr))
     return(paths_ls)
 }
@@ -72,20 +72,20 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household
             lbl_nms_chr = lbl_nms_chr, plot_rows_cols_pair_int = item_plots_params_ls$plot_rows_cols_pair_int, 
             heights_int = item_plots_params_ls$heights_int), 
         width_1L_dbl = item_plots_params_ls$width_1L_dbl, height_1L_dbl = sum(item_plots_params_ls$heights_int), 
-        path_to_write_to_1L_chr = descv_oupt_dir_1L_chr, plt_nm_1L_chr = "qstn_rspns"), 
+        path_to_write_to_1L_chr = descv_outp_dir_1L_chr, plt_nm_1L_chr = "qstn_rspns"), 
         wtd_sub_tots = list(plt_fn = make_sub_tot_plts, fn_args_ls = list(data_tb, 
             col_nms_chr = names(dplyr::select(data_tb, dplyr::starts_with("vD"))), 
             plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int, 
             heights_int = dim_plots_params_ls$heights_int), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
-            path_to_write_to_1L_chr = descv_oupt_dir_1L_chr, 
+            path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "wtd_sub_tots"), ll_sub_ttl = list(plt_fn = make_sub_tot_plts, 
             fn_args_ls = list(data_tb, col_nms_chr = names(dplyr::select(data_tb, 
                 dplyr::starts_with("vD"))), plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int, 
                 heights_int = dim_plots_params_ls$heights_int, 
                 make_log_log_tfmn_1L_lgl = T), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
-            path_to_write_to_1L_chr = descv_oupt_dir_1L_chr, 
+            path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "ll_sub_ttl"), utl_by_rnd = list(plt_fn = make_var_by_round_plt, 
             fn_args_ls = list(data_tb, var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
@@ -94,7 +94,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household
                     match_var_nm_1L_chr = "var_nm_chr", target_var_nm_1L_chr = "var_desc_chr", 
                     evaluate_lgl = F) %>% as.vector()), width_1L_dbl = utl_by_rnd_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = utl_by_rnd_plots_params_ls$height_1L_dbl, 
-            path_to_write_to_1L_chr = descv_oupt_dir_1L_chr, 
+            path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "utl_by_rnd"))
     descv_plts_paths_ls <- purrr::map(plots_params_ls, ~rlang::exec(ready4show::write_mdl_plt_fl, 
         !!!.x)) %>% stats::setNames(names(plots_params_ls))
@@ -103,7 +103,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household
         rlang::exec(plots_params_ls$wtd_sub_tots$plt_fn, !!!plots_params_ls$wtd_sub_tots$fn_args_ls), 
         nrow = combined_plot_params_ls$nrow_1L_int, rel_heights = combined_plot_params_ls$rel_heights_dbl, 
         scale = combined_plot_params_ls$scale_dbl)
-    descv_plts_paths_ls$combined_utl <- paste0(descv_oupt_dir_1L_chr, 
+    descv_plts_paths_ls$combined_utl <- paste0(descv_outp_dir_1L_chr, 
         "/combined_utl.png")
     cowplot::save_plot(descv_plts_paths_ls$combined_utl, combined_plt, 
         base_height = combined_plot_params_ls$base_height_dbl)
@@ -114,14 +114,14 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
 #' @param predictors_lup Predictors (a lookup table)
-#' @param descv_oupt_dir_1L_chr Descriptive oupt directory (a character vector of length one)
+#' @param descv_outp_dir_1L_chr Descriptive output directory (a character vector of length one)
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 2
 #' @return Descriptive table (a list)
 #' @rdname write_descv_tbls
 #' @export 
 
 #' @keywords internal
-write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_oupt_dir_1L_chr, 
+write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_dir_1L_chr, 
     nbr_of_digits_1L_int = 2) 
 {
     descv_tbl_ls <- list(cohort_desc_tb = make_descv_stats_tbl(data_tb = data_tb, 
@@ -151,6 +151,6 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_oupt_
         ds_descvs_ls = ds_descvs_ls, descv_tbl_ls = descv_tbl_ls, 
         dictionary_tb = ds_descvs_ls$dictionary_tb, nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
         predictors_lup = predictors_lup)
-    saveRDS(descv_tbl_ls, paste0(descv_oupt_dir_1L_chr, "/descv_tbls_ls.RDS"))
+    saveRDS(descv_tbl_ls, paste0(descv_outp_dir_1L_chr, "/descv_tbls_ls.RDS"))
     return(descv_tbl_ls)
 }
