@@ -539,6 +539,7 @@ make_pdef_cor_mat_mat <- function (lower_diag_mat)
 #' @description make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor parameters and correlations table. The function returns Predictor parameters and correlations (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
+#' @param descv_tbl_ls Descriptive table (a list)
 #' @param dictionary_tb Dictionary (a tibble)
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 2
 #' @param predictors_lup Predictors (a lookup table), Default: NULL
@@ -552,8 +553,8 @@ make_pdef_cor_mat_mat <- function (lower_diag_mat)
 #' @importFrom stringr str_replace
 #' @importFrom tibble add_case
 #' @keywords internal
-make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb, nbr_of_digits_1L_int = 2L, 
-    predictors_lup = NULL) 
+make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, descv_tbl_ls, dictionary_tb, 
+    nbr_of_digits_1L_int = 2L, predictors_lup = NULL) 
 {
     predr_pars_and_cors_tb <- make_cors_with_utl_tbl(data_tb, 
         ds_descvs_ls = ds_descvs_ls, dictionary_tb = dictionary_tb) %>% 

@@ -7,6 +7,7 @@
 make_predr_pars_and_cors_tbl(
   data_tb,
   ds_descvs_ls,
+  descv_tbl_ls,
   dictionary_tb,
   nbr_of_digits_1L_int = 2L,
   predictors_lup = NULL
@@ -16,6 +17,8 @@ make_predr_pars_and_cors_tbl(
 \item{data_tb}{Data (a tibble)}
 
 \item{ds_descvs_ls}{Dataset descriptives (a list)}
+
+\item{descv_tbl_ls}{Descriptive table (a list)}
 
 \item{dictionary_tb}{Dictionary (a tibble)}
 

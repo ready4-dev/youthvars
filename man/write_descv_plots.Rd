@@ -7,7 +7,6 @@
 write_descv_plots(
   data_tb,
   ds_descvs_ls,
-  write_plt_fn,
   lbl_nms_chr = c("Household tasks", "Getting around", "Morbility", "Self care",
     "Enjoy close rels", "Family rels", "Community involvement", "Despair", "Worry",
     "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain",
@@ -25,8 +24,6 @@ write_descv_plots(
 \item{data_tb}{Data (a tibble)}
 
 \item{ds_descvs_ls}{Dataset descriptives (a list)}
-
-\item{write_plt_fn}{Write plot (a function)}
 
 \item{lbl_nms_chr}{Label names (a character vector), Default: c("Household tasks", "Getting around", "Morbility", "Self care",
 "Enjoy close rels", "Family rels", "Community involvement",

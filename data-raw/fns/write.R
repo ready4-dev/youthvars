@@ -66,6 +66,7 @@ write_descv_tbls <- function(data_tb,
                        ds_descvs_ls = ds_descvs_ls)
   descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb,
                                                                       ds_descvs_ls = ds_descvs_ls,
+                                                                      descv_tbl_ls = descv_tbl_ls,
                                                                       dictionary_tb = ds_descvs_ls$dictionary_tb,
                                                                       nbr_of_digits_1L_int = nbr_of_digits_1L_int,
                                                                       predictors_lup = predictors_lup)
@@ -74,7 +75,6 @@ write_descv_tbls <- function(data_tb,
 }
 write_descv_plots <- function(data_tb,
                               ds_descvs_ls,
-                              write_plt_fn,
                               lbl_nms_chr = c("Household tasks", "Getting around",
                                               "Morbility","Self care","Enjoy close rels",
                                               "Family rels", "Community involvement",
@@ -141,7 +141,7 @@ write_descv_plots <- function(data_tb,
                                             plt_nm_1L_chr = "utl_by_rnd")
   )
   descv_plts_paths_ls <- purrr::map(plots_params_ls,
-                                    ~ rlang::exec(write_plt_fn,!!!.x)) %>%
+                                    ~ rlang::exec(ready4show::write_mdl_plt_fl,!!!.x)) %>%
     stats::setNames(names(plots_params_ls))
   combined_plt <- cowplot::plot_grid(rlang::exec(plots_params_ls$utl_by_rnd$plt_fn,!!!plots_params_ls$utl_by_rnd$fn_args_ls) + ggplot2::theme(legend.position = 'none'),
                                      rlang::exec(plots_params_ls$wtd_sub_tots$plt_fn,!!!plots_params_ls$wtd_sub_tots$fn_args_ls),

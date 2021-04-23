@@ -410,6 +410,7 @@ make_pdef_cor_mat_mat <- function (lower_diag_mat)
 }
 make_predr_pars_and_cors_tbl <- function(data_tb,
                                          ds_descvs_ls,
+                                         descv_tbl_ls,
                                          dictionary_tb,
                                          nbr_of_digits_1L_int = 2L,
                                          predictors_lup = NULL){

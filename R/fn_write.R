@@ -31,7 +31,6 @@ write_all_outp_dirs <- function (paths_ls)
 #' @description write_descv_plots() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write descriptive plots. The function returns Descriptive plots paths (a list).
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
-#' @param write_plt_fn Write plot (a function)
 #' @param lbl_nms_chr Label names (a character vector), Default: c("Household tasks", "Getting around", "Morbility", "Self care", 
 #'    "Enjoy close rels", "Family rels", "Community involvement", 
 #'    "Despair", "Worry", "Sad", "Agitated", "Energy level", "Control", 
@@ -51,11 +50,12 @@ write_all_outp_dirs <- function (paths_ls)
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom purrr map
 #' @importFrom rlang exec
+#' @importFrom ready4show write_mdl_plt_fl
 #' @importFrom stats setNames
 #' @importFrom cowplot plot_grid save_plot
 #' @importFrom ggplot2 theme
 #' @keywords internal
-write_descv_plots <- function (data_tb, ds_descvs_ls, write_plt_fn, lbl_nms_chr = c("Household tasks", 
+write_descv_plots <- function (data_tb, ds_descvs_ls, lbl_nms_chr = c("Household tasks", 
     "Getting around", "Morbility", "Self care", "Enjoy close rels", 
     "Family rels", "Community involvement", "Despair", "Worry", 
     "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain", 
@@ -96,7 +96,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, write_plt_fn, lbl_nms_chr 
             height_1L_dbl = utl_by_rnd_plots_params_ls$height_1L_dbl, 
             path_to_write_to_1L_chr = descv_oupt_dir_1L_chr, 
             plt_nm_1L_chr = "utl_by_rnd"))
-    descv_plts_paths_ls <- purrr::map(plots_params_ls, ~rlang::exec(write_plt_fn, 
+    descv_plts_paths_ls <- purrr::map(plots_params_ls, ~rlang::exec(ready4show::write_mdl_plt_fl, 
         !!!.x)) %>% stats::setNames(names(plots_params_ls))
     combined_plt <- cowplot::plot_grid(rlang::exec(plots_params_ls$utl_by_rnd$plt_fn, 
         !!!plots_params_ls$utl_by_rnd$fn_args_ls) + ggplot2::theme(legend.position = "none"), 
@@ -148,8 +148,9 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_oupt_
         cors_with_utl_tb = make_cors_with_utl_tbl(data_tb, ds_descvs_ls = ds_descvs_ls), 
         ds_descvs_ls = ds_descvs_ls)
     descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb, 
-        ds_descvs_ls = ds_descvs_ls, dictionary_tb = ds_descvs_ls$dictionary_tb, 
-        nbr_of_digits_1L_int = nbr_of_digits_1L_int, predictors_lup = predictors_lup)
+        ds_descvs_ls = ds_descvs_ls, descv_tbl_ls = descv_tbl_ls, 
+        dictionary_tb = ds_descvs_ls$dictionary_tb, nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
+        predictors_lup = predictors_lup)
     saveRDS(descv_tbl_ls, paste0(descv_oupt_dir_1L_chr, "/descv_tbls_ls.RDS"))
     return(descv_tbl_ls)
 }
