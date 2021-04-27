@@ -486,36 +486,6 @@ make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wghts_lup_t
     })
     return(make_item_wrst_wts_ls_ls)
 }
-#' Make paths
-#' @description make_paths_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make paths list. The function returns Paths (a list).
-#' @param params_ls Params (a list)
-#' @return Paths (a list)
-#' @rdname make_paths_ls
-#' @export 
-#' @importFrom purrr pluck
-#' @keywords internal
-make_paths_ls <- function (params_ls) 
-{
-    paths_ls <- list(path_from_top_level_1L_chr = params_ls$path_from_top_level_1L_chr, 
-        path_to_data_from_top_level_chr = params_ls$path_to_data_from_top_level_chr)
-    if (!params_ls$use_fake_data_1L_lgl) {
-        paths_ls$write_to_dir_nm_1L_chr <- "Real"
-    }
-    else {
-        if (is.null(paths_ls$path_from_top_level_1L_chr)) {
-            path_elements_chr <- dirname(getwd()) %>% strsplit("/") %>% 
-                purrr::pluck(1)
-            paths_ls$path_from_top_level_1L_chr <- path_elements_chr[length(path_elements_chr) - 
-                1]
-        }
-        paths_ls$write_to_dir_nm_1L_chr <- "Fake"
-        paths_ls$path_to_fake_data_1L_chr <- paste0(paths_ls$path_from_top_level_1L_chr, 
-            "/", paths_ls$write_to_dir_nm_1L_chr, "/fake_data.rds")
-        paths_ls$path_to_data_from_top_level_chr <- c(paths_ls$path_from_top_level_1L_chr, 
-            paths_ls$write_to_dir_nm_1L_chr, "fake_data.rds")
-    }
-    return(paths_ls)
-}
 #' Make positive definite correlation matrix
 #' @description make_pdef_cor_mat_mat() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make positive definite correlation matrix matrix. The function returns Positive definite correlation (a matrix).
 #' @param lower_diag_mat Lower diag (a matrix)

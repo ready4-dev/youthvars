@@ -381,24 +381,7 @@ make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wghts_lup_t
   })
   return(make_item_wrst_wts_ls_ls)
 }
-make_paths_ls <- function(params_ls){
-  paths_ls <- list(path_from_top_level_1L_chr = params_ls$path_from_top_level_1L_chr,
-                   path_to_data_from_top_level_chr = params_ls$path_to_data_from_top_level_chr)
-  #Analyses/AQoL-6D/AQol_6D longitudinal
-  #c('Data cleaning', 'Data','Combined_cleaned_V4.rds')
-  if(!params_ls$use_fake_data_1L_lgl){
-    paths_ls$write_to_dir_nm_1L_chr <- "Real"
-  }else{
-    if(is.null(paths_ls$path_from_top_level_1L_chr)){
-      path_elements_chr <- dirname(getwd()) %>% strsplit("/") %>% purrr::pluck(1)
-      paths_ls$path_from_top_level_1L_chr <- path_elements_chr[length(path_elements_chr)-1]
-    }
-    paths_ls$write_to_dir_nm_1L_chr <- "Fake"
-    paths_ls$path_to_fake_data_1L_chr <- paste0(paths_ls$path_from_top_level_1L_chr,"/",paths_ls$write_to_dir_nm_1L_chr,"/fake_data.rds")
-    paths_ls$path_to_data_from_top_level_chr <- c(paths_ls$path_from_top_level_1L_chr,paths_ls$write_to_dir_nm_1L_chr,"fake_data.rds")
-  }
-  return(paths_ls)
-}
+
 make_pdef_cor_mat_mat <- function (lower_diag_mat)
 { # MIGRATED FROM TTU: REORGANISE
   pdef_cor_mat <- lower_diag_mat %>% Matrix::forceSymmetric(uplo = "L") %>%
