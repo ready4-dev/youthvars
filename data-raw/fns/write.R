@@ -24,6 +24,7 @@ write_all_outp_dirs <- function(paths_ls){
   paths_ls <- append(paths_ls,
                      list(output_data_dir_1L_chr = output_data_dir_1L_chr,
                           mkdn_data_dir_1L_chr = mkdn_data_dir_1L_chr,
+                          reports_dir_1L_chr = reports_dir_1L_chr,
                           descv_outp_dir_1L_chr = descv_outp_dir_1L_chr,
                           dv_dir_1L_chr = dv_dir_1L_chr))
   return(paths_ls)
