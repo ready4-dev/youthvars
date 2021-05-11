@@ -9,15 +9,17 @@
 #' @rdname add_adol6d_scores
 #' @export 
 #' @importFrom dplyr select starts_with rename_all rename group_by mutate n ungroup arrange inner_join across filter
+#' @importFrom tidyselect all_of
 #' @importFrom stringr str_replace
 #' @importFrom tibble as_tibble
 #' @importFrom rlang sym
 #' @importFrom purrr map
+#' @importFrom Hmisc `label<-` label
 add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_var_nm_1L_chr = "fkClientID", 
     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w", total_aqol_var_nm_1L_chr = "aqol6d_total_c") 
 {
     complete_ds_tb <- unscored_aqol_tb
-    unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::select(id_var_nm_1L_chr, 
+    unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::select(tidyselect::all_of(id_var_nm_1L_chr), 
         dplyr::starts_with(unname(prefix_1L_chr)))
     old_nms_chr <- names(unscored_aqol_tb)
     names(unscored_aqol_tb) <- c("ID", paste0("Q", 1:20))
@@ -31,6 +33,17 @@ add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_
     tbs_ls <- list(complete_ds_tb, scored_aqol_tb) %>% purrr::map(~.x %>% 
         dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% dplyr::mutate(match_var_chr = paste0(!!rlang::sym(id_var_nm_1L_chr), 
         "_", 1:dplyr::n())) %>% dplyr::ungroup() %>% dplyr::arrange(!!rlang::sym(id_var_nm_1L_chr)))
+    if ("labelled" %in% class(tbs_ls[[1]][[wtd_aqol_var_nm_1L_chr]])) {
+        tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]] <- Hmisc::`label<-`(tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]], 
+            value = Hmisc::label(tbs_ls[[1]][[wtd_aqol_var_nm_1L_chr]]))
+    }
+    else {
+        if ("labelled" %in% class(tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]])) {
+            class(tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]]) <- setdiff(class(tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]]), 
+                "labelled")
+            attr(tbs_ls[[2]][[wtd_aqol_var_nm_1L_chr]], "label") <- NULL
+        }
+    }
     tfd_aqol_tb <- dplyr::inner_join(tbs_ls[[1]], tbs_ls[[2]]) %>% 
         dplyr::select(-match_var_chr) %>% dplyr::mutate(`:=`(!!rlang::sym(total_aqol_var_nm_1L_chr), 
         rowSums(dplyr::across(dplyr::starts_with(prefix_1L_chr)))))
