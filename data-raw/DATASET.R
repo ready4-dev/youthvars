@@ -368,8 +368,8 @@ if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
                               desc_1L_chr = "Prototypes lookup table")
 }
 # Note: Remember to review and publish updated dataset
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9017/youthvars_user_0.0.0.9017.pdf",
-                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9017/youthvars_developer_0.0.0.9017.pdf",
+ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_user_0.0.0.9044.pdf",
+                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_developer_0.0.0.9044.pdf",
                                    project_website_url_1L_chr = "https://www.ready4-dev.com/")
 ##
 #devtools::build_vignettes()
