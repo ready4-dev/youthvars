@@ -34,7 +34,6 @@ transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_c
 #' @importFrom dplyr filter select mutate
 #' @importFrom rlang sym syms
 #' @importFrom stats na.omit
-#' @keywords internal
 transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total_w", dep_var_max_val_1L_dbl = 0.999, 
     candidate_predrs_chr = NA_character_, covar_var_nms_chr = NA_character_, 
     round_var_nm_1L_chr = "round", round_val_1L_chr = "Baseline", 
@@ -59,7 +58,6 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
 #' @export 
 #' @importFrom dplyr mutate case_when select contains rename
 #' @importFrom purrr map_lgl
-#' @keywords internal
 transform_raw_ds_for_analysis <- function (raw_ds_tb) 
 {
     transformed_ds_tb <- raw_ds_tb %>% dplyr::mutate(d_agegroup = cut(d_age, 

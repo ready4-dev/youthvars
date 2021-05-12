@@ -350,7 +350,6 @@ make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
 #' @importFrom utils data
 #' @importFrom ready4use bind_lups make_pt_ready4_dictionary ready4_dictionary
 #' @importFrom Hmisc label
-#' @keywords internal
 make_final_rpln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = NULL, utl_unwtd_var_nm_1L_chr = "aqol6d_total_c") 
 {
     if (is.null(seed_dictionary_tb)) {

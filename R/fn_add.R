@@ -269,7 +269,6 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
 #' @importFrom rlang sym
 #' @importFrom purrr map2_dbl
 #' @importFrom lubridate interval time_length
-#' @keywords internal
 add_interval_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", msrmnt_date_var_nm_1L_chr = "d_interview_date", 
     time_unit_1L_chr = "days", bl_date_var_nm_1L_chr = "bl_date_dtm", 
     interval_var_nm_1L_chr = "interval_dbl", temp_row_nbr_var_nm_1L_chr = "temp_row_nbr_int", 
@@ -372,7 +371,6 @@ add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
 #' @export 
 #' @importFrom dplyr group_by mutate n ungroup select
 #' @importFrom rlang sym
-#' @keywords internal
 add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup_round_nmbr_1L_int = 2L) 
 {
     data_tb <- data_tb %>% dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% 

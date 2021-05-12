@@ -23,4 +23,3 @@ Data (a tibble)
 \description{
 add_participation_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add participation variable. Function argument data_tb specifies the object to be updated. The function returns Data (a tibble).
 }
-\keyword{internal}

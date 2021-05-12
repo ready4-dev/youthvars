@@ -23,4 +23,3 @@ Dictionary (a tibble)
 \description{
 make_final_rpln_ds_dict() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make final rpln dataset dictionary. The function returns Dictionary (a tibble).
 }
-\keyword{internal}

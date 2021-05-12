@@ -29,4 +29,3 @@ Descriptive table (a list)
 \description{
 write_descv_tbls() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write descriptive tables. The function returns Descriptive table (a list).
 }
-\keyword{internal}

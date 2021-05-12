@@ -6,7 +6,6 @@
 #' @export 
 #' @importFrom here here
 #' @importFrom purrr walk
-#' @keywords internal
 write_all_outp_dirs <- function (paths_ls) 
 {
     output_data_dir_1L_chr <- paste0(here::here(paths_ls$path_from_top_level_1L_chr), 
@@ -121,7 +120,6 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
 #' @rdname write_descv_tbls
 #' @export 
 
-#' @keywords internal
 write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_dir_1L_chr, 
     nbr_of_digits_1L_int = 2) 
 {
