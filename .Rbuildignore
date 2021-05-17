@@ -31,3 +31,4 @@
 ^data-raw/fns/write\.R$
 ^data-raw/fns/get\.R$
 ^data-raw/fns/replace\.R$
+^data-raw/fns/force\.R$
