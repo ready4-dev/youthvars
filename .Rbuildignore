@@ -30,3 +30,4 @@
 ^data-raw/dataverse/prototype_lup/prototype_lup\.RDS$
 ^data-raw/fns/write\.R$
 ^data-raw/fns/get\.R$
+^data-raw/fns/replace\.R$
