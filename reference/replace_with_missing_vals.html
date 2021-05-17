@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make new youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS) — make_new_youthvars_sofas • youthvars</title>
+<title>Replace with missing values — replace_with_missing_vals • youthvars</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Make new youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS) — make_new_youthvars_sofas" />
-<meta property="og:description" content="Create a new unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)" />
+<meta property="og:title" content="Replace with missing values — replace_with_missing_vals" />
+<meta property="og:description" content="replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. Function argument data_tbl_tb specifies the object to be updated. Argument synth_data_spine_ls provides the object to be updated. The function is called for its side effects and does not return a value." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -137,32 +137,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make new youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/C3_youthvars_sofas.R'><code>R/C3_youthvars_sofas.R</code></a></small>
-    <div class="hidden name"><code>make_new_youthvars_sofas.Rd</code></div>
+    <h1>Replace with missing values</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ready4-dev/youthvars/blob/master/R/fn_replace.R'><code>R/fn_replace.R</code></a></small>
+    <div class="hidden name"><code>replace_with_missing_vals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a new unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p>
+    <p>replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. Function argument data_tbl_tb specifies the object to be updated. Argument synth_data_spine_ls provides the object to be updated. The function is called for its side effects and does not return a value.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_new_youthvars_sofas</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>replace_with_missing_vals</span><span class='op'>(</span><span class='va'>data_tbl_tb</span>, <span class='va'>synth_data_spine_ls</span>, <span class='va'>idx_int</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p></td>
+      <th>data_tbl_tb</th>
+      <td><p>Data table (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>synth_data_spine_ls</th>
+      <td><p>Synthetic data spine (a list)</p></td>
+    </tr>
+    <tr>
+      <th>idx_int</th>
+      <td><p>Index (an integer vector)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)</p>
+    <p>Synthetic (a table)</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
