@@ -95,6 +95,7 @@ write_descv_plots <- function(data_tb,
                                               "Frequency of pain", "Degree of pain",
                                               "Pain interference","Vision", "Hearing",
                                               "Communication"),
+                              maui_domains_pfcs_1L_chr = "vD",
                               item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L,4L),
                                                           heights_int = c(10L, 1L),
                                                           width_1L_dbl = 9),
@@ -108,6 +109,12 @@ write_descv_plots <- function(data_tb,
                                                              scale_dbl = c(0.9,0.9),
                                                              base_height_dbl = 10)
 ){
+  if(is.null(maui_domains_pfcs_1L_chr)){
+    maui_domains_col_nms_chr <- NULL
+  }else{
+    maui_domains_col_nms_chr <- names(dplyr::select(data_tb, dplyr::starts_with(maui_domains_pfcs_1L_chr)))
+  }
+
   plots_params_ls <- list(qstn_rspns = list(plt_fn = make_itm_resp_plts,
                                             fn_args_ls = list(data_tb,
                                                               col_nms_chr = names(dplyr::select(data_tb,
@@ -122,7 +129,7 @@ write_descv_plots <- function(data_tb,
                                             plt_nm_1L_chr = "qstn_rspns"),
                           wtd_sub_tots = list(plt_fn = make_sub_tot_plts,
                                               fn_args_ls = list(data_tb,
-                                                                col_nms_chr = names(dplyr::select(data_tb,                                                                              dplyr::starts_with("vD"))),
+                                                                col_nms_chr = maui_domains_col_nms_chr,
                                                                 plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int,
                                                                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
                                                                 heights_int = dim_plots_params_ls$heights_int),
@@ -132,7 +139,7 @@ write_descv_plots <- function(data_tb,
                                               plt_nm_1L_chr = "wtd_sub_tots"),
                           ll_sub_ttl = list(plt_fn = make_sub_tot_plts,
                                             fn_args_ls = list(data_tb,
-                                                              col_nms_chr = names(dplyr::select(data_tb, dplyr::starts_with("vD"))),
+                                                              col_nms_chr = maui_domains_col_nms_chr,
                                                               plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int,
                                                               round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
                                                               heights_int = dim_plots_params_ls$heights_int,
