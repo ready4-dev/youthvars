@@ -1,11 +1,3 @@
-home:
-  links:
-  - text: User manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_user_0.0.0.9044.pdf
-  - text: Developer version of usual manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_developer_0.0.0.9044.pdf
-  - text: Project website
-    href: https://www.ready4-dev.com/
 development:
   mode: auto
 reference:

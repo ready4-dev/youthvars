@@ -231,31 +231,37 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
 #' @export 
 #' @importFrom dplyr select mutate filter pull across
 #' @importFrom tidyselect all_of
-#' @importFrom purrr discard map_chr map2_dbl pmap map flatten_chr map2_chr
+#' @importFrom purrr discard map_chr map2_dbl pmap map flatten_chr reduce map2_chr
 #' @importFrom ready4fun get_from_lup_obj
+#' @importFrom rlang sym
 make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr, 
     variable_nms_chr, dictionary_tb = NULL, test_1L_lgl = F, 
     sections_as_row_1L_lgl = F, nbr_of_digits_1L_int = NA_integer_) 
 {
-    descv_stats_tbl_tb <- make_tableby_ls(data_tb, key_var_nm_1L_chr = key_var_nm_1L_chr, 
-        variable_nms_chr = variable_nms_chr, test_1L_lgl = test_1L_lgl) %>% 
-        as.data.frame() %>% dplyr::select(c("variable", "label", 
-        tidyselect::all_of(key_var_vals_chr), ifelse(test_1L_lgl, 
-            "p.value", character(0))) %>% purrr::discard(is.na))
-    if (!is.null(dictionary_tb)) {
-        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(variable = variable %>% 
-            purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb, 
-                target_var_nm_1L_chr = "var_desc_chr", match_var_nm_1L_chr = "var_nm_chr", 
-                match_value_xx = .x, evaluate_lgl = F) %>% as.vector()))
+    if (length(key_var_vals_chr) < 2 & test_1L_lgl) {
+        descv_stats_tbl_tb <- NULL
     }
-    vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == 
-        "Median (Q1, Q3)") %>% dplyr::pull(variable)
-    descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(key_var_vals_chr, 
-        ~.x %>% purrr::map2_dbl(variable, ~ifelse(.y %in% vars_with_mdns_chr, 
-            ifelse(.x[[1]] == "", NA_real_, .x[[1]]), ifelse(.x[[1]] == 
-                "", NA_real_, .x[[1]]))), .names = "{col}_val_1_dbl"), 
-        dplyr::across(key_var_vals_chr, ~list(.x, variable, label) %>% 
-            purrr::pmap(~{
+    else {
+        descv_stats_tbl_tb <- make_tableby_ls(data_tb, key_var_nm_1L_chr = key_var_nm_1L_chr, 
+            variable_nms_chr = variable_nms_chr, test_1L_lgl = test_1L_lgl) %>% 
+            as.data.frame() %>% dplyr::select(c("variable", "label", 
+            tidyselect::all_of(key_var_vals_chr), ifelse(test_1L_lgl, 
+                "p.value", character(0))) %>% purrr::discard(is.na))
+        if (!is.null(dictionary_tb)) {
+            descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(variable = variable %>% 
+                purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb, 
+                  target_var_nm_1L_chr = "var_desc_chr", match_var_nm_1L_chr = "var_nm_chr", 
+                  match_value_xx = .x, evaluate_lgl = F) %>% 
+                  as.vector()))
+        }
+        vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == 
+            "Median (Q1, Q3)") %>% dplyr::pull(variable)
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(key_var_vals_chr, 
+            ~.x %>% purrr::map2_dbl(variable, ~ifelse(.y %in% 
+                vars_with_mdns_chr, ifelse(.x[[1]] == "", NA_real_, 
+                .x[[1]]), ifelse(.x[[1]] == "", NA_real_, .x[[1]]))), 
+            .names = "{col}_val_1_dbl"), dplyr::across(key_var_vals_chr, 
+            ~list(.x, variable, label) %>% purrr::pmap(~{
                 if (..2 %in% vars_with_mdns_chr) {
                   if (..3 == "Median (Q1, Q3)") {
                     return_dbl <- c(..1[[2]], ..1[[3]])
@@ -270,35 +276,39 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_
                     ifelse(..1[[2]] == "", NA_real_, ..1[[2]]))
                 }
             }), .names = "{col}_val_2_ls")) %>% dplyr::select(variable, 
-        label, key_var_vals_chr %>% purrr::map(~c(paste0(.x, 
-            c("_val_1_dbl", "_val_2_ls")))) %>% purrr::flatten_chr(), 
-        ifelse(test_1L_lgl, "p.value", character(0)) %>% purrr::discard(is.na))
-    if (sections_as_row_1L_lgl) {
-        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::select(-variable)
-    }
-    else {
-        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::filter(label != 
-            variable)
-    }
-    if (!is.na(nbr_of_digits_1L_int)) {
-        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(c(key_var_vals_chr %>% 
-            purrr::map(~c(paste0(.x, c("_val_1_dbl", "_val_2_ls")))) %>% 
-            purrr::flatten_chr(), ifelse(test_1L_lgl, "p.value", 
-            character(0)) %>% purrr::discard(is.na)), ~.x %>% 
-            purrr::map_chr(~{
-                ifelse(length(.x) == 1, ifelse(is.na(.x), "", 
-                  paste0("", format(round(.x, nbr_of_digits_1L_int), 
-                    nsmall = nbr_of_digits_1L_int), "")), paste0("", 
-                  .x %>% purrr::map_chr(~format(round(.x, nbr_of_digits_1L_int), 
-                    nsmall = nbr_of_digits_1L_int)) %>% paste0(collapse = ", "), 
-                  ""))
-            }))) %>% dplyr::mutate(dplyr::across(paste0(key_var_vals_chr, 
-            "_val_2_ls"), ~{
-            .x %>% purrr::map2_chr(label, ~ifelse(.x == "" | 
-                .y == "Min - Max", .x, paste0("(", .x, ifelse(.y %in% 
-                c("Mean (SD)", "Median (Q1, Q3)", "Missing"), 
-                "", "%"), ")")))
-        }))
+            label, key_var_vals_chr %>% purrr::map(~c(paste0(.x, 
+                c("_val_1_dbl", "_val_2_ls")))) %>% purrr::flatten_chr(), 
+            ifelse(test_1L_lgl, "p.value", character(0)) %>% 
+                purrr::discard(is.na))
+        if (sections_as_row_1L_lgl) {
+            descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::select(-variable)
+        }
+        else {
+            descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::filter(label != 
+                variable)
+        }
+        if (!is.na(nbr_of_digits_1L_int)) {
+            descv_stats_tbl_tb <- c(key_var_vals_chr %>% purrr::map(~c(paste0(.x, 
+                c("_val_1_dbl", "_val_2_ls")))) %>% purrr::flatten_chr(), 
+                ifelse(test_1L_lgl, "p.value", character(0)) %>% 
+                  purrr::discard(is.na)) %>% purrr::reduce(.init = descv_stats_tbl_tb, 
+                ~.x %>% dplyr::mutate(`:=`(!!rlang::sym(.y), 
+                  !!rlang::sym(.y) %>% purrr::map_chr(~{
+                    ifelse(length(.x) == 1, ifelse(is.na(.x), 
+                      "", paste0("", format(round(.x, nbr_of_digits_1L_int), 
+                        nsmall = nbr_of_digits_1L_int), "")), 
+                      paste0("", .x %>% purrr::map_chr(~format(round(.x, 
+                        nbr_of_digits_1L_int), nsmall = nbr_of_digits_1L_int)) %>% 
+                        paste0(collapse = ", "), ""))
+                  }))))
+            descv_stats_tbl_tb <- paste0(key_var_vals_chr, "_val_2_ls") %>% 
+                purrr::reduce(.init = descv_stats_tbl_tb, ~.x %>% 
+                  dplyr::mutate(`:=`(!!rlang::sym(.y), !!rlang::sym(.y) %>% 
+                    purrr::map2_chr(label, ~ifelse(.x == "" | 
+                      .y == "Min - Max", .x, paste0("(", .x, 
+                      ifelse(.y %in% c("Mean (SD)", "Median (Q1, Q3)", 
+                        "Missing"), "", "%"), ")"))))))
+        }
     }
     return(descv_stats_tbl_tb)
 }

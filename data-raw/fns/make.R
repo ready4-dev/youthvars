@@ -134,6 +134,11 @@ make_descv_stats_tbl <- function(data_tb,
                                  test_1L_lgl = F,
                                  sections_as_row_1L_lgl = F,
                                  nbr_of_digits_1L_int = NA_integer_){
+  if(length(key_var_vals_chr)<2 & test_1L_lgl){
+    descv_stats_tbl_tb <- NULL
+  }else{
+
+
   descv_stats_tbl_tb <- make_tableby_ls(data_tb,
                                         key_var_nm_1L_chr = key_var_nm_1L_chr,
                                         variable_nms_chr = variable_nms_chr,
@@ -201,46 +206,49 @@ make_descv_stats_tbl <- function(data_tb,
       dplyr::filter(label != variable)
   }
   if(!is.na(nbr_of_digits_1L_int)){
-    descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-      dplyr::mutate(dplyr::across(c(key_var_vals_chr %>%
-                                    purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls")))) %>%
-                                    purrr::flatten_chr(),
-                                    ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)),
-                                  ~ .x %>% purrr::map_chr(~ {
-                                    ifelse(length(.x) == 1,
-                                           ifelse(is.na(.x),
-                                                  "",
-                                                  paste0("",
-                                                         format(round(.x, nbr_of_digits_1L_int),
-                                                         nsmall = nbr_of_digits_1L_int),
-                                                         ""
-                                                         )
-                                                  ),
-                                           paste0("",
-                                                  .x %>%
-                                                    purrr::map_chr(~format(round(.x,
-                                                                                 nbr_of_digits_1L_int),
-                                                                           nsmall = nbr_of_digits_1L_int)) %>%
-                                                    paste0(collapse = ", "),
-                                                  ""
-                                                  )
-                                           )
-                                    })
-                                  )) %>%
-      dplyr::mutate(dplyr::across(paste0(key_var_vals_chr, "_val_2_ls"),
-                                  ~ {
-                                    .x %>% purrr::map2_chr(label,
-                                                           ~ ifelse(.x=="" | .y== "Min - Max",
-                                                                    .x,
-                                                                    paste0("(",
-                                                                           .x,
-                                                                           ifelse(.y %in% c("Mean (SD)","Median (Q1, Q3)","Missing"),
-                                                                                  "",
-                                                                                  "%"),
-                                                                           ")")))
+    descv_stats_tbl_tb <- c(key_var_vals_chr %>%
+                              purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls"
+                              )))) %>%
+                              purrr::flatten_chr(),
+                            ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)) %>%
+      purrr::reduce(.init = descv_stats_tbl_tb,
+                    ~ .x %>% dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
+                                             purrr::map_chr(~ {
+                                               ifelse(length(.x) == 1,
+                                                      ifelse(is.na(.x),
+                                                             "",
+                                                             paste0("",
+                                                                    format(round(.x, nbr_of_digits_1L_int),
+                                                                           nsmall = nbr_of_digits_1L_int),
+                                                                    ""
+                                                             )
+                                                      ),
+                                                      paste0("",
+                                                             .x %>%
+                                                               purrr::map_chr(~format(round(.x,
+                                                                                            nbr_of_digits_1L_int),
+                                                                                      nsmall = nbr_of_digits_1L_int)) %>%
+                                                               paste0(collapse = ", "),
+                                                             ""
+                                                      )
+                                               )
+                                             })))
+    descv_stats_tbl_tb <- paste0(key_var_vals_chr, "_val_2_ls") %>%
+      purrr::reduce(.init = descv_stats_tbl_tb,
+                    ~ .x %>%
+                      dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
+                                      purrr::map2_chr(label,
+                                                      ~ ifelse(.x=="" | .y== "Min - Max",
+                                                               .x,
+                                                               paste0("(",
+                                                                      .x,
+                                                                      ifelse(.y %in% c("Mean (SD)","Median (Q1, Q3)","Missing"),
+                                                                             "",
+                                                                             "%"),
+                                                                      ")")))
 
-                                    }
-                                  ))
+                      ))
+  }
   }
   return(descv_stats_tbl_tb)
 }

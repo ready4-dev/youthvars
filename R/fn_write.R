@@ -119,7 +119,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
 #' @return Descriptive table (a list)
 #' @rdname write_descv_tbls
 #' @export 
-
+#' @importFrom dplyr filter
 write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_dir_1L_chr, 
     nbr_of_digits_1L_int = 2) 
 {
@@ -133,23 +133,76 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
         variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
             ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
         test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
-        outc_by_partcn_tbl_tb = make_descv_stats_tbl(data_tb = data_tb[data_tb$round == 
-            "Baseline", ], key_var_nm_1L_chr = "participation", 
+        outc_by_partcn_tbl_tb = make_descv_stats_tbl(data_tb = data_tb %>% 
+            dplyr::filter(Timepoint == "BL"), key_var_nm_1L_chr = "participation", 
             key_var_vals_chr = data_tb$participation %>% unique(), 
             dictionary_tb = ds_descvs_ls$dictionary_tb, variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
                 ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
             test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
-        bl_cors_tb = transform_ds_for_tstng(data_tb, dep_var_max_val_1L_dbl = Inf, 
-            candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr) %>% 
-            make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = transform_ds_for_tstng(data_tb, 
+        bl_cors_tb = transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
             dep_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
-            round_val_1L_chr = "Follow-up") %>% make_corstars_tbl_xx(result_chr = "none"), 
-        cors_with_utl_tb = make_cors_with_utl_tbl(data_tb, ds_descvs_ls = ds_descvs_ls), 
-        ds_descvs_ls = ds_descvs_ls)
+            round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
+            round_val_1L_chr = ds_descvs_ls$round_vals_chr[1]) %>% 
+            make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = transform_ds_for_tstng(data_tb, 
+            depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+            dep_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
+            round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
+            round_val_1L_chr = ds_descvs_ls$round_vals_chr[2]) %>% 
+            make_corstars_tbl_xx(result_chr = "none"), cors_with_utl_tb = make_cors_with_utl_tbl(data_tb, 
+            ds_descvs_ls = ds_descvs_ls), ds_descvs_ls = ds_descvs_ls)
     descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb, 
         ds_descvs_ls = ds_descvs_ls, descv_tbl_ls = descv_tbl_ls, 
         dictionary_tb = ds_descvs_ls$dictionary_tb, nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
         predictors_lup = predictors_lup)
     saveRDS(descv_tbl_ls, paste0(descv_outp_dir_1L_chr, "/descv_tbls_ls.RDS"))
     return(descv_tbl_ls)
+}
+#' Write results to comma separated variables file
+#' @description write_results_to_csv() is a Write function that writes a file to a specified local directory. Specifically, this function implements an algorithm to write results to comma separated variables file. The function returns Datasets (a tibble).
+#' @param synth_data_spine_ls Synthetic data spine (a list)
+#' @param output_dir_1L_chr Output directory (a character vector of length one), Default: '.'
+#' @return Datasets (a tibble)
+#' @rdname write_results_to_csv
+#' @export 
+#' @importFrom tibble tibble as_tibble
+#' @importFrom purrr map_dfr map_dfc map map_dbl walk2
+#' @importFrom stats setNames
+#' @importFrom dplyr mutate select everything
+#' @keywords internal
+write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".") 
+{
+    measurements_tb <- tibble::tibble(timepoint_nms_chr = synth_data_spine_ls$timepoint_nms_chr, 
+        nbr_obs_dbl = synth_data_spine_ls$nbr_obs_dbl)
+    var_summ_res_tb <- suppressMessages(purrr::map_dfr(1:length(synth_data_spine_ls$timepoint_nms_chr), 
+        ~{
+            idx_dbl <- .x
+            suppressWarnings({
+                synth_data_spine_ls[c(4:6)] %>% purrr::map_dfc(~.x[idx_dbl])
+            }) %>% stats::setNames(c("Mean", "SD", "N_Missing")) %>% 
+                dplyr::mutate(var_names_chr = synth_data_spine_ls$var_names_chr, 
+                  timepoint_nms_chr = synth_data_spine_ls$timepoint_nms_chr[idx_dbl]) %>% 
+                dplyr::select(timepoint_nms_chr, var_names_chr, 
+                  dplyr::everything())
+        }))
+    cor_tb_ls <- synth_data_spine_ls$cor_mat_ls %>% purrr::map(~tibble::as_tibble(.x) %>% 
+        stats::setNames(synth_data_spine_ls$var_names_chr) %>% 
+        dplyr::mutate(var_names_chr = synth_data_spine_ls$var_names_chr) %>% 
+        dplyr::select(var_names_chr, dplyr::everything())) %>% 
+        stats::setNames(paste0(synth_data_spine_ls$timepoint_nms_chr, 
+            "_correlations_tb"))
+    var_class_pars_tb <- synth_data_spine_ls[7:9] %>% tibble::as_tibble() %>% 
+        dplyr::mutate(min_dbl = purrr::map_dbl(min_max_ls, ~.x[1]), 
+            max_dbl = purrr::map_dbl(min_max_ls, ~.x[2])) %>% 
+        dplyr::select(var_names_chr, dplyr::everything(), -min_max_ls)
+    output_ls <- list(measurements_tb = measurements_tb, var_summ_res_tb = var_summ_res_tb, 
+        var_class_pars_tb = var_class_pars_tb) %>% append(cor_tb_ls)
+    dss_tb <- tibble::tibble(ds_obj_nm_chr = names(output_ls), 
+        title_chr = c("Brief summary table of the number of observations for which data was collected at each study timepoint.", 
+            "Summary statistics (Mean, SD and Number Missing) for AQoL6D health utility and six mental health outcome measures for each study timepoint.", 
+            "Brief information about the data structure (whether discrete and allowable range) of AQoL6D health utility and six mental health outcome variables.", 
+            paste0("Correlation matrix for AQoL6D health utility and six mental health outcome measures at the ", 
+                synth_data_spine_ls$timepoint_nms_chr, " study timepoint.")))
+    purrr::walk2(output_ls, names(output_ls), ~write.csv(.x, 
+        file = paste0(output_dir_1L_chr, "/", .y, ".csv"), row.names = F))
+    return(dss_tb)
 }
