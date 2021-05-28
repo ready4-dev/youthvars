@@ -129,6 +129,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
 #' @rdname write_descv_tbls
 #' @export 
 #' @importFrom dplyr filter
+#' @importFrom rlang sym
 write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_dir_1L_chr, 
     nbr_of_digits_1L_int = 2) 
 {
@@ -143,7 +144,8 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
             ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
         test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
         outc_by_partcn_tbl_tb = make_descv_stats_tbl(data_tb = data_tb %>% 
-            dplyr::filter(Timepoint == "BL"), key_var_nm_1L_chr = "participation", 
+            dplyr::filter(!!rlang::sym(ds_descvs_ls$round_var_nm_1L_chr) == 
+                ds_descvs_ls$round_vals_chr[1]), key_var_nm_1L_chr = "participation", 
             key_var_vals_chr = data_tb$participation %>% unique(), 
             dictionary_tb = ds_descvs_ls$dictionary_tb, variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
                 ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
