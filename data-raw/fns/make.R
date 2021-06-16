@@ -137,8 +137,6 @@ make_descv_stats_tbl <- function(data_tb,
   if(length(key_var_vals_chr)<2 & test_1L_lgl){
     descv_stats_tbl_tb <- NULL
   }else{
-
-
   descv_stats_tbl_tb <- make_tableby_ls(data_tb,
                                         key_var_nm_1L_chr = key_var_nm_1L_chr,
                                         variable_nms_chr = variable_nms_chr,
@@ -162,14 +160,11 @@ make_descv_stats_tbl <- function(data_tb,
   vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == "Median (Q1, Q3)") %>% dplyr::pull(variable)
   descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
     dplyr::mutate(dplyr::across(key_var_vals_chr,
-                                ~ .x %>% purrr::map2_dbl(variable,
-                                                         ~ ifelse(.y %in% vars_with_mdns_chr,
-                                                                  ifelse(.x[[1]]=="",
-                                                                         NA_real_,
-                                                                         .x[[1]]),
-                                                                  ifelse(.x[[1]]=="",
-                                                                         NA_real_,
-                                                                         .x[[1]]))),
+                                ~ list(.x) %>% purrr::pmap_dbl(~{
+                                  ifelse(..1[[1]][[1]] =="",
+                                         NA_real_,
+                                         ..1[[1]][[1]])
+                                }),
                                 .names = "{col}_val_1_dbl"),
                   dplyr::across(key_var_vals_chr,
                                 ~ list(.x,variable,label) %>%

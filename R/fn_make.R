@@ -231,7 +231,7 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
 #' @export 
 #' @importFrom dplyr select mutate filter pull across
 #' @importFrom tidyselect all_of
-#' @importFrom purrr discard map_chr map2_dbl pmap map flatten_chr reduce map2_chr
+#' @importFrom purrr discard map_chr pmap_dbl pmap map flatten_chr reduce map2_chr
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom rlang sym
 make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr, 
@@ -257,10 +257,9 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_
         vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == 
             "Median (Q1, Q3)") %>% dplyr::pull(variable)
         descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(key_var_vals_chr, 
-            ~.x %>% purrr::map2_dbl(variable, ~ifelse(.y %in% 
-                vars_with_mdns_chr, ifelse(.x[[1]] == "", NA_real_, 
-                .x[[1]]), ifelse(.x[[1]] == "", NA_real_, .x[[1]]))), 
-            .names = "{col}_val_1_dbl"), dplyr::across(key_var_vals_chr, 
+            ~list(.x) %>% purrr::pmap_dbl(~{
+                ifelse(..1[[1]][[1]] == "", NA_real_, ..1[[1]][[1]])
+            }), .names = "{col}_val_1_dbl"), dplyr::across(key_var_vals_chr, 
             ~list(.x, variable, label) %>% purrr::pmap(~{
                 if (..2 %in% vars_with_mdns_chr) {
                   if (..3 == "Median (Q1, Q3)") {
