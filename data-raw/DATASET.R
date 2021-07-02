@@ -246,12 +246,16 @@ scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     id_var_nm_1L_chr = "fkClientID",
                                     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
                                     total_aqol_var_nm_1L_chr = "aqol6d_total_c")
-Hmisc::label(scored_data_tb[["aqol6d_total_c"]]) <- "AQOL-6D Total Score"
+Hmisc::label(scored_data_tb[["aqol6d_total_c"]]) <- "AQOL-6D (Unweighted total)"
+Hmisc::label(scored_data_tb[["aqol6d_total_w"]]) <- "AQOL-6D (Weighted total)"
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
                                                       var_ctg_chr = c("Identifier","Temporal","Temporal",
                                                                       rep("Demographic",14),
                                                                       "Service",
-                                                                      rep("Clinical",8),
+                                                                      rep("Clinical",2),
+                                                                      c("Psychological distress",
+                                                                        rep("Depression",2),
+                                                                        rep("Anxiety",3)),
                                                                       "Functioning",
                                                                       #rep("Demographic",3),
                                                                       rep("Multi-Attribute Utility Instrument Question",20),
