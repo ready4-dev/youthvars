@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9054</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9056</span>
       </span>
     </div>
 
@@ -159,13 +159,41 @@ Class
 <tbody>
 <tr>
 <td style="text-align:left;">
-bads_total
+gad7_total
 </td>
 <td style="text-align:right;">
-Clinical
+Anxiety
 </td>
 <td style="text-align:right;">
-Behavioural Activation for Depression Scale
+Generalised Anxiety Disorder Scale
+</td>
+<td style="text-align:right;">
+integer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+oasis_total
+</td>
+<td style="text-align:right;">
+Anxiety
+</td>
+<td style="text-align:right;">
+Overall Anxiety Severity and Impairment Scale
+</td>
+<td style="text-align:right;">
+integer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+scared_total
+</td>
+<td style="text-align:right;">
+Anxiety
+</td>
+<td style="text-align:right;">
+Screen for Child Anxiety Related Disorders
 </td>
 <td style="text-align:right;">
 integer
@@ -197,76 +225,6 @@ Primary Diagnosis
 </td>
 <td style="text-align:right;">
 character
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-gad7_total
-</td>
-<td style="text-align:right;">
-Clinical
-</td>
-<td style="text-align:right;">
-Generalised Anxiety Disorder Scale
-</td>
-<td style="text-align:right;">
-integer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-k6_total
-</td>
-<td style="text-align:right;">
-Clinical
-</td>
-<td style="text-align:right;">
-Kessler Psychological Distress Scale (6 Dimension)
-</td>
-<td style="text-align:right;">
-integer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-oasis_total
-</td>
-<td style="text-align:right;">
-Clinical
-</td>
-<td style="text-align:right;">
-Overall Anxiety Severity and Impairment Scale
-</td>
-<td style="text-align:right;">
-integer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-phq9_total
-</td>
-<td style="text-align:right;">
-Clinical
-</td>
-<td style="text-align:right;">
-Patient Health Questionnaire
-</td>
-<td style="text-align:right;">
-integer
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-scared_total
-</td>
-<td style="text-align:right;">
-Clinical
-</td>
-<td style="text-align:right;">
-Screen for Child Anxiety Related Disorders
-</td>
-<td style="text-align:right;">
-integer
 </td>
 </tr>
 <tr>
@@ -463,6 +421,34 @@ Region of Residence (Metropolitan or Regional)
 </td>
 <td style="text-align:right;">
 factor
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bads_total
+</td>
+<td style="text-align:right;">
+Depression
+</td>
+<td style="text-align:right;">
+Behavioural Activation for Depression Scale
+</td>
+<td style="text-align:right;">
+integer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+phq9_total
+</td>
+<td style="text-align:right;">
+Depression
+</td>
+<td style="text-align:right;">
+Patient Health Questionnaire
+</td>
+<td style="text-align:right;">
+integer
 </td>
 </tr>
 <tr>
@@ -775,6 +761,20 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
+k6_total
+</td>
+<td style="text-align:right;">
+Psychological distress
+</td>
+<td style="text-align:right;">
+Kessler Psychological Distress Scale (6 Dimension)
+</td>
+<td style="text-align:right;">
+integer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 s_centre
 </td>
 <td style="text-align:right;">
@@ -996,7 +996,7 @@ Participant_1
 Baseline
 </td>
 <td style="text-align:right;">
-2020-04-03
+2019-12-10
 </td>
 <td style="text-align:right;">
 14
@@ -1127,7 +1127,7 @@ Participant_2
 Baseline
 </td>
 <td style="text-align:right;">
-2020-02-25
+2020-04-23
 </td>
 <td style="text-align:right;">
 19
@@ -1258,7 +1258,7 @@ Participant_3
 Baseline
 </td>
 <td style="text-align:right;">
-2019-11-06
+2019-12-18
 </td>
 <td style="text-align:right;">
 21
@@ -1389,7 +1389,7 @@ Participant_4
 Baseline
 </td>
 <td style="text-align:right;">
-2020-04-01
+2019-11-20
 </td>
 <td style="text-align:right;">
 12
@@ -1520,7 +1520,7 @@ Participant_5
 Baseline
 </td>
 <td style="text-align:right;">
-2020-04-07
+2019-12-29
 </td>
 <td style="text-align:right;">
 19
@@ -1651,7 +1651,7 @@ Participant_6
 Baseline
 </td>
 <td style="text-align:right;">
-2020-01-07
+2020-04-29
 </td>
 <td style="text-align:right;">
 19
