@@ -616,11 +616,11 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
             if (make_log_log_tfmn_1L_lgl) {
                 labelx <- paste0("log-log transformed ", labelx)
             }
-            plots_ls[[i]] <- make_subtotal_plt(data_tb, var_nm_1L_chr = i, 
-                x_label_1L_chr = labelx)
+            plots_ls[[i]] <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
+                var_nm_1L_chr = i, x_label_1L_chr = labelx)
         }
-        plot_for_lgd_plt <- make_subtotal_plt(data_tb, var_nm_1L_chr = i, 
-            x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
+        plot_for_lgd_plt <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
+            var_nm_1L_chr = i, x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
             label_fill_1L_chr = "Data collection")
         legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
         composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
