@@ -246,50 +246,50 @@ scored_data_tb <- add_adol6d_scores(replication_popl_tb,
                                     id_var_nm_1L_chr = "fkClientID",
                                     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
                                     total_aqol_var_nm_1L_chr = "aqol6d_total_c")
-Hmisc::label(scored_data_tb[["aqol6d_total_c"]]) <- "AQOL-6D (Unweighted total)"
-Hmisc::label(scored_data_tb[["aqol6d_total_w"]]) <- "AQOL-6D (Weighted total)"
+Hmisc::label(scored_data_tb[["aqol6d_total_c"]]) <- "AQOL-6D (unweighted total)"
+Hmisc::label(scored_data_tb[["aqol6d_total_w"]]) <- "AQOL-6D (weighted total)"
 dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_data_tb),
-                                                      var_ctg_chr = c("Identifier","Temporal","Temporal",
-                                                                      rep("Demographic",14),
-                                                                      "Service",
-                                                                      rep("Clinical",2),
-                                                                      c("Psychological distress",
-                                                                        rep("Depression",2),
-                                                                        rep("Anxiety",3)),
-                                                                      "Functioning",
+                                                      var_ctg_chr = c("identifier","temporal","temporal",
+                                                                      rep("demographic",14),
+                                                                      "service provider",
+                                                                      rep("clinical symptom",2),
+                                                                      c("psychological distress",
+                                                                        rep("depression",2),
+                                                                        rep("anxiety",3)),
+                                                                      "functioning",
                                                                       #rep("Demographic",3),
-                                                                      rep("Multi-Attribute Utility Instrument Question",20),
-                                                                      rep("Utility Item Disvalue",20),
-                                                                      rep("Utility Dimension Disvalue",6),
-                                                                      rep("Utility Dimension Score (Adult)",6),
-                                                                      "Utility Overall Score (Disvalue Scale)",
-                                                                      "Utility Overall Score (Life-Death Scale)",
-                                                                      rep("Utility Overall Score (Adolescent Disutility Scale)",2), # Includes Testing Duplicate
-                                                                      "Utility Overall Score (Instrument)",
-                                                                      "Utility Overall Score (Instrument - Rotated)",
-                                                                      "Utility Overall Score (Final Weighted)",
-                                                                      "Multi-Attribute Utility Instrument Unweighted Total Score"
+                                                                      rep("multi-attribute utility instrument question",20),
+                                                                      rep("utility item disvalue",20),
+                                                                      rep("utility dimension disvalue",6),
+                                                                      rep("utility dimension score (adult)",6),
+                                                                      "utility overall score (disvalue scale)",
+                                                                      "utility overall score (life-death scale)",
+                                                                      rep("utility overall score (adolescent disutility scale)",2), # Includes Testing Duplicate
+                                                                      "utility overall score (instrument)",
+                                                                      "utility overall score (instrument - rotated)",
+                                                                      "utility overall score (final weighted)",
+                                                                      "multi-attribute utility instrument unweighted total score"
                                                       ),
-                                                      var_desc_chr = c("Unique Client Identifier",
-                                                                       "Round of Data Collection",
-                                                                       "Date of Data Collection",
-                                                                       "Age",
-                                                                       "Age Group",
-                                                                       "Gender (Grouped)",
-                                                                       "Gender",
-                                                                       "Sex at Birth",
-                                                                       "Sexual Orientation",
+                                                      var_desc_chr = c("unique client identifier",
+                                                                       "round of data collection",
+                                                                       "date of data collection",
+                                                                       "age",
+                                                                       "age Group",
+                                                                       "gender (grouped)",
+                                                                       "gender",
+                                                                       "sex at birth",
+                                                                       "sexual orientation",
                                                                        "Aboriginal or Torres Strait Islander",
                                                                        "Culturally And Linguistically Diverse",
-                                                                       "Country Of Birth",
-                                                                       "Speaks English At Home",
-                                                                       "Native English Speaker",
-                                                                       "Region of Residence (Metropolitan or Regional)",
-                                                                      "Education and Employment Status",
-                                                                      "Relationship Status",
-                                                                      "Service Centre Name",
-                                                                       "Primary Diagnosis",
-                                                                       "Clinical Stage",
+                                                                       "country Of birth",
+                                                                       "speaks English at home",
+                                                                       "native English speaker",
+                                                                       "region of residence (metropolitan or regional)",
+                                                                      "education and employment status",
+                                                                      "relationship status",
+                                                                      "service centre name",
+                                                                       "primary diagnosis",
+                                                                       "clinical stage",
                                                                        "Kessler Psychological Distress Scale (6 Dimension)",
                                                                        "Patient Health Questionnaire",
                                                                        "Behavioural Activation for Depression Scale",
@@ -297,8 +297,8 @@ dictionary_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = names(scored_
                                                                        "Overall Anxiety Severity and Impairment Scale",
                                                                        "Screen for Child Anxiety Related Disorders",
                                                                        "Social and Occupational Functioning Assessment Scale",
-                                                                       paste0("Assessment of Quality of Life (6 Dimension) Question ",1:20),
-                                                                       paste0("Assessment of Quality of Life (6 Dimension) Item Disvalue",1:20),
+                                                                       paste0("Assessment of Quality of Life (6 Dimension) question ",1:20),
+                                                                       paste0("Assessment of Quality of Life (6 Dimension) item disvalue",1:20),
                                                                        lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,67),rep(T,20)))
                                                       ),
                                                       var_type_chr = names(scored_data_tb) %>% purrr::map_chr(~{
@@ -365,12 +365,12 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
                                 update_pkgdown_1L_lgl = T)
 ##
 ## PART FOUR
-data("prototype_lup")
-if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
-  prototype_lup %>%
-    ready4use::write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
-                              desc_1L_chr = "Prototypes lookup table")
-}
+# data("prototype_lup")
+# if(!identical(prototype_lup,ready4fun::get_rds_from_dv("prototype_lup"))){
+#   prototype_lup %>%
+#     ready4use::write_paired_ds_fls_to_dv(fl_nm_1L_chr = "prototype_lup",
+#                               desc_1L_chr = "Prototypes lookup table")
+# }
 # Note: Remember to review and publish updated dataset
 ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_user_0.0.0.9044.pdf",
                                    developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_developer_0.0.0.9044.pdf",

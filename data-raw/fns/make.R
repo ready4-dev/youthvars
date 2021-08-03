@@ -128,12 +128,15 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
 }
 make_descv_stats_tbl <- function(data_tb,
                                  key_var_nm_1L_chr = "round",
-                                 key_var_vals_chr,
+                                 key_var_vals_chr = NULL,
                                  variable_nms_chr,
                                  dictionary_tb = NULL,
                                  test_1L_lgl = F,
                                  sections_as_row_1L_lgl = F,
                                  nbr_of_digits_1L_int = NA_integer_){
+  if(is.null(key_var_vals_chr)){
+    key_var_vals_chr <- data_tb %>% dplyr::pull(key_var_nm_1L_chr) %>% unique() %>% as.character()
+  }
   if(length(key_var_vals_chr)<2 & test_1L_lgl){
     descv_stats_tbl_tb <- NULL
   }else{

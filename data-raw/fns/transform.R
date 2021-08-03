@@ -24,6 +24,21 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
     tfd_data_tb <- tfd_data_tb %>% stats::na.omit()
   return(tfd_data_tb)
 }
+transform_ds_with_rename_lup <- function(ds_tb,
+                                         rename_lup,
+                                         target_var_nms_chr = NULL){
+  if(is.null(target_var_nms_chr))
+    target_var_nms_chr <- intersect(names(ds_tb),rename_lup$old_nms_chr)
+  tfmd_ds_tb <- dplyr::rename_with(ds_tb,
+                                   .cols = target_var_nms_chr,
+                                   ~ ready4fun::get_from_lup_obj(rename_lup,
+                                                                 match_value_xx = .x,
+                                                                 match_var_nm_1L_chr = "old_nms_chr",
+                                                                 target_var_nm_1L_chr = "new_nms_chr",
+                                                                 evaluate_lgl = F))
+  return(tfmd_ds_tb)
+
+}
 transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw_aqol_tb_to_aqol6d_tb
 {
   transformed_ds_tb <- raw_ds_tb %>% dplyr::mutate(d_agegroup = cut(d_age,
@@ -66,4 +81,14 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb) # Previously transform_raw
   # transformed_ds_tb <- transformed_ds_tb %>%
   #   dplyr::select(c(c("fkClientID","round"),names(transformed_ds_tb)[!startsWith(names(transformed_ds_tb),"aqol6d_q") & !(names(transformed_ds_tb) %in% c("fkClientID","round"))],names(transformed_ds_tb)[startsWith(names(transformed_ds_tb),"aqol6d_q")]))
   return(transformed_ds_tb)
+}
+transform_tb_for_merged_col_1 <- function(df,
+                                          output_type_1L_chr = "PDF"){
+  df[[1]] <- as.character(df[[1]])
+  rle.lengths <- rle(df[[1]])$lengths
+  first <- !duplicated(df[[1]])
+  df[[1]][!first] <- ""
+  if(output_type_1L_chr == "PDF")
+    df[[1]][first] <- paste0("\\midrule\\multirow{", rle.lengths, "}{*}{\\textbf{", df[[1]][first], "}}")
+  return(df)
 }

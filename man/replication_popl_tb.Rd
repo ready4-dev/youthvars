@@ -17,22 +17,22 @@ A purely synthetic dataset, representative of the original study data, that can 
 A tibble
 
 \describe{
-\item{fkClientID}{Unique Client Identifier}
-\item{round}{Round of Data Collection}
-\item{d_interview_date}{Date of Data Collection}
-\item{d_age}{Age}
-\item{d_gender}{Gender}
-\item{d_sex_birth_s}{Sex at Birth}
-\item{d_sexual_ori_s}{Sexual Orientation}
+\item{fkClientID}{unique client identifier}
+\item{round}{round of data collection}
+\item{d_interview_date}{date of data collection}
+\item{d_age}{age}
+\item{d_gender}{gender}
+\item{d_sex_birth_s}{sex at birth}
+\item{d_sexual_ori_s}{sexual orientation}
 \item{d_ATSI}{Aboriginal or Torres Strait Islander}
-\item{d_country_bir_s}{Country Of Birth}
-\item{d_english_home}{Speaks English At Home}
-\item{d_english_native}{Native English Speaker}
-\item{d_studying_working}{Education and Employment Status}
-\item{d_relation_s}{Relationship Status}
-\item{s_centre}{Service Centre Name}
-\item{c_p_diag_s}{Primary Diagnosis}
-\item{c_clinical_staging_s}{Clinical Stage}
+\item{d_country_bir_s}{country Of birth}
+\item{d_english_home}{speaks English at home}
+\item{d_english_native}{native English speaker}
+\item{d_studying_working}{education and employment status}
+\item{d_relation_s}{relationship status}
+\item{s_centre}{service centre name}
+\item{c_p_diag_s}{primary diagnosis}
+\item{c_clinical_staging_s}{clinical stage}
 \item{k6_total}{Kessler Psychological Distress Scale (6 Dimension)}
 \item{phq9_total}{Patient Health Questionnaire}
 \item{bads_total}{Behavioural Activation for Depression Scale}
@@ -40,26 +40,26 @@ A tibble
 \item{oasis_total}{Overall Anxiety Severity and Impairment Scale}
 \item{scared_total}{Screen for Child Anxiety Related Disorders}
 \item{c_sofas}{Social and Occupational Functioning Assessment Scale}
-\item{aqol6d_q1}{Assessment of Quality of Life (6 Dimension) Question 1}
-\item{aqol6d_q2}{Assessment of Quality of Life (6 Dimension) Question 2}
-\item{aqol6d_q3}{Assessment of Quality of Life (6 Dimension) Question 3}
-\item{aqol6d_q4}{Assessment of Quality of Life (6 Dimension) Question 4}
-\item{aqol6d_q5}{Assessment of Quality of Life (6 Dimension) Question 5}
-\item{aqol6d_q6}{Assessment of Quality of Life (6 Dimension) Question 6}
-\item{aqol6d_q7}{Assessment of Quality of Life (6 Dimension) Question 7}
-\item{aqol6d_q8}{Assessment of Quality of Life (6 Dimension) Question 8}
-\item{aqol6d_q9}{Assessment of Quality of Life (6 Dimension) Question 9}
-\item{aqol6d_q10}{Assessment of Quality of Life (6 Dimension) Question 10}
-\item{aqol6d_q11}{Assessment of Quality of Life (6 Dimension) Question 11}
-\item{aqol6d_q12}{Assessment of Quality of Life (6 Dimension) Question 12}
-\item{aqol6d_q13}{Assessment of Quality of Life (6 Dimension) Question 13}
-\item{aqol6d_q14}{Assessment of Quality of Life (6 Dimension) Question 14}
-\item{aqol6d_q15}{Assessment of Quality of Life (6 Dimension) Question 15}
-\item{aqol6d_q16}{Assessment of Quality of Life (6 Dimension) Question 16}
-\item{aqol6d_q17}{Assessment of Quality of Life (6 Dimension) Question 17}
-\item{aqol6d_q18}{Assessment of Quality of Life (6 Dimension) Question 18}
-\item{aqol6d_q19}{Assessment of Quality of Life (6 Dimension) Question 19}
-\item{aqol6d_q20}{Assessment of Quality of Life (6 Dimension) Question 20}
+\item{aqol6d_q1}{Assessment of Quality of Life (6 Dimension) question 1}
+\item{aqol6d_q2}{Assessment of Quality of Life (6 Dimension) question 2}
+\item{aqol6d_q3}{Assessment of Quality of Life (6 Dimension) question 3}
+\item{aqol6d_q4}{Assessment of Quality of Life (6 Dimension) question 4}
+\item{aqol6d_q5}{Assessment of Quality of Life (6 Dimension) question 5}
+\item{aqol6d_q6}{Assessment of Quality of Life (6 Dimension) question 6}
+\item{aqol6d_q7}{Assessment of Quality of Life (6 Dimension) question 7}
+\item{aqol6d_q8}{Assessment of Quality of Life (6 Dimension) question 8}
+\item{aqol6d_q9}{Assessment of Quality of Life (6 Dimension) question 9}
+\item{aqol6d_q10}{Assessment of Quality of Life (6 Dimension) question 10}
+\item{aqol6d_q11}{Assessment of Quality of Life (6 Dimension) question 11}
+\item{aqol6d_q12}{Assessment of Quality of Life (6 Dimension) question 12}
+\item{aqol6d_q13}{Assessment of Quality of Life (6 Dimension) question 13}
+\item{aqol6d_q14}{Assessment of Quality of Life (6 Dimension) question 14}
+\item{aqol6d_q15}{Assessment of Quality of Life (6 Dimension) question 15}
+\item{aqol6d_q16}{Assessment of Quality of Life (6 Dimension) question 16}
+\item{aqol6d_q17}{Assessment of Quality of Life (6 Dimension) question 17}
+\item{aqol6d_q18}{Assessment of Quality of Life (6 Dimension) question 18}
+\item{aqol6d_q19}{Assessment of Quality of Life (6 Dimension) question 19}
+\item{aqol6d_q20}{Assessment of Quality of Life (6 Dimension) question 20}
 }
 }
 \keyword{datasets}
