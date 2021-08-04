@@ -4,7 +4,8 @@ pkgdown_sha: ~
 articles:
   Data_Integrity: Data_Integrity.html
   Replication_DS: Replication_DS.html
+  Summaries: Summaries.html
   Utility_Scoring: Utility_Scoring.html
   youthvars: youthvars.html
-last_built: 2021-07-29T23:55Z
+last_built: 2021-08-04T07:47Z
 

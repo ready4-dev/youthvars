@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9059</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9061</span>
       </span>
     </div>
 
@@ -110,6 +110,9 @@
     </li>
     <li>
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
+    </li>
+    <li>
+      <a href="../articles/Summaries.html">Summary tables and plots</a>
     </li>
     <li>
       <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
@@ -148,9 +151,11 @@
 
     <pre class="usage"><span class='fu'>make_corstars_tbl_xx</span><span class='op'>(</span>
   <span class='va'>x</span>,
+  caption_1L_chr <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mkdn_tbl_ref_1L_chr <span class='op'>=</span> <span class='cn'>NULL</span>,
   method_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pearson"</span>, <span class='st'>"spearman"</span><span class='op'>)</span>,
   removeTriangle_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"upper"</span>, <span class='st'>"lower"</span><span class='op'>)</span>,
-  result_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"none"</span>, <span class='st'>"html"</span>, <span class='st'>"latex"</span><span class='op'>)</span>
+  result_chr <span class='op'>=</span> <span class='st'>"none"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -159,6 +164,14 @@
     <tr>
       <th>x</th>
       <td><p>An object</p></td>
+    </tr>
+    <tr>
+      <th>caption_1L_chr</th>
+      <td><p>Caption (a character vector of length one), Default: NULL</p></td>
+    </tr>
+    <tr>
+      <th>mkdn_tbl_ref_1L_chr</th>
+      <td><p>Markdown table reference (a character vector of length one), Default: NULL</p></td>
     </tr>
     <tr>
       <th>method_chr</th>
@@ -170,7 +183,7 @@
     </tr>
     <tr>
       <th>result_chr</th>
-      <td><p>Result (a character vector), Default: c("none", "html", "latex")</p></td>
+      <td><p>Result (a character vector), Default: 'none'</p></td>
     </tr>
     </table>
 

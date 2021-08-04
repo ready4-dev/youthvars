@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9059</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9061</span>
       </span>
     </div>
 
@@ -68,6 +68,9 @@
     </li>
     <li>
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
+    </li>
+    <li>
+      <a href="../articles/Summaries.html">Summary tables and plots</a>
     </li>
     <li>
       <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
@@ -162,7 +165,7 @@ Class
 gad7_total
 </td>
 <td style="text-align:right;">
-Anxiety
+anxiety
 </td>
 <td style="text-align:right;">
 Generalised Anxiety Disorder Scale
@@ -176,7 +179,7 @@ integer
 oasis_total
 </td>
 <td style="text-align:right;">
-Anxiety
+anxiety
 </td>
 <td style="text-align:right;">
 Overall Anxiety Severity and Impairment Scale
@@ -190,7 +193,7 @@ integer
 scared_total
 </td>
 <td style="text-align:right;">
-Anxiety
+anxiety
 </td>
 <td style="text-align:right;">
 Screen for Child Anxiety Related Disorders
@@ -204,10 +207,10 @@ integer
 c_clinical_staging_s
 </td>
 <td style="text-align:right;">
-Clinical
+clinical symptom
 </td>
 <td style="text-align:right;">
-Clinical Stage
+clinical stage
 </td>
 <td style="text-align:right;">
 character
@@ -218,10 +221,10 @@ character
 c_p_diag_s
 </td>
 <td style="text-align:right;">
-Clinical
+clinical symptom
 </td>
 <td style="text-align:right;">
-Primary Diagnosis
+primary diagnosis
 </td>
 <td style="text-align:right;">
 character
@@ -232,7 +235,7 @@ character
 CALD
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
 Culturally And Linguistically Diverse
@@ -246,10 +249,10 @@ factor
 d_age
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Age
+age
 </td>
 <td style="text-align:right;">
 integer
@@ -260,10 +263,10 @@ integer
 d_agegroup
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Age Group
+age Group
 </td>
 <td style="text-align:right;">
 factor
@@ -274,7 +277,7 @@ factor
 d_ATSI
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
 Aboriginal or Torres Strait Islander
@@ -288,10 +291,10 @@ character
 d_country_bir_s
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Country Of Birth
+country Of birth
 </td>
 <td style="text-align:right;">
 character
@@ -302,10 +305,10 @@ character
 d_english_home
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Speaks English At Home
+speaks English at home
 </td>
 <td style="text-align:right;">
 character
@@ -316,10 +319,10 @@ character
 d_english_native
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Native English Speaker
+native English speaker
 </td>
 <td style="text-align:right;">
 character
@@ -330,10 +333,10 @@ character
 d_gender
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Gender
+gender
 </td>
 <td style="text-align:right;">
 character
@@ -344,10 +347,10 @@ character
 d_relation_s
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Relationship Status
+relationship status
 </td>
 <td style="text-align:right;">
 character
@@ -358,10 +361,10 @@ character
 d_sex_birth_s
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Sex at Birth
+sex at birth
 </td>
 <td style="text-align:right;">
 character
@@ -372,10 +375,10 @@ character
 d_sexual_ori_s
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Sexual Orientation
+sexual orientation
 </td>
 <td style="text-align:right;">
 factor
@@ -386,10 +389,10 @@ factor
 d_studying_working
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Education and Employment Status
+education and employment status
 </td>
 <td style="text-align:right;">
 character
@@ -400,10 +403,10 @@ character
 Gender
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Gender (Grouped)
+gender (grouped)
 </td>
 <td style="text-align:right;">
 factor
@@ -414,10 +417,10 @@ factor
 Region
 </td>
 <td style="text-align:right;">
-Demographic
+demographic
 </td>
 <td style="text-align:right;">
-Region of Residence (Metropolitan or Regional)
+region of residence (metropolitan or regional)
 </td>
 <td style="text-align:right;">
 factor
@@ -428,7 +431,7 @@ factor
 bads_total
 </td>
 <td style="text-align:right;">
-Depression
+depression
 </td>
 <td style="text-align:right;">
 Behavioural Activation for Depression Scale
@@ -442,7 +445,7 @@ integer
 phq9_total
 </td>
 <td style="text-align:right;">
-Depression
+depression
 </td>
 <td style="text-align:right;">
 Patient Health Questionnaire
@@ -456,7 +459,7 @@ integer
 c_sofas
 </td>
 <td style="text-align:right;">
-Functioning
+functioning
 </td>
 <td style="text-align:right;">
 Social and Occupational Functioning Assessment Scale
@@ -470,10 +473,10 @@ integer
 fkClientID
 </td>
 <td style="text-align:right;">
-Identifier
+identifier
 </td>
 <td style="text-align:right;">
-Unique Client Identifier
+unique client identifier
 </td>
 <td style="text-align:right;">
 character
@@ -484,10 +487,10 @@ character
 aqol6d_q1
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 1
+Assessment of Quality of Life (6 Dimension) question 1
 </td>
 <td style="text-align:right;">
 integer
@@ -498,10 +501,10 @@ integer
 aqol6d_q10
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 10
+Assessment of Quality of Life (6 Dimension) question 10
 </td>
 <td style="text-align:right;">
 integer
@@ -512,10 +515,10 @@ integer
 aqol6d_q11
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 11
+Assessment of Quality of Life (6 Dimension) question 11
 </td>
 <td style="text-align:right;">
 integer
@@ -526,10 +529,10 @@ integer
 aqol6d_q12
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 12
+Assessment of Quality of Life (6 Dimension) question 12
 </td>
 <td style="text-align:right;">
 integer
@@ -540,10 +543,10 @@ integer
 aqol6d_q13
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 13
+Assessment of Quality of Life (6 Dimension) question 13
 </td>
 <td style="text-align:right;">
 integer
@@ -554,10 +557,10 @@ integer
 aqol6d_q14
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 14
+Assessment of Quality of Life (6 Dimension) question 14
 </td>
 <td style="text-align:right;">
 integer
@@ -568,10 +571,10 @@ integer
 aqol6d_q15
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 15
+Assessment of Quality of Life (6 Dimension) question 15
 </td>
 <td style="text-align:right;">
 integer
@@ -582,10 +585,10 @@ integer
 aqol6d_q16
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 16
+Assessment of Quality of Life (6 Dimension) question 16
 </td>
 <td style="text-align:right;">
 integer
@@ -596,10 +599,10 @@ integer
 aqol6d_q17
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 17
+Assessment of Quality of Life (6 Dimension) question 17
 </td>
 <td style="text-align:right;">
 integer
@@ -610,10 +613,10 @@ integer
 aqol6d_q18
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 18
+Assessment of Quality of Life (6 Dimension) question 18
 </td>
 <td style="text-align:right;">
 integer
@@ -624,10 +627,10 @@ integer
 aqol6d_q19
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 19
+Assessment of Quality of Life (6 Dimension) question 19
 </td>
 <td style="text-align:right;">
 integer
@@ -638,10 +641,10 @@ integer
 aqol6d_q2
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 2
+Assessment of Quality of Life (6 Dimension) question 2
 </td>
 <td style="text-align:right;">
 integer
@@ -652,10 +655,10 @@ integer
 aqol6d_q20
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 20
+Assessment of Quality of Life (6 Dimension) question 20
 </td>
 <td style="text-align:right;">
 integer
@@ -666,10 +669,10 @@ integer
 aqol6d_q3
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 3
+Assessment of Quality of Life (6 Dimension) question 3
 </td>
 <td style="text-align:right;">
 integer
@@ -680,10 +683,10 @@ integer
 aqol6d_q4
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 4
+Assessment of Quality of Life (6 Dimension) question 4
 </td>
 <td style="text-align:right;">
 integer
@@ -694,10 +697,10 @@ integer
 aqol6d_q5
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 5
+Assessment of Quality of Life (6 Dimension) question 5
 </td>
 <td style="text-align:right;">
 integer
@@ -708,10 +711,10 @@ integer
 aqol6d_q6
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 6
+Assessment of Quality of Life (6 Dimension) question 6
 </td>
 <td style="text-align:right;">
 integer
@@ -722,10 +725,10 @@ integer
 aqol6d_q7
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 7
+Assessment of Quality of Life (6 Dimension) question 7
 </td>
 <td style="text-align:right;">
 integer
@@ -736,10 +739,10 @@ integer
 aqol6d_q8
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 8
+Assessment of Quality of Life (6 Dimension) question 8
 </td>
 <td style="text-align:right;">
 integer
@@ -750,10 +753,10 @@ integer
 aqol6d_q9
 </td>
 <td style="text-align:right;">
-Multi-Attribute Utility Instrument Question
+multi-attribute utility instrument question
 </td>
 <td style="text-align:right;">
-Assessment of Quality of Life (6 Dimension) Question 9
+Assessment of Quality of Life (6 Dimension) question 9
 </td>
 <td style="text-align:right;">
 integer
@@ -764,7 +767,7 @@ integer
 k6_total
 </td>
 <td style="text-align:right;">
-Psychological distress
+psychological distress
 </td>
 <td style="text-align:right;">
 Kessler Psychological Distress Scale (6 Dimension)
@@ -778,10 +781,10 @@ integer
 s_centre
 </td>
 <td style="text-align:right;">
-Service
+service provider
 </td>
 <td style="text-align:right;">
-Service Centre Name
+service centre name
 </td>
 <td style="text-align:right;">
 character
@@ -792,10 +795,10 @@ character
 d_interview_date
 </td>
 <td style="text-align:right;">
-Temporal
+temporal
 </td>
 <td style="text-align:right;">
-Date of Data Collection
+date of data collection
 </td>
 <td style="text-align:right;">
 Date
@@ -806,10 +809,10 @@ Date
 round
 </td>
 <td style="text-align:right;">
-Temporal
+temporal
 </td>
 <td style="text-align:right;">
-Round of Data Collection
+round of data collection
 </td>
 <td style="text-align:right;">
 factor
@@ -996,7 +999,7 @@ Participant_1
 Baseline
 </td>
 <td style="text-align:right;">
-2020-05-14
+2020-02-19
 </td>
 <td style="text-align:right;">
 14
@@ -1127,7 +1130,7 @@ Participant_2
 Baseline
 </td>
 <td style="text-align:right;">
-2020-01-19
+2020-01-15
 </td>
 <td style="text-align:right;">
 19
@@ -1258,7 +1261,7 @@ Participant_3
 Baseline
 </td>
 <td style="text-align:right;">
-2020-02-28
+2020-05-31
 </td>
 <td style="text-align:right;">
 21
@@ -1389,7 +1392,7 @@ Participant_4
 Baseline
 </td>
 <td style="text-align:right;">
-2020-05-17
+2020-01-08
 </td>
 <td style="text-align:right;">
 12
@@ -1520,7 +1523,7 @@ Participant_5
 Baseline
 </td>
 <td style="text-align:right;">
-2020-01-07
+2020-04-11
 </td>
 <td style="text-align:right;">
 19
@@ -1651,7 +1654,7 @@ Participant_6
 Baseline
 </td>
 <td style="text-align:right;">
-2020-01-25
+2019-12-20
 </td>
 <td style="text-align:right;">
 19
