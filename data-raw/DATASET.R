@@ -376,8 +376,8 @@ ready4fun::write_and_doc_fn_fls(fns_dmt_tb,
 #                               desc_1L_chr = "Prototypes lookup table")
 # }
 # Note: Remember to review and publish updated dataset
-ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_user_0.0.0.9044.pdf",
-                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/releases/download/v0.0.0.9044/youthvars_developer_0.0.0.9044.pdf",
+ready4fun::write_links_for_website(user_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6929501/youthvars_user_0.0.0.9061.pdf",
+                                   developer_manual_url_1L_chr = "https://github.com/ready4-dev/youthvars/files/6929493/youthvars_developer_0.0.0.9061.pdf",
                                    project_website_url_1L_chr = "https://www.ready4-dev.com/")
 ##
 #devtools::build_vignettes()
