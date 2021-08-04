@@ -93,8 +93,13 @@ make_cors_with_utl_tbl <- function(data_tb,
   }
   return(cors_with_utl_tb)
 }
-make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), removeTriangle_chr = c("upper",
-                                                                                                   "lower"), result_chr = c("none", "html", "latex"))
+make_corstars_tbl_xx <- function (x,
+                                  caption_1L_chr = NULL,
+                                  mkdn_tbl_ref_1L_chr = NULL,
+                                  method_chr = c("pearson", "spearman"),
+                                  removeTriangle_chr = c("upper",
+                                                         "lower"),
+                                  result_chr = "none")
 {
   x <- as.matrix(x)
   correlation_matrix <- Hmisc::rcorr(x, type = method_chr[1])
@@ -111,19 +116,49 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
     Rnew <- as.matrix(Rnew)
     Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
     Rnew <- as.data.frame(Rnew)
-  }
-  else if (removeTriangle_chr[1] == "lower") {
-    Rnew <- as.matrix(Rnew)
-    Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
-    Rnew <- as.data.frame(Rnew)
+  }else{
+    if (removeTriangle_chr[1] == "lower") {
+      Rnew <- as.matrix(Rnew)
+      Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+      Rnew <- as.data.frame(Rnew)
+    }
   }
   Rnew <- cbind(Rnew[1:length(Rnew) - 1])
+  stars_chr <- mystars %>%
+    as.vector() %>%
+    unique() %>%
+    purrr::discard(is.na) %>%
+    stringr::str_trim()
+  stars_chr <- stars_chr[order(stars_chr, purrr::map_int(stars_chr, ~ nchar(.x)))]
+  footnotes_chr <- stars_chr %>% purrr::map_chr(~{
+    paste0(.x, " p<", switch(nchar(.x), "0.05","0.01","0.001","0.0001"))
+  })
+  footnotes_chr <- paste0("Note: ",footnotes_chr %>% paste0(collapse = ", ") %>% stringi::stri_replace_last(fixed = ",", " and"))
   if (result_chr[1] == "none")
     return(Rnew)
   else {
-    if (result_chr[1] == "html")
-      print(xtable(Rnew), type = "html")
-    else print(xtable(Rnew), type = "latex")
+    if(is.null(caption_1L_chr))
+      caption_1L_chr <- knitr::opts_current$get("tab.cap")
+    if(is.null(mkdn_tbl_ref_1L_chr))
+      mkdn_tbl_ref_1L_chr <- paste0("tab:",
+                                    knitr::opts_current$get("tab.id"))
+
+    add_to_row_ls <- list()
+    add_to_row_ls$pos <- list(nrow(Rnew))
+    add_to_row_ls$command <- c(paste0("\\hline\n","{\\footnotesize ",
+                                      footnotes_chr,
+                                      "}\n"))
+    Rnew %>%
+      ready4show::print_table(output_type_1L_chr = result_chr[1],
+                              add_to_row_ls = add_to_row_ls,
+                              caption_1L_chr = caption_1L_chr,
+                              footnotes_chr = footnotes_chr,
+                              incl_col_nms_1L_lgl = T,
+                              incl_row_nms_1L_lgl = T,
+                              mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr,
+                              use_rdocx_1L_lgl = ifelse(result_chr[1] == "Word",
+                                                        T,
+                                                        F))
   }
 }
 make_descv_stats_tbl <- function(data_tb,
@@ -140,113 +175,113 @@ make_descv_stats_tbl <- function(data_tb,
   if(length(key_var_vals_chr)<2 & test_1L_lgl){
     descv_stats_tbl_tb <- NULL
   }else{
-  descv_stats_tbl_tb <- make_tableby_ls(data_tb,
-                                        key_var_nm_1L_chr = key_var_nm_1L_chr,
-                                        variable_nms_chr = variable_nms_chr,
-                                        test_1L_lgl = test_1L_lgl) %>%
-    as.data.frame() %>%
-    dplyr::select(c("variable","label",
-                    tidyselect::all_of(key_var_vals_chr),
-                    ifelse(test_1L_lgl,
-                           "p.value",
-                           character(0)))
-                  %>% purrr::discard(is.na))
-  if(!is.null(dictionary_tb)){
-    descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-      dplyr::mutate(variable = variable %>% purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb,
-                                                                           target_var_nm_1L_chr = "var_desc_chr",
-                                                                           match_var_nm_1L_chr = "var_nm_chr",
-                                                                           match_value_xx = .x,
-                                                                           evaluate_lgl = F) %>% as.vector()))
+    descv_stats_tbl_tb <- make_tableby_ls(data_tb,
+                                          key_var_nm_1L_chr = key_var_nm_1L_chr,
+                                          variable_nms_chr = variable_nms_chr,
+                                          test_1L_lgl = test_1L_lgl) %>%
+      as.data.frame() %>%
+      dplyr::select(c("variable","label",
+                      tidyselect::all_of(key_var_vals_chr),
+                      ifelse(test_1L_lgl,
+                             "p.value",
+                             character(0)))
+                    %>% purrr::discard(is.na))
+    if(!is.null(dictionary_tb)){
+      descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
+        dplyr::mutate(variable = variable %>% purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb,
+                                                                                          target_var_nm_1L_chr = "var_desc_chr",
+                                                                                          match_var_nm_1L_chr = "var_nm_chr",
+                                                                                          match_value_xx = .x,
+                                                                                          evaluate_lgl = F) %>% as.vector()))
 
-  }
-  vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == "Median (Q1, Q3)") %>% dplyr::pull(variable)
-  descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-    dplyr::mutate(dplyr::across(key_var_vals_chr,
-                                ~ list(.x) %>% purrr::pmap_dbl(~{
-                                  ifelse(..1[[1]][[1]] =="",
-                                         NA_real_,
-                                         ..1[[1]][[1]])
-                                }),
-                                .names = "{col}_val_1_dbl"),
-                  dplyr::across(key_var_vals_chr,
-                                ~ list(.x,variable,label) %>%
-                                  purrr::pmap(~ {
-                                    if(..2 %in% vars_with_mdns_chr){
-                                      if(..3 == "Median (Q1, Q3)"){
-                                        return_dbl <- c(..1[[2]],..1[[3]])
+    }
+    vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == "Median (Q1, Q3)") %>% dplyr::pull(variable)
+    descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
+      dplyr::mutate(dplyr::across(tidyselect::all_of(key_var_vals_chr),
+                                  ~ list(.x) %>% purrr::pmap_dbl(~{
+                                    ifelse(..1[[1]][[1]] =="",
+                                           NA_real_,
+                                           ..1[[1]][[1]])
+                                  }),
+                                  .names = "{col}_val_1_dbl"),
+                    dplyr::across(tidyselect::all_of(key_var_vals_chr),
+                                  ~ list(.x,variable,label) %>%
+                                    purrr::pmap(~ {
+                                      if(..2 %in% vars_with_mdns_chr){
+                                        if(..3 == "Median (Q1, Q3)"){
+                                          return_dbl <- c(..1[[2]],..1[[3]])
+                                        }else{
+                                          return_dbl <- ifelse(length(..1) == 1,
+                                                               NA_real_,
+                                                               ..1[[2]])
+                                        }
                                       }else{
                                         return_dbl <- ifelse(length(..1) == 1,
                                                              NA_real_,
-                                                             ..1[[2]])
+                                                             ifelse(..1[[2]]=="",
+                                                                    NA_real_,
+                                                                    ..1[[2]]))
                                       }
-                                    }else{
-                                      return_dbl <- ifelse(length(..1) == 1,
-                                                           NA_real_,
-                                                           ifelse(..1[[2]]=="",
-                                                                  NA_real_,
-                                                                  ..1[[2]]))
                                     }
-                                  }
-                                  ),
-                                .names = "{col}_val_2_ls")) %>%
-    dplyr::select(variable,
-                  label,
-                  key_var_vals_chr %>% purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls")))) %>%
-                    purrr::flatten_chr(),
-                  ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)
-    )
-  if(sections_as_row_1L_lgl){
-    descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-      dplyr::select(-variable)
-  }else{
-    descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-      dplyr::filter(label != variable)
-  }
-  if(!is.na(nbr_of_digits_1L_int)){
-    descv_stats_tbl_tb <- c(key_var_vals_chr %>%
-                              purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls"
-                              )))) %>%
-                              purrr::flatten_chr(),
-                            ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)) %>%
-      purrr::reduce(.init = descv_stats_tbl_tb,
-                    ~ .x %>% dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
-                                             purrr::map_chr(~ {
-                                               ifelse(length(.x) == 1,
-                                                      ifelse(is.na(.x),
-                                                             "",
-                                                             paste0("",
-                                                                    format(round(.x, nbr_of_digits_1L_int),
-                                                                           nsmall = nbr_of_digits_1L_int),
-                                                                    ""
-                                                             )
-                                                      ),
-                                                      paste0("",
-                                                             .x %>%
-                                                               purrr::map_chr(~format(round(.x,
-                                                                                            nbr_of_digits_1L_int),
-                                                                                      nsmall = nbr_of_digits_1L_int)) %>%
-                                                               paste0(collapse = ", "),
-                                                             ""
-                                                      )
-                                               )
-                                             })))
-    descv_stats_tbl_tb <- paste0(key_var_vals_chr, "_val_2_ls") %>%
-      purrr::reduce(.init = descv_stats_tbl_tb,
-                    ~ .x %>%
-                      dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
-                                      purrr::map2_chr(label,
-                                                      ~ ifelse(.x=="" | .y== "Min - Max",
-                                                               .x,
-                                                               paste0("(",
-                                                                      .x,
-                                                                      ifelse(.y %in% c("Mean (SD)","Median (Q1, Q3)","Missing"),
-                                                                             "",
-                                                                             "%"),
-                                                                      ")")))
+                                    ),
+                                  .names = "{col}_val_2_ls")) %>%
+      dplyr::select(variable,
+                    label,
+                    key_var_vals_chr %>% purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls")))) %>%
+                      purrr::flatten_chr(),
+                    ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)
+      )
+    if(sections_as_row_1L_lgl){
+      descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
+        dplyr::select(-variable)
+    }else{
+      descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
+        dplyr::filter(label != variable)
+    }
+    if(!is.na(nbr_of_digits_1L_int)){
+      descv_stats_tbl_tb <- c(key_var_vals_chr %>%
+                                purrr::map(~c(paste0(.x, c("_val_1_dbl","_val_2_ls"
+                                )))) %>%
+                                purrr::flatten_chr(),
+                              ifelse(test_1L_lgl,"p.value",character(0)) %>% purrr::discard(is.na)) %>%
+        purrr::reduce(.init = descv_stats_tbl_tb,
+                      ~ .x %>% dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
+                                               purrr::map_chr(~ {
+                                                 ifelse(length(.x) == 1,
+                                                        ifelse(is.na(.x),
+                                                               "",
+                                                               paste0("",
+                                                                      format(round(.x, nbr_of_digits_1L_int),
+                                                                             nsmall = nbr_of_digits_1L_int),
+                                                                      ""
+                                                               )
+                                                        ),
+                                                        paste0("",
+                                                               .x %>%
+                                                                 purrr::map_chr(~format(round(.x,
+                                                                                              nbr_of_digits_1L_int),
+                                                                                        nsmall = nbr_of_digits_1L_int)) %>%
+                                                                 paste0(collapse = ", "),
+                                                               ""
+                                                        )
+                                                 )
+                                               })))
+      descv_stats_tbl_tb <- paste0(key_var_vals_chr, "_val_2_ls") %>%
+        purrr::reduce(.init = descv_stats_tbl_tb,
+                      ~ .x %>%
+                        dplyr::mutate(!!rlang::sym(.y) := !!rlang::sym(.y) %>%
+                                        purrr::map2_chr(label,
+                                                        ~ ifelse(.x=="" | .y== "Min - Max",
+                                                                 .x,
+                                                                 paste0("(",
+                                                                        .x,
+                                                                        ifelse(.y %in% c("Mean (SD)","Median (Q1, Q3)","Missing"),
+                                                                               "",
+                                                                               "%"),
+                                                                        ")")))
 
-                      ))
-  }
+                        ))
+    }
   }
   return(descv_stats_tbl_tb)
 }
@@ -339,11 +374,12 @@ make_item_plt <- function(tfd_data_tb,
   return(item_plt)
 }
 make_itm_resp_plts <- function(data_tb,
-                                col_nms_chr,
-                                lbl_nms_chr,
-                                plot_rows_cols_pair_int,
-                                heights_int,
-                                round_var_nm_1L_chr = "round"){
+                               col_nms_chr,
+                               lbl_nms_chr,
+                               plot_rows_cols_pair_int,
+                               heights_int,
+                               round_var_nm_1L_chr = "round",
+                               y_label_1L_chr = "Percentage"){
   plots_ls <- list()
   j=1
   for(i in col_nms_chr){
@@ -356,6 +392,7 @@ make_itm_resp_plts <- function(data_tb,
                                   var_nm_1L_chr = i,
                                   round_var_nm_1L_chr = round_var_nm_1L_chr,
                                   x_label_1L_chr = labelx,
+                                  y_label_1L_chr = y_label_1L_chr,
                                   y_scale_scl_fn = scales::percent_format(),
                                   use_bw_theme_1L_lgl = T,
                                   legend_position_1L_chr = "none")
@@ -364,6 +401,7 @@ make_itm_resp_plts <- function(data_tb,
                             var_nm_1L_chr = i,
                             round_var_nm_1L_chr = round_var_nm_1L_chr,
                             x_label_1L_chr = labelx,
+                            y_label_1L_chr = y_label_1L_chr,
                             y_scale_scl_fn = NULL,
                             use_bw_theme_1L_lgl = F,
                             legend_position_1L_chr = "bottom")
@@ -517,7 +555,8 @@ make_sub_tot_plts <- function(data_tb,
                               plot_rows_cols_pair_int,
                               round_var_nm_1L_chr = "round",
                               make_log_log_tfmn_1L_lgl = F,
-                              heights_int ){
+                              heights_int,
+                              y_label_1L_chr = "Percentage"){
   if(!is.null(col_nms_chr)){
     plots_ls<-list()
     for(i in col_nms_chr){
@@ -536,14 +575,16 @@ make_sub_tot_plts <- function(data_tb,
       plots_ls[[i]]<- make_subtotal_plt(data_tb,
                                         round_var_nm_1L_chr = round_var_nm_1L_chr,
                                         var_nm_1L_chr = i,
-                                        x_label_1L_chr = labelx)
+                                        x_label_1L_chr = labelx,
+                                        y_label_1L_chr = y_label_1L_chr)
     }
     plot_for_lgd_plt <- make_subtotal_plt(data_tb,
                                           round_var_nm_1L_chr = round_var_nm_1L_chr,
                                           var_nm_1L_chr = i,
                                           x_label_1L_chr = labelx,
                                           legend_position_1L_chr = "bottom",
-                                          label_fill_1L_chr = "Data collection" )
+                                          label_fill_1L_chr = "Data collection",
+                                          y_label_1L_chr = y_label_1L_chr)
     legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
     composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist=plots_ls,
                                                                nrow = plot_rows_cols_pair_int[1],
@@ -555,7 +596,7 @@ make_sub_tot_plts <- function(data_tb,
   }else{
     composite_plt <- NULL
   }
-    return(composite_plt)
+  return(composite_plt)
 }
 make_synth_series_tbs_ls <- function (synth_data_spine_ls, series_names_chr)
 { # MIGRATED FROM TTU: REORGANISE

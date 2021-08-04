@@ -6,21 +6,26 @@
 \usage{
 make_corstars_tbl_xx(
   x,
+  caption_1L_chr = NULL,
+  mkdn_tbl_ref_1L_chr = NULL,
   method_chr = c("pearson", "spearman"),
   removeTriangle_chr = c("upper", "lower"),
-  result_chr = c("none", "html", "latex")
+  result_chr = "none"
 )
 }
 \arguments{
 \item{x}{An object}
 
+\item{caption_1L_chr}{Caption (a character vector of length one), Default: NULL}
+
+\item{mkdn_tbl_ref_1L_chr}{Markdown table reference (a character vector of length one), Default: NULL}
+
 \item{method_chr}{Method (a character vector), Default: c("pearson", "spearman")}
 
 \item{removeTriangle_chr}{RemoveTriangle (a character vector), Default: c("upper", "lower")}
 
-\item{result_chr}{Result (a character vector), Default: c("none", "html", "latex")}
+\item{result_chr}{Result (a character vector), Default: 'none'}
 }
 \description{
 make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make corstars table output object of multiple potential types. The function is called for its side effects and does not return a value.
 }
-\keyword{internal}

@@ -3,211 +3,200 @@ title: "Summary tables and plots"
 author: "Matthew Hamilton & Caroline Gao"
 date: "03/08/2021"
 output:
-  html_document: default
   pdf_document: default
   word_document: default
+  html_document: default
 ---
+
+Note, this example is illustrated using fake data.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
 ```{r warning=FALSE, message=FALSE}
 library(youthvars)
 ```
 
+# Summarising descriptive data with standardised tables and plots
+The youthvars package includes a number of convenience functions for creating descriptive statistics tables and plots. The tables and plots can be outputted in HTML, PDF / LaTeX and Word formats. Note that tables outputted to Word format require some additional manual editing (e.g. modifying table headers).
+
 ```{r}
-data("replication_popl_tb")
-data_tb <- replication_popl_tb 
+output_type_1L_chr <- ifelse(knitr::is_html_output(),
+                                          "HTML",
+                                          "PDF")
 ```
-```{r}
+
+## Input dataset
+We are going to illustrate the summary table and plotting functions using the same [fake dataset that we used in other vignettes](Replication_DS.html).
+
+```{r message=FALSE, results='hide', warning=FALSE}
+data("replication_popl_tb")
+data_tb <- replication_popl_tb %>%
+  add_adol6d_scores(prefix_1L_chr = "aqol6d_q",
+                    id_var_nm_1L_chr = "fkClientID",
+                    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
+```
+
+Some of the functions we are illustrating in this vignette also require that the dataset has a dictonary of the `ready4_dictionary` class.
+
+```{r }
 data("repln_ds_dict_r3", package = "youthvars")
 data("aqol_scrg_dict_r3", package = "youthvars")
 dictionary_tb <- ready4use::bind_lups(repln_ds_dict_r3,
                                       new_ready4_dict_r3 = aqol_scrg_dict_r3)
 ```
 
-```{r echo = F}
-print_cohort_tbl <- function (df, 
-                              bl_fup_vals_chr = c("Baseline","Follow-up"),
-                              caption_1L_chr = NULL, 
-                              mkdn_tbl_ref_1L_chr = NULL, 
-                              output_type_1L_chr,
-                              round_var_nm_1L_chr,
-                              test_1L_lgl = F,
-                              variable_nms_chr) 
-{
-  df <- df %>%
-    dplyr::filter(!label %in% variable_nms_chr)
-  valid_var_nms_chr <- df$label %>% unique() %>%
-    stringi::stri_replace_all_fixed("_","")
-  rename_lup <- tibble::tibble(old_nms_chr = df$label %>% unique(),
-                               new_nms_chr = make.unique(valid_var_nms_chr, sep="V")) 
-  df$label <- df$label %>% purrr::map_chr(~ifelse(.x %in% rename_lup$old_nms_chr,
-                                                  ready4fun::get_from_lup_obj(rename_lup,
-                                                                              match_value_xx = .x,
-                                                                              match_var_nm_1L_chr = "old_nms_chr",
-                                                                              target_var_nm_1L_chr = "new_nms_chr",
-                                                                              evaluate_lgl = F),
-                                                  .x))
-  
-    #df$variable <- gsub("\\s*\\([^\\)]+\\)", "",df$variable)
-    n_inc_1L_dbl <- data_tb %>% 
-      dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == bl_fup_vals_chr[1]) %>%
-      nrow()
-    n_fup_1L_dbl <- data_tb %>% 
-      dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == bl_fup_vals_chr[2]) %>%
-      nrow()
-    if(is.null(caption_1L_chr))
-      caption_1L_chr <- knitr::opts_current$get("tab.cap")
-    if(is.null(mkdn_tbl_ref_1L_chr))
-      mkdn_tbl_ref_1L_chr <- paste0("tab:", 
-                                    knitr::opts_current$get("tab.id"))
-    if(output_type_1L_chr %in% c("HTML",
-                                 "Word"))
-      df <- df %>% transform_tb_for_merged_col_1(output_type_1L_chr = output_type_1L_chr)
-    if (output_type_1L_chr %in% c("PDF","HTML")) {
-        df <- df %>% dplyr::mutate_all(~stringr::str_replace(.x, 
-            "%", "\\\\%") %>% stringr::str_replace(",", 
-            "\\\\,"))
-    }
-    if (output_type_1L_chr %in% c("PDF","HTML")) {
-        names_chr <- c("", 
-                       "", 
-                       "(N =", 
-                       paste0(n_inc_1L_dbl,
-                              ifelse(output_type_1L_chr == "HTML","\\)",")")), 
-                       "(N =", 
-                       paste0(n_fup_1L_dbl, 
-                              ifelse(output_type_1L_chr == "HTML","\\)",")")))
-        header_chr <- c(" ", 
-                        " ", 
-                        Baseline = 2, # Baseline only
-                        `Follow-Up` = 2) # Baseline and follow-up
-        if(test_1L_lgl){
-         names_chr <- c(names_chr,
-                         ifelse(output_type_1L_chr == "HTML","*p*","\\textit{p}"))
-         header_chr <- c(header_chr, " ")
-        }
-          
-        names(df) <- names_chr
-        df %>% kableExtra::kbl(booktabs = T, 
-                               caption = caption_1L_chr, 
-                               escape = F) %>% 
-          kableExtra::kable_styling() %>% 
-          kableExtra::column_spec(3:6, 
-                                  width = "3em") %>% 
-          kableExtra::column_spec(1, bold = T, width = "14em") %>% 
-          kableExtra::add_header_above(header_chr) %>% 
-          kableExtra::collapse_rows(columns = 1)
-    }
-    else {
-        # df <- df %>% transform_tb_for_merged_col_1(output_type_1L_chr = output_type_1L_chr)
-        add_to_row_ls <- NULL 
-        df %>% ready4show::print_table(output_type_1L_chr = output_type_1L_chr, 
-                                       caption_1L_chr = caption_1L_chr, 
-                                       mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr, 
-                                       use_rdocx_1L_lgl = ifelse(output_type_1L_chr == 
-                "Word", 
-                T, 
-                F), 
-                add_to_row_ls = add_to_row_ls, 
-                sanitize_fn = force)
-    }
-}
-transform_tb_for_merged_col_1 <- function(df,
-                                          output_type_1L_chr = "PDF"){
-  df[[1]] <- as.character(df[[1]])
-  rle.lengths <- rle(df[[1]])$lengths
-  first <- !duplicated(df[[1]])
-  df[[1]][!first] <- ""
-  if(output_type_1L_chr == "PDF")
-    df[[1]][first] <- paste0("\\midrule\\multirow{", rle.lengths, "}{*}{\\textbf{", df[[1]][first], "}}")
-  return(df)
-}
-```
+Currently, youthvars plotting and tabular functions are designed for use with datasets that have the following structural properties:
 
-## Cohort description table
-```{r participantstb, tab.cap='Participant characteristics', tab.id = 'participantstb', results="asis"}
-variable_nms_chr <- c("d_age","d_sexual_ori_s",
-                      "d_ATSI","d_studying_working","d_relation_s")
-df <- make_descv_stats_tbl(data_tb = data_tb, 
-                           key_var_nm_1L_chr = "round",
-                           key_var_vals_chr = data_tb %>% dplyr::pull(round) %>% unique() %>% as.character(),
-                           dictionary_tb = dictionary_tb,
-                           variable_nms_chr = variable_nms_chr,
-                           nbr_of_digits_1L_int = 2)
-df %>%
-  print_cohort_tbl(#caption_1L_chr = "Cohort descriptives table",
-                   #mkdn_tbl_ref_1L_chr = "", 
-    bl_fup_vals_chr = c("Baseline","Follow-up"),
-    output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
-    round_var_nm_1L_chr = "round",
-    variable_nms_chr = variable_nms_chr)
-```
-## Outcome summary table
-```{r outcomestb, tab.cap='Outcomes table', tab.id = 'outcomestb', results="asis"}
-variable_nms_chr <- c("k6_total", "phq9_total", "bads_total", "gad7_total")
-df <- make_descv_stats_tbl(data_tb = data_tb, 
-                          key_var_nm_1L_chr = "round",
-                          key_var_vals_chr = data_tb %>% dplyr::pull(round) %>% unique() %>% as.character(),
-                          dictionary_tb = dictionary_tb,
-                          variable_nms_chr = variable_nms_chr,
-                          test_1L_lgl = T,
-                          nbr_of_digits_1L_int = 2)
-df %>%
-  print_cohort_tbl(bl_fup_vals_chr = c("Baseline","Follow-up"),
-                   output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
-                   round_var_nm_1L_chr = "round",
-                   test_1L_lgl = T,
-                   variable_nms_chr = variable_nms_chr)
-```
+ - include a unique client identifier variable;
+ - include data from two time-points, with data collection round denoted by a  factor variable two levels; and
+ - is in long format (ie where measures at different time-points for the same individual are stacked on top of each other in separate rows). 
+
+To check whether these conditions hold for your dataset, you can use the `assert_ds_is_valid` function. The function will return an informative error message if the conditions do not hold.
 
 ```{r}
+assert_ds_is_valid(data_tb,
+                   id_var_nm_1L_chr = "fkClientID",
+                   round_var_nm_1L_chr = "round",
+                   round_bl_val_1L_chr = "Baseline")
+```
+
+Our dataset passed the above test but if we set the unique identified variable to the same value for each record, then an error message is triggered.
+
+```{r error=TRUE}
+assert_ds_is_valid(data_tb %>% dplyr::mutate(fkClientID=1),
+                   id_var_nm_1L_chr = "fkClientID",
+                   round_var_nm_1L_chr = "round",
+                   round_bl_val_1L_chr = "Baseline")
+```
+
+Similarly, if our dataset contained three rounds of data collection rather than two, it would also fail.
+
+```{r error=TRUE}
+assert_ds_is_valid(data_tb %>% dplyr::mutate(round=sample(c("Baseline","Mid","End"), size = nrow(data_tb), replace = T)),
+                   id_var_nm_1L_chr = "fkClientID",
+                   round_var_nm_1L_chr = "round",
+                   round_bl_val_1L_chr = "Baseline")
+```
+
+## Descriptive statistics tables
+We can use a combination of the `make_descv_stats_tbl` and `print_descv_stats_tbl` functions to summarise specified variables of interest. The `make_descv_stats_tbl` function makes a call to the `tableby` function from the `aresenal` package and adapts the output of that call.
+
+```{r participantstb, tab.cap='Participant characteristics by data collection round', tab.id = 'participantstb', results="asis"}
+variable_nms_chr <- c("d_age","d_sexual_ori_s",
+                      "d_ATSI","d_studying_working","d_relation_s")
+make_descv_stats_tbl(data_tb = data_tb, 
+                     key_var_nm_1L_chr = "round",
+                     dictionary_tb = dictionary_tb,
+                     variable_nms_chr = variable_nms_chr,
+                     nbr_of_digits_1L_int = 2) %>%
+  print_descv_stats_tbl(bl_fup_vals_chr = c("Baseline","Follow-up"),
+                        output_type_1L_chr = output_type_1L_chr,
+                        round_var_nm_1L_chr = "round",
+                        variable_nms_chr = variable_nms_chr)
+```
+
+Minor modifications to the arguments supplied to these function can provide insight as to wheter variable distribution parameters differed by data collection round.
+
+```{r outcomestb, tab.cap='Outcomes by data collection round', tab.id = 'outcomestb', results="asis"}
+variable_nms_chr <- c("k6_total", "phq9_total", "bads_total", "gad7_total")
+make_descv_stats_tbl(data_tb = data_tb, 
+                     key_var_nm_1L_chr = "round",
+                     dictionary_tb = dictionary_tb,
+                     variable_nms_chr = variable_nms_chr,
+                     test_1L_lgl = T,
+                     nbr_of_digits_1L_int = 2) %>%
+  print_descv_stats_tbl(bl_fup_vals_chr = c("Baseline","Follow-up"),
+                        output_type_1L_chr = output_type_1L_chr,
+                        round_var_nm_1L_chr = "round",
+                        test_1L_lgl = T,
+                        variable_nms_chr = variable_nms_chr)
+```
+
+Further minor changes to the values supplied to function arguments and an additional call to the `add_participation_var` function, can provide insight as to whether participants supplying data at both timepoints differed from those who supplied only baseline data.
+
+```{r participtb, tab.cap='Outcomes by data completeness', tab.id = 'participtb', results="asis"}
 data_tb <- data_tb %>%
   add_participation_var() 
-df <- make_descv_stats_tbl(data_tb = data_tb  %>%
-                             dplyr::filter(round == "Baseline"), #
+make_descv_stats_tbl(data_tb = data_tb  %>%
+                             dplyr::filter(round == "Baseline"), 
                            key_var_nm_1L_chr = "participation",
-                           key_var_vals_chr = data_tb$participation %>% unique(),
                            dictionary_tb = dictionary_tb,
                            variable_nms_chr = variable_nms_chr,
                            test_1L_lgl = T,
-                           nbr_of_digits_1L_int = 2)
-# df %>%
-#   print_cohort_tbl(bl_fup_vals_chr = c("Baseline","Follow-up"),
-#                    output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
-#                    round_var_nm_1L_chr = "round",
-#                    test_1L_lgl = T,
-#                    variable_nms_chr = variable_nms_chr)
+                           nbr_of_digits_1L_int = 2) %>%
+  print_descv_stats_tbl(bl_fup_vals_chr = c("Baseline","Follow-up"),
+                        header_col_nms_chr = data_tb$participation %>% unique(),
+                        output_type_1L_chr = output_type_1L_chr,
+                        round_var_nm_1L_chr = "round",
+                        test_1L_lgl = T,
+                        variable_nms_chr = variable_nms_chr)
 ```
 
+## Correlation tables
+We can use a combination of the `transform_ds_for_tstng` and `make_corstars_tbl_xx` functions to summarise correlations of interest. The latter function adapts output from a call to the `rcorr` function from the `Hmisc` package.
 
-```{r}
-  # descv_tbl_ls <- list(
-  #                      ,
-  #                      bl_cors_tb = transform_ds_for_tstng(data_tb,
-  #                                                          depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr,
-  #                                                          dep_var_max_val_1L_dbl = Inf,
-  #                                                          candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr,
-  #                                                          round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
-  #                                                          round_val_1L_chr = ds_descvs_ls$round_vals_chr[1]) %>%
-  #                        make_corstars_tbl_xx(result_chr = "none"),##
-  #                      fup_cors_tb = transform_ds_for_tstng(data_tb,
-  #                                                           depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr,
-  #                                                           dep_var_max_val_1L_dbl = Inf,
-  #                                                           candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr,
-  #                                                           round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
-  #                                                           round_val_1L_chr = ds_descvs_ls$round_vals_chr[2]) %>%
-  #                        make_corstars_tbl_xx(result_chr = "none"),
-  #                      cors_with_utl_tb = make_cors_with_utl_tbl(data_tb,
-  #                                                                ds_descvs_ls = ds_descvs_ls),
-  #                      ds_descvs_ls = ds_descvs_ls)
-  # descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb,
-  #                                                                     ds_descvs_ls = ds_descvs_ls,
-  #                                                                     descv_tbl_ls = descv_tbl_ls,
-  #                                                                     dictionary_tb = ds_descvs_ls$dictionary_tb,
-  #                                                                     nbr_of_digits_1L_int = nbr_of_digits_1L_int,
-  #                                                                     predictors_lup = predictors_lup)
+```{r blcorstb, tab.cap='Correlations table (follow-up)', tab.id = 'blcorstb', results="asis"}
+transform_ds_for_tstng(data_tb,
+                       depnt_var_nm_1L_chr = "aqol6d_total_w",
+                       dep_var_max_val_1L_dbl = Inf,
+                       candidate_predrs_chr = variable_nms_chr,
+                       round_var_nm_1L_chr = "round",
+                       round_val_1L_chr = "Baseline") %>%
+  make_corstars_tbl_xx(result_chr = output_type_1L_chr)
+```
+
+We can repeat the preceding step for data from the follow-up collection round.
+
+```{r fupcorstb, tab.cap='Correlations table (follow-up)', tab.id = 'fupcorstb', results="asis"}
+transform_ds_for_tstng(data_tb,
+                       depnt_var_nm_1L_chr = "aqol6d_total_w",
+                       dep_var_max_val_1L_dbl = Inf,
+                       candidate_predrs_chr = variable_nms_chr,
+                       round_var_nm_1L_chr = "round",
+                       round_val_1L_chr = "Follow-up") %>%
+  make_corstars_tbl_xx(result_chr = output_type_1L_chr)
+```
+
+# Plots
+We can use the `make_itm_resp_plts` function to plot responses to all individual questions from a scale.
+
+```{r itemsfig, fig.cap="AQoL-6D item responses", out.width = "600px", results='hide', message=FALSE}
+plt <- make_itm_resp_plts(data_tb,
+                   col_nms_chr = names(dplyr::select(data_tb,
+                                                     starts_with("aqol6d_q"))),
+                   lbl_nms_chr = c("Household tasks", "Getting around",
+                                   "Morbility","Self care","Enjoy close rel\'s",
+                                   "Family rel\'s", "Community involv\'t",
+                                   "Despair","Worry", "Sad", "Agitated",
+                                   "Energy level", "Control", "Coping",
+                                   "Frequency of pain", "Degree of pain",
+                                   "Pain interference","Vision", "Hearing",
+                                   "Communication"),
+                   plot_rows_cols_pair_int = c(5L,4L),
+                   heights_int = c(20L, 1L),
+                   round_var_nm_1L_chr = "round",
+                   y_label_1L_chr = "")
+```
+
+Similarly, we can use the `make_sub_tot_plts` function to weighted sub-scale scores.
+
+```{r domainsfig, fig.cap="AQoL-6D weighted domain scores", out.width = "600px",  results='hide', message=FALSE}
+plt <- make_sub_tot_plts(data_tb,
+                  col_nms_chr = names(dplyr::select(data_tb,
+                                                    dplyr::starts_with("vD"))),
+                  plot_rows_cols_pair_int = c(3L,2L),
+                  round_var_nm_1L_chr = "round",
+                  heights_int = c(10L, 1L),
+                  y_label_1L_chr = "")
+```
+
+Finally, the `make_var_by_round_plt` function allows us to compare the distribution of a variable of interest by data collection round.
+
+```{r totalsfig, fig.cap="AQoL-6D total scores by data collection round", out.width = "600px"}
+make_var_by_round_plt(data_tb,
+                      var_nm_1L_chr = "aqol6d_total_w",
+                      round_var_nm_1L_chr = "round",
+                      x_label_1L_chr = "AQoL-6D total weighted score")
 ```
 

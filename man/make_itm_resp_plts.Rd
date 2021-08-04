@@ -10,7 +10,8 @@ make_itm_resp_plts(
   lbl_nms_chr,
   plot_rows_cols_pair_int,
   heights_int,
-  round_var_nm_1L_chr = "round"
+  round_var_nm_1L_chr = "round",
+  y_label_1L_chr = "Percentage"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ make_itm_resp_plts(
 \item{heights_int}{Heights (an integer vector)}
 
 \item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
+
+\item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 }
 \value{
 Composite (a plot)

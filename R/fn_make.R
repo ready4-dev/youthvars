@@ -175,16 +175,23 @@ make_cors_with_utl_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb = NULL,
 #' Make corstars table
 #' @description make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make corstars table output object of multiple potential types. The function is called for its side effects and does not return a value.
 #' @param x An object
+#' @param caption_1L_chr Caption (a character vector of length one), Default: NULL
+#' @param mkdn_tbl_ref_1L_chr Markdown table reference (a character vector of length one), Default: NULL
 #' @param method_chr Method (a character vector), Default: c("pearson", "spearman")
 #' @param removeTriangle_chr RemoveTriangle (a character vector), Default: c("upper", "lower")
-#' @param result_chr Result (a character vector), Default: c("none", "html", "latex")
+#' @param result_chr Result (a character vector), Default: 'none'
 #' @return NULL
 #' @rdname make_corstars_tbl_xx
 #' @export 
 #' @importFrom Hmisc rcorr
-#' @keywords internal
-make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), removeTriangle_chr = c("upper", 
-    "lower"), result_chr = c("none", "html", "latex")) 
+#' @importFrom purrr discard map_int map_chr
+#' @importFrom stringr str_trim
+#' @importFrom stringi stri_replace_last
+#' @importFrom knitr opts_current
+#' @importFrom ready4show print_table
+make_corstars_tbl_xx <- function (x, caption_1L_chr = NULL, mkdn_tbl_ref_1L_chr = NULL, 
+    method_chr = c("pearson", "spearman"), removeTriangle_chr = c("upper", 
+        "lower"), result_chr = "none") 
 {
     x <- as.matrix(x)
     correlation_matrix <- Hmisc::rcorr(x, type = method_chr[1])
@@ -202,25 +209,48 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
         Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
         Rnew <- as.data.frame(Rnew)
     }
-    else if (removeTriangle_chr[1] == "lower") {
-        Rnew <- as.matrix(Rnew)
-        Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
-        Rnew <- as.data.frame(Rnew)
+    else {
+        if (removeTriangle_chr[1] == "lower") {
+            Rnew <- as.matrix(Rnew)
+            Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+            Rnew <- as.data.frame(Rnew)
+        }
     }
     Rnew <- cbind(Rnew[1:length(Rnew) - 1])
+    stars_chr <- mystars %>% as.vector() %>% unique() %>% purrr::discard(is.na) %>% 
+        stringr::str_trim()
+    stars_chr <- stars_chr[order(stars_chr, purrr::map_int(stars_chr, 
+        ~nchar(.x)))]
+    footnotes_chr <- stars_chr %>% purrr::map_chr(~{
+        paste0(.x, " p<", switch(nchar(.x), "0.05", "0.01", "0.001", 
+            "0.0001"))
+    })
+    footnotes_chr <- paste0("Note: ", footnotes_chr %>% paste0(collapse = ", ") %>% 
+        stringi::stri_replace_last(fixed = ",", " and"))
     if (result_chr[1] == "none") 
         return(Rnew)
     else {
-        if (result_chr[1] == "html") 
-            print(xtable(Rnew), type = "html")
-        else print(xtable(Rnew), type = "latex")
+        if (is.null(caption_1L_chr)) 
+            caption_1L_chr <- knitr::opts_current$get("tab.cap")
+        if (is.null(mkdn_tbl_ref_1L_chr)) 
+            mkdn_tbl_ref_1L_chr <- paste0("tab:", knitr::opts_current$get("tab.id"))
+        add_to_row_ls <- list()
+        add_to_row_ls$pos <- list(nrow(Rnew))
+        add_to_row_ls$command <- c(paste0("\\hline\n", "{\\footnotesize ", 
+            footnotes_chr, "}\n"))
+        Rnew %>% ready4show::print_table(output_type_1L_chr = result_chr[1], 
+            add_to_row_ls = add_to_row_ls, caption_1L_chr = caption_1L_chr, 
+            footnotes_chr = footnotes_chr, incl_col_nms_1L_lgl = T, 
+            incl_row_nms_1L_lgl = T, mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr, 
+            use_rdocx_1L_lgl = ifelse(result_chr[1] == "Word", 
+                T, F))
     }
 }
 #' Make descriptive statistics table
 #' @description make_descv_stats_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make descriptive statistics table. The function returns Descriptive statistics table (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param key_var_nm_1L_chr Key variable name (a character vector of length one), Default: 'round'
-#' @param key_var_vals_chr Key variable values (a character vector)
+#' @param key_var_vals_chr Key variable values (a character vector), Default: NULL
 #' @param variable_nms_chr Variable names (a character vector)
 #' @param dictionary_tb Dictionary (a tibble), Default: NULL
 #' @param test_1L_lgl Test (a logical vector of length one), Default: F
@@ -229,15 +259,19 @@ make_corstars_tbl_xx <- function (x, method_chr = c("pearson", "spearman"), remo
 #' @return Descriptive statistics table (a tibble)
 #' @rdname make_descv_stats_tbl
 #' @export 
-#' @importFrom dplyr select mutate filter pull across
+#' @importFrom dplyr pull select mutate filter across
 #' @importFrom tidyselect all_of
 #' @importFrom purrr discard map_chr pmap_dbl pmap map flatten_chr reduce map2_chr
 #' @importFrom ready4fun get_from_lup_obj
 #' @importFrom rlang sym
-make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr, 
+make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr = NULL, 
     variable_nms_chr, dictionary_tb = NULL, test_1L_lgl = F, 
     sections_as_row_1L_lgl = F, nbr_of_digits_1L_int = NA_integer_) 
 {
+    if (is.null(key_var_vals_chr)) {
+        key_var_vals_chr <- data_tb %>% dplyr::pull(key_var_nm_1L_chr) %>% 
+            unique() %>% as.character()
+    }
     if (length(key_var_vals_chr) < 2 & test_1L_lgl) {
         descv_stats_tbl_tb <- NULL
     }
@@ -256,10 +290,10 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_
         }
         vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == 
             "Median (Q1, Q3)") %>% dplyr::pull(variable)
-        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(key_var_vals_chr, 
+        descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(dplyr::across(tidyselect::all_of(key_var_vals_chr), 
             ~list(.x) %>% purrr::pmap_dbl(~{
                 ifelse(..1[[1]][[1]] == "", NA_real_, ..1[[1]][[1]])
-            }), .names = "{col}_val_1_dbl"), dplyr::across(key_var_vals_chr, 
+            }), .names = "{col}_val_1_dbl"), dplyr::across(tidyselect::all_of(key_var_vals_chr), 
             ~list(.x, variable, label) %>% purrr::pmap(~{
                 if (..2 %in% vars_with_mdns_chr) {
                   if (..3 == "Median (Q1, Q3)") {
@@ -443,6 +477,7 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
 #' @param plot_rows_cols_pair_int Plot rows columns pair (an integer vector)
 #' @param heights_int Heights (an integer vector)
 #' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
+#' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @return Composite (a plot)
 #' @rdname make_itm_resp_plts
 #' @export 
@@ -450,7 +485,7 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
 #' @importFrom gridExtra grid.arrange
 #' @importFrom ggpubr ggarrange
 make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_cols_pair_int, 
-    heights_int, round_var_nm_1L_chr = "round") 
+    heights_int, round_var_nm_1L_chr = "round", y_label_1L_chr = "Percentage") 
 {
     plots_ls <- list()
     j = 1
@@ -461,12 +496,13 @@ make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_col
         j = j + 1
         plots_ls[[i]] <- make_item_plt(tfd_data_tb, var_nm_1L_chr = i, 
             round_var_nm_1L_chr = round_var_nm_1L_chr, x_label_1L_chr = labelx, 
-            y_scale_scl_fn = scales::percent_format(), use_bw_theme_1L_lgl = T, 
-            legend_position_1L_chr = "none")
+            y_label_1L_chr = y_label_1L_chr, y_scale_scl_fn = scales::percent_format(), 
+            use_bw_theme_1L_lgl = T, legend_position_1L_chr = "none")
     }
     plot_plt <- make_item_plt(tfd_data_tb, var_nm_1L_chr = i, 
         round_var_nm_1L_chr = round_var_nm_1L_chr, x_label_1L_chr = labelx, 
-        y_scale_scl_fn = NULL, use_bw_theme_1L_lgl = F, legend_position_1L_chr = "bottom")
+        y_label_1L_chr = y_label_1L_chr, y_scale_scl_fn = NULL, 
+        use_bw_theme_1L_lgl = F, legend_position_1L_chr = "bottom")
     legend_ls <- get_guide_box_lgd(plot_plt)
     composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
         nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
@@ -588,6 +624,7 @@ make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, descv_tbl_ls, d
 #' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @param make_log_log_tfmn_1L_lgl Make log log transformation (a logical vector of length one), Default: F
 #' @param heights_int Heights (an integer vector)
+#' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @return Composite (a plot)
 #' @rdname make_sub_tot_plts
 #' @export 
@@ -597,7 +634,7 @@ make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, descv_tbl_ls, d
 #' @importFrom gridExtra grid.arrange
 #' @importFrom ggpubr ggarrange
 make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, round_var_nm_1L_chr = "round", 
-    make_log_log_tfmn_1L_lgl = F, heights_int) 
+    make_log_log_tfmn_1L_lgl = F, heights_int, y_label_1L_chr = "Percentage") 
 {
     if (!is.null(col_nms_chr)) {
         plots_ls <- list()
@@ -617,11 +654,11 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
                 labelx <- paste0("log-log transformed ", labelx)
             }
             plots_ls[[i]] <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
-                var_nm_1L_chr = i, x_label_1L_chr = labelx)
+                var_nm_1L_chr = i, x_label_1L_chr = labelx, y_label_1L_chr = y_label_1L_chr)
         }
         plot_for_lgd_plt <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
             var_nm_1L_chr = i, x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
-            label_fill_1L_chr = "Data collection")
+            label_fill_1L_chr = "Data collection", y_label_1L_chr = y_label_1L_chr)
         legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
         composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
             nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
@@ -764,7 +801,6 @@ make_tfd_repln_ds_dict_r3 <- function (repln_ds_dict_r3 = NULL)
 #' @importFrom scales percent
 #' @importFrom ggplot2 ggplot aes theme_bw geom_histogram scale_y_continuous labs scale_fill_manual theme
 #' @importFrom rlang sym
-#' @keywords internal
 make_var_by_round_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round", 
     x_label_1L_chr, y_label_1L_chr = "Percentage", y_scale_scl_fn = scales::percent, 
     label_fill_1L_chr = "Data collection") 

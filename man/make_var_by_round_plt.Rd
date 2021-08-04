@@ -35,4 +35,3 @@ Variable by round (a plot)
 \description{
 make_var_by_round_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make variable by round plot. The function returns Variable by round (a plot).
 }
-\keyword{internal}

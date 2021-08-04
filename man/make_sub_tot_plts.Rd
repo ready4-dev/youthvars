@@ -10,7 +10,8 @@ make_sub_tot_plts(
   plot_rows_cols_pair_int,
   round_var_nm_1L_chr = "round",
   make_log_log_tfmn_1L_lgl = F,
-  heights_int
+  heights_int,
+  y_label_1L_chr = "Percentage"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ make_sub_tot_plts(
 \item{make_log_log_tfmn_1L_lgl}{Make log log transformation (a logical vector of length one), Default: F}
 
 \item{heights_int}{Heights (an integer vector)}
+
+\item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 }
 \value{
 Composite (a plot)

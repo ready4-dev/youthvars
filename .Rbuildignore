@@ -32,3 +32,5 @@
 ^data-raw/fns/get\.R$
 ^data-raw/fns/replace\.R$
 ^data-raw/fns/force\.R$
+^data-raw/fns/assert\.R$
+^data-raw/fns/print\.R$

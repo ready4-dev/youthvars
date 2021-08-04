@@ -7,7 +7,7 @@
 make_descv_stats_tbl(
   data_tb,
   key_var_nm_1L_chr = "round",
-  key_var_vals_chr,
+  key_var_vals_chr = NULL,
   variable_nms_chr,
   dictionary_tb = NULL,
   test_1L_lgl = F,
@@ -20,7 +20,7 @@ make_descv_stats_tbl(
 
 \item{key_var_nm_1L_chr}{Key variable name (a character vector of length one), Default: 'round'}
 
-\item{key_var_vals_chr}{Key variable values (a character vector)}
+\item{key_var_vals_chr}{Key variable values (a character vector), Default: NULL}
 
 \item{variable_nms_chr}{Variable names (a character vector)}
 
