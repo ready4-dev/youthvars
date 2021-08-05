@@ -1,11 +1,16 @@
 ---
-title: "Summary tables and plots"
-author: "Matthew Hamilton & Caroline Gao"
-date: "03/08/2021"
+title: "Tools to create summary tables and plots"
 output:
-  pdf_document: default
-  word_document: default
-  html_document: default
+  html_document:
+    toc: yes
+    df_print: paged
+  pdf_document:
+    highlight: null
+    number_sections: yes
+  rmarkdown::html_vignette:
+    toc: yes
+vignette: |
+  %\VignetteIndexEntry{Tools to create summary tables and plots} %\VignetteEncoding{UTF-8} %\VignetteEngine{knitr::rmarkdown}
 ---
 
 Note, this example is illustrated using fake data.

@@ -1,5 +1,6 @@
 print_descv_stats_tbl <- function (df,
                                    bl_fup_vals_chr = c("Baseline","Follow-up"),
+                                   capitalise_1L_lgl = T,
                                    caption_1L_chr = NULL,
                                    header_col_nms_chr = NULL,
                                    mkdn_tbl_ref_1L_chr = NULL,
@@ -8,6 +9,9 @@ print_descv_stats_tbl <- function (df,
                                    test_1L_lgl = F,
                                    variable_nms_chr)
 {
+  if(capitalise_1L_lgl)
+    df <- df %>%
+      dplyr::mutate(variable = variable %>% purrr::map_chr(~Hmisc::capitalize(.x)))
   if(is.null(header_col_nms_chr))
     header_col_nms_chr <- bl_fup_vals_chr
   df <- df %>%
@@ -63,7 +67,6 @@ print_descv_stats_tbl <- function (df,
                      ifelse(output_type_1L_chr == "HTML","*p*","\\textit{p}"))
       header_chr <- c(header_chr, " ")
     }
-
     names(df) <- names_chr
     df %>% kableExtra::kbl(booktabs = T,
                            caption = caption_1L_chr,

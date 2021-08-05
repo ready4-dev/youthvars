@@ -17,10 +17,14 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(youthvars)
 ```
-This development version of the youthvars package has been made available as part of the process of testing and documenting the package. 
+youthvars is a set of tools designed to help describe, summarise and score types of data commonly present in youth mental health collections.
 
 The following vignettes demonstrate some of the tools currently included in the TTU package:
 
 - [Data integrity tools](Data_Integrity.html)
-- [Replication dataset](Replication_DS.html)
+- [Tools to create summary tables and plots](Summaries.html)
 - [Health utility scoring tools](Utility_Scoring.html)
+
+These tools have been illustrated with a fake dataset, which is described in the following vignette:
+
+- [Replication dataset](Replication_DS.html)

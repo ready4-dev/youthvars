@@ -7,6 +7,7 @@
 print_descv_stats_tbl(
   df,
   bl_fup_vals_chr = c("Baseline", "Follow-up"),
+  capitalise_1L_lgl = T,
   caption_1L_chr = NULL,
   header_col_nms_chr = NULL,
   mkdn_tbl_ref_1L_chr = NULL,
@@ -20,6 +21,8 @@ print_descv_stats_tbl(
 \item{df}{Data.frame (a data.frame)}
 
 \item{bl_fup_vals_chr}{Baseline follow-up values (a character vector), Default: c("Baseline", "Follow-up")}
+
+\item{capitalise_1L_lgl}{Capitalise (a logical vector of length one), Default: T}
 
 \item{caption_1L_chr}{Caption (a character vector of length one), Default: NULL}
 

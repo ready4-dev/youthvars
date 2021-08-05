@@ -23,11 +23,7 @@ options(xtable.timestamp = "")
 ```
 
 ## Origin and purpose of the youthvars replication dataset
-The replication dataset distributed with the youthvars package is a purely synthetic (entirely fake) dataset that is nonetheless representative (in terms of constituent variables and their uni-variate and [to some extent] joint distributions) of the original study dataset from which we developped the initial set of classes and functions included in youthvars. The purpose of the replication dataset is two-fold:
-
-1) to help users replicate the results in our original study (by applying the same algorithms we used to a different but similar dataset, users will be able to get broadly similar results);
-
-2) to help users trial the functions in the youthvars package (and the related TTU and youthu packages) before potentially applying these functions to their own data.
+Other vignettes in youthvars demonstrate package functions by using a synthetic dataset. Although entirely fake, we created this dataset to be broadly representative (in terms of constituent variables and their uni-variate and [to some extent] joint distributions) of a [dataset that we used for a real study](https://www.medrxiv.org/content/10.1101/2021.07.07.21260129v2.full). As the synthetic dataset can help others replicate results and test computational methods from that study, we refer to this dataset as a replication dataset.
 
 ## Replication dataset dictionary
 
