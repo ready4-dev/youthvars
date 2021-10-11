@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_tfd_repln_ds_dict_r3}
 \alias{make_tfd_repln_ds_dict_r3}
-\title{Make transformed replication dataset dictionary}
+\title{Make transformed replication dataset dictionary ready4 S3}
 \usage{
 make_tfd_repln_ds_dict_r3(repln_ds_dict_r3 = NULL)
 }

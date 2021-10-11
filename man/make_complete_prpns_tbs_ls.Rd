@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_complete_prpns_tbs_ls}
 \alias{make_complete_prpns_tbs_ls}
-\title{Make complete proportions tibbles}
+\title{Make complete proportions tibbles list}
 \usage{
 make_complete_prpns_tbs_ls(
   raw_prpns_tbs_ls,

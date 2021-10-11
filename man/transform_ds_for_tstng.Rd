@@ -7,7 +7,7 @@
 transform_ds_for_tstng(
   data_tb,
   depnt_var_nm_1L_chr = "aqol6d_total_w",
-  dep_var_max_val_1L_dbl = 0.999,
+  depnt_var_max_val_1L_dbl = 0.999,
   candidate_predrs_chr = NA_character_,
   covar_var_nms_chr = NA_character_,
   round_var_nm_1L_chr = "round",
@@ -20,7 +20,7 @@ transform_ds_for_tstng(
 
 \item{depnt_var_nm_1L_chr}{Dependent variable name (a character vector of length one), Default: 'aqol6d_total_w'}
 
-\item{dep_var_max_val_1L_dbl}{Dep variable maximum value (a double vector of length one), Default: 0.999}
+\item{depnt_var_max_val_1L_dbl}{Dependent variable maximum value (a double vector of length one), Default: 0.999}
 
 \item{candidate_predrs_chr}{Candidate predictors (a character vector), Default: 'NA'}
 

@@ -12,7 +12,7 @@ write_descv_plots(
     "Enjoy close rels", "Family rels", "Community involvement", "Despair", "Worry",
     "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain",
     "Degree of pain", "Pain interference", "Vision", "Hearing", "Communication"),
-  maui_domains_pfcs_1L_chr = "vD",
+  maui_domains_pfxs_1L_chr = "vD",
   item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
     1L), width_1L_dbl = 9),
   dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
@@ -35,17 +35,17 @@ write_descv_plots(
 "Coping", "Frequency of pain", "Degree of pain", "Pain interference",
 "Vision", "Hearing", "Communication")}
 
-\item{maui_domains_pfcs_1L_chr}{Maui domains pfcs (a character vector of length one), Default: 'vD'}
+\item{maui_domains_pfxs_1L_chr}{Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'}
 
-\item{item_plots_params_ls}{Item plots params (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
+\item{item_plots_params_ls}{Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
 1L), width_1L_dbl = 9)}
 
-\item{dim_plots_params_ls}{Dimension plots params (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
+\item{dim_plots_params_ls}{Dimension plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
 1L), width_1L_dbl = 8)}
 
-\item{utl_by_rnd_plots_params_ls}{Utility by rnd plots params (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)}
+\item{utl_by_rnd_plots_params_ls}{Utility by round plots parameters (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)}
 
-\item{combined_plot_params_ls}{Combined plot params (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9,
+\item{combined_plot_params_ls}{Combined plot parameters (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9,
 0.9), base_height_dbl = 10)}
 }
 \value{

@@ -22,8 +22,8 @@
 ^data-raw/fns/calculate\.R$
 ^data-raw/dataverse/abbreviations_lup/abbreviations_lup\.csv$
 ^data-raw/dataverse/abbreviations_lup/abbreviations_lup\.RDS$
-^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.csv$
-^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.RDS$
+^data-raw/dataverse/fn_types_lup/fn_types_lup\.csv$
+^data-raw/dataverse/fn_types_lup/fn_types_lup\.RDS$
 ^data-raw/MAKE_CLASSES\.R$
 ^data-raw/MAKE_HOUSESTYLE_DSS\.R$
 ^data-raw/dataverse/prototype_lup/prototype_lup\.csv$
@@ -34,3 +34,5 @@
 ^data-raw/fns/force\.R$
 ^data-raw/fns/assert\.R$
 ^data-raw/fns/print\.R$
+^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.csv$
+^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.RDS$

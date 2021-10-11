@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{is_youthvars_gad7}
 \alias{is_youthvars_gad7}
-\title{Is youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{Is youthvars GAD-7 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 is_youthvars_gad7(x)
 }

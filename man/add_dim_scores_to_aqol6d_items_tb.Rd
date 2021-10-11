@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_dim_scores_to_aqol6d_items_tb}
 \alias{add_dim_scores_to_aqol6d_items_tb}
-\title{Add dimension scores to Assessment of Quality of Life Six Dimension items}
+\title{Add dimension scores to Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 add_dim_scores_to_aqol6d_items_tb(aqol6d_items_tb, domain_items_ls)
 }

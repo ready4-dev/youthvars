@@ -1,4 +1,4 @@
-#' Impute adult Assessment of Quality of Life Six Dimension items
+#' Impute adult Assessment of Quality of Life Six Dimension items tibble
 #' @description impute_adult_aqol6d_items_tb() is an Impute function that imputes data. Specifically, this function implements an algorithm to impute adult assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param domain_items_ls Domain items (a list)

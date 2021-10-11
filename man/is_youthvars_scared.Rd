@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{is_youthvars_scared}
 \alias{is_youthvars_scared}
-\title{Is youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{Is youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 is_youthvars_scared(x)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_correlated_data_tb}
 \alias{make_correlated_data_tb}
-\title{Make correlated data}
+\title{Make correlated data tibble}
 \usage{
 make_correlated_data_tb(synth_data_spine_ls, synth_data_idx_1L_dbl = 1)
 }

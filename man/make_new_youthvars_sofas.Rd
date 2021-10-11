@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{make_new_youthvars_sofas}
 \alias{make_new_youthvars_sofas}
-\title{Make new youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{Make new youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 make_new_youthvars_sofas(x)
 }

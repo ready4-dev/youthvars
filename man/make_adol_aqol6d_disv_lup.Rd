@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_adol_aqol6d_disv_lup}
 \alias{make_adol_aqol6d_disv_lup}
-\title{Make adolescent Assessment of Quality of Life Six Dimension disvalue}
+\title{Make adolescent Assessment of Quality of Life Six Dimension disvalue lookup table}
 \usage{
 make_adol_aqol6d_disv_lup()
 }

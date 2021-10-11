@@ -153,8 +153,8 @@ make_corstars_tbl_xx <- function (x,
                               add_to_row_ls = add_to_row_ls,
                               caption_1L_chr = caption_1L_chr,
                               footnotes_chr = footnotes_chr,
-                              incl_col_nms_1L_lgl = T,
-                              incl_row_nms_1L_lgl = T,
+                              inc_col_nms_1L_lgl = T,
+                              inc_row_nms_1L_lgl = T,
                               mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr,
                               use_rdocx_1L_lgl = ifelse(result_chr[1] == "Word",
                                                         T,
@@ -301,18 +301,18 @@ make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
                                                    .x)) %>% stats::setNames(domains_chr)
   return(domain_items_ls)
 }
-make_final_rpln_ds_dict <- function(seed_dictionary_tb = NULL,
+make_final_repln_ds_dict <- function(seed_dictionary_tb = NULL,
                                     additions_tb = NULL,
                                     utl_unwtd_var_nm_1L_chr = "aqol6d_total_c"){
   if(is.null(seed_dictionary_tb)){
     utils::data("aqol_scrg_dict_r3", package = "youthvars", envir = environment())
-    dictionary_tb <- ready4use::bind_lups(make_tfd_repln_ds_dict_r3(),
+    dictionary_tb <- ready4use::renew(make_tfd_repln_ds_dict_r3(),
                                           new_ready4_dict_r3 = aqol_scrg_dict_r3)
   }else{
     dictionary_tb <- seed_dictionary_tb
   }
   if(is.null(additions_tb)){
-    additions_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = c(#utl_unwtd_var_nm_1L_chr,
+    additions_tb <- ready4use::make_pt_ready4use_dictionary(var_nm_chr = c(#utl_unwtd_var_nm_1L_chr,
                                                                         "bl_date_dtm",
                                                                         "interval_dbl",
                                                                         "participation"),
@@ -323,11 +323,11 @@ make_final_rpln_ds_dict <- function(seed_dictionary_tb = NULL,
                                                                           "Interval between baseline and follow-up assessments", "Rounds participated in"),
                                                          var_type_chr = c(#"numeric",
                                                                           "date","interval", "character")) %>%
-      ready4use::ready4_dictionary()
+      ready4use::ready4use_dictionary()
   }
   Hmisc::label(additions_tb) <- as.list(Hmisc::label(dictionary_tb) %>% unname())
   dictionary_tb <- dictionary_tb %>%
-    ready4use::bind_lups(new_ready4_dict_r3 = additions_tb)
+    ready4use::renew(new_ready4_dict_r3 = additions_tb)
   return(dictionary_tb)
 }
 make_formula <- function(depnt_var_nm_1L_chr,
@@ -414,11 +414,11 @@ make_itm_resp_plts <- function(data_tb,
                                            heights = heights_int)
   return(composite_plt)
 }
-make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wghts_lup_tb)
+make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wts_lup_tb)
 { # MIGRATED FROM TTU: REORGANISE
   make_item_wrst_wts_ls_ls <- domain_items_ls %>% purrr::map(~{
     purrr::map_dbl(.x, ~{
-      ready4fun::get_from_lup_obj(itm_wrst_wghts_lup_tb,
+      ready4fun::get_from_lup_obj(itm_wrst_wts_lup_tb,
                                   match_var_nm_1L_chr = "Question_chr", match_value_xx = .x,
                                   target_var_nm_1L_chr = "Worst_Weight_dbl", evaluate_lgl = F)
     })

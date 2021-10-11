@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_var_by_round_plt}
 \alias{make_var_by_round_plt}
-\title{Make variable by round}
+\title{Make variable by round plot}
 \usage{
 make_var_by_round_plt(
   data_tb,

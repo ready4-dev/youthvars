@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_dim_sclg_cons_dbl}
 \alias{make_dim_sclg_cons_dbl}
-\title{Make dimension scaling constants}
+\title{Make dimension scaling constants double vector}
 \usage{
 make_dim_sclg_cons_dbl(domains_chr, dim_sclg_con_lup_tb)
 }

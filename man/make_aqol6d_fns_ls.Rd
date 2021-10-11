@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_aqol6d_fns_ls}
 \alias{make_aqol6d_fns_ls}
-\title{Make Assessment of Quality of Life Six Dimension functions}
+\title{Make Assessment of Quality of Life Six Dimension functions list}
 \usage{
 make_aqol6d_fns_ls(domain_items_ls)
 }

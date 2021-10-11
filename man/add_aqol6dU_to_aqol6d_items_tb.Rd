@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_aqol6dU_to_aqol6d_items_tb}
 \alias{add_aqol6dU_to_aqol6d_items_tb}
-\title{Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension items}
+\title{Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 add_aqol6dU_to_aqol6d_items_tb(
   aqol6d_items_tb,

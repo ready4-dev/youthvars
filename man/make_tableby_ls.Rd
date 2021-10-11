@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_tableby_ls}
 \alias{make_tableby_ls}
-\title{Make tableby}
+\title{Make tableby list}
 \usage{
 make_tableby_ls(data_tb, key_var_nm_1L_chr, variable_nms_chr, test_1L_lgl = F)
 }

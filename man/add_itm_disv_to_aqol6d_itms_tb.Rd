@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_itm_disv_to_aqol6d_itms_tb}
 \alias{add_itm_disv_to_aqol6d_itms_tb}
-\title{Add item disvalue to Assessment of Quality of Life Six Dimension items}
+\title{Add item disvalue to Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 add_itm_disv_to_aqol6d_itms_tb(
   aqol6d_items_tb,

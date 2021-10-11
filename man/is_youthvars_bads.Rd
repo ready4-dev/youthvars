@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{is_youthvars_bads}
 \alias{is_youthvars_bads}
-\title{Is youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{Is youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 is_youthvars_bads(x)
 }

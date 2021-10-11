@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_aqol6d_items_tb}
 \alias{make_aqol6d_items_tb}
-\title{Make Assessment of Quality of Life Six Dimension items}
+\title{Make Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 make_aqol6d_items_tb(aqol_tb, old_pfx_1L_chr, new_pfx_1L_chr)
 }

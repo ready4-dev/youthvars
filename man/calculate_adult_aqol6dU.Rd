@@ -10,7 +10,7 @@ calculate_adult_aqol6dU(
   coefs_lup_tb = NULL,
   dim_sclg_con_lup_tb = NULL,
   disvalues_lup_tb = NULL,
-  itm_wrst_wghts_lup_tb = NULL
+  itm_wrst_wts_lup_tb = NULL
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ calculate_adult_aqol6dU(
 
 \item{disvalues_lup_tb}{Disvalues lookup table (a tibble), Default: NULL}
 
-\item{itm_wrst_wghts_lup_tb}{Item worst wghts lookup table (a tibble), Default: NULL}
+\item{itm_wrst_wts_lup_tb}{Item worst weights lookup table (a tibble), Default: NULL}
 }
 \value{
 Assessment of Quality of Life Six Dimension Health Utility (a double vector)

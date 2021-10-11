@@ -11,7 +11,7 @@ add_interval_var(
   time_unit_1L_chr = "days",
   bl_date_var_nm_1L_chr = "bl_date_dtm",
   interval_var_nm_1L_chr = "interval_dbl",
-  temp_row_nbr_var_nm_1L_chr = "temp_row_nbr_int",
+  tmp_row_nbr_var_nm_1L_chr = "tmp_row_nbr_int",
   drop_bl_date_var_1L_lgl = F
 )
 }
@@ -28,7 +28,7 @@ add_interval_var(
 
 \item{interval_var_nm_1L_chr}{Interval variable name (a character vector of length one), Default: 'interval_dbl'}
 
-\item{temp_row_nbr_var_nm_1L_chr}{Temporary row number variable name (a character vector of length one), Default: 'temp_row_nbr_int'}
+\item{tmp_row_nbr_var_nm_1L_chr}{Temporary row number variable name (a character vector of length one), Default: 'tmp_row_nbr_int'}
 
 \item{drop_bl_date_var_1L_lgl}{Drop baseline date variable (a logical vector of length one), Default: F}
 }

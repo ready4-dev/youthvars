@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_force.R
 \name{force_vec_to_sum_to_int}
 \alias{force_vec_to_sum_to_int}
-\title{Force vector to sum to}
+\title{Force vector to sum to integer vector}
 \usage{
 force_vec_to_sum_to_int(vec_int, target_1L_int, item_ranges_dbl_ls)
 }

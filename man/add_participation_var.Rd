@@ -7,7 +7,7 @@
 add_participation_var(
   data_tb,
   id_var_nm_1L_chr = "fkClientID",
-  fup_round_nmbr_1L_int = 2L
+  fup_round_nbr_1L_int = 2L
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ add_participation_var(
 
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 
-\item{fup_round_nmbr_1L_int}{Follow-up round nmbr (an integer vector of length one), Default: 2}
+\item{fup_round_nbr_1L_int}{Follow-up round number (an integer vector of length one), Default: 2}
 }
 \value{
 Data (a tibble)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{validate_youthvars_scared}
 \alias{validate_youthvars_scared}
-\title{Validate youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{Validate youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 validate_youthvars_scared(x)
 }

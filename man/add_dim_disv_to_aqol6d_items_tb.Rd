@@ -2,14 +2,14 @@
 % Please edit documentation in R/fn_add.R
 \name{add_dim_disv_to_aqol6d_items_tb}
 \alias{add_dim_disv_to_aqol6d_items_tb}
-\title{Add dimension disvalue to Assessment of Quality of Life Six Dimension items}
+\title{Add dimension disvalue to Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 add_dim_disv_to_aqol6d_items_tb(
   aqol6d_items_tb,
   domain_items_ls,
   domains_chr,
   dim_sclg_con_lup_tb = NULL,
-  itm_wrst_wghts_lup_tb = NULL
+  itm_wrst_wts_lup_tb = NULL
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ add_dim_disv_to_aqol6d_items_tb(
 
 \item{dim_sclg_con_lup_tb}{Dimension scaling constant lookup table (a tibble), Default: NULL}
 
-\item{itm_wrst_wghts_lup_tb}{Item worst wghts lookup table (a tibble), Default: NULL}
+\item{itm_wrst_wts_lup_tb}{Item worst weights lookup table (a tibble), Default: NULL}
 }
 \value{
 Assessment of Quality of Life Six Dimension items (a tibble)

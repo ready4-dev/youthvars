@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_transform.R
 \name{transform_ds_with_rename_lup}
 \alias{transform_ds_with_rename_lup}
-\title{Transform dataset with rename}
+\title{Transform dataset with rename lookup table}
 \usage{
 transform_ds_with_rename_lup(ds_tb, rename_lup, target_var_nms_chr = NULL)
 }

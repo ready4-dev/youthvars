@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{validate_youthvars_oasis}
 \alias{validate_youthvars_oasis}
-\title{Validate youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\title{Validate youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 validate_youthvars_oasis(x)
 }

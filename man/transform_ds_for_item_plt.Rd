@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_transform.R
 \name{transform_ds_for_item_plt}
 \alias{transform_ds_for_item_plt}
-\title{Transform dataset for item}
+\title{Transform dataset for item plot}
 \usage{
 transform_ds_for_item_plt(
   data_tb,

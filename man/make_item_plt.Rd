@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_item_plt}
 \alias{make_item_plt}
-\title{Make item}
+\title{Make item plot}
 \usage{
 make_item_plt(
   tfd_data_tb,

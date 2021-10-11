@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_unwtd_dim_tots}
 \alias{add_unwtd_dim_tots}
-\title{Add unwtd dimension totals}
+\title{Add unweighted dimension totals}
 \usage{
 add_unwtd_dim_tots(items_tb, domain_items_ls, domain_pfx_1L_chr)
 }
@@ -17,6 +17,6 @@ add_unwtd_dim_tots(items_tb, domain_items_ls, domain_pfx_1L_chr)
 Items and domains (a tibble)
 }
 \description{
-add_unwtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add unwtd dimension totals. Function argument items_tb specifies the object to be updated. The function returns Items and domains (a tibble).
+add_unwtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add unweighted dimension totals. Function argument items_tb specifies the object to be updated. The function returns Items and domains (a tibble).
 }
 \keyword{internal}

@@ -7,9 +7,9 @@
 calculate_aqol6d_dim_5_disv(dvQs_tb, kD_1L_dbl, w_dbl)
 }
 \arguments{
-\item{dvQs_tb}{DvQs (a tibble)}
+\item{dvQs_tb}{Questionnaire dimension items (a tibble)}
 
-\item{kD_1L_dbl}{KD (a double vector of length one)}
+\item{kD_1L_dbl}{Dimension scaling constant (a double vector of length one)}
 
 \item{w_dbl}{W (a double vector)}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{make_pt_youthvars_scared}
 \alias{make_pt_youthvars_scared}
-\title{Make prototype youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{Make prototype youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 make_pt_youthvars_scared()
 }

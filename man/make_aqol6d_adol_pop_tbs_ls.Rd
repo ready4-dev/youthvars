@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_aqol6d_adol_pop_tbs_ls}
 \alias{make_aqol6d_adol_pop_tbs_ls}
-\title{Make Assessment of Quality of Life Six Dimension adolescent pop tibbles}
+\title{Make Assessment of Quality of Life Six Dimension adolescent pop tibbles list}
 \usage{
 make_aqol6d_adol_pop_tbs_ls(
   aqol_items_prpns_tbs_ls,
@@ -18,7 +18,7 @@ make_aqol6d_adol_pop_tbs_ls(
 \arguments{
 \item{aqol_items_prpns_tbs_ls}{Assessment of Quality of Life items proportions tibbles (a list)}
 
-\item{aqol_scores_pars_ls}{Assessment of Quality of Life scores parameters (a list)}
+\item{aqol_scores_pars_ls}{Assessment of Quality of Life scores pars (a list)}
 
 \item{series_names_chr}{Series names (a character vector)}
 

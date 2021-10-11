@@ -60,14 +60,14 @@ write_descv_tbls <- function(data_tb,
                                                                     nbr_of_digits_1L_int = nbr_of_digits_1L_int),
                        bl_cors_tb = transform_ds_for_tstng(data_tb,
                                                            depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr,
-                                                           dep_var_max_val_1L_dbl = Inf,
+                                                           depnt_var_max_val_1L_dbl = Inf,
                                                            candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr,
                                                            round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
                                                            round_val_1L_chr = ds_descvs_ls$round_vals_chr[1]) %>%
                          make_corstars_tbl_xx(result_chr = "none"),##
                        fup_cors_tb = transform_ds_for_tstng(data_tb,
                                                             depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr,
-                                                            dep_var_max_val_1L_dbl = Inf,
+                                                            depnt_var_max_val_1L_dbl = Inf,
                                                             candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr,
                                                             round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr,
                                                             round_val_1L_chr = ds_descvs_ls$round_vals_chr[2]) %>%
@@ -95,7 +95,7 @@ write_descv_plots <- function(data_tb,
                                               "Frequency of pain", "Degree of pain",
                                               "Pain interference","Vision", "Hearing",
                                               "Communication"),
-                              maui_domains_pfcs_1L_chr = "vD",
+                              maui_domains_pfxs_1L_chr = "vD",
                               item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L,4L),
                                                           heights_int = c(10L, 1L),
                                                           width_1L_dbl = 9),
@@ -109,10 +109,10 @@ write_descv_plots <- function(data_tb,
                                                              scale_dbl = c(0.9,0.9),
                                                              base_height_dbl = 10)
 ){
-  if(is.null(maui_domains_pfcs_1L_chr)){
+  if(is.null(maui_domains_pfxs_1L_chr)){
     maui_domains_col_nms_chr <- NULL
   }else{
-    maui_domains_col_nms_chr <- names(dplyr::select(data_tb, dplyr::starts_with(maui_domains_pfcs_1L_chr)))
+    maui_domains_col_nms_chr <- names(dplyr::select(data_tb, dplyr::starts_with(maui_domains_pfxs_1L_chr)))
   }
 
   plots_params_ls <- list(qstn_rspns = list(plt_fn = make_itm_resp_plts,
@@ -179,7 +179,7 @@ write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")
 {
   measurements_tb <- tibble::tibble(timepoint_nms_chr = synth_data_spine_ls$timepoint_nms_chr,
                                     nbr_obs_dbl = synth_data_spine_ls$nbr_obs_dbl)
-  var_summ_res_tb <- suppressMessages(purrr::map_dfr(1:length(synth_data_spine_ls$timepoint_nms_chr),
+  var_smry_res_tb <- suppressMessages(purrr::map_dfr(1:length(synth_data_spine_ls$timepoint_nms_chr),
                                                      ~{
                                                        idx_dbl <- .x
                                                        suppressWarnings({
@@ -200,7 +200,7 @@ write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")
     dplyr::mutate(min_dbl = purrr::map_dbl(min_max_ls, ~.x[1]),
                   max_dbl = purrr::map_dbl(min_max_ls, ~.x[2])) %>%
     dplyr::select(var_names_chr, dplyr::everything(), -min_max_ls)
-  output_ls <- list(measurements_tb = measurements_tb, var_summ_res_tb = var_summ_res_tb,
+  output_ls <- list(measurements_tb = measurements_tb, var_smry_res_tb = var_smry_res_tb,
                     var_class_pars_tb = var_class_pars_tb) %>% append(cor_tb_ls)
   dss_tb <- tibble::tibble(ds_obj_nm_chr = names(output_ls),
                            title_chr = c("Brief summary table of the number of observations for which data was collected at each study timepoint.",

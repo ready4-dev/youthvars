@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_impute.R
 \name{impute_adult_aqol6d_items_tb}
 \alias{impute_adult_aqol6d_items_tb}
-\title{Impute adult Assessment of Quality of Life Six Dimension items}
+\title{Impute adult Assessment of Quality of Life Six Dimension items tibble}
 \usage{
 impute_adult_aqol6d_items_tb(aqol6d_items_tb, domain_items_ls)
 }

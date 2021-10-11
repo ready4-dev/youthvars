@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{make_new_youthvars_k6}
 \alias{make_new_youthvars_k6}
-\title{Make new youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{Make new youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 make_new_youthvars_k6(x)
 }

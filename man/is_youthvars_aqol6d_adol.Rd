@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{is_youthvars_aqol6d_adol}
 \alias{is_youthvars_aqol6d_adol}
-\title{Is youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{Is youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 is_youthvars_aqol6d_adol(x)
 }

@@ -42,7 +42,7 @@ data_tb <- replication_popl_tb %>%
                     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w")
 ```
 
-Some of the functions we are illustrating in this vignette also require that the dataset has a dictonary of the `ready4_dictionary` class.
+Some of the functions we are illustrating in this vignette also require that the dataset has a dictonary of the `ready4use_dictionary` class.
 
 ```{r }
 data("repln_ds_dict_r3", package = "youthvars")
@@ -144,7 +144,7 @@ We can use a combination of the `transform_ds_for_tstng` and `make_corstars_tbl_
 ```{r blcorstb, tab.cap='Correlations table (follow-up)', tab.id = 'blcorstb', results="asis"}
 transform_ds_for_tstng(data_tb,
                        depnt_var_nm_1L_chr = "aqol6d_total_w",
-                       dep_var_max_val_1L_dbl = Inf,
+                       depnt_var_max_val_1L_dbl = Inf,
                        candidate_predrs_chr = variable_nms_chr,
                        round_var_nm_1L_chr = "round",
                        round_val_1L_chr = "Baseline") %>%
@@ -156,7 +156,7 @@ We can repeat the preceding step for data from the follow-up collection round.
 ```{r fupcorstb, tab.cap='Correlations table (follow-up)', tab.id = 'fupcorstb', results="asis"}
 transform_ds_for_tstng(data_tb,
                        depnt_var_nm_1L_chr = "aqol6d_total_w",
-                       dep_var_max_val_1L_dbl = Inf,
+                       depnt_var_max_val_1L_dbl = Inf,
                        candidate_predrs_chr = variable_nms_chr,
                        round_var_nm_1L_chr = "round",
                        round_val_1L_chr = "Follow-up") %>%

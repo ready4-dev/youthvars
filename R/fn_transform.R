@@ -1,4 +1,4 @@
-#' Transform dataset for item
+#' Transform dataset for item plot
 #' @description transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. Function argument data_tb specifies the object to be updated. Argument var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
@@ -21,7 +21,7 @@ transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_c
 #' @description transform_ds_for_tstng() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for testing. Function argument data_tb specifies the object to be updated. Argument depnt_var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param depnt_var_nm_1L_chr Dependent variable name (a character vector of length one), Default: 'aqol6d_total_w'
-#' @param dep_var_max_val_1L_dbl Dep variable maximum value (a double vector of length one), Default: 0.999
+#' @param depnt_var_max_val_1L_dbl Dependent variable maximum value (a double vector of length one), Default: 0.999
 #' @param candidate_predrs_chr Candidate predictors (a character vector), Default: 'NA'
 #' @param covar_var_nms_chr Covariate variable names (a character vector), Default: 'NA'
 #' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
@@ -34,7 +34,7 @@ transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_c
 #' @importFrom dplyr filter select mutate
 #' @importFrom rlang sym syms
 #' @importFrom stats na.omit
-transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total_w", dep_var_max_val_1L_dbl = 0.999, 
+transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total_w", depnt_var_max_val_1L_dbl = 0.999, 
     candidate_predrs_chr = NA_character_, covar_var_nms_chr = NA_character_, 
     round_var_nm_1L_chr = "round", round_val_1L_chr = "Baseline", 
     remove_all_msng_1L_lgl = F) 
@@ -44,13 +44,13 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
     tfd_data_tb <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
         round_val_1L_chr) %>% dplyr::select(!!!rlang::syms(vars_to_keep_chr)) %>% 
         dplyr::mutate(`:=`(!!rlang::sym(depnt_var_nm_1L_chr), 
-            ifelse(!!rlang::sym(depnt_var_nm_1L_chr) > dep_var_max_val_1L_dbl, 
-                dep_var_max_val_1L_dbl, !!rlang::sym(depnt_var_nm_1L_chr))))
+            ifelse(!!rlang::sym(depnt_var_nm_1L_chr) > depnt_var_max_val_1L_dbl, 
+                depnt_var_max_val_1L_dbl, !!rlang::sym(depnt_var_nm_1L_chr))))
     if (remove_all_msng_1L_lgl) 
         tfd_data_tb <- tfd_data_tb %>% stats::na.omit()
     return(tfd_data_tb)
 }
-#' Transform dataset with rename
+#' Transform dataset with rename lookup table
 #' @description transform_ds_with_rename_lup() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset with rename lookup table. Function argument ds_tb specifies the object to be updated. Argument rename_lup provides the object to be updated. The function returns Tfmd dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param rename_lup Rename (a lookup table)
@@ -114,7 +114,6 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb)
 #' @return Data.frame (a data.frame)
 #' @rdname transform_tb_for_merged_col_1
 #' @export 
-
 #' @keywords internal
 transform_tb_for_merged_col_1 <- function (df, output_type_1L_chr = "PDF") 
 {

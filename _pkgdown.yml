@@ -1,29 +1,25 @@
 home:
   links:
-  - text: User manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/files/6929501/youthvars_user_0.0.0.9061.pdf
-  - text: Developer version of usual manual (PDF)
-    href: https://github.com/ready4-dev/youthvars/files/6929493/youthvars_developer_0.0.0.9061.pdf
+  - text: Manual - User (PDF)
+    href: 5223904
+  - text: Manual - Developer (PDF)
+    href: 5223903
   - text: Project website
-    href: https://www.ready4-dev.com/
+    href:  https://ready4-dev.github.io/ready4/
 development:
   mode: auto
 reference:
 - title: "Datasets"
 - contents:
-  - abbreviations_lup
   - adol_dim_scalg_eqs_lup
   - aqol_scrg_dict_r3
   - aqol6d_adult_disv_lup_tb
-  - aqol6d_adult_itm_wrst_wghts_lup_tb
+  - aqol6d_adult_itm_wrst_wts_lup_tb
   - aqol6d_adult_vldn_pop_with_STATA_scores_tb
   - aqol6d_dim_sclg_con_lup_tb
   - aqol6d_domain_qs_lup_tb
   - aqol6d_from_8d_coefs_lup_tb
-  - fn_type_lup_tb
-  - fns_dmt_tb
   - predictors_lup
-  - prototype_lup
   - replication_popl_tb
   - repln_ds_dict_r3
 - title: "Classes"
@@ -44,7 +40,7 @@ reference:
   - assert_ds_is_valid
   - make_corstars_tbl_xx
   - make_descv_stats_tbl
-  - make_final_rpln_ds_dict
+  - make_final_repln_ds_dict
   - make_formula
   - make_itm_resp_plts
   - make_sub_tot_plts

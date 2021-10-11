@@ -12,18 +12,18 @@ add_wtd_dim_tots(
 )
 }
 \arguments{
-\item{unwtd_dim_tb}{Unwtd dimension (a tibble)}
+\item{unwtd_dim_tb}{Unweighted dimension (a tibble)}
 
 \item{domain_items_ls}{Domain items (a list)}
 
-\item{domain_unwtd_pfx_1L_chr}{Domain unwtd prefix (a character vector of length one)}
+\item{domain_unwtd_pfx_1L_chr}{Domain unweighted prefix (a character vector of length one)}
 
 \item{domain_wtd_pfx_1L_chr}{Domain weighted prefix (a character vector of length one)}
 }
 \value{
-Weighted and unwtd dimension (a tibble)
+Weighted and unweighted dimension (a tibble)
 }
 \description{
-add_wtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add weighted dimension totals. Function argument unwtd_dim_tb specifies the object to be updated. The function returns Weighted and unwtd dimension (a tibble).
+add_wtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add weighted dimension totals. Function argument unwtd_dim_tb specifies the object to be updated. The function returns Weighted and unweighted dimension (a tibble).
 }
 \keyword{internal}

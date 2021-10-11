@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_predr_pars_and_cors_tbl}
 \alias{make_predr_pars_and_cors_tbl}
-\title{Make predictor parameters and correlations table}
+\title{Make predictor pars and correlations table}
 \usage{
 make_predr_pars_and_cors_tbl(
   data_tb,
@@ -27,9 +27,9 @@ make_predr_pars_and_cors_tbl(
 \item{predictors_lup}{Predictors (a lookup table), Default: NULL}
 }
 \value{
-Predictor parameters and correlations (a tibble)
+Predictor pars and correlations (a tibble)
 }
 \description{
-make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor parameters and correlations table. The function returns Predictor parameters and correlations (a tibble).
+make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor pars and correlations table. The function returns Predictor pars and correlations (a tibble).
 }
 \keyword{internal}

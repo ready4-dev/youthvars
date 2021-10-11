@@ -14,11 +14,11 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
   return(unscored_aqol_tb)
 }
 add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, prefix_chr,
-                                               aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID", scaling_cnst_dbl = 5)
+                                               aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID", scaling_con_dbl = 5)
 {
   updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_prpns_tbs_ls,
                                        ~{
-                                         nbr_obs_1L_int <- nrow(.x) * scaling_cnst_dbl
+                                         nbr_obs_1L_int <- nrow(.x) * scaling_con_dbl
                                          transposed_items_props_tb <- .y %>% dplyr::select(-Question) %>%
                                            t()
                                          item_ranges_dbl_ls <- 1:ncol(transposed_items_props_tb) %>%
@@ -123,21 +123,21 @@ add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_
 }
 
 add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = NULL,
-                                             itm_wrst_wghts_lup_tb = NULL)
+                                             itm_wrst_wts_lup_tb = NULL)
 {
   if(is.null(dim_sclg_con_lup_tb)){
     utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
     dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
   }
-  if(is.null(itm_wrst_wghts_lup_tb)){
-    utils::data("aqol6d_adult_itm_wrst_wghts_lup_tb", envir = environment())
-    itm_wrst_wghts_lup_tb <- aqol6d_adult_itm_wrst_wghts_lup_tb
+  if(is.null(itm_wrst_wts_lup_tb)){
+    utils::data("aqol6d_adult_itm_wrst_wts_lup_tb", envir = environment())
+    itm_wrst_wts_lup_tb <- aqol6d_adult_itm_wrst_wts_lup_tb
   }
   aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
   kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr,
                                    dim_sclg_con_lup_tb = dim_sclg_con_lup_tb)
   w_dbl_ls <- make_make_item_wrst_wts_ls_ls(domain_items_ls = domain_items_ls,
-                                         itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb)
+                                         itm_wrst_wts_lup_tb = itm_wrst_wts_lup_tb)
   aqol6d_items_tb <- purrr::reduce(1:length(domain_items_ls),
                                    .init = aqol6d_items_tb, ~{
                                      args_ls <- list(dvQs_tb = .x %>% dplyr::select(domain_items_ls[[.y]] %>%
@@ -161,11 +161,11 @@ add_interval_var <- function(data_tb,
                              time_unit_1L_chr = "days",
                              bl_date_var_nm_1L_chr = "bl_date_dtm",
                              interval_var_nm_1L_chr = "interval_dbl",
-                             temp_row_nbr_var_nm_1L_chr = "temp_row_nbr_int",
+                             tmp_row_nbr_var_nm_1L_chr = "tmp_row_nbr_int",
                              drop_bl_date_var_1L_lgl = F){
   updated_data_tb <- data_tb %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(!!rlang::sym(temp_row_nbr_var_nm_1L_chr) := 1:dplyr::n()) %>%
+    dplyr::mutate(!!rlang::sym(tmp_row_nbr_var_nm_1L_chr) := 1:dplyr::n()) %>%
     dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>%
     dplyr::arrange(!!rlang::sym(msrmnt_date_var_nm_1L_chr)) %>%
     dplyr::mutate(!!rlang::sym(bl_date_var_nm_1L_chr) := !!rlang::sym(msrmnt_date_var_nm_1L_chr) %>% dplyr::first()) %>%
@@ -174,8 +174,8 @@ add_interval_var <- function(data_tb,
                                                  ~ lubridate::interval(.x, .y) %>%
                                                    lubridate::time_length(unit = time_unit_1L_chr))) %>%
     dplyr::ungroup() %>%
-    dplyr::arrange(!!rlang::sym(temp_row_nbr_var_nm_1L_chr)) %>%
-    dplyr::select(-!!rlang::sym(temp_row_nbr_var_nm_1L_chr))
+    dplyr::arrange(!!rlang::sym(tmp_row_nbr_var_nm_1L_chr)) %>%
+    dplyr::select(-!!rlang::sym(tmp_row_nbr_var_nm_1L_chr))
   if(drop_bl_date_var_1L_lgl)
     updated_data_tb <-  updated_data_tb %>%
       dplyr::select(-!!rlang::sym(bl_date_var_nm_1L_chr))
@@ -237,13 +237,13 @@ add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
 }
 add_participation_var <- function(data_tb,
                                   id_var_nm_1L_chr = "fkClientID",
-                                  fup_round_nmbr_1L_int = 2L){
+                                  fup_round_nbr_1L_int = 2L){
   data_tb <- data_tb %>%
     dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>%
     dplyr::mutate(nbr_rounds_int = dplyr::n()) %>%
     dplyr::mutate(participation = ifelse(nbr_rounds_int==1,
                                          "Baseline only",
-                                         ifelse(nbr_rounds_int==fup_round_nmbr_1L_int,
+                                         ifelse(nbr_rounds_int==fup_round_nbr_1L_int,
                                                 "Baseline and follow-up",
                                                 NA_character_))) %>%
 

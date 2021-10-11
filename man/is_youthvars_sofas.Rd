@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{is_youthvars_sofas}
 \alias{is_youthvars_sofas}
-\title{Is youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{Is youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 is_youthvars_sofas(x)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_tableby_cntrls}
 \alias{make_tableby_cntrls}
-\title{Make tableby cntrls}
+\title{Make tableby controls}
 \usage{
 make_tableby_cntrls(test_1L_lgl = F)
 }
@@ -10,9 +10,9 @@ make_tableby_cntrls(test_1L_lgl = F)
 \item{test_1L_lgl}{Test (a logical vector of length one), Default: F}
 }
 \value{
-Tableby cntrls (a list)
+Tableby controls (a list)
 }
 \description{
-make_tableby_cntrls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make tableby cntrls. The function returns Tableby cntrls (a list).
+make_tableby_cntrls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make tableby controls. The function returns Tableby controls (a list).
 }
 \keyword{internal}

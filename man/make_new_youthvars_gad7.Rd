@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{make_new_youthvars_gad7}
 \alias{make_new_youthvars_gad7}
-\title{Make new youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{Make new youthvars GAD-7 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 make_new_youthvars_gad7(x)
 }

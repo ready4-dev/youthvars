@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_corstars_tbl_xx}
 \alias{make_corstars_tbl_xx}
-\title{Make corstars table}
+\title{Make starred correlations table output object of multiple potential types}
 \usage{
 make_corstars_tbl_xx(
   x,
@@ -27,5 +27,5 @@ make_corstars_tbl_xx(
 \item{result_chr}{Result (a character vector), Default: 'none'}
 }
 \description{
-make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make corstars table output object of multiple potential types. The function is called for its side effects and does not return a value.
+make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make starred correlations table output object of multiple potential types. The function is called for its side effects and does not return a value.
 }

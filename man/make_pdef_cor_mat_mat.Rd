@@ -2,12 +2,12 @@
 % Please edit documentation in R/fn_make.R
 \name{make_pdef_cor_mat_mat}
 \alias{make_pdef_cor_mat_mat}
-\title{Make positive definite correlation matrix}
+\title{Make positive definite correlation matrix matrix}
 \usage{
 make_pdef_cor_mat_mat(lower_diag_mat)
 }
 \arguments{
-\item{lower_diag_mat}{Lower diag (a matrix)}
+\item{lower_diag_mat}{Lower diagonal (a matrix)}
 }
 \value{
 Positive definite correlation (a matrix)

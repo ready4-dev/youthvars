@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_cors_and_utls_to_aqol6d_tbs_ls}
 \alias{add_cors_and_utls_to_aqol6d_tbs_ls}
-\title{Add correlations and utilities to Assessment of Quality of Life Six Dimension tibbles}
+\title{Add correlations and utilities to Assessment of Quality of Life Six Dimension tibbles list}
 \usage{
 add_cors_and_utls_to_aqol6d_tbs_ls(
   aqol6d_tbs_ls,
@@ -17,7 +17,7 @@ add_cors_and_utls_to_aqol6d_tbs_ls(
 \arguments{
 \item{aqol6d_tbs_ls}{Assessment of Quality of Life Six Dimension tibbles (a list)}
 
-\item{aqol_scores_pars_ls}{Assessment of Quality of Life scores parameters (a list)}
+\item{aqol_scores_pars_ls}{Assessment of Quality of Life scores pars (a list)}
 
 \item{aqol_items_prpns_tbs_ls}{Assessment of Quality of Life items proportions tibbles (a list)}
 

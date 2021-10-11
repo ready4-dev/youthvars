@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_domain_items_ls}
 \alias{make_domain_items_ls}
-\title{Make domain items}
+\title{Make domain items list}
 \usage{
 make_domain_items_ls(domain_qs_lup_tb, item_pfx_1L_chr)
 }

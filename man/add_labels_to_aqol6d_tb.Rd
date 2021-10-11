@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_labels_to_aqol6d_tb}
 \alias{add_labels_to_aqol6d_tb}
-\title{Add labels to Assessment of Quality of Life Six Dimension}
+\title{Add labels to Assessment of Quality of Life Six Dimension tibble}
 \usage{
 add_labels_to_aqol6d_tb(aqol6d_tb, labels_chr = NA_character_)
 }

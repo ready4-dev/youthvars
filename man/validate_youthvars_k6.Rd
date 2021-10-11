@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{validate_youthvars_k6}
 \alias{validate_youthvars_k6}
-\title{Validate youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{Validate youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 validate_youthvars_k6(x)
 }

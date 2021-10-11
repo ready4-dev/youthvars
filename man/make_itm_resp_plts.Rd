@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_itm_resp_plts}
 \alias{make_itm_resp_plts}
-\title{Make item resp plots}
+\title{Make item response plots}
 \usage{
 make_itm_resp_plts(
   data_tb,
@@ -33,5 +33,5 @@ make_itm_resp_plts(
 Composite (a plot)
 }
 \description{
-make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item resp plots. The function returns Composite (a plot).
+make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item response plots. The function returns Composite (a plot).
 }

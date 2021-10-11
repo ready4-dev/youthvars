@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_add.R
 \name{add_aqol6d_items_to_aqol6d_tbs_ls}
 \alias{add_aqol6d_items_to_aqol6d_tbs_ls}
-\title{Add Assessment of Quality of Life Six Dimension items to Assessment of Quality of Life Six Dimension tibbles}
+\title{Add Assessment of Quality of Life Six Dimension items to Assessment of Quality of Life Six Dimension tibbles list}
 \usage{
 add_aqol6d_items_to_aqol6d_tbs_ls(
   aqol6d_tbs_ls,
@@ -10,7 +10,7 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
   prefix_chr,
   aqol_tots_var_nms_chr,
   id_var_nm_1L_chr = "fkClientID",
-  scaling_cnst_dbl = 5
+  scaling_con_dbl = 5
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
 
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 
-\item{scaling_cnst_dbl}{Scaling cnst (a double vector), Default: 5}
+\item{scaling_con_dbl}{Scaling constant (a double vector), Default: 5}
 }
 \value{
 Updated Assessment of Quality of Life Six Dimension tibbles (a list)

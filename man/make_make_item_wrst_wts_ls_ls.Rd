@@ -2,14 +2,14 @@
 % Please edit documentation in R/fn_make.R
 \name{make_make_item_wrst_wts_ls_ls}
 \alias{make_make_item_wrst_wts_ls_ls}
-\title{Make make item worst weights}
+\title{Make make item worst weights list list}
 \usage{
-make_make_item_wrst_wts_ls_ls(domain_items_ls, itm_wrst_wghts_lup_tb)
+make_make_item_wrst_wts_ls_ls(domain_items_ls, itm_wrst_wts_lup_tb)
 }
 \arguments{
 \item{domain_items_ls}{Domain items (a list)}
 
-\item{itm_wrst_wghts_lup_tb}{Item worst wghts lookup table (a tibble)}
+\item{itm_wrst_wts_lup_tb}{Item worst weights lookup table (a tibble)}
 }
 \value{
 Make item worst weights (a list of lists)

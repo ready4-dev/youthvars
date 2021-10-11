@@ -25,7 +25,7 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
 #' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: NULL
 #' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
-#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble), Default: NULL
+#' @param itm_wrst_wts_lup_tb Item worst weights lookup table (a tibble), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension Health Utility (a double vector)
 #' @rdname calculate_adult_aqol6dU
 #' @export 
@@ -33,7 +33,7 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @importFrom hutils longest_prefix
 #' @keywords internal
 calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_tb = NULL, 
-    dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wghts_lup_tb = NULL) 
+    dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wts_lup_tb = NULL) 
 {
     if (is.null(coefs_lup_tb)) {
         utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
@@ -47,9 +47,9 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_t
         utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
         disvalues_lup_tb <- aqol6d_adult_disv_lup_tb
     }
-    if (is.null(itm_wrst_wghts_lup_tb)) {
-        utils::data("aqol6d_adult_itm_wrst_wghts_lup_tb", envir = environment())
-        itm_wrst_wghts_lup_tb <- aqol6d_adult_itm_wrst_wghts_lup_tb
+    if (is.null(itm_wrst_wts_lup_tb)) {
+        utils::data("aqol6d_adult_itm_wrst_wts_lup_tb", envir = environment())
+        itm_wrst_wts_lup_tb <- aqol6d_adult_itm_wrst_wts_lup_tb
     }
     domains_chr <- dim_sclg_con_lup_tb$Dimension_chr
     item_pfx_1L_chr <- hutils::longest_prefix(disvalues_lup_tb$Question_chr)
@@ -60,15 +60,15 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_t
         add_itm_disv_to_aqol6d_itms_tb(disvalues_lup_tb = disvalues_lup_tb, 
             pfx_1L_chr = item_pfx_1L_chr) %>% add_dim_disv_to_aqol6d_items_tb(domain_items_ls = domain_items_ls, 
         domains_chr = domains_chr, dim_sclg_con_lup_tb = dim_sclg_con_lup_tb, 
-        itm_wrst_wghts_lup_tb = itm_wrst_wghts_lup_tb) %>% add_dim_scores_to_aqol6d_items_tb(domain_items_ls = domain_items_ls) %>% 
+        itm_wrst_wts_lup_tb = itm_wrst_wts_lup_tb) %>% add_dim_scores_to_aqol6d_items_tb(domain_items_ls = domain_items_ls) %>% 
         add_aqol6dU_to_aqol6d_items_tb(coefs_lup_tb = coefs_lup_tb)
     aqol6dU_dbl <- aqol6d_items_tb$aqol6dU
     return(aqol6dU_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 1 disvalue
 #' @description calculate_aqol6d_dim_1_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 1 disvalue. The function returns DvD1 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD1 (a double vector)
 #' @rdname calculate_aqol6d_dim_1_disv
@@ -87,8 +87,8 @@ calculate_aqol6d_dim_1_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 2 disvalue
 #' @description calculate_aqol6d_dim_2_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 2 disvalue. The function returns DvD2 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD2 (a double vector)
 #' @rdname calculate_aqol6d_dim_2_disv
@@ -106,8 +106,8 @@ calculate_aqol6d_dim_2_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 3 disvalue
 #' @description calculate_aqol6d_dim_3_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 3 disvalue. The function returns DvD3 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD3 (a double vector)
 #' @rdname calculate_aqol6d_dim_3_disv
@@ -126,8 +126,8 @@ calculate_aqol6d_dim_3_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 4 disvalue
 #' @description calculate_aqol6d_dim_4_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 4 disvalue. The function returns DvD4 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD4 (a double vector)
 #' @rdname calculate_aqol6d_dim_4_disv
@@ -145,8 +145,8 @@ calculate_aqol6d_dim_4_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 5 disvalue
 #' @description calculate_aqol6d_dim_5_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 5 disvalue. The function returns DvD5 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD5 (a double vector)
 #' @rdname calculate_aqol6d_dim_5_disv
@@ -164,8 +164,8 @@ calculate_aqol6d_dim_5_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 }
 #' Calculate Assessment of Quality of Life Six Dimension dimension 6 disvalue
 #' @description calculate_aqol6d_dim_6_disv() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate assessment of quality of life six dimension dimension 6 disvalue. The function returns DvD6 (a double vector).
-#' @param dvQs_tb DvQs (a tibble)
-#' @param kD_1L_dbl KD (a double vector of length one)
+#' @param dvQs_tb Questionnaire dimension items (a tibble)
+#' @param kD_1L_dbl Dimension scaling constant (a double vector of length one)
 #' @param w_dbl W (a double vector)
 #' @return DvD6 (a double vector)
 #' @rdname calculate_aqol6d_dim_6_disv

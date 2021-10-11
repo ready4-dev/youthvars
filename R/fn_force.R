@@ -24,7 +24,7 @@ force_min_max_and_int_cnstrs <- function (tbl_tb, var_names_chr, min_max_ls, dis
         })
     return(tbl_tb)
 }
-#' Force vector to sum to
+#' Force vector to sum to integer vector
 #' @description force_vec_to_sum_to_int() is a Force function that checks if a specified local or global environmental condition is met and if not, updates the specified environment to comply with the condition. Specifically, this function implements an algorithm to force vector to sum to integer vector. The function returns Vector (an integer vector).
 #' @param vec_int Vector (an integer vector)
 #' @param target_1L_int Target (an integer vector of length one)

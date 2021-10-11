@@ -36,13 +36,13 @@ write_all_outp_dirs <- function (paths_ls)
 #'    "Despair", "Worry", "Sad", "Agitated", "Energy level", "Control", 
 #'    "Coping", "Frequency of pain", "Degree of pain", "Pain interference", 
 #'    "Vision", "Hearing", "Communication")
-#' @param maui_domains_pfcs_1L_chr Maui domains pfcs (a character vector of length one), Default: 'vD'
-#' @param item_plots_params_ls Item plots params (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L, 
+#' @param maui_domains_pfxs_1L_chr Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'
+#' @param item_plots_params_ls Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L, 
 #'    1L), width_1L_dbl = 9)
-#' @param dim_plots_params_ls Dimension plots params (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L, 
+#' @param dim_plots_params_ls Dimension plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L, 
 #'    1L), width_1L_dbl = 8)
-#' @param utl_by_rnd_plots_params_ls Utility by rnd plots params (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)
-#' @param combined_plot_params_ls Combined plot params (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 
+#' @param utl_by_rnd_plots_params_ls Utility by round plots parameters (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)
+#' @param combined_plot_params_ls Combined plot parameters (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 
 #'    0.9), base_height_dbl = 10)
 #' @return Descriptive plots paths (a list)
 #' @rdname write_descv_plots
@@ -61,18 +61,18 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
     "Family rels", "Community involvement", "Despair", "Worry", 
     "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain", 
     "Degree of pain", "Pain interference", "Vision", "Hearing", 
-    "Communication"), maui_domains_pfcs_1L_chr = "vD", item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 
+    "Communication"), maui_domains_pfxs_1L_chr = "vD", item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 
     4L), heights_int = c(10L, 1L), width_1L_dbl = 9), dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 
     2L), heights_int = c(10L, 1L), width_1L_dbl = 8), utl_by_rnd_plots_params_ls = list(width_1L_dbl = 6, 
     height_1L_dbl = 4), combined_plot_params_ls = list(nrow_1L_int = 2L, 
     rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 0.9), base_height_dbl = 10)) 
 {
-    if (is.null(maui_domains_pfcs_1L_chr)) {
+    if (is.null(maui_domains_pfxs_1L_chr)) {
         maui_domains_col_nms_chr <- NULL
     }
     else {
         maui_domains_col_nms_chr <- names(dplyr::select(data_tb, 
-            dplyr::starts_with(maui_domains_pfcs_1L_chr)))
+            dplyr::starts_with(maui_domains_pfxs_1L_chr)))
     }
     plots_params_ls <- list(qstn_rspns = list(plt_fn = make_itm_resp_plts, 
         fn_args_ls = list(data_tb, col_nms_chr = names(dplyr::select(data_tb, 
@@ -151,12 +151,12 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
                 ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
             test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
         bl_cors_tb = transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
-            dep_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
+            depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
             round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
             round_val_1L_chr = ds_descvs_ls$round_vals_chr[1]) %>% 
             make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = transform_ds_for_tstng(data_tb, 
             depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
-            dep_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
+            depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
             round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
             round_val_1L_chr = ds_descvs_ls$round_vals_chr[2]) %>% 
             make_corstars_tbl_xx(result_chr = "none"), cors_with_utl_tb = make_cors_with_utl_tbl(data_tb, 
@@ -184,7 +184,7 @@ write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")
 {
     measurements_tb <- tibble::tibble(timepoint_nms_chr = synth_data_spine_ls$timepoint_nms_chr, 
         nbr_obs_dbl = synth_data_spine_ls$nbr_obs_dbl)
-    var_summ_res_tb <- suppressMessages(purrr::map_dfr(1:length(synth_data_spine_ls$timepoint_nms_chr), 
+    var_smry_res_tb <- suppressMessages(purrr::map_dfr(1:length(synth_data_spine_ls$timepoint_nms_chr), 
         ~{
             idx_dbl <- .x
             suppressWarnings({
@@ -205,7 +205,7 @@ write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")
         dplyr::mutate(min_dbl = purrr::map_dbl(min_max_ls, ~.x[1]), 
             max_dbl = purrr::map_dbl(min_max_ls, ~.x[2])) %>% 
         dplyr::select(var_names_chr, dplyr::everything(), -min_max_ls)
-    output_ls <- list(measurements_tb = measurements_tb, var_summ_res_tb = var_summ_res_tb, 
+    output_ls <- list(measurements_tb = measurements_tb, var_smry_res_tb = var_smry_res_tb, 
         var_class_pars_tb = var_class_pars_tb) %>% append(cor_tb_ls)
     dss_tb <- tibble::tibble(ds_obj_nm_chr = names(output_ls), 
         title_chr = c("Brief summary table of the number of observations for which data was collected at each study timepoint.", 

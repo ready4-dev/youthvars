@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_subtotal_plt}
 \alias{make_subtotal_plt}
-\title{Make subtotal}
+\title{Make subtotal plot}
 \usage{
 make_subtotal_plt(
   data_tb,

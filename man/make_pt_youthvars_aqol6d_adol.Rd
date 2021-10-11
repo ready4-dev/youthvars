@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{make_pt_youthvars_aqol6d_adol}
 \alias{make_pt_youthvars_aqol6d_adol}
-\title{Make prototype youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{Make prototype youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 make_pt_youthvars_aqol6d_adol()
 }

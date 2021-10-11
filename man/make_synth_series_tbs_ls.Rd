@@ -2,7 +2,7 @@
 % Please edit documentation in R/fn_make.R
 \name{make_synth_series_tbs_ls}
 \alias{make_synth_series_tbs_ls}
-\title{Make synthetic series tibbles}
+\title{Make synthetic series tibbles list}
 \usage{
 make_synth_series_tbs_ls(synth_data_spine_ls, series_names_chr)
 }

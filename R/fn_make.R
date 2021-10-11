@@ -1,4 +1,4 @@
-#' Make adolescent Assessment of Quality of Life Six Dimension disvalue
+#' Make adolescent Assessment of Quality of Life Six Dimension disvalue lookup table
 #' @description make_adol_aqol6d_disv_lup() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make adolescent assessment of quality of life six dimension disvalue lookup table. The function returns Adolescent Assessment of Quality of Life Six Dimension disvalue (a lookup table).
 
 #' @return Adolescent Assessment of Quality of Life Six Dimension disvalue (a lookup table)
@@ -17,10 +17,10 @@ make_adol_aqol6d_disv_lup <- function ()
         "Q1" ~ 0.073, TRUE ~ Answer_5_dbl))
     return(adol_aqol6d_disv_lup)
 }
-#' Make Assessment of Quality of Life Six Dimension adolescent pop tibbles
+#' Make Assessment of Quality of Life Six Dimension adolescent pop tibbles list
 #' @description make_aqol6d_adol_pop_tbs_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make assessment of quality of life six dimension adolescent pop tibbles list. The function returns Assessment of Quality of Life Six Dimension adolescent pop tibbles (a list).
 #' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
-#' @param aqol_scores_pars_ls Assessment of Quality of Life scores parameters (a list)
+#' @param aqol_scores_pars_ls Assessment of Quality of Life scores pars (a list)
 #' @param series_names_chr Series names (a character vector)
 #' @param synth_data_spine_ls Synthetic data spine (a list)
 #' @param temporal_cors_ls Temporal correlations (a list)
@@ -60,7 +60,7 @@ make_aqol6d_adol_pop_tbs_ls <- function (aqol_items_prpns_tbs_ls, aqol_scores_pa
         dplyr::everything()))
     return(aqol6d_adol_pop_tbs_ls)
 }
-#' Make Assessment of Quality of Life Six Dimension functions
+#' Make Assessment of Quality of Life Six Dimension functions list
 #' @description make_aqol6d_fns_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make assessment of quality of life six dimension functions list. The function returns Assessment of Quality of Life Six Dimension disu (a list of functions).
 #' @param domain_items_ls Domain items (a list)
 #' @return Assessment of Quality of Life Six Dimension disu (a list of functions)
@@ -75,7 +75,7 @@ make_aqol6d_fns_ls <- function (domain_items_ls)
         "_disv") %>% purrr::map(~rlang::sym(.x))
     return(aqol6d_disu_fn_ls)
 }
-#' Make Assessment of Quality of Life Six Dimension items
+#' Make Assessment of Quality of Life Six Dimension items tibble
 #' @description make_aqol6d_items_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol_tb Assessment of Quality of Life (a tibble)
 #' @param old_pfx_1L_chr Old prefix (a character vector of length one)
@@ -94,7 +94,7 @@ make_aqol6d_items_tb <- function (aqol_tb, old_pfx_1L_chr, new_pfx_1L_chr)
         })
     return(aqol6d_items_tb)
 }
-#' Make complete proportions tibbles
+#' Make complete proportions tibbles list
 #' @description make_complete_prpns_tbs_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make complete proportions tibbles list. The function returns Complete proportions tibbles (a list).
 #' @param raw_prpns_tbs_ls Raw proportions tibbles (a list)
 #' @param question_var_nm_1L_chr Question variable name (a character vector of length one), Default: 'Question'
@@ -116,7 +116,7 @@ make_complete_prpns_tbs_ls <- function (raw_prpns_tbs_ls, question_var_nm_1L_chr
     })
     return(complete_prpns_tbs_ls)
 }
-#' Make correlated data
+#' Make correlated data tibble
 #' @description make_correlated_data_tb() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make correlated data tibble. The function returns Correlated data (a tibble).
 #' @param synth_data_spine_ls Synthetic data spine (a list)
 #' @param synth_data_idx_1L_dbl Synthetic data index (a double vector of length one), Default: 1
@@ -172,8 +172,8 @@ make_cors_with_utl_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb = NULL,
     }
     return(cors_with_utl_tb)
 }
-#' Make corstars table
-#' @description make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make corstars table output object of multiple potential types. The function is called for its side effects and does not return a value.
+#' Make starred correlations table output object of multiple potential types
+#' @description make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make starred correlations table output object of multiple potential types. The function is called for its side effects and does not return a value.
 #' @param x An object
 #' @param caption_1L_chr Caption (a character vector of length one), Default: NULL
 #' @param mkdn_tbl_ref_1L_chr Markdown table reference (a character vector of length one), Default: NULL
@@ -240,8 +240,8 @@ make_corstars_tbl_xx <- function (x, caption_1L_chr = NULL, mkdn_tbl_ref_1L_chr 
             footnotes_chr, "}\n"))
         Rnew %>% ready4show::print_table(output_type_1L_chr = result_chr[1], 
             add_to_row_ls = add_to_row_ls, caption_1L_chr = caption_1L_chr, 
-            footnotes_chr = footnotes_chr, incl_col_nms_1L_lgl = T, 
-            incl_row_nms_1L_lgl = T, mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr, 
+            footnotes_chr = footnotes_chr, inc_col_nms_1L_lgl = T, 
+            inc_row_nms_1L_lgl = T, mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr, 
             use_rdocx_1L_lgl = ifelse(result_chr[1] == "Word", 
                 T, F))
     }
@@ -345,7 +345,7 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_
     }
     return(descv_stats_tbl_tb)
 }
-#' Make dimension scaling constants
+#' Make dimension scaling constants double vector
 #' @description make_dim_sclg_cons_dbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make dimension scaling constants double vector. The function returns Dimension scaling constants (a double vector).
 #' @param domains_chr Domains (a character vector)
 #' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble)
@@ -362,7 +362,7 @@ make_dim_sclg_cons_dbl <- function (domains_chr, dim_sclg_con_lup_tb)
         target_var_nm_1L_chr = "Constant_dbl", evaluate_lgl = F))
     return(dim_sclg_cons_dbl)
 }
-#' Make domain items
+#' Make domain items list
 #' @description make_domain_items_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make domain items list. The function returns Domain items (a list).
 #' @param domain_qs_lup_tb Domain questions lookup table (a tibble)
 #' @param item_pfx_1L_chr Item prefix (a character vector of length one)
@@ -382,39 +382,39 @@ make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
         .x)) %>% stats::setNames(domains_chr)
     return(domain_items_ls)
 }
-#' Make final rpln dataset dictionary
-#' @description make_final_rpln_ds_dict() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make final rpln dataset dictionary. The function returns Dictionary (a tibble).
+#' Make final replication dataset dictionary
+#' @description make_final_repln_ds_dict() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make final replication dataset dictionary. The function returns Dictionary (a tibble).
 #' @param seed_dictionary_tb Seed dictionary (a tibble), Default: NULL
 #' @param additions_tb Additions (a tibble), Default: NULL
-#' @param utl_unwtd_var_nm_1L_chr Utility unwtd variable name (a character vector of length one), Default: 'aqol6d_total_c'
+#' @param utl_unwtd_var_nm_1L_chr Utility unweighted variable name (a character vector of length one), Default: 'aqol6d_total_c'
 #' @return Dictionary (a tibble)
-#' @rdname make_final_rpln_ds_dict
+#' @rdname make_final_repln_ds_dict
 #' @export 
 #' @importFrom utils data
-#' @importFrom ready4use bind_lups make_pt_ready4_dictionary ready4_dictionary
+#' @importFrom ready4use renew make_pt_ready4use_dictionary ready4use_dictionary
 #' @importFrom Hmisc label
-make_final_rpln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = NULL, utl_unwtd_var_nm_1L_chr = "aqol6d_total_c") 
+make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = NULL, utl_unwtd_var_nm_1L_chr = "aqol6d_total_c") 
 {
     if (is.null(seed_dictionary_tb)) {
         utils::data("aqol_scrg_dict_r3", package = "youthvars", 
             envir = environment())
-        dictionary_tb <- ready4use::bind_lups(make_tfd_repln_ds_dict_r3(), 
+        dictionary_tb <- ready4use::renew(make_tfd_repln_ds_dict_r3(), 
             new_ready4_dict_r3 = aqol_scrg_dict_r3)
     }
     else {
         dictionary_tb <- seed_dictionary_tb
     }
     if (is.null(additions_tb)) {
-        additions_tb <- ready4use::make_pt_ready4_dictionary(var_nm_chr = c("bl_date_dtm", 
+        additions_tb <- ready4use::make_pt_ready4use_dictionary(var_nm_chr = c("bl_date_dtm", 
             "interval_dbl", "participation"), var_ctg_chr = c("Temporal", 
             "Temporal", "Temporal"), var_desc_chr = c("Date of baseline assessment", 
             "Interval between baseline and follow-up assessments", 
             "Rounds participated in"), var_type_chr = c("date", 
-            "interval", "character")) %>% ready4use::ready4_dictionary()
+            "interval", "character")) %>% ready4use::ready4use_dictionary()
     }
     Hmisc::label(additions_tb) <- as.list(Hmisc::label(dictionary_tb) %>% 
         unname())
-    dictionary_tb <- dictionary_tb %>% ready4use::bind_lups(new_ready4_dict_r3 = additions_tb)
+    dictionary_tb <- dictionary_tb %>% ready4use::renew(new_ready4_dict_r3 = additions_tb)
     return(dictionary_tb)
 }
 #' Make formula
@@ -432,7 +432,7 @@ make_formula <- function (depnt_var_nm_1L_chr, predictors_chr, environment_env =
         " ~ ", paste0(predictors_chr, collapse = " + ")), env = environment_env)
     return(formula_fml)
 }
-#' Make item
+#' Make item plot
 #' @description make_item_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item plot. The function returns Item (a plot).
 #' @param tfd_data_tb Transformed data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
@@ -469,8 +469,8 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
         ggplot2::scale_fill_manual(values = c("#de2d26", "#fc9272"))
     return(item_plt)
 }
-#' Make item resp plots
-#' @description make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item resp plots. The function returns Composite (a plot).
+#' Make item response plots
+#' @description make_itm_resp_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make item response plots. The function returns Composite (a plot).
 #' @param data_tb Data (a tibble)
 #' @param col_nms_chr Column names (a character vector)
 #' @param lbl_nms_chr Label names (a character vector)
@@ -509,30 +509,30 @@ make_itm_resp_plts <- function (data_tb, col_nms_chr, lbl_nms_chr, plot_rows_col
         legend_ls, nrow = length(heights_int), heights = heights_int)
     return(composite_plt)
 }
-#' Make make item worst weights
+#' Make make item worst weights list list
 #' @description make_make_item_wrst_wts_ls_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make make item worst weights list list. The function returns Make item worst weights (a list of lists).
 #' @param domain_items_ls Domain items (a list)
-#' @param itm_wrst_wghts_lup_tb Item worst wghts lookup table (a tibble)
+#' @param itm_wrst_wts_lup_tb Item worst weights lookup table (a tibble)
 #' @return Make item worst weights (a list of lists)
 #' @rdname make_make_item_wrst_wts_ls_ls
 #' @export 
 #' @importFrom purrr map map_dbl
 #' @importFrom ready4fun get_from_lup_obj
 #' @keywords internal
-make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wghts_lup_tb) 
+make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wts_lup_tb) 
 {
     make_item_wrst_wts_ls_ls <- domain_items_ls %>% purrr::map(~{
         purrr::map_dbl(.x, ~{
-            ready4fun::get_from_lup_obj(itm_wrst_wghts_lup_tb, 
+            ready4fun::get_from_lup_obj(itm_wrst_wts_lup_tb, 
                 match_var_nm_1L_chr = "Question_chr", match_value_xx = .x, 
                 target_var_nm_1L_chr = "Worst_Weight_dbl", evaluate_lgl = F)
         })
     })
     return(make_item_wrst_wts_ls_ls)
 }
-#' Make positive definite correlation matrix
+#' Make positive definite correlation matrix matrix
 #' @description make_pdef_cor_mat_mat() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make positive definite correlation matrix matrix. The function returns Positive definite correlation (a matrix).
-#' @param lower_diag_mat Lower diag (a matrix)
+#' @param lower_diag_mat Lower diagonal (a matrix)
 #' @return Positive definite correlation (a matrix)
 #' @rdname make_pdef_cor_mat_mat
 #' @export 
@@ -549,15 +549,15 @@ make_pdef_cor_mat_mat <- function (lower_diag_mat)
     }
     return(pdef_cor_mat)
 }
-#' Make predictor parameters and correlations table
-#' @description make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor parameters and correlations table. The function returns Predictor parameters and correlations (a tibble).
+#' Make predictor pars and correlations table
+#' @description make_predr_pars_and_cors_tbl() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make predictor pars and correlations table. The function returns Predictor pars and correlations (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
 #' @param descv_tbl_ls Descriptive table (a list)
 #' @param dictionary_tb Dictionary (a tibble)
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 2
 #' @param predictors_lup Predictors (a lookup table), Default: NULL
-#' @return Predictor parameters and correlations (a tibble)
+#' @return Predictor pars and correlations (a tibble)
 #' @rdname make_predr_pars_and_cors_tbl
 #' @export 
 #' @importFrom dplyr mutate slice across rename_with select everything filter
@@ -669,7 +669,7 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
     }
     return(composite_plt)
 }
-#' Make subtotal
+#' Make subtotal plot
 #' @description make_subtotal_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make subtotal plot. The function returns Subtotal (a plot).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
@@ -708,7 +708,7 @@ make_subtotal_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
         ggplot2::scale_fill_manual(values = c("#de2d26", "#fc9272"))
     return(subtotal_plt)
 }
-#' Make synthetic series tibbles
+#' Make synthetic series tibbles list
 #' @description make_synth_series_tbs_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make synthetic series tibbles list. The function returns Synthetic series tibbles (a list).
 #' @param synth_data_spine_ls Synthetic data spine (a list)
 #' @param series_names_chr Series names (a character vector)
@@ -725,10 +725,10 @@ make_synth_series_tbs_ls <- function (synth_data_spine_ls, series_names_chr)
         idx_int = .x)) %>% stats::setNames(series_names_chr)
     return(synth_series_tbs_ls)
 }
-#' Make tableby cntrls
-#' @description make_tableby_cntrls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make tableby cntrls. The function returns Tableby cntrls (a list).
+#' Make tableby controls
+#' @description make_tableby_cntrls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make tableby controls. The function returns Tableby controls (a list).
 #' @param test_1L_lgl Test (a logical vector of length one), Default: F
-#' @return Tableby cntrls (a list)
+#' @return Tableby controls (a list)
 #' @rdname make_tableby_cntrls
 #' @export 
 #' @importFrom arsenal tableby.control
@@ -744,7 +744,7 @@ make_tableby_cntrls <- function (test_1L_lgl = F)
             range = "Min - Max", Nmiss2 = "Missing"))
     return(tableby_cntrls_ls)
 }
-#' Make tableby
+#' Make tableby list
 #' @description make_tableby_ls() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make tableby list. The function returns Tableby (a list).
 #' @param data_tb Data (a tibble)
 #' @param key_var_nm_1L_chr Key variable name (a character vector of length one)
@@ -762,7 +762,7 @@ make_tableby_ls <- function (data_tb, key_var_nm_1L_chr, variable_nms_chr, test_
         control = make_tableby_cntrls(test_1L_lgl))
     return(tableby_ls)
 }
-#' Make transformed replication dataset dictionary
+#' Make transformed replication dataset dictionary ready4 S3
 #' @description make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed replication dataset dictionary ready4 s3. The function returns Transformed replication dataset dictionary (a ready4 S3).
 #' @param repln_ds_dict_r3 Replication dataset dictionary (a ready4 S3), Default: NULL
 #' @return Transformed replication dataset dictionary (a ready4 S3)
@@ -786,7 +786,7 @@ make_tfd_repln_ds_dict_r3 <- function (repln_ds_dict_r3 = NULL)
         "Category", "Description", "Class"))
     return(tfd_repln_ds_dict_r3)
 }
-#' Make variable by round
+#' Make variable by round plot
 #' @description make_var_by_round_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make variable by round plot. The function returns Variable by round (a plot).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
