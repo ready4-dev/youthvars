@@ -391,14 +391,15 @@ make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
 #' @rdname make_final_repln_ds_dict
 #' @export 
 #' @importFrom utils data
-#' @importFrom ready4use renew make_pt_ready4use_dictionary ready4use_dictionary
+#' @importFrom ready4fun renew
+#' @importFrom ready4use make_pt_ready4use_dictionary ready4use_dictionary
 #' @importFrom Hmisc label
 make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = NULL, utl_unwtd_var_nm_1L_chr = "aqol6d_total_c") 
 {
     if (is.null(seed_dictionary_tb)) {
         utils::data("aqol_scrg_dict_r3", package = "youthvars", 
             envir = environment())
-        dictionary_tb <- ready4use::renew(make_tfd_repln_ds_dict_r3(), 
+        dictionary_tb <- ready4fun::renew(make_tfd_repln_ds_dict_r3(), 
             new_ready4_dict_r3 = aqol_scrg_dict_r3)
     }
     else {
@@ -414,7 +415,7 @@ make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = 
     }
     Hmisc::label(additions_tb) <- as.list(Hmisc::label(dictionary_tb) %>% 
         unname())
-    dictionary_tb <- dictionary_tb %>% ready4use::renew(new_ready4_dict_r3 = additions_tb)
+    dictionary_tb <- dictionary_tb %>% ready4fun::renew(new_ready4_dict_r3 = additions_tb)
     return(dictionary_tb)
 }
 #' Make formula

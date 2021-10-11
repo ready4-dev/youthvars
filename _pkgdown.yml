@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: 5223904
+    href: 5223979
   - text: Manual - Developer (PDF)
-    href: 5223903
+    href: 5223977
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
