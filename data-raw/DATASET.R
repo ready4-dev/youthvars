@@ -1,4 +1,5 @@
-library(ready4fun)
+library(ready4)
+library(magrittr)
 ready4fun::write_fn_type_dirs() # Need to ammend to write empty generics.R file
 # MANUAL STEP. Write all your functions to R files in the new "fns" directory.
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
@@ -39,7 +40,9 @@ x_ready4fun_manifest <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe
                                                                                                  "write_all_outp_dirs",
                                                                                                  "write_desv_plots",
                                                                                                  "write_descv_tbls")),##
-                           dev_pkgs_chr = c("ready4fun","ready4class","ready4use","ready4show"),
+                           dev_pkgs_chr = c("ready4","ready4fun",
+                                            #"ready4class",
+                                            "ready4use","ready4show"),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/youthvars-logo/default.png",
                            pkg_dmt_dv_dss_chr = c("https://doi.org/10.7910/DVN/HLLXZN",
@@ -281,4 +284,5 @@ x_ready4use_manifest <- ready4use::make_pt_ready4use_manifest(x_ready4fun_manife
                                                               constructor_r3 = x_ready4class_constructor,
                                                               pkg_ds_ls_ls = datasets_ls) %>%
   ready4use::ready4use_manifest()
-x_xx <- ready4fun::author(x_ready4use_manifest)
+x_xx <- ready4::author(x_ready4use_manifest)
+# devtools::build_vignettes()

@@ -47,7 +47,7 @@ Some of the functions we are illustrating in this vignette also require that the
 ```{r }
 data("repln_ds_dict_r3", package = "youthvars")
 data("aqol_scrg_dict_r3", package = "youthvars")
-dictionary_tb <- ready4use::bind_lups(repln_ds_dict_r3,
+dictionary_tb <- ready4::renew(repln_ds_dict_r3,
                                       new_ready4_dict_r3 = aqol_scrg_dict_r3)
 ```
 
