@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9064</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9070</span>
       </span>
     </div>
 
@@ -130,11 +130,11 @@
   <span class="fu"><a href="../reference/add_adol6d_scores.html">add_adol6d_scores</a></span><span class="op">(</span>prefix_1L_chr <span class="op">=</span> <span class="st">"aqol6d_q"</span>,
                     id_var_nm_1L_chr <span class="op">=</span> <span class="st">"fkClientID"</span>,
                     wtd_aqol_var_nm_1L_chr <span class="op">=</span> <span class="st">"aqol6d_total_w"</span><span class="op">)</span></code></pre></div>
-<p>Some of the functions we are illustrating in this vignette also require that the dataset has a dictonary of the <code>ready4_dictionary</code> class.</p>
+<p>Some of the functions we are illustrating in this vignette also require that the dataset has a dictonary of the <code>ready4use_dictionary</code> class.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"repln_ds_dict_r3"</span>, package <span class="op">=</span> <span class="st">"youthvars"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"aqol_scrg_dict_r3"</span>, package <span class="op">=</span> <span class="st">"youthvars"</span><span class="op">)</span>
-<span class="va">dictionary_tb</span> <span class="op">&lt;-</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/bind_lups-methods.html">bind_lups</a></span><span class="op">(</span><span class="va">repln_ds_dict_r3</span>,
+<span class="va">dictionary_tb</span> <span class="op">&lt;-</span> <span class="fu">ready4</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">repln_ds_dict_r3</span>,
                                       new_ready4_dict_r3 <span class="op">=</span> <span class="va">aqol_scrg_dict_r3</span><span class="op">)</span></code></pre></div>
 <p>Currently, youthvars plotting and tabular functions are designed for use with datasets that have the following structural properties:</p>
 <ul>
@@ -1390,7 +1390,7 @@ Missing
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/transform_ds_for_tstng.html">transform_ds_for_tstng</a></span><span class="op">(</span><span class="va">data_tb</span>,
                        depnt_var_nm_1L_chr <span class="op">=</span> <span class="st">"aqol6d_total_w"</span>,
-                       dep_var_max_val_1L_dbl <span class="op">=</span> <span class="cn">Inf</span>,
+                       depnt_var_max_val_1L_dbl <span class="op">=</span> <span class="cn">Inf</span>,
                        candidate_predrs_chr <span class="op">=</span> <span class="va">variable_nms_chr</span>,
                        round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
                        round_val_1L_chr <span class="op">=</span> <span class="st">"Baseline"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -1502,7 +1502,7 @@ gad7_total
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/transform_ds_for_tstng.html">transform_ds_for_tstng</a></span><span class="op">(</span><span class="va">data_tb</span>,
                        depnt_var_nm_1L_chr <span class="op">=</span> <span class="st">"aqol6d_total_w"</span>,
-                       dep_var_max_val_1L_dbl <span class="op">=</span> <span class="cn">Inf</span>,
+                       depnt_var_max_val_1L_dbl <span class="op">=</span> <span class="cn">Inf</span>,
                        candidate_predrs_chr <span class="op">=</span> <span class="va">variable_nms_chr</span>,
                        round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
                        round_val_1L_chr <span class="op">=</span> <span class="st">"Follow-up"</span><span class="op">)</span> <span class="op">%&gt;%</span>
