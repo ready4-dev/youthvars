@@ -21,11 +21,11 @@ print_descv_stats_tbl <- function (df,
   rename_lup <- tibble::tibble(old_nms_chr = df$label %>% unique(),
                                new_nms_chr = make.unique(valid_var_nms_chr, sep="V"))
   df$label <- df$label %>% purrr::map_chr(~ifelse(.x %in% rename_lup$old_nms_chr,
-                                                  ready4fun::get_from_lup_obj(rename_lup,
+                                                  ready4::get_from_lup_obj(rename_lup,
                                                                               match_value_xx = .x,
                                                                               match_var_nm_1L_chr = "old_nms_chr",
                                                                               target_var_nm_1L_chr = "new_nms_chr",
-                                                                              evaluate_lgl = F),
+                                                                              evaluate_1L_lgl = F),
                                                   .x))
 
   #df$variable <- gsub("\\s*\\([^\\)]+\\)", "",df$variable)

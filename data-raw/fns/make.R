@@ -84,11 +84,11 @@ make_cors_with_utl_tbl <- function(data_tb,
     dplyr::select(variable_chr, dplyr::everything())
   if(!is.null(dictionary_tb)){
     cors_with_utl_tb <- cors_with_utl_tb %>%
-      dplyr::mutate(variable_chr = variable_chr %>% purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb,
+      dplyr::mutate(variable_chr = variable_chr %>% purrr::map_chr(~ready4::get_from_lup_obj(dictionary_tb,
                                                                                         target_var_nm_1L_chr = "var_desc_chr",
                                                                                         match_var_nm_1L_chr = "var_nm_chr",
                                                                                         match_value_xx = .x,
-                                                                                        evaluate_lgl = F)))
+                                                                                        evaluate_1L_lgl = F)))
 
   }
   return(cors_with_utl_tb)
@@ -188,11 +188,11 @@ make_descv_stats_tbl <- function(data_tb,
                     %>% purrr::discard(is.na))
     if(!is.null(dictionary_tb)){
       descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
-        dplyr::mutate(variable = variable %>% purrr::map_chr(~ready4fun::get_from_lup_obj(dictionary_tb,
+        dplyr::mutate(variable = variable %>% purrr::map_chr(~ready4::get_from_lup_obj(dictionary_tb,
                                                                                           target_var_nm_1L_chr = "var_desc_chr",
                                                                                           match_var_nm_1L_chr = "var_nm_chr",
                                                                                           match_value_xx = .x,
-                                                                                          evaluate_lgl = F) %>% as.vector()))
+                                                                                          evaluate_1L_lgl = F) %>% as.vector()))
 
     }
     vars_with_mdns_chr <- descv_stats_tbl_tb %>% dplyr::filter(label == "Median (Q1, Q3)") %>% dplyr::pull(variable)
@@ -287,9 +287,9 @@ make_descv_stats_tbl <- function(data_tb,
 }
 make_dim_sclg_cons_dbl <- function (domains_chr, dim_sclg_con_lup_tb)
 { # MIGRATED FROM TTU : REORGANISE
-  dim_sclg_cons_dbl <- purrr::map_dbl(domains_chr, ~ready4fun::get_from_lup_obj(dim_sclg_con_lup_tb,
+  dim_sclg_cons_dbl <- purrr::map_dbl(domains_chr, ~ready4::get_from_lup_obj(dim_sclg_con_lup_tb,
                                                                                 match_var_nm_1L_chr = "Dimension_chr", match_value_xx = .x,
-                                                                                target_var_nm_1L_chr = "Constant_dbl", evaluate_lgl = F))
+                                                                                target_var_nm_1L_chr = "Constant_dbl", evaluate_1L_lgl = F))
   return(dim_sclg_cons_dbl)
 }
 make_domain_items_ls <- function (domain_qs_lup_tb, item_pfx_1L_chr)
@@ -418,9 +418,9 @@ make_make_item_wrst_wts_ls_ls <- function (domain_items_ls, itm_wrst_wts_lup_tb)
 { # MIGRATED FROM TTU: REORGANISE
   make_item_wrst_wts_ls_ls <- domain_items_ls %>% purrr::map(~{
     purrr::map_dbl(.x, ~{
-      ready4fun::get_from_lup_obj(itm_wrst_wts_lup_tb,
+      ready4::get_from_lup_obj(itm_wrst_wts_lup_tb,
                                   match_var_nm_1L_chr = "Question_chr", match_value_xx = .x,
-                                  target_var_nm_1L_chr = "Worst_Weight_dbl", evaluate_lgl = F)
+                                  target_var_nm_1L_chr = "Worst_Weight_dbl", evaluate_1L_lgl = F)
     })
   })
   return(make_item_wrst_wts_ls_ls)
@@ -445,11 +445,11 @@ make_predr_pars_and_cors_tbl <- function(data_tb,
                                                    ds_descvs_ls = ds_descvs_ls,
                                                    dictionary_tb = dictionary_tb) %>%
     dplyr::mutate(label = paste0("Correlation with ",
-                                 ready4fun::get_from_lup_obj(dictionary_tb,
+                                 ready4::get_from_lup_obj(dictionary_tb,
                                                              match_var_nm_1L_chr = "var_nm_chr",
                                                              match_value_xx = ds_descvs_ls$utl_wtd_var_nm_1L_chr,
                                                              target_var_nm_1L_chr = "var_desc_chr",
-                                                             evaluate_lgl = F)))
+                                                             evaluate_1L_lgl = F)))
 
   predr_pars_and_cors_tb <- purrr::map_dfr(1:nrow(predr_pars_and_cors_tb),
                                            ~ predr_pars_and_cors_tb %>%
@@ -477,11 +477,11 @@ make_predr_pars_and_cors_tbl <- function(data_tb,
                          stringr::str_replace("_val_2_ls","_val_2_chr") %>%
                          stringr::str_replace("variable", "variable_chr")) %>%
     dplyr::filter(variable_chr %in% purrr::map_chr(ds_descvs_ls$candidate_predrs_chr,
-                                                   ~ready4fun::get_from_lup_obj(dictionary_tb,
+                                                   ~ready4::get_from_lup_obj(dictionary_tb,
                                                                                 match_var_nm_1L_chr = "var_nm_chr",
                                                                                 match_value_xx = .x,
                                                                                 target_var_nm_1L_chr = "var_desc_chr",
-                                                                                evaluate_lgl = F)))
+                                                                                evaluate_1L_lgl = F)))
   predr_pars_and_cors_tb <- main_outc_tbl_tb$variable_chr %>% unique() %>%
     purrr::map_dfr(~tibble::add_case(main_outc_tbl_tb %>%
                                        dplyr::filter(variable_chr == .x),
@@ -491,24 +491,24 @@ make_predr_pars_and_cors_tbl <- function(data_tb,
     predr_pars_and_cors_tb <- predr_pars_and_cors_tb %>%
       dplyr::mutate(variable_chr = purrr::map_chr(variable_chr,
                                                   ~ {
-                                                    var_nm_1L_chr <- ready4fun::get_from_lup_obj(dictionary_tb,
+                                                    var_nm_1L_chr <- ready4::get_from_lup_obj(dictionary_tb,
                                                                                                  match_var_nm_1L_chr = "var_desc_chr",
                                                                                                  match_value_xx = .x,
                                                                                                  target_var_nm_1L_chr = "var_nm_chr",
-                                                                                                 evaluate_lgl = F)
+                                                                                                 evaluate_1L_lgl = F)
                                                     paste0 (.x,
                                                             " (",
-                                                            ready4fun::get_from_lup_obj(predictors_lup,
+                                                            ready4::get_from_lup_obj(predictors_lup,
                                                                                         match_var_nm_1L_chr = "short_name_chr",
                                                                                         match_value_xx = var_nm_1L_chr,
                                                                                         target_var_nm_1L_chr = "min_val_dbl",
-                                                                                        evaluate_lgl = F),
+                                                                                        evaluate_1L_lgl = F),
                                                             "-",
-                                                            ready4fun::get_from_lup_obj(predictors_lup,
+                                                            ready4::get_from_lup_obj(predictors_lup,
                                                                                         match_var_nm_1L_chr = "short_name_chr",
                                                                                         match_value_xx = var_nm_1L_chr,
                                                                                         target_var_nm_1L_chr = "max_val_dbl",
-                                                                                        evaluate_lgl = F),
+                                                                                        evaluate_1L_lgl = F),
                                                             ")"
                                                     )
                                                   }

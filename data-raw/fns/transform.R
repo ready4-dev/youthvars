@@ -31,11 +31,11 @@ transform_ds_with_rename_lup <- function(ds_tb,
     target_var_nms_chr <- intersect(names(ds_tb),rename_lup$old_nms_chr)
   tfmd_ds_tb <- dplyr::rename_with(ds_tb,
                                    .cols = target_var_nms_chr,
-                                   ~ ready4fun::get_from_lup_obj(rename_lup,
+                                   ~ ready4::get_from_lup_obj(rename_lup,
                                                                  match_value_xx = .x,
                                                                  match_var_nm_1L_chr = "old_nms_chr",
                                                                  target_var_nm_1L_chr = "new_nms_chr",
-                                                                 evaluate_lgl = F))
+                                                                 evaluate_1L_lgl = F))
   return(tfmd_ds_tb)
 
 }

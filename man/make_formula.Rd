@@ -18,7 +18,7 @@ make_formula(
 \item{environment_env}{Environment (an environment), Default: parent.frame()}
 }
 \value{
-NA ()
+formula_fml (An object)
 }
 \description{
 make_formula() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make formula. The function is called for its side effects and does not return a value.

@@ -40,13 +40,13 @@ x_ready4fun_manifest <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe
                                                                                                  "write_all_outp_dirs",
                                                                                                  "write_desv_plots",
                                                                                                  "write_descv_tbls")),##
-                           dev_pkgs_chr = c("ready4","ready4fun",
+                           dev_pkgs_chr = c("ready4",
+                                            #"ready4fun",
                                             #"ready4class",
                                             "ready4use","ready4show"),
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/youthvars-logo/default.png",
-                           pkg_dmt_dv_dss_chr = c("https://doi.org/10.7910/DVN/HLLXZN",
-                                                  "https://doi.org/10.7910/DVN/2Y9VF9"),
+                           piggyback_to_1L_chr = "ready4-dev/ready4",
                            ready4_type_1L_chr = "authoring")
 x_ready4class_constructor <- ready4class::ready4class_constructor() %>%
   dplyr::bind_rows(tibble::tribble(
@@ -65,7 +65,7 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
                                                  "Follow-up"))) %>%
   dplyr::mutate(d_relation_s = dplyr::case_when(d_relation_s %in% c("REPLACE_ME_1","REPLACE_ME_2") ~ "Not in a relationship",
                                                 T ~ "In a relationship")) %>%
-  add_dates_from_dstr(bl_start_date_dtm = Sys.Date() - lubridate::days(600),##
+  youthu::add_dates_from_dstr(bl_start_date_dtm = Sys.Date() - lubridate::days(600),##
                               bl_end_date_dtm = Sys.Date() - lubridate::days(420),
                               duration_args_ls = list(a = 60, b = 140, mean = 90, sd = 10),
                               duration_fn = truncnorm::rtruncnorm,
@@ -280,9 +280,9 @@ tibble::tibble(short_name_chr = c("BADS","GAD7","K6","OASIS","PHQ9","SCARED","SO
                               desc_1L_chr = "A lookup table of the short name and long name of each predictor used in the models included with the youthu package.")
 
 )
-x_ready4use_manifest <- ready4use::make_pt_ready4use_manifest(x_ready4fun_manifest,
+x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
                                                               constructor_r3 = x_ready4class_constructor,
                                                               pkg_ds_ls_ls = datasets_ls) %>%
-  ready4use::ready4use_manifest()
-x_xx <- ready4::author(x_ready4use_manifest)
+  ready4pack::ready4pack_manifest()
+x_xx <- ready4::author(x_ready4pack_manifest)
 # devtools::build_vignettes()

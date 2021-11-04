@@ -48,7 +48,7 @@ write_all_outp_dirs <- function (paths_ls)
 #' @rdname write_descv_plots
 #' @export 
 #' @importFrom dplyr select starts_with
-#' @importFrom ready4fun get_from_lup_obj
+#' @importFrom ready4 get_from_lup_obj
 #' @importFrom purrr map
 #' @importFrom rlang exec
 #' @importFrom ready4show write_mdl_plt_fl
@@ -99,9 +99,9 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
             fn_args_ls = list(data_tb, var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
                 x_label_1L_chr = ds_descvs_ls$dictionary_tb %>% 
-                  ready4fun::get_from_lup_obj(match_value_xx = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+                  ready4::get_from_lup_obj(match_value_xx = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
                     match_var_nm_1L_chr = "var_nm_chr", target_var_nm_1L_chr = "var_desc_chr", 
-                    evaluate_lgl = F) %>% as.vector()), width_1L_dbl = utl_by_rnd_plots_params_ls$width_1L_dbl, 
+                    evaluate_1L_lgl = F) %>% as.vector()), width_1L_dbl = utl_by_rnd_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = utl_by_rnd_plots_params_ls$height_1L_dbl, 
             path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "utl_by_rnd"))

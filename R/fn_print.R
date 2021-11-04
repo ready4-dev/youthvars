@@ -18,7 +18,7 @@
 #' @importFrom Hmisc capitalize
 #' @importFrom stringi stri_replace_all_fixed
 #' @importFrom tibble tibble
-#' @importFrom ready4fun get_from_lup_obj
+#' @importFrom ready4 get_from_lup_obj
 #' @importFrom rlang sym
 #' @importFrom knitr opts_current
 #' @importFrom stringr str_replace
@@ -40,9 +40,9 @@ print_descv_stats_tbl <- function (df, bl_fup_vals_chr = c("Baseline", "Follow-u
     rename_lup <- tibble::tibble(old_nms_chr = df$label %>% unique(), 
         new_nms_chr = make.unique(valid_var_nms_chr, sep = "V"))
     df$label <- df$label %>% purrr::map_chr(~ifelse(.x %in% rename_lup$old_nms_chr, 
-        ready4fun::get_from_lup_obj(rename_lup, match_value_xx = .x, 
+        ready4::get_from_lup_obj(rename_lup, match_value_xx = .x, 
             match_var_nm_1L_chr = "old_nms_chr", target_var_nm_1L_chr = "new_nms_chr", 
-            evaluate_lgl = F), .x))
+            evaluate_1L_lgl = F), .x))
     n_inc_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
         bl_fup_vals_chr[1]) %>% nrow()
     n_fup_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 

@@ -1,9 +1,9 @@
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5251260
+    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_User.pdf
   - text: Manual - Developer (PDF)
-    href: https://dataverse.harvard.edu/api/access/datafile/5251259
+    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_Developer.pdf
   - text: Project website
     href:  https://ready4-dev.github.io/ready4/
 development:
@@ -22,7 +22,7 @@ reference:
   - predictors_lup
   - replication_popl_tb
   - repln_ds_dict_r3
-- title: "Classes"
+- title: "S3 Classes"
 - contents:
   - youthvars_aqol6d_adol
   - youthvars_phq9
