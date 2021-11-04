@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9070</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9071</span>
       </span>
     </div>
 
@@ -125,15 +125,15 @@
 <span class="va">dictionary_tb</span> <span class="op">&lt;-</span> <span class="va">repln_ds_dict_r3</span></code></pre></div>
 
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dictionary_tb</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">dictionary_tb</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/output_type.html">is_html_output</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"HTML"</span>,<span class="st">"PDF"</span><span class="op">)</span>, 
                           caption_1L_chr <span class="op">=</span> <span class="st">"Data dictionary"</span>,  
                           use_lbls_as_col_nms_1L_lgl <span class="op">=</span> <span class="cn">T</span>, 
                           hline_after_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,
                           add_to_row_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span><span class="op">)</span>,
-                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span> <span class="op">%&gt;%</span>
-                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
                                                              <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span>,
                                                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
                           mkdn_tbl_ref_1L_chr <span class="op">=</span> <span class="st">"tab:ddic"</span><span class="op">)</span></code></pre></div>
@@ -831,23 +831,23 @@ factor
 <span class="va">raw_data_tb</span> <span class="op">&lt;-</span> <span class="va">replication_popl_tb</span> </code></pre></div>
 <p>Adding variable labels makes it easier to interpret the dataset. In the following command, we add lables from the data dictionary to the replication dataset.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op">&lt;-</span> <span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op">&lt;-</span> <span class="va">raw_data_tb</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/add_labels_from_dictionary.html">add_labels_from_dictionary</a></span><span class="op">(</span><span class="va">dictionary_tb</span><span class="op">)</span></code></pre></div>
 <p>The first six cases from the replication dataset are reproduced below, using variable labels as column headings.</p>
 
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>d_interview_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">d_interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">raw_data_tb</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>d_interview_date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">d_interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/print_table.html">print_table</a></span><span class="op">(</span>output_type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/output_type.html">is_html_output</a></span><span class="op">(</span><span class="op">)</span>,<span class="st">"HTML"</span>,<span class="st">"PDF"</span><span class="op">)</span>,
                           caption_1L_chr <span class="op">=</span> <span class="st">"Replication dataset"</span>, 
                           use_lbls_as_col_nms_1L_lgl <span class="op">=</span> <span class="cn">T</span>, 
                           hline_after_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span>,
-                          add_to_row_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">raw_data_tb</span> <span class="op">%&gt;%</span>
+                          add_to_row_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>,<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">raw_data_tb</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
-                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">raw_data_tb</span><span class="op">)</span> <span class="op">%&gt;%</span>
-                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                                               command <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/label.html">label</a></span><span class="op">(</span><span class="va">raw_data_tb</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+                                                             <span class="fu">Hmisc</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/Hmisc/man/latex.html">latexTranslate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
+                                                             <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span>collapse <span class="op">=</span> <span class="st">" &amp; "</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
                                                              <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span>,
                                                            <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"\\\\\n"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,
                           mkdn_tbl_ref_1L_chr <span class="op">=</span> <span class="st">"tab:repds"</span><span class="op">)</span> </code></pre></div>
@@ -995,7 +995,7 @@ Participant_1
 Baseline
 </td>
 <td style="text-align:right;">
-2020-07-24
+2020-03-20
 </td>
 <td style="text-align:right;">
 14
@@ -1126,7 +1126,7 @@ Participant_2
 Baseline
 </td>
 <td style="text-align:right;">
-2020-04-10
+2020-07-29
 </td>
 <td style="text-align:right;">
 19
@@ -1257,7 +1257,7 @@ Participant_3
 Baseline
 </td>
 <td style="text-align:right;">
-2020-07-25
+2020-06-12
 </td>
 <td style="text-align:right;">
 21
@@ -1388,7 +1388,7 @@ Participant_4
 Baseline
 </td>
 <td style="text-align:right;">
-2020-04-29
+2020-06-07
 </td>
 <td style="text-align:right;">
 12
@@ -1519,7 +1519,7 @@ Participant_5
 Baseline
 </td>
 <td style="text-align:right;">
-2020-07-17
+2020-05-25
 </td>
 <td style="text-align:right;">
 19
@@ -1650,7 +1650,7 @@ Participant_6
 Baseline
 </td>
 <td style="text-align:right;">
-2020-06-15
+2020-06-19
 </td>
 <td style="text-align:right;">
 19
