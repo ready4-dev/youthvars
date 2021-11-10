@@ -1,13 +1,14 @@
 print_descv_stats_tbl <- function (df,
+                                   data_tb,
+                                   output_type_1L_chr,
+                                   round_var_nm_1L_chr,
+                                   variable_nms_chr,
                                    bl_fup_vals_chr = c("Baseline","Follow-up"),
                                    capitalise_1L_lgl = T,
                                    caption_1L_chr = NULL,
                                    header_col_nms_chr = NULL,
                                    mkdn_tbl_ref_1L_chr = NULL,
-                                   output_type_1L_chr,
-                                   round_var_nm_1L_chr,
-                                   test_1L_lgl = F,
-                                   variable_nms_chr)
+                                   test_1L_lgl = F)
 {
   if(capitalise_1L_lgl)
     df <- df %>%
