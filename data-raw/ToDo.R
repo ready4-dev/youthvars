@@ -29,7 +29,7 @@ Ready4useDyad <- methods::setClass("Ready4useDyad", # ready4use
                                           dictionary_r3 = "ready4use_dictionary"),
                                 prototype =  list(ds_tb = tibble::tibble(),
                                                   dictionary_r3 = ready4use::ready4use_dictionary()))
-exhibit_Ready4useDyad <- function(x,
+print_Ready4useDyad <- function(x,
                                   caption_1L_chr = NA_character_,
                                   display_1L_chr = "all",
                                   mkdn_tbl_ref_1L_chr = "",
@@ -64,10 +64,10 @@ exhibit_Ready4useDyad <- function(x,
                             mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr,
                             ...)
 }
-methods::setMethod("exhibit",
+methods::setMethod("print",
                    methods::className("Ready4useDyad"#, package = "ready4"
                    ),
-                   exhibit_Ready4useDyad)
+                   print_Ready4useDyad)
 YouthvarsDescriptives <- methods::setClass("YouthvarsDescriptives", #youthvars
                                            contains = "Ready4Launch",
                                            slots = c(descriptives_df = "data.frame",
@@ -152,7 +152,7 @@ YouthvarsSeries <- methods::setClass("YouthvarsSeries", #youthvars
                                                timepoint_var_nm_1L_chr = "character"),
                                      prototype =  list(timepoint_vals_chr = c("Baseline","Follow-up"),
                                                        timepoint_var_nm_1L_chr = "round"))
-exhibit_YouthvarsSeries <- function(x,
+print_YouthvarsSeries <- function(x,
                                     captions_chr = NULL,
                                     mkdn_tbl_refs_chr = NULL,
                                     profile_idx_int = NA_integer_,
@@ -222,10 +222,10 @@ plot_YouthvarsSeries <- function(x,
 
   }
 }
-methods::setMethod("exhibit",
+methods::setMethod("print",
                    methods::className("YouthvarsSeries"#, package = "ready4use"
                    ),
-                   exhibit_YouthvarsSeries)
+                   print_YouthvarsSeries)
 methods::setMethod("ratify",
                    methods::className("YouthvarsSeries"#, package = "ready4use"
                    ),
@@ -375,7 +375,7 @@ ScorzModelSpec <- methods::setClass("ScorzModelSpec", #youthvars
                                                           candidate_predrs_chr = NA_character_,
                                                           depnt_var_nm_1L_chr = NA_character_,
                                                           depnt_var_max_val_1L_dbl = Inf))
-exhibit_ScorzModelSpec <- function(x,
+print_ScorzModelSpec <- function(x,
                                        captions_chr = character(0),
                                        method_chr = c("pearson", "spearman"),
                                        mkdn_tbl_refs_chr = NULL,
@@ -391,7 +391,7 @@ exhibit_ScorzModelSpec <- function(x,
       }
     }
     if(identical(character(0), captions_chr)){
-      captions_chr <- paste0("Correlations at timepoint ",
+      captions_chr <- paste0("Correlations at ",
                              x@a_ScorzProfile@a_YouthvarsProfile@timepoint_vals_chr[timepoints_int])
     }
     1:length(timepoints_int) %>%
@@ -413,10 +413,10 @@ exhibit_ScorzModelSpec <- function(x,
                                         ))
   }
 }
-methods::setMethod("exhibit",
+methods::setMethod("print",
                    methods::className("ScorzModelSpec"#, package = "ready4use"
                    ),
-                   exhibit_ScorzModelSpec)
+                   print_ScorzModelSpec)
 ##
 data("replication_popl_tb")
 data("repln_ds_dict_r3", package = "youthvars")
@@ -424,7 +424,7 @@ data("aqol_scrg_dict_r3", package = "youthvars")
 x_Ready4useDyad <- Ready4useDyad(ds_tb = replication_popl_tb %>%
                                    add_participation_var(),
                                  dictionary_r3 = repln_ds_dict_r3)
-exhibit(x_Ready4useDyad, display_1L_chr = "head")
+print(x_Ready4useDyad, display_1L_chr = "head")
 x_YouthvarsDescriptives <- YouthvarsDescriptives(key_var_nm_1L_chr = "round",
                                                  key_var_vals_chr = c("Baseline","Follow-up"),
                                                  nbr_of_digits_1L_int = 3L,
@@ -456,7 +456,7 @@ x_YouthvarsSeries <- YouthvarsSeries(x_YouthvarsProfile,
 x_YouthvarsSeries <- ratify(x_YouthvarsSeries,
                             type_1L_chr = "two_timepoints")
 x_YouthvarsSeries %>%
-              exhibit(type_1L_chr = "characterize",
+              print(type_1L_chr = "characterize",
                       output_type_1L_chr = "HTML")
 plot(x_YouthvarsSeries,
      type_1L_chr = "by_time",
@@ -480,7 +480,7 @@ x_ScorzModelSpec <- ScorzModelSpec(a_ScorzProfile = y_ScorzAqol6Adol,
                                    candidate_predrs_chr = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
                                    depnt_var_nm_1L_chr = "aqol6d_total_w",
                                    depnt_var_max_val_1L_dbl = Inf)
-exhibit(x_ScorzModelSpec,
+print(x_ScorzModelSpec,
         type_1L_chr = "correlation" # captions_chr = NULL or ....
         )
 
