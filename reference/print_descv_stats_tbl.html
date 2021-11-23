@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9072</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9076</span>
       </span>
     </div>
 
@@ -112,10 +112,10 @@
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
     </li>
     <li>
-      <a href="../articles/Summaries.html">Tools to create summary tables and plots</a>
+      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
     </li>
     <li>
-      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
+      <a href="../articles/V_02.html">Describing Longitudinal Datasets</a>
     </li>
   </ul>
 </li>
@@ -151,15 +151,16 @@
 
     <pre class="usage"><span class='fu'>print_descv_stats_tbl</span><span class='op'>(</span>
   <span class='va'>df</span>,
+  <span class='va'>data_tb</span>,
+  <span class='va'>output_type_1L_chr</span>,
+  <span class='va'>round_var_nm_1L_chr</span>,
+  <span class='va'>variable_nms_chr</span>,
   bl_fup_vals_chr <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Baseline"</span>, <span class='st'>"Follow-up"</span><span class='op'>)</span>,
   capitalise_1L_lgl <span class='op'>=</span> <span class='cn'>T</span>,
   caption_1L_chr <span class='op'>=</span> <span class='cn'>NULL</span>,
   header_col_nms_chr <span class='op'>=</span> <span class='cn'>NULL</span>,
   mkdn_tbl_ref_1L_chr <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>output_type_1L_chr</span>,
-  <span class='va'>round_var_nm_1L_chr</span>,
-  test_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>,
-  <span class='va'>variable_nms_chr</span>
+  test_1L_lgl <span class='op'>=</span> <span class='cn'>F</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -168,6 +169,22 @@
     <tr>
       <th>df</th>
       <td><p>Data.frame (a data.frame)</p></td>
+    </tr>
+    <tr>
+      <th>data_tb</th>
+      <td><p>Data (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>output_type_1L_chr</th>
+      <td><p>Output type (a character vector of length one)</p></td>
+    </tr>
+    <tr>
+      <th>round_var_nm_1L_chr</th>
+      <td><p>Round variable name (a character vector of length one)</p></td>
+    </tr>
+    <tr>
+      <th>variable_nms_chr</th>
+      <td><p>Variable names (a character vector)</p></td>
     </tr>
     <tr>
       <th>bl_fup_vals_chr</th>
@@ -190,20 +207,8 @@
       <td><p>Markdown table reference (a character vector of length one), Default: NULL</p></td>
     </tr>
     <tr>
-      <th>output_type_1L_chr</th>
-      <td><p>Output type (a character vector of length one)</p></td>
-    </tr>
-    <tr>
-      <th>round_var_nm_1L_chr</th>
-      <td><p>Round variable name (a character vector of length one)</p></td>
-    </tr>
-    <tr>
       <th>test_1L_lgl</th>
       <td><p>Test (a logical vector of length one), Default: F</p></td>
-    </tr>
-    <tr>
-      <th>variable_nms_chr</th>
-      <td><p>Variable names (a character vector)</p></td>
     </tr>
     </table>
 

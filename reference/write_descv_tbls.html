@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9072</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9076</span>
       </span>
     </div>
 
@@ -112,10 +112,10 @@
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
     </li>
     <li>
-      <a href="../articles/Summaries.html">Tools to create summary tables and plots</a>
+      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
     </li>
     <li>
-      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
+      <a href="../articles/V_02.html">Describing Longitudinal Datasets</a>
     </li>
   </ul>
 </li>
@@ -154,7 +154,8 @@
   <span class='va'>ds_descvs_ls</span>,
   <span class='va'>predictors_lup</span>,
   <span class='va'>descv_outp_dir_1L_chr</span>,
-  nbr_of_digits_1L_int <span class='op'>=</span> <span class='fl'>2</span>
+  nbr_of_digits_1L_int <span class='op'>=</span> <span class='fl'>2</span>,
+  participation_var_1L_chr <span class='op'>=</span> <span class='st'>"participation"</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -179,6 +180,10 @@
     <tr>
       <th>nbr_of_digits_1L_int</th>
       <td><p>Number of digits (an integer vector of length one), Default: 2</p></td>
+    </tr>
+    <tr>
+      <th>participation_var_1L_chr</th>
+      <td><p>Participation variable (a character vector of length one), Default: 'participation'</p></td>
     </tr>
     </table>
 
