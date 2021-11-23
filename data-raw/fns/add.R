@@ -237,14 +237,16 @@ add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
 }
 add_participation_var <- function(data_tb,
                                   id_var_nm_1L_chr = "fkClientID",
-                                  fup_round_nbr_1L_int = 2L){
+                                  fup_round_nbr_1L_int = 2L,
+                                  participation_var_1L_chr = "participation",
+                                  timepoint_vals_chr = c("Baseline","Follow-up")){
   data_tb <- data_tb %>%
     dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>%
     dplyr::mutate(nbr_rounds_int = dplyr::n()) %>%
-    dplyr::mutate(participation = ifelse(nbr_rounds_int==1,
-                                         "Baseline only",
+    dplyr::mutate(!!rlang::sym(participation_var_1L_chr) := ifelse(nbr_rounds_int==1,
+                                         paste0(timepoint_vals_chr[1]," only"),
                                          ifelse(nbr_rounds_int==fup_round_nbr_1L_int,
-                                                "Baseline and follow-up",
+                                                paste0(timepoint_vals_chr[1]," and ",tolower(timepoint_vals_chr[2])),
                                                 NA_character_))) %>%
 
     dplyr::ungroup() %>%

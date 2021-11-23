@@ -1,75 +1,7 @@
-library(ready4)
+library(ready4use)
 library(youthvars)
-exhibit <- function (x, ...)
-{
-  UseMethod("exhibit", x)
-}
-methods::setGeneric("exhibit")
-renewSlot <- function (x, ...)
-{
-  UseMethod("renewSlot", x)
-}
-methods::setGeneric("renewSlot")
-Ready4Launch <- setClass("Ready4Launch") # ready4
-Ready4Private <- setClass("Ready4Private", contains = "Ready4Launch") # ready4
-Ready4Public <- setClass("Ready4Public", contains = "Ready4Launch") # ready4
-renewSlot_Ready4Launch <- function(x,
-                                   new_val_xx,
-                                   slot_nm_1L_chr){
-  eval(parse(text = paste0("x@",slot_nm_1L_chr," <- new_val_xx")))
-  return(x)
-}
-methods::setMethod("renewSlot",
-                   methods::className("Ready4Launch"#, package = "ready4"
-                   ),
-                   renewSlot_Ready4Launch)
-Ready4useDyad <- methods::setClass("Ready4useDyad", # ready4use
-                                contains = "Ready4Launch",
-                                slots = c(ds_tb = "tbl_df",
-                                          dictionary_r3 = "ready4use_dictionary"),
-                                prototype =  list(ds_tb = tibble::tibble(),
-                                                  dictionary_r3 = ready4use::ready4use_dictionary()))
-print_Ready4useDyad <- function(x,
-                                  caption_1L_chr = NA_character_,
-                                  display_1L_chr = "all",
-                                  mkdn_tbl_ref_1L_chr = "",
-                                  output_type_1L_chr = "HTML",
-                                  type_1L_chr = "ds",
-                                  use_lbls_as_col_nms_1L_lgl = T,
-                                  use_rdocx_1L_lgl = F,
-                                  ...){
-  if(type_1L_chr == "ds"){
-    df <- x@ds_tb
-    caption_1L_chr <- ifelse(is.na(caption_1L_chr),
-                             "Dataset",
-                             caption_1L_chr)
-  }
-  if(type_1L_chr == "dict"){
-    df <- x@dictionary_r3
-    caption_1L_chr <- ifelse(is.na(caption_1L_chr),
-                             "Data Dictionary",
-                             caption_1L_chr)
-  }
-  if(display_1L_chr == "head")
-    df <- df %>%
-      head()
-  if(display_1L_chr == "tail")
-    df <- df %>%
-      tail()
-  df %>%
-    ready4show::print_table(output_type_1L_chr = output_type_1L_chr,
-                            use_rdocx_1L_lgl = use_rdocx_1L_lgl,
-                            caption_1L_chr = caption_1L_chr,
-                            use_lbls_as_col_nms_1L_lgl = use_lbls_as_col_nms_1L_lgl,
-                            mkdn_tbl_ref_1L_chr = mkdn_tbl_ref_1L_chr,
-                            ...)
-}
-methods::setMethod("print",
-                   methods::className("Ready4useDyad"#, package = "ready4"
-                   ),
-                   print_Ready4useDyad)
 YouthvarsDescriptives <- methods::setClass("YouthvarsDescriptives", #youthvars
-                                           contains = "Ready4Launch",
+                                           contains = "Ready4Module",
                                            slots = c(descriptives_df = "data.frame",
                                                      key_var_nm_1L_chr = "character",
                                                      ds_tfmn_ls = "list",
@@ -88,7 +20,7 @@ YouthvarsDescriptives <- methods::setClass("YouthvarsDescriptives", #youthvars
                                                             test_1L_lgl = F))
 characterize_YouthvarsDescriptives <- function(x,
                                                y_Ready4useDyad){
-  if(x@key_var_nm_1L_chr %in% c("participation")){
+  if(!identical(list(),x@ds_tfmn_ls)){ ### MUST GENERALISE # x@key_var_nm_1L_chr %in% c("participation")
     data_tb <- rlang::exec(x@ds_tfmn_ls$fn,
                            y_Ready4useDyad@ds_tb,
                            !!!x@ds_tfmn_ls$args_ls)
@@ -100,7 +32,7 @@ characterize_YouthvarsDescriptives <- function(x,
   }else{
     key_var_vals_chr <- x@key_var_vals_chr
   }
-  descriptives_df <- make_descv_stats_tbl(data_tb =  data_tb,
+  descriptives_df <- make_descv_stats_tbl(data_tb = data_tb,
                                           key_var_nm_1L_chr = x@key_var_nm_1L_chr,
                                           key_var_vals_chr = key_var_vals_chr,
                                           dictionary_tb = y_Ready4useDyad@dictionary_r3,
@@ -110,7 +42,11 @@ characterize_YouthvarsDescriptives <- function(x,
                                           nbr_of_digits_1L_int = x@nbr_of_digits_1L_int)
   return(descriptives_df)
 }
-renew_YouthvarsDescriptives <- function(x,
+methods::setMethod("characterize",
+                   methods::className("YouthvarsDescriptives"#, package = "ready4use"
+                   ),
+                   characterize_YouthvarsDescriptives)
+renew_YouthvarsDescriptives <- function(x, # renewSlot
                                         type_1L_chr = "characterize",
                                         ...){
   if(type_1L_chr == "characterize")
@@ -118,20 +54,17 @@ renew_YouthvarsDescriptives <- function(x,
                                       ...)
   return(x)
 }
-methods::setMethod("characterize",
-                   methods::className("YouthvarsDescriptives"#, package = "ready4use"
-                   ),
-                   characterize_YouthvarsDescriptives)
+
 methods::setMethod("renew",
                    methods::className("YouthvarsDescriptives"#, package = "ready4use"
                    ),
                    renew_YouthvarsDescriptives)
 YouthvarsProfile <- methods::setClass("YouthvarsProfile", #youthvars
-                                      contains = "Ready4Launch",
+                                      contains = "Ready4Module",
                                       slots = c(a_Ready4useDyad = "Ready4useDyad",
                                                 descriptives_ls = "list",
                                                 id_var_nm_1L_chr = "character"),
-                                      prototype = list(a_Ready4useDyad = Ready4useDyad(),
+                                      prototype = list(a_Ready4useDyad = ready4use::Ready4useDyad(),
                                                        descriptives_ls = list(),
                                                        id_var_nm_1L_chr = "fkClientID"))
 renew_YouthvarsProfile <- function(x,
@@ -148,11 +81,13 @@ methods::setMethod("renew",
                    renew_YouthvarsProfile)
 YouthvarsSeries <- methods::setClass("YouthvarsSeries", #youthvars
                                      contains = "YouthvarsProfile",
-                                     slots = c(timepoint_vals_chr = "character",
+                                     slots = c(participation_var_1L_chr = "character",
+                                               timepoint_vals_chr = "character",
                                                timepoint_var_nm_1L_chr = "character"),
-                                     prototype =  list(timepoint_vals_chr = c("Baseline","Follow-up"),
+                                     prototype =  list(participation_var_1L_chr = "participation",
+                                                       timepoint_vals_chr = c("Baseline","Follow-up"),
                                                        timepoint_var_nm_1L_chr = "round"))
-print_YouthvarsSeries <- function(x,
+exhibit_YouthvarsSeries <- function(x,
                                     captions_chr = NULL,
                                     mkdn_tbl_refs_chr = NULL,
                                     profile_idx_int = NA_integer_,
@@ -160,44 +95,119 @@ print_YouthvarsSeries <- function(x,
                                     timepoints_int = c(1L,2L),
                                     type_1L_chr = "characterize",
                                     ...){
-  if(is.na(profile_idx_int))
-    profile_idx_int <- 1:length(x@descriptives_ls) %>% as.integer()
-  profile_idx_int %>%
-    purrr::map(~{
-      profile_idx_1L_int <- .x
-      if(identical(x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df, data.frame())){
-        message("It was not possible to print a table as the descriptives_df element of the descriptives_ls slot of the supplied YouthvarsDescriptives instance is empty. Use characterise(x) or renew(x) methods to generate a value for this element.")
-      }else{
-        if(x@descriptives_ls[[profile_idx_1L_int]]@key_var_nm_1L_chr == "participation"){
-          header_col_nms_chr <- x@a_Ready4useDyad@ds_tb$participation %>% unique()#
+  if(type_1L_chr == "characterize"){
+    if(is.na(profile_idx_int))
+      profile_idx_int <- 1:length(x@descriptives_ls) %>% as.integer()
+    profile_idx_int %>%
+      purrr::map(~{
+        profile_idx_1L_int <- .x
+        if(identical(x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df, data.frame())){
+          message("It was not possible to print a table as the descriptives_df element of the descriptives_ls slot of the supplied YouthvarsDescriptives instance is empty. Use characterise(x) or renew(x) methods to generate a value for this element.")
         }else{
-          header_col_nms_chr <- NULL
+          if(x@descriptives_ls[[profile_idx_1L_int]]@key_var_nm_1L_chr == "participation"){ ### MUST GENERALISE
+            header_col_nms_chr <- x@a_Ready4useDyad@ds_tb$participation %>% unique()#
+          }else{
+            header_col_nms_chr <- NULL
+          }
+          x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df %>%
+            print_descv_stats_tbl(bl_fup_vals_chr = x@timepoint_vals_chr[timepoints_int],
+                                  caption_1L_chr = captions_chr[profile_idx_1L_int],
+                                  data_tb = x@a_Ready4useDyad@ds_tb,# CHECK
+                                  header_col_nms_chr = header_col_nms_chr,
+                                  mkdn_tbl_ref_1L_chr = mkdn_tbl_refs_chr[profile_idx_1L_int],
+                                  output_type_1L_chr = output_type_1L_chr,
+                                  round_var_nm_1L_chr = x@timepoint_var_nm_1L_chr,
+                                  test_1L_lgl =  x@descriptives_ls[[profile_idx_1L_int]]@test_1L_lgl,
+                                  variable_nms_chr =  x@descriptives_ls[[profile_idx_1L_int]]@profiled_vars_chr,
+                                  ...)
         }
-        x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df %>%
-          print_descv_stats_tbl(bl_fup_vals_chr = x@timepoint_vals_chr[timepoints_int],
-                                caption_1L_chr =captions_chr[profile_idx_1L_int],
-                                data_tb = x@a_Ready4useDyad@ds_tb,# CHECK
-                                header_col_nms_chr = header_col_nms_chr,
-                                mkdn_tbl_ref_1L_chr = mkdn_tbl_refs_chr[profile_idx_1L_int],
-                                output_type_1L_chr = output_type_1L_chr,
-                                round_var_nm_1L_chr = x@timepoint_var_nm_1L_chr,
-                                test_1L_lgl =  x@descriptives_ls[[profile_idx_1L_int]]@test_1L_lgl,
-                                variable_nms_chr =  x@descriptives_ls[[profile_idx_1L_int]]@profiled_vars_chr,
-                                ...)
-      }
-    })
+      })
+  }
 }
 ratify_YouthvarsSeries <- function(x,
+                                   timepoints_int = c(1L,2L),
                                    type_1L_chr = "two_timepoints"){
   if(type_1L_chr=="two_timepoints")
     assert_ds_is_valid(x@a_Ready4useDyad@ds_tb,
                        id_var_nm_1L_chr = x@id_var_nm_1L_chr,
                        round_var_nm_1L_chr = x@timepoint_var_nm_1L_chr,
                        round_bl_val_1L_chr = x@timepoint_vals_chr[1])
+  if(!is.na(x@participation_var_1L_chr)){
+    if(!x@participation_var_1L_chr %in% x@a_Ready4useDyad@ds_tb){
+      x@a_Ready4useDyad@ds_tb <- add_participation_var(x@a_Ready4useDyad@ds_tb,
+                                                       id_var_nm_1L_chr = x@id_var_nm_1L_chr,
+                                                       fup_round_nbr_1L_int = timepoints_int[2],
+                                                       participation_var_1L_chr = x@participation_var_1L_chr,
+                                                       timepoint_vals_chr = x@timepoint_vals_chr[timepoints_int])
+      labels_ls <- labels(x@a_Ready4useDyad@dictionary_r3)
+      labels_tb <- tibble::tibble(var_nm_chr = names(labels_ls),
+                                  var_desc_chr = labels_ls %>% purrr::flatten_chr())
+      x@a_Ready4useDyad@dictionary_r3 <- tibble::add_case(x@a_Ready4useDyad@dictionary_r3 %>%
+                                                            remove_labels_from_ds(),
+                                                          var_nm_chr = x@participation_var_1L_chr,
+                                                          var_ctg_chr = "temporal",
+                                                          var_desc_chr = "selected timepoints for which data was provided",
+                                                          var_type_chr = "character") %>%
+        dplyr::arrange(var_ctg_chr,var_nm_chr) %>%
+        ready4use::add_labels_from_dictionary(dictionary_tb = labels_tb)
+    }
+  }
   return(x)
 }
-plot_YouthvarsSeries <- function(x,
-                                 var_nms_chr,
+renewSlot_YouthvarsSeries <- function(x,
+                                      slot_nm_1L_chr = "descriptives_ls",
+                                      nbr_of_digits_1L_int = 3L,
+                                      profiled_vars_ls = NULL,
+                                      timepoints_int = c(1L,2L)#,type_1L_chr = "characterize"
+){
+  if(slot_nm_1L_chr == "descriptives_ls"){
+    #if(type_1L_chr == "characterize"){
+    if(identical(x@descriptives_ls,
+                 list)){
+      descriptives_ls <- NULL
+    }else{
+      descriptives_ls <- x@descriptives_ls
+    }
+    if(!is.null(profiled_vars_ls)){
+      incl_idcs_int <- names(profiled_vars_ls) %>% startsWith("temporal")
+      temporal_chr <- names(profiled_vars_ls)[incl_idcs_int]
+      if(!identical(temporal_chr, character(0))){
+        descriptives_ls <- temporal_chr[incl_idcs_int] %>%
+          purrr::map2(profiled_vars_ls[incl_idcs_int],
+                      ~ YouthvarsDescriptives(key_var_nm_1L_chr = x@timepoint_var_nm_1L_chr,
+                                              key_var_vals_chr = x@timepoint_vals_chr[timepoints_int],
+                                              nbr_of_digits_1L_int = nbr_of_digits_1L_int,
+                                              profiled_vars_chr = .y,
+                                              test_1L_lgl = endsWith(.x,"_tested"))) %>%
+          stats::setNames(temporal_chr) %>%
+          append(descriptives_ls)
+      }
+      incl_idcs_int <- names(profiled_vars_ls) %>% startsWith("participation")
+      participation_chr <- names(profiled_vars_ls)[incl_idcs_int]
+      if(!identical(participation_chr, character(0))){
+        descriptives_ls <- participation_chr[incl_idcs_int] %>%
+          purrr::map2(profiled_vars_ls[incl_idcs_int],
+                      ~ YouthvarsDescriptives(ds_tfmn_ls = list(args_ls = NULL,
+                                                                fn = function(x){dplyr::filter(x,round == "Baseline")}),
+                                              key_var_nm_1L_chr = "participation",
+                                              nbr_of_digits_1L_int = nbr_of_digits_1L_int,
+                                              profiled_vars_chr = .y,
+                                              test_1L_lgl = T)) %>%
+          stats::setNames(participation_chr) %>%
+          append(descriptives_ls)
+      }
+      x@descriptives_ls <- descriptives_ls
+    }
+  }
+
+  return(x)
+}
+methods::setMethod("renewSlot",
+                   methods::className("YouthvarsSeries"#, package = "ready4use"
+                   ),
+                   renewSlot_YouthvarsSeries)
+depict_YouthvarsSeries <- function(x,
+                                   var_nms_chr,
                                  type_1L_chr = "by_time",
                                  labels_chr = NA_character_,
                                  label_fill_1L_chr = "Data collection",
@@ -222,20 +232,20 @@ plot_YouthvarsSeries <- function(x,
 
   }
 }
-methods::setMethod("print",
+methods::setMethod("exhibit",
                    methods::className("YouthvarsSeries"#, package = "ready4use"
                    ),
-                   print_YouthvarsSeries)
+                   exhibit_YouthvarsSeries)
 methods::setMethod("ratify",
                    methods::className("YouthvarsSeries"#, package = "ready4use"
                    ),
                    ratify_YouthvarsSeries)
-methods::setMethod("plot",
+methods::setMethod("depict",
                    methods::className("YouthvarsSeries"#, package = "ready4use"
                    ),
-                   plot_YouthvarsSeries)
+                   depict_YouthvarsSeries)
 ScorzProfile <- methods::setClass("ScorzProfile", #scorz
-                                 contains = "Ready4Launch",
+                                 contains = "Ready4Module",
                                  slots = c(a_YouthvarsProfile = "YouthvarsProfile",
                                            domain_unwtd_var_nms_chr = "character",
                                            domain_wtd_var_nms_chr = "character",
@@ -284,7 +294,7 @@ ScorzAqol6 <- methods::setClass("ScorzAqol6",
 ScorzAqol6Adol <- methods::setClass("ScorzAqol6Adol",
                                     contains = "ScorzAqol6",
                                     prototype = list(instrument_nm_1L_chr = "Assessment of Quality of Life (6 Dimension, Adolescent Version)"))
-plot_ScorzProfile <- function(x,
+depict_ScorzProfile <- function(x,
                             heights_int = NA_integer_,
                             plot_rows_cols_pair_int = NA_integer_,
                             type_1L_chr = "item_by_time",
@@ -336,29 +346,30 @@ plot_ScorzProfile <- function(x,
       if(is.na(var_idcs_int[1]))
         var_idcs_int <- 1:length(var_nms_chr)
       var_nms_chr[var_idcs_int] %>%
-        purrr::map(~ plot(x@a_YouthvarsProfile,
+        purrr::map(~ depict(x@a_YouthvarsProfile,
                           type_1L_chr = "by_time",
                           var_nms_chr = .x))
     }
-
   }
 }
-methods::setMethod("plot",
+methods::setMethod("depict",
                    methods::className("ScorzProfile"#, package = "ready4use"
                    ),
-                   plot_ScorzProfile)
+                   depict_ScorzProfile)
 renew_ScorzAqol6Adol <- function(x,
-                                 type_1L_chr = "utility"){
-  scored_data_tb <- add_adol6d_scores(x@a_YouthvarsProfile@a_Ready4useDyad@ds_tb,
-                                      prefix_1L_chr =  x@itm_prefix_1L_chr,
-                                      id_var_nm_1L_chr = x@a_YouthvarsProfile@id_var_nm_1L_chr,
-                                      wtd_aqol_var_nm_1L_chr = x@total_wtd_var_nm_1L_chr)
-  dictionary_r3 <- ready4::renew(x@a_YouthvarsProfile@a_Ready4useDyad@dictionary_r3,
-                                 new_ready4_dict_r3 = x@instrument_dict_r3)
-  scored_data_tb <- scored_data_tb %>%
-    ready4use::add_labels_from_dictionary(dictionary_r3)
-  x@a_YouthvarsProfile@a_Ready4useDyad@ds_tb <- scored_data_tb
-  x@a_YouthvarsProfile@a_Ready4useDyad@dictionary_r3 <- dictionary_r3
+                                 type_1L_chr = "score_a6d"){
+  if(type_1L_chr == "score_a6d"){
+    scored_data_tb <- add_adol6d_scores(x@a_YouthvarsProfile@a_Ready4useDyad@ds_tb,
+                                        prefix_1L_chr =  x@itm_prefix_1L_chr,
+                                        id_var_nm_1L_chr = x@a_YouthvarsProfile@id_var_nm_1L_chr,
+                                        wtd_aqol_var_nm_1L_chr = x@total_wtd_var_nm_1L_chr)
+    dictionary_r3 <- ready4::renew(x@a_YouthvarsProfile@a_Ready4useDyad@dictionary_r3,
+                                   new_ready4_dict_r3 = x@instrument_dict_r3)
+    scored_data_tb <- scored_data_tb %>%
+      ready4use::add_labels_from_dictionary(dictionary_r3)
+    x@a_YouthvarsProfile@a_Ready4useDyad@ds_tb <- scored_data_tb
+    x@a_YouthvarsProfile@a_Ready4useDyad@dictionary_r3 <- dictionary_r3
+  }
   return(x)
 }
 methods::setMethod("renew",
@@ -366,7 +377,7 @@ methods::setMethod("renew",
                    ),
                    renew_ScorzAqol6Adol)
 ScorzModelSpec <- methods::setClass("ScorzModelSpec", #youthvars
-                                        contains = "Ready4Launch",
+                                        contains = "Ready4Module",
                                         slots = c(a_ScorzProfile = "ScorzProfile",
                                                   candidate_predrs_chr = "character",
                                                   depnt_var_nm_1L_chr = "character",
@@ -375,7 +386,7 @@ ScorzModelSpec <- methods::setClass("ScorzModelSpec", #youthvars
                                                           candidate_predrs_chr = NA_character_,
                                                           depnt_var_nm_1L_chr = NA_character_,
                                                           depnt_var_max_val_1L_dbl = Inf))
-print_ScorzModelSpec <- function(x,
+exhibit_ScorzModelSpec <- function(x,
                                        captions_chr = character(0),
                                        method_chr = c("pearson", "spearman"),
                                        mkdn_tbl_refs_chr = NULL,
@@ -413,74 +424,57 @@ print_ScorzModelSpec <- function(x,
                                         ))
   }
 }
-methods::setMethod("print",
+methods::setMethod("exhibit",
                    methods::className("ScorzModelSpec"#, package = "ready4use"
                    ),
-                   print_ScorzModelSpec)
-##
-data("replication_popl_tb")
-data("repln_ds_dict_r3", package = "youthvars")
-data("aqol_scrg_dict_r3", package = "youthvars")
-x_Ready4useDyad <- Ready4useDyad(ds_tb = replication_popl_tb %>%
-                                   add_participation_var(),
-                                 dictionary_r3 = repln_ds_dict_r3)
-print(x_Ready4useDyad, display_1L_chr = "head")
-x_YouthvarsDescriptives <- YouthvarsDescriptives(key_var_nm_1L_chr = "round",
-                                                 key_var_vals_chr = c("Baseline","Follow-up"),
-                                                 nbr_of_digits_1L_int = 3L,
-                                                 profiled_vars_chr = c("d_age","d_sexual_ori_s",
-                                                                       "d_ATSI","d_studying_working","d_relation_s"))
-test_df <- characterize(x_YouthvarsDescriptives,
-                        y_Ready4useDyad = x_Ready4useDyad)
-y_YouthvarsDescriptives <- renew(x_YouthvarsDescriptives,
-                                 y_Ready4useDyad = x_Ready4useDyad)
-x_YouthvarsProfile <- YouthvarsProfile(a_Ready4useDyad = x_Ready4useDyad,
-                                       descriptives_ls = list(a = x_YouthvarsDescriptives,
-                                                              b = YouthvarsDescriptives(key_var_nm_1L_chr = "round",
-                                                                                        key_var_vals_chr = c("Baseline","Follow-up"),
-                                                                                        nbr_of_digits_1L_int = 3L,
-                                                                                        profiled_vars_chr = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
-                                                                                        test_1L_lgl = T) ,
-                                                              c = YouthvarsDescriptives(ds_tfmn_ls = list(args_ls = NULL,
-                                                                                                         fn = function(x){dplyr::filter(x,round == "Baseline")}),
-                                                                                       key_var_nm_1L_chr = "participation",
-                                                                                       nbr_of_digits_1L_int = 3L,
-                                                                                       profiled_vars_chr = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
-                                                                                       test_1L_lgl = T)
-                                                              ))
-x_YouthvarsProfile <- renew(x_YouthvarsProfile,
-                            type_1L_chr = "characterize")
-x_YouthvarsSeries <- YouthvarsSeries(x_YouthvarsProfile,
-                                     timepoint_vals_chr = c("Baseline","Follow-up"),
-                                     timepoint_var_nm_1L_chr = "round")
-x_YouthvarsSeries <- ratify(x_YouthvarsSeries,
-                            type_1L_chr = "two_timepoints")
-x_YouthvarsSeries %>%
-              print(type_1L_chr = "characterize",
-                      output_type_1L_chr = "HTML")
-plot(x_YouthvarsSeries,
-     type_1L_chr = "by_time",
-     var_nms_chr = "c_sofas",
-     label_fill_1L_chr = "Time",#
-     labels_chr = "SOFAS",#
-     y_label_1L_chr = "")
-x_ScorzAqol6Adol <- ScorzAqol6Adol(a_YouthvarsProfile = x_YouthvarsSeries)
-y_ScorzAqol6Adol <- renew(x_ScorzAqol6Adol)
-plot(x_ScorzAqol6Adol, type_1L_chr = "item_by_time")
-plot(x_ScorzAqol6Adol, type_1L_chr = "item_by_time", var_idcs_int = c(2L))
-plot(y_ScorzAqol6Adol, type_1L_chr = "domain_by_time")
-plot(y_ScorzAqol6Adol, type_1L_chr = "domain_by_time", var_idcs_int = c(1L))
-plot(y_ScorzAqol6Adol, type_1L_chr = "total_by_time")
-plot(y_ScorzAqol6Adol, type_1L_chr = "comp_item_by_time")
-plot(y_ScorzAqol6Adol, type_1L_chr = "comp_domain_by_time")
+                   exhibit_ScorzModelSpec)
 #
+x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
+                               dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
+                               dv_server_1L_chr = "dataverse.harvard.edu")
+x <- ingest(x)
+#
+y <- YouthvarsSeries(a_Ready4useDyad = x@b_Ready4useIngest@objects_ls$ymh_clinical_dyad_r4,
+                     participation_var_1L_chr = "participation",
+                     timepoint_vals_chr = c("Baseline","Follow-up"),
+                     timepoint_var_nm_1L_chr = "round")
+y <- ratify(y,
+            type_1L_chr = "two_timepoints")
+y <- renewSlot(y,
+                profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_ATSI","d_studying_working","d_relation_s"),
+                                        temporal_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
+                                        participation_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total")
+                                        ),
+                slot_nm_1L_chr = "descriptives_ls")
+y <- renew(y,
+           type_1L_chr = "characterize")
 
+y %>%
+  exhibit(type_1L_chr = "characterize",
+          output_type_1L_chr = "HTML")
+depict(y,
+       type_1L_chr = "by_time",
+       var_nms_chr = "c_sofas",
+       label_fill_1L_chr = "Time",#
+       labels_chr = "SOFAS",#
+       y_label_1L_chr = "")
+z <- ScorzAqol6Adol(a_YouthvarsProfile = y)
+z <- renew(z,
+           type_1L_chr = "score_a6d")
+depict(z, type_1L_chr = "item_by_time")
+depict(z, type_1L_chr = "item_by_time", var_idcs_int = c(2L))
+depict(z, type_1L_chr = "domain_by_time")
+depict(z, type_1L_chr = "domain_by_time", var_idcs_int = c(1L))
+depict(z, type_1L_chr = "total_by_time")
+depict(z, type_1L_chr = "comp_item_by_time")
+depict(z, type_1L_chr = "comp_domain_by_time")
 #
-x_ScorzModelSpec <- ScorzModelSpec(a_ScorzProfile = y_ScorzAqol6Adol,
+#
+a <- ScorzModelSpec(a_ScorzProfile = z,
                                    candidate_predrs_chr = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
                                    depnt_var_nm_1L_chr = "aqol6d_total_w",
                                    depnt_var_max_val_1L_dbl = Inf)
-print(x_ScorzModelSpec,
+exhibit(a,
         type_1L_chr = "correlation" # captions_chr = NULL or ....
         )
 
