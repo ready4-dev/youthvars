@@ -9,8 +9,10 @@ output:
     number_sections: yes
   rmarkdown::html_vignette:
     toc: yes
-vignette: |
-  %\VignetteIndexEntry{Tools to create summary tables and plots} %\VignetteEncoding{UTF-8} %\VignetteEngine{knitr::rmarkdown}
+vignette: >
+  %\VignetteIndexEntry{Tools to create summary tables and plots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 Note, this example is illustrated using fake data.
