@@ -22,14 +22,13 @@ library(ready4use)
 Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.
 
 ## Ingest data
-The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, a Ready4useDyad object (a dataset and data dictionary pair) that we can download from a remote repository.
+The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, an object containint a `Ready4useDyad` (a dataset and data dictionary pair) that we can download from a remote repository.
 
 ```{r}
 x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
                                dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
                                dv_server_1L_chr = "dataverse.harvard.edu") %>%
   ingest(fls_to_ingest_chr = "ymh_clinical_dyad_r4")
-#
 ```
 
 ## Add metadata
@@ -51,14 +50,13 @@ x <- ratify(x,
 ```
 
 ## Inspect data
-We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified by passing a list to the `profiled_vars_ls` argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a `YouthvarsSeries` instance are "temporal" (comparison based on timepoints, e.g at baseline and follow-up) and "participation" (comparison based on whether cases reported data at one or both timepoints). The extension "_tested" is used if p values are to be reported.
+We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified by passing a list to the `profiled_vars_ls` argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a `YouthvarsSeries` instance are "participation" (comparison based on whether cases reported data at one or both timepoints) and "temporal" (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.
 
 ```{r}
 x <- renewSlot(x,
-               profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_ATSI","d_studying_working","d_relation_s"),
-                                       temporal_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total"),
-                                       participation_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total")
-               ),
+               profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_ATSI","d_studying_working","d_relation_s"),  
+                                       temporal_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total"), 
+                                       participation_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total")),
                slot_nm_1L_chr = "descriptives_ls")
 x <- renew(x,
            type_1L_chr = "characterize")
@@ -67,15 +65,30 @@ x <- renew(x,
 
 The tables generated in the preceding step can be inspected using the `exhibit` method.
 
-```{r}
+```{r participtb, tab.cap='Outcomes by data completeness', tab.id = 'participtb', results="asis"}
 x %>%
   exhibit(type_1L_chr = "characterize",
+          profile_idx_int = 1L,
           output_type_1L_chr = "HTML")
 ```
 
+```{r outcomestb, tab.cap='Outcomes by data collection round', tab.id = 'outcomestb', results="asis"}
+x %>%
+  exhibit(type_1L_chr = "characterize",
+          profile_idx_int = 2L,
+          output_type_1L_chr = "HTML")
+```
+
+```{r outcomestbtst, tab.cap='Outcomes by data collection round (with p values)', tab.id = 'outcomestbtst', results="asis"}
+x %>%
+  exhibit(type_1L_chr = "characterize",
+          profile_idx_int = 3L,
+          output_type_1L_chr = "HTML")
+```
 The `depict` method can create plots, comparing numeric variables by timepoint.
 
-```{r}
+
+```{r totalsfig, fig.cap="SOFAS total scores by data collection round", out.width = "600px"}
 depict(x,
        type_1L_chr = "by_time",
        var_nms_chr = "c_sofas",

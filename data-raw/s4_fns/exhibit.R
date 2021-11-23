@@ -16,14 +16,14 @@ exhibit_YouthvarsSeries <- function(x,
           message("It was not possible to print a table as the descriptives_df element of the descriptives_ls slot of the supplied YouthvarsDescriptives instance is empty. Use characterise(x) or renew(x) methods to generate a value for this element.")
         }else{
           if(x@descriptives_ls[[profile_idx_1L_int]]@key_var_nm_1L_chr == "participation"){ ### MUST GENERALISE
-            header_col_nms_chr <- x@a_Ready4useDyad@ds_tb$participation %>% unique()#
+            header_col_nms_chr <- x@a_Ready4useDyad@ds_tb$participation %>% unique()
           }else{
             header_col_nms_chr <- NULL
           }
           x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df %>%
             print_descv_stats_tbl(bl_fup_vals_chr = x@timepoint_vals_chr[timepoints_int],
                                   caption_1L_chr = captions_chr[profile_idx_1L_int],
-                                  data_tb = x@a_Ready4useDyad@ds_tb,# CHECK
+                                  data_tb = x@a_Ready4useDyad@ds_tb,
                                   header_col_nms_chr = header_col_nms_chr,
                                   mkdn_tbl_ref_1L_chr = mkdn_tbl_refs_chr[profile_idx_1L_int],
                                   output_type_1L_chr = output_type_1L_chr,
