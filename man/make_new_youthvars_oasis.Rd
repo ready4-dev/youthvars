@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{make_new_youthvars_oasis}
 \alias{make_new_youthvars_oasis}
-\title{Make new youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\title{make new youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 make_new_youthvars_oasis(x)
 }

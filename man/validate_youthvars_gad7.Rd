@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{validate_youthvars_gad7}
 \alias{validate_youthvars_gad7}
-\title{Validate youthvars GAD-7 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{validate youthvars GAD-7 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 validate_youthvars_gad7(x)
 }

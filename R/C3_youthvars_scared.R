@@ -9,7 +9,7 @@
 youthvars_scared <- function(x = make_pt_youthvars_scared()){ 
 validate_youthvars_scared(make_new_youthvars_scared(x))
 }
-#' Make new youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' make new youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @description Create a new unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @param x A prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @return An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
@@ -22,7 +22,7 @@ class(x) <- append(c("youthvars_scared",setdiff(make_pt_youthvars_scared() %>% c
 class(x))
 x
 }
-#' Make prototype youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' make prototype youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @description Create a new prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 
 #' @return A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
@@ -32,7 +32,7 @@ x
 make_pt_youthvars_scared <- function(){ 
 integer(0)
 }
-#' Validate youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' validate youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @description Validate an instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @param x An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @return A prototpe for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
@@ -51,7 +51,7 @@ call. = FALSE)
 }
 
 x}
-#' Is youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' is youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @description Check whether an object is a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores

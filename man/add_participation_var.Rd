@@ -7,7 +7,9 @@
 add_participation_var(
   data_tb,
   id_var_nm_1L_chr = "fkClientID",
-  fup_round_nbr_1L_int = 2L
+  fup_round_nbr_1L_int = 2L,
+  participation_var_1L_chr = "participation",
+  timepoint_vals_chr = c("Baseline", "Follow-up")
 )
 }
 \arguments{
@@ -16,6 +18,10 @@ add_participation_var(
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 
 \item{fup_round_nbr_1L_int}{Follow-up round number (an integer vector of length one), Default: 2}
+
+\item{participation_var_1L_chr}{Participation variable (a character vector of length one), Default: 'participation'}
+
+\item{timepoint_vals_chr}{Timepoint values (a character vector), Default: c("Baseline", "Follow-up")}
 }
 \value{
 Data (a tibble)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{validate_youthvars_bads}
 \alias{validate_youthvars_bads}
-\title{Validate youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{validate youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 validate_youthvars_bads(x)
 }

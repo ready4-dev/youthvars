@@ -9,7 +9,7 @@
 youthvars_oasis <- function(x = make_pt_youthvars_oasis()){ 
 validate_youthvars_oasis(make_new_youthvars_oasis(x))
 }
-#' Make new youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+#' make new youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @description Create a new unvalidated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @param x A prototype for the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @return An unvalidated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
@@ -22,7 +22,7 @@ class(x) <- append(c("youthvars_oasis",setdiff(make_pt_youthvars_oasis() %>% cla
 class(x))
 x
 }
-#' Make prototype youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+#' make prototype youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @description Create a new prototype for the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 
 #' @return A prototype for youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
@@ -32,7 +32,7 @@ x
 make_pt_youthvars_oasis <- function(){ 
 integer(0)
 }
-#' Validate youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+#' validate youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @description Validate an instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @param x An unvalidated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @return A prototpe for youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
@@ -51,7 +51,7 @@ call. = FALSE)
 }
 
 x}
-#' Is youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+#' is youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @description Check whether an object is a valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores

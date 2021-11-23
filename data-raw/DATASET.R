@@ -1,5 +1,4 @@
 library(ready4)
-library(magrittr)
 ready4fun::write_fn_type_dirs() # Need to ammend to write empty generics.R file
 # MANUAL STEP. Write all your functions to R files in the new "fns" directory.
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
@@ -58,6 +57,51 @@ x_ready4class_constructor <- ready4class::ready4class_constructor() %>%
     TRUE, "scared", list("integer"), list("is."),list("base"),NULL, NULL,list(c(0, 82)), NULL, "youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores", NA_character_, NULL, NULL, NULL, NULL,
     TRUE, "k6", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 24)), NULL, "youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores", NA_character_, NULL, NULL, NULL, NULL,
     TRUE, "sofas", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 100)), NULL, "youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)", NA_character_, NULL, NULL, NULL, NULL))
+x_ready4class_constructor <- dplyr::bind_rows(x_ready4class_constructor,
+                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                                           name_stub_chr = "Descriptives",
+                                                                                           slots_ls = list("descriptives_df",
+                                                                                                           "ds_tfmn_ls",
+                                                                                                           "key_var_nm_1L_chr",
+                                                                                                           "key_var_vals_chr",
+                                                                                                           "nbr_of_digits_1L_int",
+                                                                                                           "profiled_vars_chr",
+                                                                                                           "sections_as_row_1L_lgl",
+                                                                                                           "test_1L_lgl"
+                                                                                           ) %>% list(),
+                                                                                           pt_ls = list("data.frame",
+                                                                                                        "list",
+                                                                                                        "character",
+                                                                                                        "character",
+                                                                                                        "integer",
+                                                                                                        "character",
+                                                                                                        "logical",
+                                                                                                        "logical") %>% list(),
+                                                                                           class_desc_chr= "Metadata about descriptive statistics to be generated.",
+                                                                                           parent_class_chr = "Ready4Module"),
+                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                                           name_stub_chr = "Profile",
+                                                                                           slots_ls = list("a_Ready4useDyad",
+                                                                                                           "descriptives_ls",
+                                                                                                           "id_var_nm_1L_chr") %>% list(), # Change
+                                                                                           pt_ls = list("Ready4useDyad","list",
+                                                                                                        "character") %>% list(),
+                                                                                           class_desc_chr = "A dataset and its associated dictionary, descriptive statistics and metadata.",
+                                                                                           parent_class_chr = "Ready4Module"),
+                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                                           name_stub_chr = "Series",
+                                                                                           slots_ls = list("participation_var_1L_chr",
+                                                                                                           "timepoint_vals_chr",
+                                                                                                           "timepoint_var_nm_1L_chr") %>% list(), # Change
+                                                                                           pt_ls = list("character","character",
+                                                                                                        "character") %>% list(),
+                                                                                           class_desc_chr = "A longitudinal dataset and its associated dictionary, descriptive statistics and metadata.",
+                                                                                           parent_class_chr = "YouthvarsProfile"))
+
+
+
+##
+##
 replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
   dplyr::mutate(c_sofas = as.integer(round(c_sofas,0))) %>%
   dplyr::mutate(round = factor(round, labels = c("Baseline",

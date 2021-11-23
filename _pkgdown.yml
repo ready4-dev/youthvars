@@ -32,6 +32,11 @@ reference:
   - youthvars_scared
   - youthvars_k6
   - youthvars_sofas
+- title: "S4 Classes"
+- contents:
+  - YouthvarsDescriptives
+  - YouthvarsProfile
+  - YouthvarsSeries
 - title: "Functions"
 - contents:
   - add_adol6d_scores
@@ -51,3 +56,12 @@ reference:
   - transform_raw_ds_for_analysis
   - write_all_outp_dirs
   - write_descv_tbls
+- title: "Methods"
+- contents:
+  - characterize-YouthvarsDescriptives
+  - depict-YouthvarsSeries
+  - exhibit-YouthvarsSeries
+  - ratify-YouthvarsSeries
+  - renew-YouthvarsDescriptives
+  - renew-YouthvarsProfile
+  - renewSlot-YouthvarsSeries

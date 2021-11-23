@@ -9,7 +9,8 @@ write_descv_tbls(
   ds_descvs_ls,
   predictors_lup,
   descv_outp_dir_1L_chr,
-  nbr_of_digits_1L_int = 2
+  nbr_of_digits_1L_int = 2,
+  participation_var_1L_chr = "participation"
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ write_descv_tbls(
 \item{descv_outp_dir_1L_chr}{Descriptive output directory (a character vector of length one)}
 
 \item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 2}
+
+\item{participation_var_1L_chr}{Participation variable (a character vector of length one), Default: 'participation'}
 }
 \value{
 Descriptive table (a list)

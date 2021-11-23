@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_k6.R
 \name{is_youthvars_k6}
 \alias{is_youthvars_k6}
-\title{Is youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
+\title{is youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores}
 \usage{
 is_youthvars_k6(x)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{validate_youthvars_sofas}
 \alias{validate_youthvars_sofas}
-\title{Validate youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{validate youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 validate_youthvars_sofas(x)
 }

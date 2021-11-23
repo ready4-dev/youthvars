@@ -1,15 +1,16 @@
 #' Print descriptive statistics table
 #' @description print_descv_stats_tbl() is a Print function that prints output to console Specifically, this function implements an algorithm to print descriptive statistics table. The function is called for its side effects and does not return a value.
 #' @param df Data.frame (a data.frame)
+#' @param data_tb Data (a tibble)
+#' @param output_type_1L_chr Output type (a character vector of length one)
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one)
+#' @param variable_nms_chr Variable names (a character vector)
 #' @param bl_fup_vals_chr Baseline follow-up values (a character vector), Default: c("Baseline", "Follow-up")
 #' @param capitalise_1L_lgl Capitalise (a logical vector of length one), Default: T
 #' @param caption_1L_chr Caption (a character vector of length one), Default: NULL
 #' @param header_col_nms_chr Header column names (a character vector), Default: NULL
 #' @param mkdn_tbl_ref_1L_chr Markdown table reference (a character vector of length one), Default: NULL
-#' @param output_type_1L_chr Output type (a character vector of length one)
-#' @param round_var_nm_1L_chr Round variable name (a character vector of length one)
 #' @param test_1L_lgl Test (a logical vector of length one), Default: F
-#' @param variable_nms_chr Variable names (a character vector)
 #' @return NULL
 #' @rdname print_descv_stats_tbl
 #' @export 
@@ -25,10 +26,10 @@
 #' @importFrom stats setNames
 #' @importFrom kableExtra kbl kable_styling column_spec add_header_above collapse_rows
 #' @importFrom ready4show print_table
-print_descv_stats_tbl <- function (df, bl_fup_vals_chr = c("Baseline", "Follow-up"), capitalise_1L_lgl = T, 
-    caption_1L_chr = NULL, header_col_nms_chr = NULL, mkdn_tbl_ref_1L_chr = NULL, 
-    output_type_1L_chr, round_var_nm_1L_chr, test_1L_lgl = F, 
-    variable_nms_chr) 
+print_descv_stats_tbl <- function (df, data_tb, output_type_1L_chr, round_var_nm_1L_chr, 
+    variable_nms_chr, bl_fup_vals_chr = c("Baseline", "Follow-up"), 
+    capitalise_1L_lgl = T, caption_1L_chr = NULL, header_col_nms_chr = NULL, 
+    mkdn_tbl_ref_1L_chr = NULL, test_1L_lgl = F) 
 {
     if (capitalise_1L_lgl) 
         df <- df %>% dplyr::mutate(variable = variable %>% purrr::map_chr(~Hmisc::capitalize(.x)))

@@ -37,3 +37,10 @@
 ^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.csv$
 ^data-raw/dataverse/fn_type_lup_tb/fn_type_lup_tb\.RDS$
 ^data-raw/Notes\.R$
+^data-raw/s4_fns/characterize\.R$
+^data-raw/s4_fns/depict\.R$
+^data-raw/s4_fns/exhibit\.R$
+^data-raw/s4_fns/ratify\.R$
+^data-raw/s4_fns/renew\.R$
+^data-raw/s4_fns/renewSlot\.R$
+^data-raw/ToDo\.R$

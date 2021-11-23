@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{make_pt_youthvars_bads}
 \alias{make_pt_youthvars_bads}
-\title{Make prototype youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{make prototype youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 make_pt_youthvars_bads()
 }

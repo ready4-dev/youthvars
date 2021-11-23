@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{is_youthvars_phq9}
 \alias{is_youthvars_phq9}
-\title{Is youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{is youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 is_youthvars_phq9(x)
 }

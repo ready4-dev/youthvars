@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{validate_youthvars_phq9}
 \alias{validate_youthvars_phq9}
-\title{Validate youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{validate youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 validate_youthvars_phq9(x)
 }

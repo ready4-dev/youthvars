@@ -9,7 +9,7 @@
 youthvars_k6 <- function(x = make_pt_youthvars_k6()){ 
 validate_youthvars_k6(make_new_youthvars_k6(x))
 }
-#' Make new youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+#' make new youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @description Create a new unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @param x A prototype for the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @return An unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
@@ -22,7 +22,7 @@ class(x) <- append(c("youthvars_k6",setdiff(make_pt_youthvars_k6() %>% class(),c
 class(x))
 x
 }
-#' Make prototype youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+#' make prototype youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @description Create a new prototype for the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 
 #' @return A prototype for youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
@@ -32,7 +32,7 @@ x
 make_pt_youthvars_k6 <- function(){ 
 integer(0)
 }
-#' Validate youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+#' validate youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @description Validate an instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @param x An unvalidated instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @return A prototpe for youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
@@ -51,7 +51,7 @@ call. = FALSE)
 }
 
 x}
-#' Is youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
+#' is youthvars K-6 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @description Check whether an object is a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores

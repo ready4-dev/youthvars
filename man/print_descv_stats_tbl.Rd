@@ -6,19 +6,28 @@
 \usage{
 print_descv_stats_tbl(
   df,
+  data_tb,
+  output_type_1L_chr,
+  round_var_nm_1L_chr,
+  variable_nms_chr,
   bl_fup_vals_chr = c("Baseline", "Follow-up"),
   capitalise_1L_lgl = T,
   caption_1L_chr = NULL,
   header_col_nms_chr = NULL,
   mkdn_tbl_ref_1L_chr = NULL,
-  output_type_1L_chr,
-  round_var_nm_1L_chr,
-  test_1L_lgl = F,
-  variable_nms_chr
+  test_1L_lgl = F
 )
 }
 \arguments{
 \item{df}{Data.frame (a data.frame)}
+
+\item{data_tb}{Data (a tibble)}
+
+\item{output_type_1L_chr}{Output type (a character vector of length one)}
+
+\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one)}
+
+\item{variable_nms_chr}{Variable names (a character vector)}
 
 \item{bl_fup_vals_chr}{Baseline follow-up values (a character vector), Default: c("Baseline", "Follow-up")}
 
@@ -30,13 +39,7 @@ print_descv_stats_tbl(
 
 \item{mkdn_tbl_ref_1L_chr}{Markdown table reference (a character vector of length one), Default: NULL}
 
-\item{output_type_1L_chr}{Output type (a character vector of length one)}
-
-\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one)}
-
 \item{test_1L_lgl}{Test (a logical vector of length one), Default: F}
-
-\item{variable_nms_chr}{Variable names (a character vector)}
 }
 \description{
 print_descv_stats_tbl() is a Print function that prints output to console Specifically, this function implements an algorithm to print descriptive statistics table. The function is called for its side effects and does not return a value.

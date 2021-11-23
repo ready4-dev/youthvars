@@ -365,18 +365,23 @@ add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
 #' @param data_tb Data (a tibble)
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param fup_round_nbr_1L_int Follow-up round number (an integer vector of length one), Default: 2
+#' @param participation_var_1L_chr Participation variable (a character vector of length one), Default: 'participation'
+#' @param timepoint_vals_chr Timepoint values (a character vector), Default: c("Baseline", "Follow-up")
 #' @return Data (a tibble)
 #' @rdname add_participation_var
 #' @export 
 #' @importFrom dplyr group_by mutate n ungroup select
 #' @importFrom rlang sym
-add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup_round_nbr_1L_int = 2L) 
+add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup_round_nbr_1L_int = 2L, 
+    participation_var_1L_chr = "participation", timepoint_vals_chr = c("Baseline", 
+        "Follow-up")) 
 {
     data_tb <- data_tb %>% dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% 
-        dplyr::mutate(nbr_rounds_int = dplyr::n()) %>% dplyr::mutate(participation = ifelse(nbr_rounds_int == 
-        1, "Baseline only", ifelse(nbr_rounds_int == fup_round_nbr_1L_int, 
-        "Baseline and follow-up", NA_character_))) %>% dplyr::ungroup() %>% 
-        dplyr::select(-nbr_rounds_int)
+        dplyr::mutate(nbr_rounds_int = dplyr::n()) %>% dplyr::mutate(`:=`(!!rlang::sym(participation_var_1L_chr), 
+        ifelse(nbr_rounds_int == 1, paste0(timepoint_vals_chr[1], 
+            " only"), ifelse(nbr_rounds_int == fup_round_nbr_1L_int, 
+            paste0(timepoint_vals_chr[1], " and ", tolower(timepoint_vals_chr[2])), 
+            NA_character_)))) %>% dplyr::ungroup() %>% dplyr::select(-nbr_rounds_int)
     return(data_tb)
 }
 #' Add unweighted dimension totals

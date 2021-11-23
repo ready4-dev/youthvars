@@ -9,7 +9,7 @@
 youthvars_bads <- function(x = make_pt_youthvars_bads()){ 
 validate_youthvars_bads(make_new_youthvars_bads(x))
 }
-#' Make new youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' make new youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @description Create a new unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @param x A prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @return An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
@@ -22,7 +22,7 @@ class(x) <- append(c("youthvars_bads",setdiff(make_pt_youthvars_bads() %>% class
 class(x))
 x
 }
-#' Make prototype youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' make prototype youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @description Create a new prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 
 #' @return A prototype for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
@@ -32,7 +32,7 @@ x
 make_pt_youthvars_bads <- function(){ 
 integer(0)
 }
-#' Validate youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' validate youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @description Validate an instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @param x An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @return A prototpe for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
@@ -51,7 +51,7 @@ call. = FALSE)
 }
 
 x}
-#' Is youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+#' is youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @description Check whether an object is a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores

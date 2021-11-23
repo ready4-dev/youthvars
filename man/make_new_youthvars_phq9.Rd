@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{make_new_youthvars_phq9}
 \alias{make_new_youthvars_phq9}
-\title{Make new youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{make new youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 make_new_youthvars_phq9(x)
 }

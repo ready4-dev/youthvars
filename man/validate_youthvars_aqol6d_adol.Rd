@@ -2,7 +2,7 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{validate_youthvars_aqol6d_adol}
 \alias{validate_youthvars_aqol6d_adol}
-\title{Validate youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{validate youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 validate_youthvars_aqol6d_adol(x)
 }
