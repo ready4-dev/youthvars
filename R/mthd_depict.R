@@ -1,5 +1,5 @@
 #' 
-#' depict
+#' Depict features of an instance of a class by generating a plot
 #' @name depict-YouthvarsSeries
 #' @description depict method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

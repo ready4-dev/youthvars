@@ -1,21 +1,19 @@
-library(ready4)
-ready4fun::write_fn_type_dirs() # Need to ammend to write empty generics.R file
-# MANUAL STEP. Write all your functions to R files in the new "fns" directory.
+library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
-x_ready4fun_manifest <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To Characterize Youth Populations",
-                                                    pkg_desc_1L_chr = "Tools to describe and summarise types of data commonly present in youth mental health collections.
+x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To Characterize Youth Populations",
+                                 pkg_desc_1L_chr = "Tools to describe and summarise types of data commonly present in youth mental health collections.
                             The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics.
   This development version of the youthvars package has been made available as part of the process of testing and documenting the package.
                             If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
-                                                    authors_prsn = c(utils::person(given = "Matthew",family = "Hamilton",email = "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),comment = c(ORCID = "0000-0001-7407-9194")),
-                                                                     utils::person(given = "Caroline",family = "Gao",email = "caroline.gao@orygen.org.au", role = c("aut"),comment = c(ORCID = "0000-0002-0987-2759")),
-                                                                     utils::person("Orygen", role = c("cph", "fnd")),
-                                                                     utils::person("Headspace", role = c( "fnd")),
-                                                                     utils::person("National Health and Medical Research Council", role = c( "fnd"))),
-                                                    urls_chr = c("https://ready4-dev.github.io/youthvars/",
-                                                                 "https://github.com/ready4-dev/youthvars",
-                                                                 "https://ready4-dev.github.io/ready4/")) %>%
+                                 authors_prsn = c(utils::person(given = "Matthew",family = "Hamilton",email = "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),comment = c(ORCID = "0000-0001-7407-9194")),
+                                                  utils::person(given = "Caroline",family = "Gao",email = "caroline.gao@orygen.org.au", role = c("aut"),comment = c(ORCID = "0000-0002-0987-2759")),
+                                                  utils::person("Orygen", role = c("cph", "fnd")),
+                                                  utils::person("Headspace", role = c( "fnd")),
+                                                  utils::person("National Health and Medical Research Council", role = c( "fnd"))),
+                                 urls_chr = c("https://ready4-dev.github.io/youthvars/",
+                                              "https://github.com/ready4-dev/youthvars",
+                                              "https://ready4-dev.github.io/ready4/")) %>%
   ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
                                                                        suggests_chr = "rmarkdown",
                                                                        imports_chr = "knitrBootstrap"),
@@ -46,7 +44,7 @@ x_ready4fun_manifest <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe
                            piggyback_to_1L_chr = "ready4-dev/ready4",
                            ready4_type_1L_chr = "authoring",
                            zenodo_badge_1L_chr = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646550.svg)](https://doi.org/10.5281/zenodo.5646550)")
-x_ready4class_constructor <- ready4class::ready4class_constructor() %>%
+y <- ready4class::ready4class_constructor() %>%
   dplyr::bind_rows(tibble::tribble(
     ~ make_s3_lgl, ~ name_stub_chr, ~ pt_ls, ~ pt_chkr_pfx_ls, ~ pt_ns_ls, ~ vals_ls, ~ allowed_vals_ls, ~ min_max_vals_ls, ~ start_end_vals_ls, ~ class_desc_chr, ~ parent_class_chr, ~ slots_ls, ~ meaningful_nms_ls, ~ inc_clss_ls, ~ asserts_ls,
     TRUE, "aqol6d_adol", list("numeric"), list("is."),list("base"), NULL, NULL,list(c(0.03, 1)), NULL, "youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))", NA_character_, NULL, NULL, NULL, NULL,
@@ -57,46 +55,46 @@ x_ready4class_constructor <- ready4class::ready4class_constructor() %>%
     TRUE, "scared", list("integer"), list("is."),list("base"),NULL, NULL,list(c(0, 82)), NULL, "youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores", NA_character_, NULL, NULL, NULL, NULL,
     TRUE, "k6", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 24)), NULL, "youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores", NA_character_, NULL, NULL, NULL, NULL,
     TRUE, "sofas", list("integer"), list("is."),list("base"), NULL, NULL,list(c(0, 100)), NULL, "youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)", NA_character_, NULL, NULL, NULL, NULL))
-x_ready4class_constructor <- dplyr::bind_rows(x_ready4class_constructor,
-                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
-                                                                                           name_stub_chr = "Descriptives",
-                                                                                           slots_ls = list("descriptives_df",
-                                                                                                           "ds_tfmn_ls",
-                                                                                                           "key_var_nm_1L_chr",
-                                                                                                           "key_var_vals_chr",
-                                                                                                           "nbr_of_digits_1L_int",
-                                                                                                           "profiled_vars_chr",
-                                                                                                           "sections_as_row_1L_lgl",
-                                                                                                           "test_1L_lgl"
-                                                                                           ) %>% list(),
-                                                                                           pt_ls = list("data.frame",
-                                                                                                        "list",
-                                                                                                        "character",
-                                                                                                        "character",
-                                                                                                        "integer",
-                                                                                                        "character",
-                                                                                                        "logical",
-                                                                                                        "logical") %>% list(),
-                                                                                           class_desc_chr= "Metadata about descriptive statistics to be generated.",
-                                                                                           parent_class_chr = "Ready4Module"),
-                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
-                                                                                           name_stub_chr = "Profile",
-                                                                                           slots_ls = list("a_Ready4useDyad",
-                                                                                                           "descriptives_ls",
-                                                                                                           "id_var_nm_1L_chr") %>% list(), # Change
-                                                                                           pt_ls = list("Ready4useDyad","list",
-                                                                                                        "character") %>% list(),
-                                                                                           class_desc_chr = "A dataset and its associated dictionary, descriptive statistics and metadata.",
-                                                                                           parent_class_chr = "Ready4Module"),
-                                              ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
-                                                                                           name_stub_chr = "Series",
-                                                                                           slots_ls = list("participation_var_1L_chr",
-                                                                                                           "timepoint_vals_chr",
-                                                                                                           "timepoint_var_nm_1L_chr") %>% list(), # Change
-                                                                                           pt_ls = list("character","character",
-                                                                                                        "character") %>% list(),
-                                                                                           class_desc_chr = "A longitudinal dataset and its associated dictionary, descriptive statistics and metadata.",
-                                                                                           parent_class_chr = "YouthvarsProfile"))
+y <- dplyr::bind_rows(y,
+                      ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                   name_stub_chr = "Descriptives",
+                                                                   slots_ls = list("descriptives_df",
+                                                                                   "ds_tfmn_ls",
+                                                                                   "key_var_nm_1L_chr",
+                                                                                   "key_var_vals_chr",
+                                                                                   "nbr_of_digits_1L_int",
+                                                                                   "profiled_vars_chr",
+                                                                                   "sections_as_row_1L_lgl",
+                                                                                   "test_1L_lgl"
+                                                                   ) %>% list(),
+                                                                   pt_ls = list("data.frame",
+                                                                                "list",
+                                                                                "character",
+                                                                                "character",
+                                                                                "integer",
+                                                                                "character",
+                                                                                "logical",
+                                                                                "logical") %>% list(),
+                                                                   class_desc_chr= "Metadata about descriptive statistics to be generated.",
+                                                                   parent_class_chr = "Ready4Module"),
+                      ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                   name_stub_chr = "Profile",
+                                                                   slots_ls = list("a_Ready4useDyad",
+                                                                                   "descriptives_ls",
+                                                                                   "id_var_nm_1L_chr") %>% list(), # Change
+                                                                   pt_ls = list("Ready4useDyad","list",
+                                                                                "character") %>% list(),
+                                                                   class_desc_chr = "A dataset and its associated dictionary, descriptive statistics and metadata.",
+                                                                   parent_class_chr = "Ready4Module"),
+                      ready4class::make_pt_ready4class_constructor(make_s3_lgl = FALSE,
+                                                                   name_stub_chr = "Series",
+                                                                   slots_ls = list("participation_var_1L_chr",
+                                                                                   "timepoint_vals_chr",
+                                                                                   "timepoint_var_nm_1L_chr") %>% list(), # Change
+                                                                   pt_ls = list("character","character",
+                                                                                "character") %>% list(),
+                                                                   class_desc_chr = "A longitudinal dataset and its associated dictionary, descriptive statistics and metadata.",
+                                                                   parent_class_chr = "YouthvarsProfile"))
 
 
 
@@ -123,69 +121,69 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
                 k6_total = K6,
                 c_sofas = SOFAS)
 scored_data_tb <- fns_env_ls$fns_env$add_adol6d_scores(replication_popl_tb,
-                                    prefix_1L_chr = "aqol6d_q",
-                                    id_var_nm_1L_chr = "fkClientID",
-                                    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
-                                    total_aqol_var_nm_1L_chr = "aqol6d_total_c")
+                                                       prefix_1L_chr = "aqol6d_q",
+                                                       id_var_nm_1L_chr = "fkClientID",
+                                                       wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
+                                                       total_aqol_var_nm_1L_chr = "aqol6d_total_c")
 Hmisc::label(scored_data_tb[["aqol6d_total_c"]]) <- "AQOL-6D (unweighted total)"
 Hmisc::label(scored_data_tb[["aqol6d_total_w"]]) <- "AQOL-6D (weighted total)"
 dictionary_tb <- ready4use::make_pt_ready4use_dictionary(var_nm_chr = names(scored_data_tb),
-                                                      var_ctg_chr = c("identifier","temporal","temporal",
-                                                                      rep("demographic",14),
-                                                                      "service provider",
-                                                                      rep("clinical symptom",2),
-                                                                      c("psychological distress",
-                                                                        rep("depression",2),
-                                                                        rep("anxiety",3)),
-                                                                      "functioning",
-                                                                      #rep("Demographic",3),
-                                                                      rep("multi-attribute utility instrument question",20),
-                                                                      rep("utility item disvalue",20),
-                                                                      rep("utility dimension disvalue",6),
-                                                                      rep("utility dimension score (adult)",6),
-                                                                      "utility overall score (disvalue scale)",
-                                                                      "utility overall score (life-death scale)",
-                                                                      rep("utility overall score (adolescent disutility scale)",2), # Includes Testing Duplicate
-                                                                      "utility overall score (instrument)",
-                                                                      "utility overall score (instrument - rotated)",
-                                                                      "utility overall score (final weighted)",
-                                                                      "multi-attribute utility instrument unweighted total score"
-                                                      ),
-                                                      var_desc_chr = c("unique client identifier",
-                                                                       "round of data collection",
-                                                                       "date of data collection",
-                                                                       "age",
-                                                                       "age Group",
-                                                                       "gender (grouped)",
-                                                                       "gender",
-                                                                       "sex at birth",
-                                                                       "sexual orientation",
-                                                                       "Aboriginal or Torres Strait Islander",
-                                                                       "Culturally And Linguistically Diverse",
-                                                                       "country Of birth",
-                                                                       "speaks English at home",
-                                                                       "native English speaker",
-                                                                       "region of residence (metropolitan or regional)",
-                                                                       "education and employment status",
-                                                                       "relationship status",
-                                                                       "service centre name",
-                                                                       "primary diagnosis",
-                                                                       "clinical stage",
-                                                                       "Kessler Psychological Distress Scale (6 Dimension)",
-                                                                       "Patient Health Questionnaire",
-                                                                       "Behavioural Activation for Depression Scale",
-                                                                       "Generalised Anxiety Disorder Scale",
-                                                                       "Overall Anxiety Severity and Impairment Scale",
-                                                                       "Screen for Child Anxiety Related Disorders",
-                                                                       "Social and Occupational Functioning Assessment Scale",
-                                                                       paste0("Assessment of Quality of Life (6 Dimension) question ",1:20),
-                                                                       paste0("Assessment of Quality of Life (6 Dimension) item disvalue",1:20),
-                                                                       lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,67),rep(T,20)))
-                                                      ),
-                                                      var_type_chr = names(scored_data_tb) %>% purrr::map_chr(~{
-                                                        class_chr <- class(scored_data_tb %>% dplyr::pull(.x))
-                                                        class_chr[class_chr!="labelled"][1]
-                                                      })) %>% ready4use::ready4use_dictionary()
+                                                         var_ctg_chr = c("identifier","temporal","temporal",
+                                                                         rep("demographic",14),
+                                                                         "service provider",
+                                                                         rep("clinical symptom",2),
+                                                                         c("psychological distress",
+                                                                           rep("depression",2),
+                                                                           rep("anxiety",3)),
+                                                                         "functioning",
+                                                                         #rep("Demographic",3),
+                                                                         rep("multi-attribute utility instrument question",20),
+                                                                         rep("utility item disvalue",20),
+                                                                         rep("utility dimension disvalue",6),
+                                                                         rep("utility dimension score (adult)",6),
+                                                                         "utility overall score (disvalue scale)",
+                                                                         "utility overall score (life-death scale)",
+                                                                         rep("utility overall score (adolescent disutility scale)",2), # Includes Testing Duplicate
+                                                                         "utility overall score (instrument)",
+                                                                         "utility overall score (instrument - rotated)",
+                                                                         "utility overall score (final weighted)",
+                                                                         "multi-attribute utility instrument unweighted total score"
+                                                         ),
+                                                         var_desc_chr = c("unique client identifier",
+                                                                          "round of data collection",
+                                                                          "date of data collection",
+                                                                          "age",
+                                                                          "age Group",
+                                                                          "gender (grouped)",
+                                                                          "gender",
+                                                                          "sex at birth",
+                                                                          "sexual orientation",
+                                                                          "Aboriginal or Torres Strait Islander",
+                                                                          "Culturally And Linguistically Diverse",
+                                                                          "country Of birth",
+                                                                          "speaks English at home",
+                                                                          "native English speaker",
+                                                                          "region of residence (metropolitan or regional)",
+                                                                          "education and employment status",
+                                                                          "relationship status",
+                                                                          "service centre name",
+                                                                          "primary diagnosis",
+                                                                          "clinical stage",
+                                                                          "Kessler Psychological Distress Scale (6 Dimension)",
+                                                                          "Patient Health Questionnaire",
+                                                                          "Behavioural Activation for Depression Scale",
+                                                                          "Generalised Anxiety Disorder Scale",
+                                                                          "Overall Anxiety Severity and Impairment Scale",
+                                                                          "Screen for Child Anxiety Related Disorders",
+                                                                          "Social and Occupational Functioning Assessment Scale",
+                                                                          paste0("Assessment of Quality of Life (6 Dimension) question ",1:20),
+                                                                          paste0("Assessment of Quality of Life (6 Dimension) item disvalue",1:20),
+                                                                          lapply(scored_data_tb, Hmisc::label) %>% purrr::flatten_chr() %>% purrr::keep(c(rep(F,67),rep(T,20)))
+                                                         ),
+                                                         var_type_chr = names(scored_data_tb) %>% purrr::map_chr(~{
+                                                           class_chr <- class(scored_data_tb %>% dplyr::pull(.x))
+                                                           class_chr[class_chr!="labelled"][1]
+                                                         })) %>% ready4use::ready4use_dictionary()
 Hmisc::label(dictionary_tb) = as.list(c("Variable","Category", "Description", "Class"))
 dictionary_tb <- dictionary_tb %>%
   dplyr::arrange(var_ctg_chr,var_nm_chr)
@@ -199,9 +197,9 @@ datasets_ls <- list(tibble::tribble(
   "vD6", 0.2052164,
   "Constant", - 0.0444493
 ) %>% ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_from_8d_coefs_lup_tb",
-                                                title_1L_chr = "Model 2A Coefficients To Weight AQoL6D",
-                                                desc_1L_chr = "Coefficients for model to predict AQoL-6D utility score from AQoL-8D. The optimal model is Model 2A (see Richardson et al (2011, 18-19)*/",
-                                                url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                                title_1L_chr = "Model 2A Coefficients To Weight AQoL6D",
+                                desc_1L_chr = "Coefficients for model to predict AQoL-6D utility score from AQoL-8D. The optimal model is Model 2A (see Richardson et al (2011, 18-19)*/",
+                                url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 tibble::tribble(
   ~Question_chr, ~Answer_1_dbl, ~Answer_2_dbl, ~Answer_3_dbl, ~Answer_4_dbl, ~Answer_5_dbl, ~Answer_6_dbl,
   "Q1", 0, 0.073, 0.435, 0.820, 1, NA_real_,
@@ -225,9 +223,9 @@ tibble::tribble(
   "Q19", 0, 0.024, 0.205, 0.586, 0.826, 1,
   "Q20", 0, 0.187, 0.695, 1, NA_real_,NA_real_
 ) %>% ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_adult_disv_lup_tb",
-                                  title_1L_chr = "AQoL6D (adult version) item disvalues lookup table",
-                                  desc_1L_chr = "Disutility weights for individual AQoL6D (adult version) items.",
-                                  url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                                title_1L_chr = "AQoL6D (adult version) item disvalues lookup table",
+                                desc_1L_chr = "Disutility weights for individual AQoL6D (adult version) items.",
+                                url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 tibble::tibble(Question_dbl = 1:20,
                Domain_chr = c(rep("IL",4),
                               rep("REL",3),
@@ -236,9 +234,9 @@ tibble::tibble(Question_dbl = 1:20,
                               rep("P",3),
                               rep("SEN",3))) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_domain_qs_lup_tb",
-                              title_1L_chr = "AQoL6D dimension questions lookup table",
-                              desc_1L_chr = "Breakdown of which questions relate to which dimension of the AQoL6D.",
-                              url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                            title_1L_chr = "AQoL6D dimension questions lookup table",
+                            desc_1L_chr = "Breakdown of which questions relate to which dimension of the AQoL6D.",
+                            url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 tibble::tribble(
   ~Dimension_chr, ~Constant_dbl,
   "IL",-0.978,
@@ -248,9 +246,9 @@ tibble::tribble(
   "P", -0.96,
   "SEN", -0.851) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_dim_sclg_con_lup_tb",
-                                                 title_1L_chr = "AQoL6D dimension scaling constants lookup table",
-                                                 desc_1L_chr = "Scaling constants for each dimension of AQoL6D.",
-                                                 url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                            title_1L_chr = "AQoL6D dimension scaling constants lookup table",
+                            desc_1L_chr = "Scaling constants for each dimension of AQoL6D.",
+                            url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 tibble::tribble(
   ~Question_chr, ~Worst_Weight_dbl,
   "Q1", 0.385412,
@@ -274,40 +272,40 @@ tibble::tribble(
   "Q19", 0.463022,
   "Q20", 0.604613
 ) %>% ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_adult_itm_wrst_wts_lup_tb",
-                                  title_1L_chr = "AQoL6D (adult) item worst weightings lookup table",
-                                  desc_1L_chr = "Worst weightings for individual items in AQoL6D (adult version).",
-                                  url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                                title_1L_chr = "AQoL6D (adult) item worst weightings lookup table",
+                                desc_1L_chr = "Worst weightings for individual items in AQoL6D (adult version).",
+                                url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 
 read.csv("data-raw/csvs/AQoL_6D_Dim_Scaling.csv", stringsAsFactors = F, fileEncoding="UTF-8-BOM") %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "adol_dim_scalg_eqs_lup",
-                              title_1L_chr = "AQoL6D (adolescent) item worst weightings equations lookup table",
-                              desc_1L_chr = "Dimension scaling equations for adolescent version of AQoL6D scoring algorithm.",
-                              url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                            title_1L_chr = "AQoL6D (adolescent) item worst weightings equations lookup table",
+                            desc_1L_chr = "Dimension scaling equations for adolescent version of AQoL6D scoring algorithm.",
+                            url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 read.csv("data-raw/csvs/aqol_valid_stata.csv") %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol6d_adult_vldn_pop_with_STATA_scores_tb",
-                              title_1L_chr = "STATA comparison validation synthetic population",
-                              desc_1L_chr = "Synthetic population following application of STATA adult scoring algorithm.",
-                              url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
+                            title_1L_chr = "STATA comparison validation synthetic population",
+                            desc_1L_chr = "Synthetic population following application of STATA adult scoring algorithm.",
+                            url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 
 dictionary_tb %>%
   dplyr::filter(var_nm_chr %in% names(replication_popl_tb)) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "repln_ds_dict_r3",
-                              title_1L_chr = "Data dictionary for study population dataset",
-                              desc_1L_chr = "A data dictionary of the variables used in the source and replication (synthetic) datasets for the First Bounce transfer to utility study"),
+                            title_1L_chr = "Data dictionary for study population dataset",
+                            desc_1L_chr = "A data dictionary of the variables used in the source and replication (synthetic) datasets for the First Bounce transfer to utility study"),
 dictionary_tb %>%
   dplyr::filter((!var_nm_chr %in% names(replication_popl_tb)) | startsWith(var_nm_chr, "aqol")) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "aqol_scrg_dict_r3",
-                              title_1L_chr = "Data dictionary for AQoL scoring",
-                              desc_1L_chr = "A data dictionary of the variables used in scoring AQoL 6D utility questionnaire responses."),
+                            title_1L_chr = "Data dictionary for AQoL scoring",
+                            desc_1L_chr = "A data dictionary of the variables used in scoring AQoL 6D utility questionnaire responses."),
 replication_popl_tb %>%
   dplyr::select(-c(d_agegroup,Gender, CALD, Region)) %>%
   #add_labels_from_dictionary(dictionary_tb = dictionary_tb) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "replication_popl_tb",
-                              title_1L_chr = "Synthetic population replication dataset",
-                              desc_1L_chr = "A purely synthetic dataset, representative of the original study data, that can be used for replication runs of package algorithms.",
-                              abbreviations_lup = tibble::tibble(short_name_chr = dictionary_tb$var_nm_chr,
-                                                                 long_name_chr = dictionary_tb$var_desc_chr,
-                                                                 plural_lgl = F),
+                            title_1L_chr = "Synthetic population replication dataset",
+                            desc_1L_chr = "A purely synthetic dataset, representative of the original study data, that can be used for replication runs of package algorithms.",
+                            abbreviations_lup = tibble::tibble(short_name_chr = dictionary_tb$var_nm_chr,
+                                                               long_name_chr = dictionary_tb$var_desc_chr,
+                                                               plural_lgl = F),
                             simple_lup_1L_lgl = T),
 tibble::tibble(short_name_chr = c("BADS","GAD7","K6","OASIS","PHQ9","SCARED","SOFAS"),
                long_name_chr = short_name_chr %>% purrr::map_chr(~paste0(.x, " total score")),
@@ -319,17 +317,13 @@ tibble::tibble(short_name_chr = c("BADS","GAD7","K6","OASIS","PHQ9","SCARED","SO
                mdl_scaling_dbl = 0.01,
                covariate_lgl = c(rep(F,6),T)) %>%
   ready4fun::make_pkg_ds_ls(db_1L_chr = "predictors_lup",
-                              title_1L_chr = "Predictors lookup table",
-                              desc_1L_chr = "A lookup table of the short name and long name of each predictor used in the models included with the youthu package.")
+                            title_1L_chr = "Predictors lookup table",
+                            desc_1L_chr = "A lookup table of the short name and long name of each predictor used in the models included with the youthu package.")
 
 )
-x_ready4pack_manifest <- ready4pack::make_pt_ready4pack_manifest(x_ready4fun_manifest,
-                                                              constructor_r3 = x_ready4class_constructor,
-                                                              pkg_ds_ls_ls = datasets_ls) %>%
+z <- ready4pack::make_pt_ready4pack_manifest(x,
+                                             constructor_r3 = y,
+                                             pkg_ds_ls_ls = datasets_ls) %>%
   ready4pack::ready4pack_manifest()
-x_xx <- ready4::author(x_ready4pack_manifest)
+z <- ready4::author(z)
 # devtools::build_vignettes()
-# piggyback::pb_new_release("ready4-dev/youthvars",
-#                           tag = paste0("v",desc::desc_get_version()),
-#                           body = "Version implemented following significant redevelopment of package dependencies.",
-#                           prerelease = F)

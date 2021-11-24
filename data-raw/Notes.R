@@ -2,16 +2,21 @@
 x <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
                                gh_tag_1L_chr = "Documentation_0.0")
 y <- ingest(x)
-prototype_lup <- y@b_Ready4useIngest@objects_ls$prototype_lup %>% tibble::add_case(type_chr = "data.frame",val_chr = "data.frame()",
-                                                                  pt_ns_chr = "base", fn_to_call_chr ="",
-                                                                  default_val_chr = "data.frame()",
-                                                                  old_class_lgl = F) %>%
+prototype_lup <- procure(procureSlot(y,
+                                     "b_Ready4useIngest"),
+                         "prototype_lup")
+prototype_lup <- prototype_lup %>%
+  tibble::add_case(type_chr = "data.frame",val_chr = "data.frame()",
+                   pt_ns_chr = "base",
+                   fn_to_call_chr ="",
+                   default_val_chr = "data.frame()",
+                   old_class_lgl = F) %>%
   dplyr::arrange(pt_ns_chr,type_chr)
-y <- Ready4useRecord(a_Ready4usePointer = ready4use::Ready4usePointer(b_Ready4useRepos = x),
-                     b_Ready4useIngest = Ready4useIngest(objects_ls = list(prototype_lup = prototype_lup)))
-
-share(y,
-      type_1L_chr = "gh")
+y <- renewSlot(y,
+               new_val_xx = Ready4useIngest(objects_ls = list(prototype_lup = prototype_lup)),
+               slot_nm_1L_chr = "b_Ready4useIngest")
+y <- share(y,
+           type_1L_chr = "prefer_gh")
 # x_xx$x_ready4fun_manifest <- renew.ready4fun_manifest(x_xx$x_ready4fun_manifest,
 #                                                         tf_to_singular_chr = c(cntrl = "cntrls",
 #                                                                                corstar = "corstars",

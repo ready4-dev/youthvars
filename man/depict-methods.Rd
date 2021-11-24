@@ -3,7 +3,7 @@
 \name{depict-YouthvarsSeries}
 \alias{depict-YouthvarsSeries}
 \alias{depict,YouthvarsSeries-method}
-\title{depict}
+\title{Depict features of an instance of a class by generating a plot}
 \usage{
 \S4method{depict}{YouthvarsSeries}(
   x,

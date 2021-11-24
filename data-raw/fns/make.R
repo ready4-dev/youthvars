@@ -682,10 +682,10 @@ make_var_by_round_plt <- function(data_tb,
     ggplot2::theme(legend.position="bottom")
   return(var_by_round_plt)
 }
-make_vec_with_sum_of_int_val <- function (target_int, start_int, end_int, length_int)
-{ # MIGRATED FROM TTU: REORGANISE
-  vec_int <- Surrogate::RandVec(a = start_int, b = end_int,
-                                s = target_int, n = length_int, m = 1) %>% purrr::pluck("RandVecOutput") %>%
-    as.vector() %>% round() %>% as.integer() %>% force_vec_to_sum_to_int(target_1L_int = target_int)
-  return(vec_int)
-}
+# make_vec_with_sum_of_int_val <- function (target_int, start_int, end_int, length_int)
+# { # MIGRATED FROM TTU: REORGANISE
+#   vec_int <- Surrogate::RandVec(a = start_int, b = end_int,
+#                                 s = target_int, n = length_int, m = 1) %>% purrr::pluck("RandVecOutput") %>%
+#     as.vector() %>% round() %>% as.integer() %>% force_vec_to_sum_to_int(target_1L_int = target_int)
+#   return(vec_int)
+# }

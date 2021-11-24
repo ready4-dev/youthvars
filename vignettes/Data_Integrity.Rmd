@@ -18,19 +18,17 @@ knitr::opts_chunk$set(echo = TRUE)
 library(youthvars)
 ```
 
-## The role of classes in assuring data integrity
-The youthvars package defines a number of classes that can be used to help assure the quality of input data used for modelling and prediction tasks. 
+## Variable classes and data integrity
+The youthvars package defines a number of vector based classes that can be used to quality assure the data recorded for individual variables. youthvars variable classes are potentially useful for:
 
-Within the R scripting language, a class is a named data structure that comprises a definition of required properties (e.g. whether numeric, minimum or maximum values) and tools for creating and validating instances of this data structure. These classes have two main purposes:
-
-1) to facilitate automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results;
-2) to automate the selection of the appropriate method to apply to each data type (e.g. selecting the transfer to utility model to use based on the predictors supplied to a method).
+1) facilitating automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results; and
+2) automating the selection of the appropriate method to apply to each data type.
 
 ## Included classes
 
-The classes included in the youthvars package currently include one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the six predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
+The initial set of classes included in the youthvars package are one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
 
-Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values. Future releases of youthvars will include and expanded number of classes that allow for missing values, extending the potential application of these classes.
+Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values.
 
 ### Assessment of Quality of Life Six Dimension (Adolescent) Health Utility 
 

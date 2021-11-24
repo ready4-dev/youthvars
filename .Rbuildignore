@@ -44,3 +44,4 @@
 ^data-raw/s4_fns/renew\.R$
 ^data-raw/s4_fns/renewSlot\.R$
 ^data-raw/ToDo\.R$
+^data-raw/vignette_extras/Summaries\.Rmd$

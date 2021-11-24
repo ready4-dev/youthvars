@@ -3,7 +3,7 @@
 \name{exhibit-YouthvarsSeries}
 \alias{exhibit-YouthvarsSeries}
 \alias{exhibit,YouthvarsSeries-method}
-\title{exhibit}
+\title{Exhibit features of a class instance by printing to console}
 \usage{
 \S4method{exhibit}{YouthvarsSeries}(
   x,

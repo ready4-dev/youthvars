@@ -1,5 +1,5 @@
 #' 
-#' characterize
+#' Characterize a class instance by generating descriptive information
 #' @name characterize-YouthvarsDescriptives
 #' @description characterize method applied to YouthvarsDescriptives
 #' @param x An object of class YouthvarsDescriptives

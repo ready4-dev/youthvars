@@ -5,7 +5,7 @@
 \alias{renew,YouthvarsDescriptives-method}
 \alias{renew-YouthvarsProfile}
 \alias{renew,YouthvarsProfile-method}
-\title{renew}
+\title{Renew an instance of a class by updating it with new data}
 \usage{
 \S4method{renew}{YouthvarsDescriptives}(x, type_1L_chr = "characterize", ...)
 

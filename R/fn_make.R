@@ -819,22 +819,3 @@ make_var_by_round_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr =
         "#fc9272")) + ggplot2::theme(legend.position = "bottom")
     return(var_by_round_plt)
 }
-#' Make vector with sum of integer vector value
-#' @description make_vec_with_sum_of_int_val() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make vector with sum of integer vector value. The function returns Vector (an integer vector).
-#' @param target_int Target (an integer vector)
-#' @param start_int Start (an integer vector)
-#' @param end_int End (an integer vector)
-#' @param length_int Length (an integer vector)
-#' @return Vector (an integer vector)
-#' @rdname make_vec_with_sum_of_int_val
-#' @export 
-#' @importFrom Surrogate RandVec
-#' @importFrom purrr pluck
-#' @keywords internal
-make_vec_with_sum_of_int_val <- function (target_int, start_int, end_int, length_int) 
-{
-    vec_int <- Surrogate::RandVec(a = start_int, b = end_int, 
-        s = target_int, n = length_int, m = 1) %>% purrr::pluck("RandVecOutput") %>% 
-        as.vector() %>% round() %>% as.integer() %>% force_vec_to_sum_to_int(target_1L_int = target_int)
-    return(vec_int)
-}

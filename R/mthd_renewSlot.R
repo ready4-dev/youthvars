@@ -1,5 +1,5 @@
 #' 
-#' renewSlot
+#' Renew a slot of a class instance by updating it with new data
 #' @name renewSlot-YouthvarsSeries
 #' @description renewSlot method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

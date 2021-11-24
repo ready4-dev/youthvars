@@ -3,7 +3,7 @@
 \name{renewSlot-YouthvarsSeries}
 \alias{renewSlot-YouthvarsSeries}
 \alias{renewSlot,YouthvarsSeries-method}
-\title{renewSlot}
+\title{Renew a slot of a class instance by updating it with new data}
 \usage{
 \S4method{renewSlot}{YouthvarsSeries}(
   x,
