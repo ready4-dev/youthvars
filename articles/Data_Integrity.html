@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9076</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9077</span>
       </span>
     </div>
 
@@ -64,6 +64,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/AQo_Scoring.html">Health Utility Scoring Tools</a>
+    </li>
+    <li>
       <a href="../articles/Data_Integrity.html">Data Integrity Tools</a>
     </li>
     <li>
@@ -118,21 +121,20 @@
 ## 
 ##     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
 ##     setequal, union</code></pre>
-<div id="the-role-of-classes-in-assuring-data-integrity" class="section level2">
+<div id="variable-classes-and-data-integrity" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-role-of-classes-in-assuring-data-integrity" class="anchor"></a>The role of classes in assuring data integrity</h2>
-<p>The youthvars package defines a number of classes that can be used to help assure the quality of input data used for modelling and prediction tasks.</p>
-<p>Within the R scripting language, a class is a named data structure that comprises a definition of required properties (e.g. whether numeric, minimum or maximum values) and tools for creating and validating instances of this data structure. These classes have two main purposes:</p>
+<a href="#variable-classes-and-data-integrity" class="anchor"></a>Variable classes and data integrity</h2>
+<p>The youthvars package defines a number of vector based classes that can be used to quality assure the data recorded for individual variables. youthvars variable classes are potentially useful for:</p>
 <ol style="list-style-type: decimal">
-<li>to facilitate automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results;</li>
-<li>to automate the selection of the appropriate method to apply to each data type (e.g. selecting the transfer to utility model to use based on the predictors supplied to a method).</li>
+<li>facilitating automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results; and</li>
+<li>automating the selection of the appropriate method to apply to each data type.</li>
 </ol>
 </div>
 <div id="included-classes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#included-classes" class="anchor"></a>Included classes</h2>
-<p>The classes included in the youthvars package currently include one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the six predictors used in the utility prediction algorithms included in the related <a href="https://ready4-dev.github.io/youthu/">youthu</a> package.</p>
-<p>Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values. Future releases of youthvars will include and expanded number of classes that allow for missing values, extending the potential application of these classes.</p>
+<p>The initial set of classes included in the youthvars package are one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the predictors used in the utility prediction algorithms included in the related <a href="https://ready4-dev.github.io/youthu/">youthu</a> package.</p>
+<p>Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values.</p>
 <div id="assessment-of-quality-of-life-six-dimension-adolescent-health-utility" class="section level3">
 <h3 class="hasAnchor">
 <a href="#assessment-of-quality-of-life-six-dimension-adolescent-health-utility" class="anchor"></a>Assessment of Quality of Life Six Dimension (Adolescent) Health Utility</h3>
