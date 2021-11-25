@@ -7,10 +7,7 @@
 calculate_adult_aqol6dU(
   aqol6d_items_tb,
   prefix_1L_chr,
-  coefs_lup_tb = NULL,
-  dim_sclg_con_lup_tb = NULL,
-  disvalues_lup_tb = NULL,
-  itm_wrst_wts_lup_tb = NULL
+  aqol6d_scrg_dss_ls = NULL
 )
 }
 \arguments{
@@ -18,13 +15,7 @@ calculate_adult_aqol6dU(
 
 \item{prefix_1L_chr}{Prefix (a character vector of length one)}
 
-\item{coefs_lup_tb}{Coefficients lookup table (a tibble), Default: NULL}
-
-\item{dim_sclg_con_lup_tb}{Dimension scaling constant lookup table (a tibble), Default: NULL}
-
-\item{disvalues_lup_tb}{Disvalues lookup table (a tibble), Default: NULL}
-
-\item{itm_wrst_wts_lup_tb}{Item worst weights lookup table (a tibble), Default: NULL}
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 }
 \value{
 Assessment of Quality of Life Six Dimension Health Utility (a double vector)

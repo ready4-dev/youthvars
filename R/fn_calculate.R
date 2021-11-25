@@ -1,20 +1,28 @@
 #' Calculate adolescent Assessment of Quality of Life Six Dimension Health Utility
 #' @description calculate_adol_aqol6dU() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate adolescent assessment of quality of life six dimension health utility. The function returns Adolescent Assessment of Quality of Life Six Dimension (a double vector).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param wtd_aqol_var_nm_1L_chr Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'
 #' @return Adolescent Assessment of Quality of Life Six Dimension (a double vector)
 #' @rdname calculate_adol_aqol6dU
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr pull
 #' @importFrom rlang sym
 #' @keywords internal
-calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_var_nm_1L_chr = "fkClientID", 
-    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w") 
+calculate_adol_aqol6dU <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls = NULL, prefix_1L_chr = "aqol6d_q", 
+    id_var_nm_1L_chr = "fkClientID", wtd_aqol_var_nm_1L_chr = "aqol6d_total_w") 
 {
-    scored_aqol_tb <- add_adol6d_scores(unscored_aqol_tb, prefix_1L_chr = prefix_1L_chr, 
-        id_var_nm_1L_chr = id_var_nm_1L_chr, wtd_aqol_var_nm_1L_chr = wtd_aqol_var_nm_1L_chr)
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_adol_aqol6dU()", 
+        "scorz::calculate_adol_aqol6dU()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
+    scored_aqol_tb <- add_adol6d_scores(unscored_aqol_tb, aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls, 
+        prefix_1L_chr = prefix_1L_chr, id_var_nm_1L_chr = id_var_nm_1L_chr, 
+        wtd_aqol_var_nm_1L_chr = wtd_aqol_var_nm_1L_chr)
     adol_aqol6d_dbl <- scored_aqol_tb %>% dplyr::pull(!!rlang::sym(wtd_aqol_var_nm_1L_chr))
     return(adol_aqol6d_dbl)
 }
@@ -22,38 +30,27 @@ calculate_adol_aqol6dU <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q"
 #' @description calculate_adult_aqol6dU() is a Calculate function that performs a numeric calculation. Specifically, this function implements an algorithm to calculate adult assessment of quality of life six dimension health utility. The function returns Assessment of Quality of Life Six Dimension Health Utility (a double vector).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param prefix_1L_chr Prefix (a character vector of length one)
-#' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
-#' @param dim_sclg_con_lup_tb Dimension scaling constant lookup table (a tibble), Default: NULL
-#' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
-#' @param itm_wrst_wts_lup_tb Item worst weights lookup table (a tibble), Default: NULL
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension Health Utility (a double vector)
 #' @rdname calculate_adult_aqol6dU
 #' @export 
-#' @importFrom utils data
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom hutils longest_prefix
 #' @keywords internal
-calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_tb = NULL, 
-    dim_sclg_con_lup_tb = NULL, disvalues_lup_tb = NULL, itm_wrst_wts_lup_tb = NULL) 
+calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, aqol6d_scrg_dss_ls = NULL) 
 {
-    if (is.null(coefs_lup_tb)) {
-        utils::data("aqol6d_from_8d_coefs_lup_tb", envir = environment())
-        coefs_lup_tb <- aqol6d_from_8d_coefs_lup_tb
-    }
-    if (is.null(dim_sclg_con_lup_tb)) {
-        utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
-        dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
-    }
-    if (is.null(disvalues_lup_tb)) {
-        utils::data("aqol6d_adult_disv_lup_tb", envir = environment())
-        disvalues_lup_tb <- aqol6d_adult_disv_lup_tb
-    }
-    if (is.null(itm_wrst_wts_lup_tb)) {
-        utils::data("aqol6d_adult_itm_wrst_wts_lup_tb", envir = environment())
-        itm_wrst_wts_lup_tb <- aqol6d_adult_itm_wrst_wts_lup_tb
-    }
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_adult_aqol6dU()", 
+        "scorz::calculate_adult_aqol6dU()")
+    if (is.null(aqol6d_scrg_dss_ls)) 
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    coefs_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_from_8d_coefs_lup_tb
+    dim_sclg_con_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_dim_sclg_con_lup_tb
+    disvalues_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_disv_lup_tb
+    domain_qs_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_domain_qs_lup_tb
+    itm_wrst_wts_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_itm_wrst_wts_lup_tb
     domains_chr <- dim_sclg_con_lup_tb$Dimension_chr
     item_pfx_1L_chr <- hutils::longest_prefix(disvalues_lup_tb$Question_chr)
-    domain_items_ls <- make_domain_items_ls(domain_qs_lup_tb = aqol6d_domain_qs_lup_tb, 
+    domain_items_ls <- make_domain_items_ls(domain_qs_lup_tb = domain_qs_lup_tb, 
         item_pfx_1L_chr = item_pfx_1L_chr)
     aqol6d_items_tb <- aqol6d_items_tb %>% make_aqol6d_items_tb(old_pfx_1L_chr = prefix_1L_chr, 
         new_pfx_1L_chr = item_pfx_1L_chr) %>% impute_adult_aqol6d_items_tb(domain_items_ls = domain_items_ls) %>% 
@@ -73,10 +70,13 @@ calculate_adult_aqol6dU <- function (aqol6d_items_tb, prefix_1L_chr, coefs_lup_t
 #' @return DvD1 (a double vector)
 #' @rdname calculate_aqol6d_dim_1_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_1_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_1_disv()", 
+        "scorz::calculate_aqol6d_dim_1_disv()")
     dvD1_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 
@@ -93,10 +93,13 @@ calculate_aqol6d_dim_1_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 #' @return DvD2 (a double vector)
 #' @rdname calculate_aqol6d_dim_2_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_2_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_2_disv()", 
+        "scorz::calculate_aqol6d_dim_2_disv()")
     dvD2_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 
@@ -112,10 +115,13 @@ calculate_aqol6d_dim_2_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 #' @return DvD3 (a double vector)
 #' @rdname calculate_aqol6d_dim_3_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_3_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_3_disv()", 
+        "scorz::calculate_aqol6d_dim_3_disv()")
     dvD3_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 
@@ -132,10 +138,13 @@ calculate_aqol6d_dim_3_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 #' @return DvD4 (a double vector)
 #' @rdname calculate_aqol6d_dim_4_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_4_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_4_disv()", 
+        "scorz::calculate_aqol6d_dim_4_disv()")
     dvD4_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 
@@ -151,10 +160,13 @@ calculate_aqol6d_dim_4_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 #' @return DvD5 (a double vector)
 #' @rdname calculate_aqol6d_dim_5_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_5_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_5_disv()", 
+        "scorz::calculate_aqol6d_dim_5_disv()")
     dvD5_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 
@@ -170,10 +182,13 @@ calculate_aqol6d_dim_5_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl)
 #' @return DvD6 (a double vector)
 #' @rdname calculate_aqol6d_dim_6_disv
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr pmap_dbl
 #' @keywords internal
 calculate_aqol6d_dim_6_disv <- function (dvQs_tb, kD_1L_dbl, w_dbl) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::calculate_aqol6d_dim_6_disv()", 
+        "scorz::calculate_aqol6d_dim_6_disv()")
     dvD6_dbl <- purrr::pmap_dbl(dvQs_tb, ~{
         (1/kD_1L_dbl) * ((1 + (kD_1L_dbl * w_dbl[1] * ..1)) * 
             (1 + (kD_1L_dbl * w_dbl[2] * ..2)) * (1 + (kD_1L_dbl * 

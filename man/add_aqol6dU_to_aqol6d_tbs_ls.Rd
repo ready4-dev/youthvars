@@ -6,12 +6,15 @@
 \usage{
 add_aqol6dU_to_aqol6d_tbs_ls(
   aqol6d_tbs_ls,
+  aqol6d_scrg_dss_ls = NULL,
   prefix_1L_chr = "aqol6d_q",
   id_var_nm_1L_chr
 )
 }
 \arguments{
 \item{aqol6d_tbs_ls}{Assessment of Quality of Life Six Dimension tibbles (a list)}
+
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 
 \item{prefix_1L_chr}{Prefix (a character vector of length one), Default: 'aqol6d_q'}
 

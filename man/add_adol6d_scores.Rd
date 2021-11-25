@@ -6,22 +6,25 @@
 \usage{
 add_adol6d_scores(
   unscored_aqol_tb,
-  prefix_1L_chr = "aqol6d_q",
+  aqol6d_scrg_dss_ls = NULL,
   id_var_nm_1L_chr = "fkClientID",
-  wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
-  total_aqol_var_nm_1L_chr = "aqol6d_total_c"
+  prefix_1L_chr = "aqol6d_q",
+  total_aqol_var_nm_1L_chr = "aqol6d_total_c",
+  wtd_aqol_var_nm_1L_chr = "aqol6d_total_w"
 )
 }
 \arguments{
 \item{unscored_aqol_tb}{Unscored Assessment of Quality of Life (a tibble)}
 
-\item{prefix_1L_chr}{Prefix (a character vector of length one), Default: 'aqol6d_q'}
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 
-\item{wtd_aqol_var_nm_1L_chr}{Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'}
+\item{prefix_1L_chr}{Prefix (a character vector of length one), Default: 'aqol6d_q'}
 
 \item{total_aqol_var_nm_1L_chr}{Total Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_c'}
+
+\item{wtd_aqol_var_nm_1L_chr}{Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'}
 }
 \value{
 Transformed Assessment of Quality of Life (a tibble)

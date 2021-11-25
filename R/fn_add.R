@@ -1,13 +1,15 @@
 #' Add Assessment of Quality of Life Six Dimension (Adolescent version) scores
 #' @description add_adol6d_scores() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension (adolescent version) scores. Function argument unscored_aqol_tb specifies the object to be updated. The function returns Transformed Assessment of Quality of Life (a tibble).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
-#' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
-#' @param wtd_aqol_var_nm_1L_chr Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'
+#' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
 #' @param total_aqol_var_nm_1L_chr Total Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_c'
+#' @param wtd_aqol_var_nm_1L_chr Weighted Assessment of Quality of Life variable name (a character vector of length one), Default: 'aqol6d_total_w'
 #' @return Transformed Assessment of Quality of Life (a tibble)
 #' @rdname add_adol6d_scores
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr select starts_with rename_all rename group_by mutate n ungroup arrange inner_join across filter
 #' @importFrom tidyselect all_of
 #' @importFrom stringr str_replace
@@ -15,21 +17,28 @@
 #' @importFrom rlang sym
 #' @importFrom purrr map
 #' @importFrom Hmisc `label<-` label
-add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_var_nm_1L_chr = "fkClientID", 
-    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w", total_aqol_var_nm_1L_chr = "aqol6d_total_c") 
+add_adol6d_scores <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls = NULL, id_var_nm_1L_chr = "fkClientID", 
+    prefix_1L_chr = "aqol6d_q", total_aqol_var_nm_1L_chr = "aqol6d_total_c", 
+    wtd_aqol_var_nm_1L_chr = "aqol6d_total_w") 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_adol6d_scores()", 
+        "scorz::add_adol6d_scores()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
     complete_ds_tb <- unscored_aqol_tb
     unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::select(tidyselect::all_of(id_var_nm_1L_chr), 
         dplyr::starts_with(unname(prefix_1L_chr)))
     old_nms_chr <- names(unscored_aqol_tb)
     names(unscored_aqol_tb) <- c("ID", paste0("Q", 1:20))
-    unscored_aqol_tb <- impute_unscrd_adol_aqol6d_ds(unscored_aqol_tb)
-    disvals_tb <- unscored_aqol_tb %>% add_itm_disv_to_aqol6d_itms_tb(disvalues_lup_tb = make_adol_aqol6d_disv_lup(), 
+    unscored_aqol_tb <- suppressWarnings(impute_unscrd_adol_aqol6d_ds(unscored_aqol_tb))
+    disvals_tb <- unscored_aqol_tb %>% add_itm_disv_to_aqol6d_itms_tb(disvalues_lup_tb = make_adol_aqol6d_disv_lup(aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls), 
         pfx_1L_chr = "Q") %>% dplyr::select(ID, dplyr::starts_with("dv_")) %>% 
         dplyr::rename_all(~stringr::str_replace(.x, "dv_", "dv"))
-    scored_aqol_tb <- add_aqol6d_adol_dim_scrg_eqs(disvals_tb) %>% 
-        tibble::as_tibble() %>% dplyr::rename(`:=`(!!rlang::sym(id_var_nm_1L_chr), 
-        ID), `:=`(!!rlang::sym(wtd_aqol_var_nm_1L_chr), uaqol))
+    scored_aqol_tb <- add_aqol6d_adol_dim_scrg_eqs(disvals_tb, 
+        aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls) %>% tibble::as_tibble() %>% 
+        dplyr::rename(`:=`(!!rlang::sym(id_var_nm_1L_chr), ID), 
+            `:=`(!!rlang::sym(wtd_aqol_var_nm_1L_chr), uaqol))
     tbs_ls <- list(complete_ds_tb, scored_aqol_tb) %>% purrr::map(~.x %>% 
         dplyr::group_by(!!rlang::sym(id_var_nm_1L_chr)) %>% dplyr::mutate(match_var_chr = paste0(!!rlang::sym(id_var_nm_1L_chr), 
         "_", 1:dplyr::n())) %>% dplyr::ungroup() %>% dplyr::arrange(!!rlang::sym(id_var_nm_1L_chr)))
@@ -53,18 +62,23 @@ add_adol6d_scores <- function (unscored_aqol_tb, prefix_1L_chr = "aqol6d_q", id_
 #' Add Assessment of Quality of Life Six Dimension adolescent dimension scoring equations
 #' @description add_aqol6d_adol_dim_scrg_eqs() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension adolescent dimension scoring equations. Function argument unscored_aqol_tb specifies the object to be updated. The function returns Unscored Assessment of Quality of Life (a tibble).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @return Unscored Assessment of Quality of Life (a tibble)
 #' @rdname add_aqol6d_adol_dim_scrg_eqs
 #' @export 
-#' @importFrom utils data
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr mutate
 #' @importFrom rlang parse_expr
 #' @importFrom Hmisc label
 #' @keywords internal
-add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb) 
+add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls = NULL) 
 {
-    utils::data("adol_dim_scalg_eqs_lup", package = "youthvars", 
-        envir = environment())
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_aqol6d_adol_dim_scrg_eqs()", 
+        "scorz::add_aqol6d_adol_dim_scrg_eqs()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
+    adol_dim_scalg_eqs_lup <- aqol6d_scrg_dss_ls$adol_dim_scalg_eqs_lup
     for (var in adol_dim_scalg_eqs_lup$Dim_scal) {
         expression = adol_dim_scalg_eqs_lup[adol_dim_scalg_eqs_lup$Dim_scal == 
             var, ]$Equ
@@ -81,11 +95,13 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
 #' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
 #' @param prefix_chr Prefix (a character vector)
 #' @param aqol_tots_var_nms_chr Assessment of Quality of Life totals variable names (a character vector)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param scaling_con_dbl Scaling constant (a double vector), Default: 5
 #' @return Updated Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @rdname add_aqol6d_items_to_aqol6d_tbs_ls
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr map2 map reduce map_int
 #' @importFrom dplyr select mutate arrange left_join starts_with everything
 #' @importFrom stats na.omit
@@ -94,8 +110,14 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb)
 #' @importFrom tibble rowid_to_column
 #' @keywords internal
 add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, prefix_chr, 
-    aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID", scaling_con_dbl = 5) 
+    aqol_tots_var_nms_chr, aqol6d_scrg_dss_ls = NULL, id_var_nm_1L_chr = "fkClientID", 
+    scaling_con_dbl = 5) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_aqol6d_items_to_aqol6d_tbs_ls()", 
+        "scorz::add_aqol6d_items_to_aqol6d_tbs_ls()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
     updated_aqol6d_tbs_ls <- purrr::map2(aqol6d_tbs_ls, aqol_items_prpns_tbs_ls, 
         ~{
             nbr_obs_1L_int <- nrow(.x) * scaling_con_dbl
@@ -115,7 +137,8 @@ add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_t
                 rowSums(., na.rm = T))) %>% dplyr::arrange(!!rlang::sym(unname(aqol_tots_var_nms_chr["cumulative"]))) %>% 
                 tibble::rowid_to_column("id")
             items_tb <- items_tb %>% dplyr::mutate(aqol6dU = calculate_adol_aqol6dU(items_tb, 
-                prefix_1L_chr = prefix_chr["aqol_item"], id_var_nm_1L_chr = "id"))
+                aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls, prefix_1L_chr = prefix_chr["aqol_item"], 
+                id_var_nm_1L_chr = "id"))
             .x <- .x %>% dplyr::mutate(id = purrr::map_int(aqol6d_total_w, 
                 ~which.min(abs(items_tb$aqol6dU - .x)))) %>% 
                 dplyr::left_join(items_tb)
@@ -133,15 +156,22 @@ add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_t
 #' Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension items tibble
 #' @description add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
-#' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: aqol6d_from_8d_coefs_lup_tb
+#' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_aqol6dU_to_aqol6d_items_tb
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr pull mutate
 #' @importFrom purrr map_dbl
 #' @keywords internal
-add_aqol6dU_to_aqol6d_items_tb <- function (aqol6d_items_tb, coefs_lup_tb = aqol6d_from_8d_coefs_lup_tb) 
+add_aqol6dU_to_aqol6d_items_tb <- function (aqol6d_items_tb, coefs_lup_tb = NULL) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_aqol6dU_to_aqol6d_items_tb()", 
+        "scorz::add_aqol6dU_to_aqol6d_items_tb()")
+    if (is.null(coefs_lup_tb)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+        coefs_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_from_8d_coefs_lup_tb
+    }
     coef_dbl <- coefs_lup_tb[match(c(paste0("vD", 1:6), "Constant"), 
         coefs_lup_tb$var_name_chr), ] %>% dplyr::pull(coef_dbl)
     aqol6d_items_tb <- aqol6d_items_tb %>% dplyr::mutate(aqol6dU = coef_dbl[1] * 
@@ -154,18 +184,27 @@ add_aqol6dU_to_aqol6d_items_tb <- function (aqol6d_items_tb, coefs_lup_tb = aqol
 #' Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension tibbles list
 #' @description add_aqol6dU_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
 #' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one)
 #' @return Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @rdname add_aqol6dU_to_aqol6d_tbs_ls
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr map
 #' @importFrom dplyr mutate
 #' @keywords internal
-add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d_q", id_var_nm_1L_chr) 
+add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol6d_scrg_dss_ls = NULL, prefix_1L_chr = "aqol6d_q", 
+    id_var_nm_1L_chr) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_aqol6dU_to_aqol6d_tbs_ls()", 
+        "scorz::add_aqol6dU_to_aqol6d_tbs_ls()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
     aqol6d_tbs_ls <- aqol6d_tbs_ls %>% purrr::map(~.x %>% dplyr::mutate(aqol6dU = calculate_adol_aqol6dU(.x, 
-        prefix_1L_chr = prefix_1L_chr, id_var_nm_1L_chr = id_var_nm_1L_chr)))
+        aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls, prefix_1L_chr = prefix_1L_chr, 
+        id_var_nm_1L_chr = id_var_nm_1L_chr)))
     return(aqol6d_tbs_ls)
 }
 #' Add correlations and utilities to Assessment of Quality of Life Six Dimension tibbles list
@@ -176,21 +215,29 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, prefix_1L_chr = "aqol6d
 #' @param temporal_cors_ls Temporal correlations (a list)
 #' @param prefix_chr Prefix (a character vector)
 #' @param aqol_tots_var_nms_chr Assessment of Quality of Life totals variable names (a character vector)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @return Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @rdname add_cors_and_utls_to_aqol6d_tbs_ls
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @keywords internal
 add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_ls, aqol_items_prpns_tbs_ls, 
-    temporal_cors_ls, prefix_chr, aqol_tots_var_nms_chr, id_var_nm_1L_chr = "fkClientID") 
+    temporal_cors_ls, prefix_chr, aqol_tots_var_nms_chr, aqol6d_scrg_dss_ls = NULL, 
+    id_var_nm_1L_chr = "fkClientID") 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_cors_and_utls_to_aqol6d_tbs_ls()", 
+        "scorz::add_cors_and_utls_to_aqol6d_tbs_ls()")
+    if (is.null(aqol6d_scrg_dss_ls)) {
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    }
     aqol6d_tbs_ls <- reorder_tbs_for_target_cors(aqol6d_tbs_ls, 
         cor_dbl = temporal_cors_ls[[1]], cor_var_chr = rep(names(temporal_cors_ls)[1], 
             2), id_var_to_rmv_1L_chr = "id") %>% add_uids_to_tbs_ls(prefix_1L_chr = prefix_chr[["uid"]], 
         id_var_nm_1L_chr = id_var_nm_1L_chr)
     aqol6d_tbs_ls <- aqol6d_tbs_ls %>% add_aqol6d_items_to_aqol6d_tbs_ls(aqol_items_prpns_tbs_ls = aqol_items_prpns_tbs_ls, 
-        prefix_chr = prefix_chr, aqol_tots_var_nms_chr = aqol_tots_var_nms_chr, 
-        id_var_nm_1L_chr = id_var_nm_1L_chr)
+        aqol6d_scrg_dss_ls = aqol6d_scrg_dss_ls, prefix_chr = prefix_chr, 
+        aqol_tots_var_nms_chr = aqol_tots_var_nms_chr, id_var_nm_1L_chr = id_var_nm_1L_chr)
     return(aqol6d_tbs_ls)
 }
 #' Add dimension disvalue to Assessment of Quality of Life Six Dimension items tibble
@@ -203,7 +250,7 @@ add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_dim_disv_to_aqol6d_items_tb
 #' @export 
-#' @importFrom utils data
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr reduce
 #' @importFrom dplyr select mutate
 #' @importFrom rlang sym exec
@@ -211,13 +258,15 @@ add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_
 add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, domains_chr, dim_sclg_con_lup_tb = NULL, 
     itm_wrst_wts_lup_tb = NULL) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_dim_disv_to_aqol6d_items_tb()", 
+        "scorz::add_dim_disv_to_aqol6d_items_tb()")
+    if (is.null(dim_sclg_con_lup_tb) | is.null(itm_wrst_wts_lup_tb)) 
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
     if (is.null(dim_sclg_con_lup_tb)) {
-        utils::data("aqol6d_dim_sclg_con_lup_tb", envir = environment())
-        dim_sclg_con_lup_tb <- aqol6d_dim_sclg_con_lup_tb
+        dim_sclg_con_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_dim_sclg_con_lup_tb
     }
     if (is.null(itm_wrst_wts_lup_tb)) {
-        utils::data("aqol6d_adult_itm_wrst_wts_lup_tb", envir = environment())
-        itm_wrst_wts_lup_tb <- aqol6d_adult_itm_wrst_wts_lup_tb
+        itm_wrst_wts_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_itm_wrst_wts_lup_tb
     }
     aqol6d_disu_fn_ls <- make_aqol6d_fns_ls(domain_items_ls)
     kD_dbl <- make_dim_sclg_cons_dbl(domains_chr = domains_chr, 
@@ -240,11 +289,14 @@ add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, d
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_dim_scores_to_aqol6d_items_tb
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr mutate across rename_with
 #' @importFrom stringr str_replace
 #' @keywords internal
 add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_dim_scores_to_aqol6d_items_tb()", 
+        "scorz::add_dim_scores_to_aqol6d_items_tb()")
     aqol6d_items_tb <- aqol6d_items_tb %>% dplyr::mutate(dplyr::across(paste0("dvD", 
         1:length(domain_items_ls)), .fns = list(vD = ~1 - .x), 
         .names = "{fn}_{col}")) %>% dplyr::rename_with(~stringr::str_replace(., 
@@ -295,17 +347,18 @@ add_interval_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", msrmnt_d
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname add_itm_disv_to_aqol6d_itms_tb
 #' @export 
-#' @importFrom utils data
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr reduce
 #' @importFrom dplyr mutate across
 #' @importFrom tidyselect all_of
 #' @keywords internal
 add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb, disvalues_lup_tb = NULL, pfx_1L_chr) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_itm_disv_to_aqol6d_itms_tb()", 
+        "scorz::add_itm_disv_to_aqol6d_itms_tb()")
     if (is.null(disvalues_lup_tb)) {
-        utils::data("aqol6d_adult_disv_lup_tb", package = "youthvars", 
-            envir = environment())
-        disvalues_lup_tb <- aqol6d_adult_disv_lup_tb
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+        disvalues_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_disv_lup_tb
     }
     aqol6d_items_tb <- purrr::reduce(1:20, .init = aqol6d_items_tb, 
         ~{
@@ -323,10 +376,13 @@ add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb, disvalues_lup_tb = 
 #' @return Assessment of Quality of Life Six Dimension (a tibble)
 #' @rdname add_labels_to_aqol6d_tb
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom Hmisc label
 #' @keywords internal
 add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_labels_to_aqol6d_tb()", 
+        "scorz::add_labels_to_aqol6d_tb()")
     if (is.na(labels_chr)) 
         labels_chr <- c(fkClientID = "Unique client identifier", 
             round = "Data measurement round", d_age = "Age", 
@@ -392,12 +448,15 @@ add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup
 #' @return Items and domains (a tibble)
 #' @rdname add_unwtd_dim_tots
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr reduce
 #' @importFrom dplyr mutate select
 #' @importFrom rlang sym
 #' @keywords internal
 add_unwtd_dim_tots <- function (items_tb, domain_items_ls, domain_pfx_1L_chr) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_unwtd_dim_tots()", 
+        "scorz::add_unwtd_dim_tots()")
     items_and_domains_tb <- purrr::reduce(1:length(domain_items_ls), 
         .init = items_tb, ~.x %>% dplyr::mutate(`:=`(!!rlang::sym(paste0(domain_pfx_1L_chr, 
             names(domain_items_ls)[.y])), rowSums(dplyr::select(., 
@@ -410,21 +469,24 @@ add_unwtd_dim_tots <- function (items_tb, domain_items_ls, domain_pfx_1L_chr)
 #' @param domain_items_ls Domain items (a list)
 #' @param domain_unwtd_pfx_1L_chr Domain unweighted prefix (a character vector of length one)
 #' @param domain_wtd_pfx_1L_chr Domain weighted prefix (a character vector of length one)
+#' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @return Weighted and unweighted dimension (a tibble)
 #' @rdname add_wtd_dim_tots
 #' @export 
-#' @importFrom utils data
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr map_dbl map2_dbl discard reduce
 #' @importFrom dplyr filter pull select_if mutate
 #' @importFrom rlang sym
 #' @keywords internal
 add_wtd_dim_tots <- function (unwtd_dim_tb, domain_items_ls, domain_unwtd_pfx_1L_chr, 
-    domain_wtd_pfx_1L_chr) 
+    domain_wtd_pfx_1L_chr, aqol6d_scrg_dss_ls = NULL) 
 {
-    utils::data("aqol6d_adult_disv_lup_tb", package = "youthvars", 
-        envir = environment())
-    utils::data("aqol6d_domain_qs_lup_tb", package = "youthvars", 
-        envir = environment())
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::add_wtd_dim_tots()", 
+        "scorz::add_wtd_dim_tots()")
+    if (is.null(aqol6d_scrg_dss_ls)) 
+        aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
+    aqol6d_adult_disv_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_disv_lup_tb
+    aqol6d_domain_qs_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_domain_qs_lup_tb
     min_vals_dbl <- purrr::map_dbl(domain_items_ls, ~length(.x)) %>% 
         unname()
     max_vals_dbl <- purrr::map2_dbl(domain_items_ls, names(domain_items_ls), 

@@ -8,7 +8,8 @@ add_wtd_dim_tots(
   unwtd_dim_tb,
   domain_items_ls,
   domain_unwtd_pfx_1L_chr,
-  domain_wtd_pfx_1L_chr
+  domain_wtd_pfx_1L_chr,
+  aqol6d_scrg_dss_ls = NULL
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ add_wtd_dim_tots(
 \item{domain_unwtd_pfx_1L_chr}{Domain unweighted prefix (a character vector of length one)}
 
 \item{domain_wtd_pfx_1L_chr}{Domain weighted prefix (a character vector of length one)}
+
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 }
 \value{
 Weighted and unweighted dimension (a tibble)

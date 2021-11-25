@@ -1,5 +1,5 @@
 ---
-title: "Data Integrity Tools"
+title: "Variable (vector based) classes"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Data Integrity Tools}
+  %\VignetteIndexEntry{Variable (vector based) classes}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---

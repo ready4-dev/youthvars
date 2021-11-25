@@ -45,3 +45,4 @@
 ^data-raw/s4_fns/renewSlot\.R$
 ^data-raw/ToDo\.R$
 ^data-raw/vignette_extras/Summaries\.Rmd$
+^data-raw/vignette_extras/Utility_Scoring\.Rmd$

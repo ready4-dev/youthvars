@@ -5,12 +5,15 @@
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
 #' @rdname impute_adult_aqol6d_items_tb
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom purrr reduce map2_dbl
 #' @importFrom dplyr mutate select mutate_at vars
 #' @importFrom rlang sym
 #' @keywords internal
 impute_adult_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::impute_adult_aqol6d_items_tb()", 
+        "scorz::impute_adult_aqol6d_items_tb()")
     aqol6d_items_tb <- 1:length(domain_items_ls) %>% purrr::reduce(.init = aqol6d_items_tb, 
         ~{
             idx_int <- .y
@@ -33,11 +36,14 @@ impute_adult_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
 #' @return Imputed unscored Assessment of Quality of Life dataset tibble (a tibble)
 #' @rdname impute_unscrd_adol_aqol6d_ds
 #' @export 
+#' @importFrom lifecycle deprecate_soft
 #' @importFrom dplyr mutate select filter
 #' @importFrom mice mice complete
 #' @keywords internal
 impute_unscrd_adol_aqol6d_ds <- function (unscrd_aqol_ds_tb) 
 {
+    lifecycle::deprecate_soft("0.0.0.9078", "youthvars::impute_unscrd_adol_aqol6d_ds()", 
+        "scorz::impute_unscrd_adol_aqol6d_ds()")
     unscrd_aqol_ds_tb <- unscrd_aqol_ds_tb %>% dplyr::mutate(missing = rowSums(is.na(dplyr::select(., 
         paste0("Q", c(1:10))))))
     aqol_cases_to_imp_tb <- unscrd_aqol_ds_tb %>% dplyr::filter(missing < 

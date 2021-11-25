@@ -1,5 +1,9 @@
+## DEPRECATED FNS
 impute_adult_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
 {
+  lifecycle::deprecate_soft("0.0.0.9078",
+                            "youthvars::impute_adult_aqol6d_items_tb()",
+                            "scorz::impute_adult_aqol6d_items_tb()")
   aqol6d_items_tb <- 1:length(domain_items_ls) %>% purrr::reduce(.init = aqol6d_items_tb,
                                                                  ~{
                                                                    idx_int <- .y
@@ -18,6 +22,9 @@ impute_adult_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
 }
 impute_unscrd_adol_aqol6d_ds <- function (unscrd_aqol_ds_tb)
 {
+  lifecycle::deprecate_soft("0.0.0.9078",
+                            "youthvars::impute_unscrd_adol_aqol6d_ds()",
+                            "scorz::impute_unscrd_adol_aqol6d_ds()")
   unscrd_aqol_ds_tb <- unscrd_aqol_ds_tb %>% dplyr::mutate(missing = rowSums(is.na(dplyr::select(.,
                                                                                                  paste0("Q", c(1:10))))))
   aqol_cases_to_imp_tb <- unscrd_aqol_ds_tb %>% dplyr::filter(missing <

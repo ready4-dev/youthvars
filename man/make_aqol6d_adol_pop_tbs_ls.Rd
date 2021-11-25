@@ -10,6 +10,7 @@ make_aqol6d_adol_pop_tbs_ls(
   series_names_chr,
   synth_data_spine_ls,
   temporal_cors_ls,
+  aqol6d_scrg_dss_ls = NULL,
   id_var_nm_1L_chr = "fkClientID",
   prefix_chr = c(uid = "Participant_", aqol_item = "aqol6d_q", domain_unwtd_pfx_1L_chr
     = "aqol6d_subtotal_c_", domain_wtd_pfx_1L_chr = "aqol6d_subtotal_w_")
@@ -25,6 +26,8 @@ make_aqol6d_adol_pop_tbs_ls(
 \item{synth_data_spine_ls}{Synthetic data spine (a list)}
 
 \item{temporal_cors_ls}{Temporal correlations (a list)}
+
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 

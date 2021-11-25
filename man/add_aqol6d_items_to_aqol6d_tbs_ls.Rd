@@ -9,6 +9,7 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
   aqol_items_prpns_tbs_ls,
   prefix_chr,
   aqol_tots_var_nms_chr,
+  aqol6d_scrg_dss_ls = NULL,
   id_var_nm_1L_chr = "fkClientID",
   scaling_con_dbl = 5
 )
@@ -21,6 +22,8 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
 \item{prefix_chr}{Prefix (a character vector)}
 
 \item{aqol_tots_var_nms_chr}{Assessment of Quality of Life totals variable names (a character vector)}
+
+\item{aqol6d_scrg_dss_ls}{Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL}
 
 \item{id_var_nm_1L_chr}{Identity variable name (a character vector of length one), Default: 'fkClientID'}
 

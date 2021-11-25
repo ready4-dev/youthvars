@@ -4,15 +4,12 @@
 \alias{add_aqol6dU_to_aqol6d_items_tb}
 \title{Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension items tibble}
 \usage{
-add_aqol6dU_to_aqol6d_items_tb(
-  aqol6d_items_tb,
-  coefs_lup_tb = aqol6d_from_8d_coefs_lup_tb
-)
+add_aqol6dU_to_aqol6d_items_tb(aqol6d_items_tb, coefs_lup_tb = NULL)
 }
 \arguments{
 \item{aqol6d_items_tb}{Assessment of Quality of Life Six Dimension items (a tibble)}
 
-\item{coefs_lup_tb}{Coefficients lookup table (a tibble), Default: aqol6d_from_8d_coefs_lup_tb}
+\item{coefs_lup_tb}{Coefficients lookup table (a tibble), Default: NULL}
 }
 \value{
 Assessment of Quality of Life Six Dimension items (a tibble)
