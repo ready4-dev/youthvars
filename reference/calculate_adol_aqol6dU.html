@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9077</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9078</span>
       </span>
     </div>
 
@@ -109,16 +109,13 @@
       <a href="../articles/AQo_Scoring.html">Health Utility Scoring Tools</a>
     </li>
     <li>
-      <a href="../articles/Data_Integrity.html">Data Integrity Tools</a>
-    </li>
-    <li>
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
     </li>
     <li>
-      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
+      <a href="../articles/V_01.html">Variable (vector based) classes</a>
     </li>
     <li>
-      <a href="../articles/V_02.html">Describing Longitudinal Datasets</a>
+      <a href="../articles/V_02.html">Creating Descriptive Tables and Plots</a>
     </li>
   </ul>
 </li>
@@ -154,6 +151,7 @@
 
     <pre class="usage"><span class='fu'>calculate_adol_aqol6dU</span><span class='op'>(</span>
   <span class='va'>unscored_aqol_tb</span>,
+  aqol6d_scrg_dss_ls <span class='op'>=</span> <span class='cn'>NULL</span>,
   prefix_1L_chr <span class='op'>=</span> <span class='st'>"aqol6d_q"</span>,
   id_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"fkClientID"</span>,
   wtd_aqol_var_nm_1L_chr <span class='op'>=</span> <span class='st'>"aqol6d_total_w"</span>
@@ -165,6 +163,10 @@
     <tr>
       <th>unscored_aqol_tb</th>
       <td><p>Unscored Assessment of Quality of Life (a tibble)</p></td>
+    </tr>
+    <tr>
+      <th>aqol6d_scrg_dss_ls</th>
+      <td><p>Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL</p></td>
     </tr>
     <tr>
       <th>prefix_1L_chr</th>

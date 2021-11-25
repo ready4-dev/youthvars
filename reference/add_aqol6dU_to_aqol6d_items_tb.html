@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9077</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9078</span>
       </span>
     </div>
 
@@ -109,16 +109,13 @@
       <a href="../articles/AQo_Scoring.html">Health Utility Scoring Tools</a>
     </li>
     <li>
-      <a href="../articles/Data_Integrity.html">Data Integrity Tools</a>
-    </li>
-    <li>
       <a href="../articles/Replication_DS.html">Replication Dataset</a>
     </li>
     <li>
-      <a href="../articles/Utility_Scoring.html">Health Utility Scoring Tools</a>
+      <a href="../articles/V_01.html">Variable (vector based) classes</a>
     </li>
     <li>
-      <a href="../articles/V_02.html">Describing Longitudinal Datasets</a>
+      <a href="../articles/V_02.html">Creating Descriptive Tables and Plots</a>
     </li>
   </ul>
 </li>
@@ -152,10 +149,7 @@
     <p>add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_aqol6dU_to_aqol6d_items_tb</span><span class='op'>(</span>
-  <span class='va'>aqol6d_items_tb</span>,
-  coefs_lup_tb <span class='op'>=</span> <span class='va'>aqol6d_from_8d_coefs_lup_tb</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_aqol6dU_to_aqol6d_items_tb</span><span class='op'>(</span><span class='va'>aqol6d_items_tb</span>, coefs_lup_tb <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,7 +160,7 @@
     </tr>
     <tr>
       <th>coefs_lup_tb</th>
-      <td><p>Coefficients lookup table (a tibble), Default: aqol6d_from_8d_coefs_lup_tb</p></td>
+      <td><p>Coefficients lookup table (a tibble), Default: NULL</p></td>
     </tr>
     </table>
 
