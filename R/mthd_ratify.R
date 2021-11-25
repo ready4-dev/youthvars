@@ -11,8 +11,8 @@
 #' @export 
 #' @importFrom tibble tibble add_case
 #' @importFrom purrr flatten_chr
+#' @importFrom ready4use remove_labels_from_ds add_labels_from_dictionary
 #' @importFrom dplyr arrange
-#' @importFrom ready4use add_labels_from_dictionary
 #' @importFrom ready4 ratify
 methods::setMethod("ratify", "YouthvarsSeries", function (x, timepoints_int = c(1L, 2L), type_1L_chr = "two_timepoints") 
 {
@@ -30,7 +30,7 @@ methods::setMethod("ratify", "YouthvarsSeries", function (x, timepoints_int = c(
             labels_tb <- tibble::tibble(var_nm_chr = names(labels_ls), 
                 var_desc_chr = labels_ls %>% purrr::flatten_chr())
             x@a_Ready4useDyad@dictionary_r3 <- tibble::add_case(x@a_Ready4useDyad@dictionary_r3 %>% 
-                remove_labels_from_ds(), var_nm_chr = x@participation_var_1L_chr, 
+                ready4use::remove_labels_from_ds(), var_nm_chr = x@participation_var_1L_chr, 
                 var_ctg_chr = "temporal", var_desc_chr = "selected timepoints for which data was provided", 
                 var_type_chr = "character") %>% dplyr::arrange(var_ctg_chr, 
                 var_nm_chr) %>% ready4use::add_labels_from_dictionary(dictionary_tb = labels_tb)

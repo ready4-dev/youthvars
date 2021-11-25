@@ -16,13 +16,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r results='hide', message=FALSE}
 library(youthvars)
-library(ready4use)
 ```
 
 Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.
 
 ## Ingest data
-The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, an object containint a `Ready4useDyad` (a dataset and data dictionary pair) that we can download from a remote repository.
+The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, an object containing a `Ready4useDyad` (a dataset and data dictionary pair) that we can download from a remote repository.
 
 ```{r}
 x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
@@ -34,7 +33,9 @@ x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
 ## Add metadata
 We can now add metadata about `x`, transforming the object into an instance of the `YouthvarsSeries` class that is appropriate for longitudinal datasets.
 ```{r}
-x <- YouthvarsSeries(a_Ready4useDyad = x@b_Ready4useIngest@objects_ls$ymh_clinical_dyad_r4,
+x <- YouthvarsSeries(a_Ready4useDyad = procure(procureSlot(x, 
+                                                           "b_Ready4useIngest"),
+                                               fl_nm_1L_chr = "ymh_clinical_dyad_r4"),
                      id_var_nm_1L_chr = "fkClientID",
                      participation_var_1L_chr = "participation",
                      timepoint_vals_chr = c("Baseline","Follow-up"),

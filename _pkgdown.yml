@@ -32,7 +32,6 @@ reference:
   - YouthvarsSeries
 - title: "Functions"
 - contents:
-  - add_adol6d_scores
   - add_interval_var
   - add_participation_var
   - assert_ds_is_valid

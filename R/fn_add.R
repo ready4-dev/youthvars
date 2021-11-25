@@ -17,6 +17,7 @@
 #' @importFrom rlang sym
 #' @importFrom purrr map
 #' @importFrom Hmisc `label<-` label
+#' @keywords internal
 add_adol6d_scores <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls = NULL, id_var_nm_1L_chr = "fkClientID", 
     prefix_1L_chr = "aqol6d_q", total_aqol_var_nm_1L_chr = "aqol6d_total_c", 
     wtd_aqol_var_nm_1L_chr = "aqol6d_total_w") 

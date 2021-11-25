@@ -19,16 +19,16 @@ library(youthvars)
 ```
 
 ## Variable classes and data integrity
-The youthvars package defines a number of vector based classes that can be used to quality assure the data recorded for individual variables. youthvars variable classes are potentially useful for:
+The `youthvars` package defines a number of vector based classes that can be used to quality assure the data recorded for individual variables. `youthvars` variable classes are potentially useful for:
 
 1) facilitating automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, within calculation transformed data or results; and
 2) automating the selection of the appropriate method to apply to each data type.
 
 ## Included classes
 
-The initial set of classes included in the youthvars package are one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
+The initial set of classes included in the `youthvars` package are one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
 
-Note: The current classes included in youthvars were created to facilitate modelling tasks and do not currently permit missing values.
+Note: The current classes included in `youthvars` were created to facilitate modelling tasks and do not currently permit missing values.
 
 ### Assessment of Quality of Life Six Dimension (Adolescent) Health Utility 
 

@@ -17,7 +17,7 @@ ratify_YouthvarsSeries <- function(x,
       labels_tb <- tibble::tibble(var_nm_chr = names(labels_ls),
                                   var_desc_chr = labels_ls %>% purrr::flatten_chr())
       x@a_Ready4useDyad@dictionary_r3 <- tibble::add_case(x@a_Ready4useDyad@dictionary_r3 %>%
-                                                            remove_labels_from_ds(),
+                                                            ready4use::remove_labels_from_ds(),
                                                           var_nm_chr = x@participation_var_1L_chr,
                                                           var_ctg_chr = "temporal",
                                                           var_desc_chr = "selected timepoints for which data was provided",
