@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe Variables Used to Characterize Youth Populations
-Version: 0.0.0.9077
+Version: 0.0.0.9078
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -78,13 +78,6 @@ Collate:
     'C4_YouthvarsDescriptives.R'
     'C4_YouthvarsProfile.R'
     'C4_YouthvarsSeries.R'
-    'db_adol_dim_scalg_eqs_lup.R'
-    'db_aqol6d_adult_disv_lup_tb.R'
-    'db_aqol6d_adult_itm_wrst_wts_lup_tb.R'
-    'db_aqol6d_adult_vldn_pop_with_STATA_scores_tb.R'
-    'db_aqol6d_dim_sclg_con_lup_tb.R'
-    'db_aqol6d_domain_qs_lup_tb.R'
-    'db_aqol6d_from_8d_coefs_lup_tb.R'
     'db_aqol_scrg_dict_r3.R'
     'db_predictors_lup.R'
     'db_replication_popl_tb.R'
