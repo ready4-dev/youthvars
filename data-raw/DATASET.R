@@ -278,7 +278,7 @@ datasets_ls <- list(
 #                                 url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),
 #
 # read.csv("data-raw/csvs/AQoL_6D_Dim_Scaling.csv", stringsAsFactors = F, fileEncoding="UTF-8-BOM") %>%
-#   ready4fun::make_pkg_ds_ls(db_1L_chr = "adol_dim_scalg_eqs_lup",
+#   ready4fun::make_pkg_ds_ls(db_1L_chr = "adol_dim_sclg_eqs_lup",
 #                             title_1L_chr = "AQoL6D (adolescent) item worst weightings equations lookup table",
 #                             desc_1L_chr = "Dimension scaling equations for adolescent version of AQoL6D scoring algorithm.",
 #                             url_1L_chr = "https://www.aqol.com.au/index.php/scoring-algorithms"),

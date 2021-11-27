@@ -51,13 +51,13 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb,
   if(is.null(aqol6d_scrg_dss_ls)){
     aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
   }
-  adol_dim_scalg_eqs_lup <- aqol6d_scrg_dss_ls$adol_dim_scalg_eqs_lup
-  for (var in adol_dim_scalg_eqs_lup$Dim_scal) {
-    expression = adol_dim_scalg_eqs_lup[adol_dim_scalg_eqs_lup$Dim_scal ==
+  adol_dim_sclg_eqs_lup <- aqol6d_scrg_dss_ls$adol_dim_sclg_eqs_lup
+  for (var in adol_dim_sclg_eqs_lup$Dim_scal) {
+    expression = adol_dim_sclg_eqs_lup[adol_dim_sclg_eqs_lup$Dim_scal ==
                                           var, ]$Equ
     unscored_aqol_tb <- unscored_aqol_tb %>% dplyr::mutate(`:=`(!!var,
                                                                 !!rlang::parse_expr(expression)))
-    Hmisc::label(unscored_aqol_tb[, var]) = adol_dim_scalg_eqs_lup[adol_dim_scalg_eqs_lup$Dim_scal ==
+    Hmisc::label(unscored_aqol_tb[, var]) = adol_dim_sclg_eqs_lup[adol_dim_sclg_eqs_lup$Dim_scal ==
                                                                      var, ]$Label
   }
   return(unscored_aqol_tb)
