@@ -24,6 +24,3 @@ The following vignettes demonstrate some of the tools currently included in the 
 - [Variable (vector based) classes](V_01.html)
 - [Creating descriptive tables and plots](V_02.html)
 
-These tools have been illustrated with a fake dataset, which is described in the following vignette:
-
-- [Replication dataset](Replication_DS.html)

@@ -1,5 +1,5 @@
 ---
-title: "Replication Dataset"
+title: "Dataset (Deprecated)"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -9,82 +9,14 @@ output:
       in_header: preamble.tex
     number_sections: no
 vignette: >
-  %\VignetteIndexEntry{Replication Dataset}
+  %\VignetteIndexEntry{Dataset (Deprecated)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 ```{r message=F}
 library(youthvars)
 ```
-```{r eval = !knitr::is_html_output(), echo = !knitr::is_html_output()}
-library(xtable)
-options(xtable.floating = FALSE)
-options(xtable.timestamp = "")
-```
 
-## Origin and purpose of the youthvars replication dataset
-Other vignettes in youthvars demonstrate package functions by using a synthetic dataset. Although entirely fake, we created this dataset to be broadly representative (in terms of constituent variables and their uni-variate and [to some extent] joint distributions) of a [dataset that we used for a real study](https://www.medrxiv.org/content/10.1101/2021.07.07.21260129v2.full). As the synthetic dataset can help others replicate results and test computational methods from that study, we refer to this dataset as a replication dataset.
+The synthetic dataset bundled with youthvars is now deprecated. Although this dataset can (for the time-being) be accessed via the command `data("repln_ds_dict_r3", package = "youthvars")`, we now recommend instead accessing the dataset and its data-dictionary from its [online data repository](https://doi.org/10.7910/DVN/HJXYKQ). The recommended commands to ingest the dataset and inspect the dataset and its data-dictionary are described in two vignettes - [one from youthvars](V_02.html) and another [from the ready4use package](https://ready4-dev.github.io/ready4use/articles/V_01.html). 
 
-## Replication dataset dictionary
-
-An overview of the contents of the replication dataset is provided in a data dictionary that can be accessed with the following command.
-
-```{r message=FALSE}
-data("repln_ds_dict_r3", package = "youthvars")
-dictionary_tb <- repln_ds_dict_r3
-```
-
-\blandscape
-
-```{r ddic, eval = knitr::is_html_output(), results='asis'}
-dictionary_tb %>%
-  ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"), 
-                          caption_1L_chr = "Data dictionary",  
-                          use_lbls_as_col_nms_1L_lgl = T, 
-                          hline_after_ls = c(-1),
-                          add_to_row_ls = list(pos = list(-1,nrow(dictionary_tb)),
-                                               command = c(Hmisc::label(dictionary_tb) %>%
-                                                             Hmisc::latexTranslate() %>%
-                                                             paste0(collapse = " & ") %>%
-                                                             paste0("\\\\\n"),
-                                                           paste("\\\\\n"))),
-                          mkdn_tbl_ref_1L_chr = "tab:ddic")
-```
-
-## Accessing the replication dataset
-The replication dataset itself can be accessed using the following command.
-
-```{r}
-data("replication_popl_tb", package = "youthvars")
-raw_data_tb <- replication_popl_tb 
-```
-
-Adding variable labels makes it easier to interpret the dataset. In the following command, we add lables from the data dictionary to the replication dataset.
-
-```{r }
-raw_data_tb <- raw_data_tb %>%
-  ready4use::add_labels_from_dictionary(dictionary_tb)
-```
-
-The first six cases from the replication dataset are reproduced below, using variable labels as column headings.
-
-\blandscape
-
-```{r repds, echo = knitr::is_html_output(), results='asis'}
-raw_data_tb %>%
-  head() %>%
-  dplyr::mutate(d_interview_date = as.character(d_interview_date)) %>%
-  ready4show::print_table(output_type_1L_chr = ifelse(knitr::is_html_output(),"HTML","PDF"),
-                          caption_1L_chr = "Replication dataset", 
-                          use_lbls_as_col_nms_1L_lgl = T, 
-                          hline_after_ls = c(-1),
-                          add_to_row_ls = list(pos = list(-1,nrow(raw_data_tb %>%
-  head())),
-                                               command = c(Hmisc::label(raw_data_tb) %>%
-                                                             Hmisc::latexTranslate() %>%
-                                                             paste0(collapse = " & ") %>%
-                                                             paste0("\\\\\n"),
-                                                           paste("\\\\\n"))),
-                          mkdn_tbl_ref_1L_chr = "tab:repds") 
-```
-\elandscape
+We plan removing the synthetic dataset from the `youthvars` package at a future data, whereupon it will only be accessible via the online data repository.

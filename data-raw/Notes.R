@@ -1,4 +1,5 @@
 ##
+library(ready4use)
 x <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
                                gh_tag_1L_chr = "Documentation_0.0")
 y <- ingest(x)
