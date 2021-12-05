@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9080</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9081</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/youthvars.html">Get started</a>
 </li>
@@ -64,7 +60,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Replication_DS.html">Replication Dataset</a>
+      <a href="../articles/Replication_DS.html">Dataset (Deprecated)</a>
     </li>
     <li>
       <a href="../articles/V_01.html">Variable (vector based) classes</a>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ready4-dev/youthvars/">
+  <a href="https://github.com/ready4-dev/youthvars/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -98,7 +94,7 @@
       <h1 data-toc-skip>Creating Descriptive Tables and Plots</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/youthvars/blob/master/vignettes/V_02.Rmd"><code>vignettes/V_02.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ready4-dev/youthvars/blob/HEAD/vignettes/V_02.Rmd" class="external-link"><code>vignettes/V_02.Rmd</code></a></small>
       <div class="hidden name"><code>V_02.Rmd</code></div>
 
     </div>
@@ -106,59 +102,59 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/youthvars/">youthvars</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/youthvars/" class="external-link">youthvars</a></span><span class="op">)</span></code></pre></div>
 <p>Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.</p>
-<div id="ingest-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ingest-data" class="anchor"></a>Ingest data</h2>
-<p>The tools in <code>youthvars</code> extend classes and methods from the <a href="https://ready4-dev.github.io/ready4use/">ready4use</a> package. Our starting point is <code>x</code>, an object containing a <code>Ready4useDyad</code> (a dataset and data dictionary pair) that we can download from a remote repository.</p>
+<div class="section level2">
+<h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
+</h2>
+<p>The tools in <code>youthvars</code> extend classes and methods from the <a href="https://ready4-dev.github.io/ready4use/" class="external-link">ready4use</a> package. Our starting point is <code>x</code>, an object containing a <code>Ready4useDyad</code> (a dataset and data dictionary pair) that we can download from a remote repository.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/Ready4useRepos-class.html">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/Ready4useRepos-class.html" class="external-link">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                                dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>,
-                               dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html">ingest</a></span><span class="op">(</span>fls_to_ingest_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span></code></pre></div>
+                               dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span>fls_to_ingest_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="add-metadata" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-metadata" class="anchor"></a>Add metadata</h2>
+<div class="section level2">
+<h2 id="add-metadata">Add metadata<a class="anchor" aria-label="anchor" href="#add-metadata"></a>
+</h2>
 <p>We can now add metadata about <code>x</code>, transforming the object into an instance of the <code>YouthvarsSeries</code> class that is appropriate for longitudinal datasets.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/YouthvarsSeries-class.html">YouthvarsSeries</a></span><span class="op">(</span>a_Ready4useDyad <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html">procureSlot</a></span><span class="op">(</span><span class="va">x</span>, 
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/YouthvarsSeries-class.html">YouthvarsSeries</a></span><span class="op">(</span>a_Ready4useDyad <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html" class="external-link">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">x</span>, 
                                                            <span class="st">"b_Ready4useIngest"</span><span class="op">)</span>,
                                                fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span>,
                      id_var_nm_1L_chr <span class="op">=</span> <span class="st">"fkClientID"</span>,
                      participation_var_1L_chr <span class="op">=</span> <span class="st">"participation"</span>,
-                     timepoint_vals_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>,<span class="st">"Follow-up"</span><span class="op">)</span>,
+                     timepoint_vals_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>,<span class="st">"Follow-up"</span><span class="op">)</span>,
                      timepoint_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="validate-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#validate-data" class="anchor"></a>Validate data</h2>
+<div class="section level2">
+<h2 id="validate-data">Validate data<a class="anchor" aria-label="anchor" href="#validate-data"></a>
+</h2>
 <p>We next use the <code>ratify</code> method to ensure that <code>x</code> is appropriately configured for methods examining datasets reporting measures at two timepoints.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ratify-methods.html">ratify</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ratify-methods.html" class="external-link">ratify</a></span><span class="op">(</span><span class="va">x</span>,
             type_1L_chr <span class="op">=</span> <span class="st">"two_timepoints"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="inspect-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#inspect-data" class="anchor"></a>Inspect data</h2>
+<div class="section level2">
+<h2 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
+</h2>
 <p>We can now specify the variables that we would like to prepare descriptive statistics for using the <code>renewSlot</code> and <code>renew</code> methods. The variables to be profiled are specified by passing a list to the <code>profiled_vars_ls</code> argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a <code>YouthvarsSeries</code> instance are “participation” (comparison based on whether cases reported data at one or both timepoints) and “temporal” (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html">renewSlot</a></span><span class="op">(</span><span class="va">x</span>,
-               profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_ATSI"</span>,<span class="st">"d_studying_working"</span>,<span class="st">"d_relation_s"</span><span class="op">)</span>,  
-                                       temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span>, 
-                                       participation_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html" class="external-link">renewSlot</a></span><span class="op">(</span><span class="va">x</span>,
+               profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_ATSI"</span>,<span class="st">"d_studying_working"</span>,<span class="st">"d_relation_s"</span><span class="op">)</span>,  
+                                       temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span>, 
+                                       participation_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span><span class="op">)</span>,
                slot_nm_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html">renew</a></span><span class="op">(</span><span class="va">x</span>,
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">x</span>,
            type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></code></pre></div>
 <p>The tables generated in the preceding step can be inspected using the <code>exhibit</code> method.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">1L</span>,
           output_type_1L_chr <span class="op">=</span> <span class="st">"HTML"</span><span class="op">)</span></code></pre></div>
 [[1]]
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Outcomes by data completeness
 </caption>
@@ -555,12 +551,12 @@ Missing
 </tbody>
 </table>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">2L</span>,
           output_type_1L_chr <span class="op">=</span> <span class="st">"HTML"</span><span class="op">)</span></code></pre></div>
 [[1]]
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Outcomes by data collection round
 </caption>
@@ -941,12 +937,12 @@ Missing
 </tbody>
 </table>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/%&gt;%.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">3L</span>,
           output_type_1L_chr <span class="op">=</span> <span class="st">"HTML"</span><span class="op">)</span></code></pre></div>
 [[1]]
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
 Outcomes by data collection round (with p values)
 </caption>
@@ -1344,18 +1340,12 @@ Missing
 </table>
 <p>The <code>depict</code> method can create plots, comparing numeric variables by timepoint.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html">depict</a></span><span class="op">(</span><span class="va">x</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">x</span>,
        type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,
        var_nms_chr <span class="op">=</span> <span class="st">"c_sofas"</span>,
        label_fill_1L_chr <span class="op">=</span> <span class="st">"Time"</span>,<span class="co">#</span>
        labels_chr <span class="op">=</span> <span class="st">"SOFAS"</span>,<span class="co">#</span>
        y_label_1L_chr <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
-<pre><code>## [[1]]</code></pre>
-<div class="figure">
-<img src="V_02_files/figure-html/totalsfig-1.png" alt="SOFAS total scores by data collection round" width="600px"><p class="caption">
-SOFAS total scores by data collection round
-</p>
-</div>
 </div>
   </div>
 
@@ -1370,11 +1360,13 @@ SOFAS total scores by data collection round
 
 
       <footer><div class="copyright">
-  <p>Developed by Matthew Hamilton, Caroline Gao, Orygen, Headspace, National Health and Medical Research Council.</p>
+  <p></p>
+<p>Developed by Matthew Hamilton, Caroline Gao, Orygen, Headspace, National Health and Medical Research Council.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -1382,6 +1374,8 @@ SOFAS total scores by data collection round
 
   
 
+
+  
 
   </body>
 </html>
