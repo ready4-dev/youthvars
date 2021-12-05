@@ -18,3 +18,4 @@ Create a new unvalidated instance of the youthvars S3 class for Overall Anxiety 
 \details{
 youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
+\keyword{internal}

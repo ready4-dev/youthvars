@@ -2,15 +2,25 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{youthvars_sofas}
 \alias{youthvars_sofas}
+\alias{make_pt_youthvars_sofas}
+\alias{is_youthvars_sofas}
 \title{youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 youthvars_sofas(x = make_pt_youthvars_sofas())
+
+make_pt_youthvars_sofas()
+
+is_youthvars_sofas(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()}
+\item{x}{An object of any type}
 }
 \value{
 A validated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+
+A prototype for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+
+A logical value, TRUE if a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \description{
 Create a new valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)

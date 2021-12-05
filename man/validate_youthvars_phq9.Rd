@@ -18,3 +18,4 @@ Validate an instance of the youthvars S3 class for Patient Health Questionnaire 
 \details{
 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
+\keyword{internal}

@@ -18,3 +18,4 @@ Create a new unvalidated instance of the youthvars S3 class for Screen for Child
 \details{
 youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
+\keyword{internal}

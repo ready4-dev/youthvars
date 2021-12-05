@@ -16,6 +16,7 @@ validate_youthvars_aqol6d_adol(make_new_youthvars_aqol6d_adol(x))
 #' @details youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 #' @rdname make_new_youthvars_aqol6d_adol
 #' @export 
+#' @keywords internal
 make_new_youthvars_aqol6d_adol <- function(x){ 
 stopifnot(is.numeric(x))
 class(x) <- append(c("youthvars_aqol6d_adol",setdiff(make_pt_youthvars_aqol6d_adol() %>% class(),class(x))),
@@ -23,11 +24,10 @@ class(x))
 x
 }
 #' make prototype youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @description Create a new prototype for the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 
 #' @return A prototype for youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @details youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @rdname make_pt_youthvars_aqol6d_adol
+#' 
+#' @rdname youthvars_aqol6d_adol
 #' @export 
 make_pt_youthvars_aqol6d_adol <- function(){ 
 numeric(0)
@@ -39,6 +39,7 @@ numeric(0)
 #' @details youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 #' @rdname validate_youthvars_aqol6d_adol
 #' @export 
+#' @keywords internal
 validate_youthvars_aqol6d_adol <- function(x){
 if(any(x[!is.na(x)] < 0.03)){
 stop("All non-missing values in valid youthvars_aqol6d_adol object must be greater than or equal to 0.03.",
@@ -52,10 +53,9 @@ call. = FALSE)
 
 x}
 #' is youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @description Check whether an object is a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @details youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
-#' @rdname is_youthvars_aqol6d_adol
+#' 
+#' @rdname youthvars_aqol6d_adol
 #' @export 
 is_youthvars_aqol6d_adol <- function(x) inherits(validate_youthvars_aqol6d_adol(x), "youthvars_aqol6d_adol")

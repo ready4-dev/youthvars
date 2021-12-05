@@ -18,3 +18,4 @@ Validate an instance of the youthvars S3 class for Assessment of Quality of Life
 \details{
 youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
+\keyword{internal}

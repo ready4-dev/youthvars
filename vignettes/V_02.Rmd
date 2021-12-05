@@ -97,4 +97,3 @@ depict(x,
        labels_chr = "SOFAS",#
        y_label_1L_chr = "")
 ```
-

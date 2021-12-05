@@ -18,3 +18,4 @@ Validate an instance of the youthvars S3 class for Behavioural Activation for De
 \details{
 youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 }
+\keyword{internal}

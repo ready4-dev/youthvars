@@ -18,3 +18,4 @@ Create a new unvalidated instance of the youthvars S3 class for Kessler Psycholo
 \details{
 youthvars S3 class for Kessler Psychological Distress Scale (K6) - US Scoring System scores
 }
+\keyword{internal}

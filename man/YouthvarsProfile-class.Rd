@@ -11,7 +11,7 @@ A dataset and its associated dictionary, descriptive statistics and metadata.
 \section{Slots}{
 
 \describe{
-\item{\code{a_Ready4useDyad}}{NO MATCH}
+\item{\code{a_Ready4useDyad}}{(an instance of the Ready4useDyad class)}
 
 \item{\code{descriptives_ls}}{Descriptives (a list)}
 

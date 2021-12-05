@@ -17,7 +17,7 @@ A longitudinal dataset and its associated dictionary, descriptive statistics and
 
 \item{\code{timepoint_var_nm_1L_chr}}{Timepoint variable name (a character vector of length one)}
 
-\item{\code{a_Ready4useDyad}}{NO MATCH}
+\item{\code{a_Ready4useDyad}}{(an instance of the Ready4useDyad class)}
 
 \item{\code{descriptives_ls}}{Descriptives (a list)}
 

@@ -6,7 +6,7 @@
 #' @slot participation_var_1L_chr Participation variable (a character vector of length one)
 #' @slot timepoint_vals_chr Timepoint values (a character vector)
 #' @slot timepoint_var_nm_1L_chr Timepoint variable name (a character vector of length one)
-#' @slot a_Ready4useDyad NO MATCH
+#' @slot a_Ready4useDyad  (an instance of the Ready4useDyad class)
 #' @slot descriptives_ls Descriptives (a list)
 #' @slot id_var_nm_1L_chr Identity variable name (a character vector of length one)
 #' @slot dissemination_1L_chr Dissemination (a character vector of length one)

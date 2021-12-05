@@ -16,6 +16,7 @@ validate_youthvars_scared(make_new_youthvars_scared(x))
 #' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @rdname make_new_youthvars_scared
 #' @export 
+#' @keywords internal
 make_new_youthvars_scared <- function(x){ 
 stopifnot(is.integer(x))
 class(x) <- append(c("youthvars_scared",setdiff(make_pt_youthvars_scared() %>% class(),class(x))),
@@ -23,11 +24,10 @@ class(x))
 x
 }
 #' make prototype youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @description Create a new prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 
 #' @return A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @rdname make_pt_youthvars_scared
+#' 
+#' @rdname youthvars_scared
 #' @export 
 make_pt_youthvars_scared <- function(){ 
 integer(0)
@@ -39,6 +39,7 @@ integer(0)
 #' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @rdname validate_youthvars_scared
 #' @export 
+#' @keywords internal
 validate_youthvars_scared <- function(x){
 if(any(x[!is.na(x)] < 0)){
 stop("All non-missing values in valid youthvars_scared object must be greater than or equal to 0.",
@@ -52,10 +53,9 @@ call. = FALSE)
 
 x}
 #' is youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @description Check whether an object is a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @rdname is_youthvars_scared
+#' 
+#' @rdname youthvars_scared
 #' @export 
 is_youthvars_scared <- function(x) inherits(validate_youthvars_scared(x), "youthvars_scared")

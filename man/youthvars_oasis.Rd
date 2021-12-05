@@ -2,15 +2,25 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{youthvars_oasis}
 \alias{youthvars_oasis}
+\alias{make_pt_youthvars_oasis}
+\alias{is_youthvars_oasis}
 \title{youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 youthvars_oasis(x = make_pt_youthvars_oasis())
+
+make_pt_youthvars_oasis()
+
+is_youthvars_oasis(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores, Default: make_pt_youthvars_oasis()}
+\item{x}{An object of any type}
 }
 \value{
 A validated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+
+A prototype for youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+
+A logical value, TRUE if a valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \description{
 Create a new valid instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores

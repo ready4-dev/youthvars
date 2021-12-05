@@ -2,15 +2,25 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{youthvars_phq9}
 \alias{youthvars_phq9}
+\alias{make_pt_youthvars_phq9}
+\alias{is_youthvars_phq9}
 \title{youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 youthvars_phq9(x = make_pt_youthvars_phq9())
+
+make_pt_youthvars_phq9()
+
+is_youthvars_phq9(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores, Default: make_pt_youthvars_phq9()}
+\item{x}{An object of any type}
 }
 \value{
 A validated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+
+A prototype for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+
+A logical value, TRUE if a valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
 Create a new valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores

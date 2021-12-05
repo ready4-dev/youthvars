@@ -2,15 +2,25 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{youthvars_scared}
 \alias{youthvars_scared}
+\alias{make_pt_youthvars_scared}
+\alias{is_youthvars_scared}
 \title{youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 youthvars_scared(x = make_pt_youthvars_scared())
+
+make_pt_youthvars_scared()
+
+is_youthvars_scared(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores, Default: make_pt_youthvars_scared()}
+\item{x}{An object of any type}
 }
 \value{
 A validated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+
+A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+
+A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
 Create a new valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores

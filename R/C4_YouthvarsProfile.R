@@ -2,7 +2,7 @@
 #' 
 #' A dataset and its associated dictionary, descriptive statistics and metadata.
 #' 
-#' @slot a_Ready4useDyad NO MATCH
+#' @slot a_Ready4useDyad  (an instance of the Ready4useDyad class)
 #' @slot descriptives_ls Descriptives (a list)
 #' @slot id_var_nm_1L_chr Identity variable name (a character vector of length one)
 #' @slot dissemination_1L_chr Dissemination (a character vector of length one)

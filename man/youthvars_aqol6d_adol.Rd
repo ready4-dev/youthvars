@@ -2,15 +2,25 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{youthvars_aqol6d_adol}
 \alias{youthvars_aqol6d_adol}
+\alias{make_pt_youthvars_aqol6d_adol}
+\alias{is_youthvars_aqol6d_adol}
 \title{youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
 \usage{
 youthvars_aqol6d_adol(x = make_pt_youthvars_aqol6d_adol())
+
+make_pt_youthvars_aqol6d_adol()
+
+is_youthvars_aqol6d_adol(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)), Default: make_pt_youthvars_aqol6d_adol()}
+\item{x}{An object of any type}
 }
 \value{
 A validated instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+
+A prototype for youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+
+A logical value, TRUE if a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
 }
 \description{
 Create a new valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))

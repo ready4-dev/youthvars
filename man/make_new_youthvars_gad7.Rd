@@ -18,3 +18,4 @@ Create a new unvalidated instance of the youthvars S3 class for Generalised Anxi
 \details{
 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
+\keyword{internal}

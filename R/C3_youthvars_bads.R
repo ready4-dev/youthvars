@@ -16,6 +16,7 @@ validate_youthvars_bads(make_new_youthvars_bads(x))
 #' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname make_new_youthvars_bads
 #' @export 
+#' @keywords internal
 make_new_youthvars_bads <- function(x){ 
 stopifnot(is.integer(x))
 class(x) <- append(c("youthvars_bads",setdiff(make_pt_youthvars_bads() %>% class(),class(x))),
@@ -23,11 +24,10 @@ class(x))
 x
 }
 #' make prototype youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Create a new prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 
 #' @return A prototype for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @rdname make_pt_youthvars_bads
+#' 
+#' @rdname youthvars_bads
 #' @export 
 make_pt_youthvars_bads <- function(){ 
 integer(0)
@@ -39,6 +39,7 @@ integer(0)
 #' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @rdname validate_youthvars_bads
 #' @export 
+#' @keywords internal
 validate_youthvars_bads <- function(x){
 if(any(x[!is.na(x)] < 0)){
 stop("All non-missing values in valid youthvars_bads object must be greater than or equal to 0.",
@@ -52,10 +53,9 @@ call. = FALSE)
 
 x}
 #' is youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @description Check whether an object is a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
 #' @param x An object of any type
 #' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @details youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
-#' @rdname is_youthvars_bads
+#' 
+#' @rdname youthvars_bads
 #' @export 
 is_youthvars_bads <- function(x) inherits(validate_youthvars_bads(x), "youthvars_bads")

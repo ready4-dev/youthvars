@@ -18,3 +18,4 @@ Create a new unvalidated instance of the youthvars S3 class for Patient Health Q
 \details{
 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
 }
+\keyword{internal}

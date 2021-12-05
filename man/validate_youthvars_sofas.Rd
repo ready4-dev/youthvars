@@ -18,3 +18,4 @@ Validate an instance of the youthvars S3 class for Social and Occupational Funct
 \details{
 youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
+\keyword{internal}
