@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe Variables Used to Characterize Youth Populations
-Version: 0.0.0.9084
+Version: 0.0.0.9085
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
