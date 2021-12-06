@@ -24,7 +24,7 @@ methods::setMethod("exhibit", "YouthvarsSeries", function (x, captions_chr = NUL
         if (is.na(profile_idx_int)) 
             profile_idx_int <- 1:length(x@descriptives_ls) %>% 
                 as.integer()
-        profile_idx_int %>% purrr::map(~{
+        print_ls <- profile_idx_int %>% purrr::map(~{
             profile_idx_1L_int <- .x
             if (identical(x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df, 
                 data.frame())) {
@@ -51,5 +51,8 @@ methods::setMethod("exhibit", "YouthvarsSeries", function (x, captions_chr = NUL
                     ...)
             }
         })
+        if (length(profile_idx_int) == 1) 
+            print_ls <- print_ls[[1]]
     }
+    print_ls
 })

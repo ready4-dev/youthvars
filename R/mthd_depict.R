@@ -35,4 +35,5 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, var_nms_chr, type_1
     else {
         plot_ls <- NULL
     }
+    plot_ls
 })

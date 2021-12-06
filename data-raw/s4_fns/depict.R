@@ -24,8 +24,8 @@ depict_YouthvarsSeries <- function(x,
     if(length(var_nms_chr) == 1)
       plot_ls <- plot_ls %>%
         purrr::pluck(1)
-
   }else{
     plot_ls <- NULL
   }
+  plot_ls
 }

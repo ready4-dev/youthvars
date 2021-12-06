@@ -9,7 +9,7 @@ exhibit_YouthvarsSeries <- function(x,
   if(type_1L_chr == "characterize"){
     if(is.na(profile_idx_int))
       profile_idx_int <- 1:length(x@descriptives_ls) %>% as.integer()
-    profile_idx_int %>%
+    print_ls <-profile_idx_int %>%
       purrr::map(~{
         profile_idx_1L_int <- .x
         if(identical(x@descriptives_ls[[profile_idx_1L_int]]@descriptives_df, data.frame())){
@@ -33,5 +33,8 @@ exhibit_YouthvarsSeries <- function(x,
                                   ...)
         }
       })
+    if(length(profile_idx_int)==1)
+      print_ls <- print_ls[[1]]
   }
+  print_ls
 }

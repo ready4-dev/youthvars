@@ -86,8 +86,8 @@ x %>%
           profile_idx_int = 3L,
           output_type_1L_chr = "HTML")
 ```
-The `depict` method can create plots, comparing numeric variables by timepoint.
 
+The `depict` method can create plots, comparing numeric variables by timepoint.
 
 ```{r totalsfig, fig.cap="SOFAS total scores by data collection round", out.width = "600px"}
 depict(x,
