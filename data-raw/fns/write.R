@@ -115,7 +115,6 @@ write_descv_plots <- function(data_tb,
   }else{
     maui_domains_col_nms_chr <- names(dplyr::select(data_tb, dplyr::starts_with(maui_domains_pfxs_1L_chr)))
   }
-
   plots_params_ls <- list(qstn_rspns = list(plt_fn = make_itm_resp_plts,
                                             fn_args_ls = list(data_tb,
                                                               col_nms_chr = names(dplyr::select(data_tb,

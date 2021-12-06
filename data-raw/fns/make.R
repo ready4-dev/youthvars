@@ -593,9 +593,9 @@ make_var_by_round_plt <- function(data_tb,
                                   y_label_1L_chr = "Percentage",
                                   y_scale_scl_fn = scales::percent,
                                   label_fill_1L_chr = "Data collection"){
-  var_by_round_plt <- ggplot2::ggplot(data_tb,
-                                      ggplot2::aes(x=!!rlang::sym(var_nm_1L_chr),
-                                                   fill=!!rlang::sym(round_var_nm_1L_chr))) +
+  var_by_round_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(),
+                                      ggplot2::aes(x = !!rlang::sym(var_nm_1L_chr),
+                                                   fill = !!rlang::sym(round_var_nm_1L_chr))) +
     ggplot2::theme_bw() +
     ggplot2::geom_histogram(ggplot2::aes(y = stat(width*density)),
                             bins = 10,
