@@ -279,7 +279,8 @@ make_item_plt <- function(tfd_data_tb,
                           y_scale_scl_fn = NULL,
                           use_bw_theme_1L_lgl = F,
                           legend_position_1L_chr = "none"){
-  item_plt <- ggplot2::ggplot(tfd_data_tb %>% ready4use::remove_labels_from_ds(),
+  item_plt <- ggplot2::ggplot(tfd_data_tb %>%
+                                dplyr::with_groups(NULL,ready4use::remove_labels_from_ds),#ready4use::remove_labels_from_ds(),
                               ggplot2::aes_string(var_nm_1L_chr)) +
     ggplot2::geom_bar(ggplot2::aes(y = y,
                                    fill = !!rlang::sym(round_var_nm_1L_chr)),

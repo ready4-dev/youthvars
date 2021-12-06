@@ -474,6 +474,7 @@ make_formula <- function (depnt_var_nm_1L_chr, predictors_chr, environment_env =
 #' @rdname make_item_plt
 #' @export 
 #' @importFrom ggplot2 ggplot aes_string geom_bar aes scale_y_continuous labs theme_bw theme scale_fill_manual
+#' @importFrom dplyr with_groups
 #' @importFrom ready4use remove_labels_from_ds
 #' @importFrom rlang sym
 #' @keywords internal
@@ -481,10 +482,11 @@ make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
     x_label_1L_chr, y_label_1L_chr = "Percentage", fill_label_1L_chr = "Data collection", 
     y_scale_scl_fn = NULL, use_bw_theme_1L_lgl = F, legend_position_1L_chr = "none") 
 {
-    item_plt <- ggplot2::ggplot(tfd_data_tb %>% ready4use::remove_labels_from_ds(), 
-        ggplot2::aes_string(var_nm_1L_chr)) + ggplot2::geom_bar(ggplot2::aes(y = y, 
-        fill = !!rlang::sym(round_var_nm_1L_chr)), stat = "identity", 
-        na.rm = TRUE, position = "dodge", colour = "white", alpha = 0.7)
+    item_plt <- ggplot2::ggplot(tfd_data_tb %>% dplyr::with_groups(NULL, 
+        ready4use::remove_labels_from_ds), ggplot2::aes_string(var_nm_1L_chr)) + 
+        ggplot2::geom_bar(ggplot2::aes(y = y, fill = !!rlang::sym(round_var_nm_1L_chr)), 
+            stat = "identity", na.rm = TRUE, position = "dodge", 
+            colour = "white", alpha = 0.7)
     if (!is.null(y_scale_scl_fn)) {
         item_plt <- item_plt + ggplot2::scale_y_continuous(labels = y_scale_scl_fn)
     }
