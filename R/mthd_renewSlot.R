@@ -7,6 +7,7 @@
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 3
 #' @param profiled_vars_ls Profiled variables (a list), Default: NULL
 #' @param timepoints_int Timepoints (an integer vector), Default: c(1L, 2L)
+#' @param ... Additional arguments
 #' @return x (An object of class YouthvarsSeries)
 #' @rdname renewSlot-methods
 #' @aliases renewSlot,YouthvarsSeries-method
@@ -14,9 +15,10 @@
 #' @importFrom purrr map2
 #' @importFrom stats setNames
 #' @importFrom dplyr filter
+#' @importFrom methods callNextMethod
 #' @importFrom ready4 renewSlot
 methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr = "descriptives_ls", nbr_of_digits_1L_int = 3L, 
-    profiled_vars_ls = NULL, timepoints_int = c(1L, 2L)) 
+    profiled_vars_ls = NULL, timepoints_int = c(1L, 2L), ...) 
 {
     if (slot_nm_1L_chr == "descriptives_ls") {
         if (identical(x@descriptives_ls, list(list()))) {
@@ -54,6 +56,9 @@ methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr =
             }
             x@descriptives_ls <- descriptives_ls
         }
+    }
+    else {
+        methods::callNextMethod()
     }
     return(x)
 })

@@ -10,7 +10,8 @@
   slot_nm_1L_chr = "descriptives_ls",
   nbr_of_digits_1L_int = 3L,
   profiled_vars_ls = NULL,
-  timepoints_int = c(1L, 2L)
+  timepoints_int = c(1L, 2L),
+  ...
 )
 }
 \arguments{
@@ -23,6 +24,8 @@
 \item{profiled_vars_ls}{Profiled variables (a list), Default: NULL}
 
 \item{timepoints_int}{Timepoints (an integer vector), Default: c(1L, 2L)}
+
+\item{...}{Additional arguments}
 }
 \value{
 x (An object of class YouthvarsSeries)

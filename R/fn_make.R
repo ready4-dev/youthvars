@@ -474,16 +474,17 @@ make_formula <- function (depnt_var_nm_1L_chr, predictors_chr, environment_env =
 #' @rdname make_item_plt
 #' @export 
 #' @importFrom ggplot2 ggplot aes_string geom_bar aes scale_y_continuous labs theme_bw theme scale_fill_manual
+#' @importFrom ready4use remove_labels_from_ds
 #' @importFrom rlang sym
 #' @keywords internal
 make_item_plt <- function (tfd_data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round", 
     x_label_1L_chr, y_label_1L_chr = "Percentage", fill_label_1L_chr = "Data collection", 
     y_scale_scl_fn = NULL, use_bw_theme_1L_lgl = F, legend_position_1L_chr = "none") 
 {
-    item_plt <- ggplot2::ggplot(tfd_data_tb, ggplot2::aes_string(var_nm_1L_chr)) + 
-        ggplot2::geom_bar(ggplot2::aes(y = y, fill = !!rlang::sym(round_var_nm_1L_chr)), 
-            stat = "identity", na.rm = TRUE, position = "dodge", 
-            colour = "white", alpha = 0.7)
+    item_plt <- ggplot2::ggplot(tfd_data_tb %>% ready4use::remove_labels_from_ds(), 
+        ggplot2::aes_string(var_nm_1L_chr)) + ggplot2::geom_bar(ggplot2::aes(y = y, 
+        fill = !!rlang::sym(round_var_nm_1L_chr)), stat = "identity", 
+        na.rm = TRUE, position = "dodge", colour = "white", alpha = 0.7)
     if (!is.null(y_scale_scl_fn)) {
         item_plt <- item_plt + ggplot2::scale_y_continuous(labels = y_scale_scl_fn)
     }
@@ -712,6 +713,7 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
 #' @export 
 #' @importFrom scales percent
 #' @importFrom ggplot2 ggplot aes_string geom_histogram aes labs theme_bw scale_y_continuous theme scale_fill_manual
+#' @importFrom ready4use remove_labels_from_ds
 #' @importFrom rlang sym
 #' @keywords internal
 make_subtotal_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round", 
@@ -719,10 +721,11 @@ make_subtotal_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
     use_bw_theme_1L_lgl = T, legend_position_1L_chr = "none", 
     label_fill_1L_chr = NULL) 
 {
-    subtotal_plt <- ggplot2::ggplot(data_tb, ggplot2::aes_string(var_nm_1L_chr)) + 
-        ggplot2::geom_histogram(bins = 8, color = "white", ggplot2::aes(fill = !!rlang::sym(round_var_nm_1L_chr), 
+    subtotal_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(), 
+        ggplot2::aes_string(var_nm_1L_chr)) + ggplot2::geom_histogram(bins = 8, 
+        color = "white", ggplot2::aes(fill = !!rlang::sym(round_var_nm_1L_chr), 
             y = 2 * (..density..)/sum(..density..)), position = "dodge", 
-            alpha = 0.7)
+        alpha = 0.7)
     subtotal_plt <- subtotal_plt + ggplot2::labs(x = x_label_1L_chr, 
         y = y_label_1L_chr, fill = label_fill_1L_chr)
     if (use_bw_theme_1L_lgl) {

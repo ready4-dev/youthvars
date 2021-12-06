@@ -2,7 +2,8 @@ renewSlot_YouthvarsSeries <- function(x,
                                       slot_nm_1L_chr = "descriptives_ls",
                                       nbr_of_digits_1L_int = 3L,
                                       profiled_vars_ls = NULL,
-                                      timepoints_int = c(1L,2L)#,type_1L_chr = "characterize"
+                                      timepoints_int = c(1L,2L),
+                                      ...#type_1L_chr = "characterize"
 ){
   if(slot_nm_1L_chr == "descriptives_ls"){
     #if(type_1L_chr == "characterize"){
@@ -44,6 +45,8 @@ renewSlot_YouthvarsSeries <- function(x,
       }
       x@descriptives_ls <- descriptives_ls
     }
+  }else{
+    methods::callNextMethod()
   }
   return(x)
 }

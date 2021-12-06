@@ -279,7 +279,7 @@ make_item_plt <- function(tfd_data_tb,
                           y_scale_scl_fn = NULL,
                           use_bw_theme_1L_lgl = F,
                           legend_position_1L_chr = "none"){
-  item_plt <- ggplot2::ggplot(tfd_data_tb,
+  item_plt <- ggplot2::ggplot(tfd_data_tb %>% ready4use::remove_labels_from_ds(),
                               ggplot2::aes_string(var_nm_1L_chr)) +
     ggplot2::geom_bar(ggplot2::aes(y = y,
                                    fill = !!rlang::sym(round_var_nm_1L_chr)),
@@ -457,7 +457,7 @@ make_subtotal_plt <- function(data_tb,
                               use_bw_theme_1L_lgl = T,
                               legend_position_1L_chr = "none",
                               label_fill_1L_chr = NULL){
-  subtotal_plt <- ggplot2::ggplot(data_tb,
+  subtotal_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(),
                                   ggplot2::aes_string(var_nm_1L_chr)) +
     ggplot2::geom_histogram(bins=8,
                             color = "white",
