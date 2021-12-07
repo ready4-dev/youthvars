@@ -21,21 +21,21 @@ library(youthvars)
 Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.
 
 ## Ingest data
-The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, an object containing a `Ready4useDyad` (a dataset and data dictionary pair) that we can download from a remote repository.
+The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, a `Ready4useDyad` (dataset and data dictionary pair) that we can download from a remote repository.
 
 ```{r}
 x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
                                dv_ds_nm_1L_chr = "https://doi.org/10.7910/DVN/W95KED",
                                dv_server_1L_chr = "dataverse.harvard.edu") %>%
-  ingest(fls_to_ingest_chr = "ymh_clinical_dyad_r4")
+  ingest(fls_to_ingest_chr = "ymh_clinical_dyad_r4",
+         metadata_1L_lgl = F)
 ```
 
 ## Add metadata
 We can now add metadata about `x`, transforming the object into an instance of the `YouthvarsSeries` class that is appropriate for longitudinal datasets.
+
 ```{r}
-x <- YouthvarsSeries(a_Ready4useDyad = procure(procureSlot(x, 
-                                                           "b_Ready4useIngest"),
-                                               fl_nm_1L_chr = "ymh_clinical_dyad_r4"),
+x <- YouthvarsSeries(a_Ready4useDyad = x,
                      id_var_nm_1L_chr = "fkClientID",
                      participation_var_1L_chr = "participation",
                      timepoint_vals_chr = c("Baseline","Follow-up"),
@@ -55,12 +55,11 @@ We can now specify the variables that we would like to prepare descriptive stati
 
 ```{r}
 x <- renewSlot(x,
-               profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_ATSI","d_studying_working","d_relation_s"),  
-                                       temporal_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total"), 
-                                       participation_tested = c("k6_total", "phq9_total", "bads_total", "gad7_total")),
-               slot_nm_1L_chr = "descriptives_ls")
-x <- renew(x,
-           type_1L_chr = "characterize")
+               profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_studying_working"),  
+                                       temporal_tested = c("k6_total", "phq9_total", "bads_total"), 
+                                       participation_tested = c("k6_total", "phq9_total", "bads_total")),
+               slot_nm_1L_chr = "descriptives_ls") %>%
+  renew(type_1L_chr = "characterize")
 
 ```
 
@@ -92,8 +91,8 @@ The `depict` method can create plots, comparing numeric variables by timepoint.
 ```{r totalsfig, fig.cap="SOFAS total scores by data collection round", out.width = "600px"}
 depict(x,
        type_1L_chr = "by_time",
-       var_nms_chr = "c_sofas",
+       var_nms_chr = c("c_sofas"),
        label_fill_1L_chr = "Time",#
-       labels_chr = "SOFAS",#
+       labels_chr = c("SOFAS"),#
        y_label_1L_chr = "")
 ```
