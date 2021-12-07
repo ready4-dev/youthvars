@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9085</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9086</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
       <a href="../articles/Replication_DS.html">Dataset (Deprecated)</a>
     </li>
     <li>
-      <a href="../articles/V_01.html">Variable (vector based) classes</a>
+      <a href="../articles/V_01.html">Variable (Vector) Classes</a>
     </li>
     <li>
       <a href="../articles/V_02.html">Creating Descriptive Tables and Plots</a>
@@ -108,21 +108,20 @@
 <div class="section level2">
 <h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
 </h2>
-<p>The tools in <code>youthvars</code> extend classes and methods from the <a href="https://ready4-dev.github.io/ready4use/" class="external-link">ready4use</a> package. Our starting point is <code>x</code>, an object containing a <code>Ready4useDyad</code> (a dataset and data dictionary pair) that we can download from a remote repository.</p>
+<p>The tools in <code>youthvars</code> extend classes and methods from the <a href="https://ready4-dev.github.io/ready4use/" class="external-link">ready4use</a> package. Our starting point is <code>x</code>, a <code>Ready4useDyad</code> (dataset and data dictionary pair) that we can download from a remote repository.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/Ready4useRepos-class.html" class="external-link">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                                dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>,
                                dv_server_1L_chr <span class="op">=</span> <span class="st">"dataverse.harvard.edu"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span>fls_to_ingest_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ingest-methods.html" class="external-link">ingest</a></span><span class="op">(</span>fls_to_ingest_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span>,
+         metadata_1L_lgl <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="add-metadata">Add metadata<a class="anchor" aria-label="anchor" href="#add-metadata"></a>
 </h2>
 <p>We can now add metadata about <code>x</code>, transforming the object into an instance of the <code>YouthvarsSeries</code> class that is appropriate for longitudinal datasets.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/YouthvarsSeries-class.html">YouthvarsSeries</a></span><span class="op">(</span>a_Ready4useDyad <span class="op">=</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procure-methods.html" class="external-link">procure</a></span><span class="op">(</span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/procureSlot-methods.html" class="external-link">procureSlot</a></span><span class="op">(</span><span class="va">x</span>, 
-                                                           <span class="st">"b_Ready4useIngest"</span><span class="op">)</span>,
-                                               fl_nm_1L_chr <span class="op">=</span> <span class="st">"ymh_clinical_dyad_r4"</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/YouthvarsSeries-class.html">YouthvarsSeries</a></span><span class="op">(</span>a_Ready4useDyad <span class="op">=</span> <span class="va">x</span>,
                      id_var_nm_1L_chr <span class="op">=</span> <span class="st">"fkClientID"</span>,
                      participation_var_1L_chr <span class="op">=</span> <span class="st">"participation"</span>,
                      timepoint_vals_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Baseline"</span>,<span class="st">"Follow-up"</span><span class="op">)</span>,
@@ -142,12 +141,11 @@
 <p>We can now specify the variables that we would like to prepare descriptive statistics for using the <code>renewSlot</code> and <code>renew</code> methods. The variables to be profiled are specified by passing a list to the <code>profiled_vars_ls</code> argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a <code>YouthvarsSeries</code> instance are “participation” (comparison based on whether cases reported data at one or both timepoints) and “temporal” (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html" class="external-link">renewSlot</a></span><span class="op">(</span><span class="va">x</span>,
-               profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_ATSI"</span>,<span class="st">"d_studying_working"</span>,<span class="st">"d_relation_s"</span><span class="op">)</span>,  
-                                       temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span>, 
-                                       participation_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span>, <span class="st">"gad7_total"</span><span class="op">)</span><span class="op">)</span>,
-               slot_nm_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span><span class="va">x</span>,
-           type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></code></pre></div>
+               profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_studying_working"</span><span class="op">)</span>,  
+                                       temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span>, 
+                                       participation_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span><span class="op">)</span>,
+               slot_nm_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></code></pre></div>
 <p>The tables generated in the preceding step can be inspected using the <code>exhibit</code> method.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
@@ -461,93 +459,6 @@ Missing
 0.010
 </td>
 </tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-Generalised Anxiety Disorder Scale
-</td>
-<td style="text-align:left;">
-Mean (SD)
-</td>
-<td style="text-align:left;width: 3em; ">
-10.087
-</td>
-<td style="text-align:left;width: 3em; ">
-(5.503)
-</td>
-<td style="text-align:left;width: 3em; ">
-9.226
-</td>
-<td style="text-align:left;width: 3em; ">
-(5.504)
-</td>
-<td style="text-align:left;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Median (Q1, Q3)
-</td>
-<td style="text-align:left;width: 3em; ">
-10.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(6.000, 14.000)
-</td>
-<td style="text-align:left;width: 3em; ">
-9.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(5.000, 13.000)
-</td>
-<td style="text-align:left;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Min - Max
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
-</td>
-<td style="text-align:left;width: 3em; ">
-21.000
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
-</td>
-<td style="text-align:left;width: 3em; ">
-21.000
-</td>
-<td style="text-align:left;">
-0.005
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Missing
-</td>
-<td style="text-align:left;width: 3em; ">
-1.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;width: 3em; ">
-7.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;">
-0.005
-</td>
-</tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -729,62 +640,6 @@ Missing
 </tr>
 <tr>
 <td style="text-align:left;width: 14em; font-weight: bold;">
-Aboriginal or Torres Strait Islander
-</td>
-<td style="text-align:left;">
-No
-</td>
-<td style="text-align:left;width: 3em; ">
-169.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(18.211%)
-</td>
-<td style="text-align:left;width: 3em; ">
-106.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(18.929%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;width: 3em; ">
-759.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(81.789%)
-</td>
-<td style="text-align:left;width: 3em; ">
-454.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(81.071%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Missing
-</td>
-<td style="text-align:left;width: 3em; ">
-140.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;width: 3em; ">
-83.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
 Education and employment status
 </td>
 <td style="text-align:left;">
@@ -873,62 +728,6 @@ Missing
 </td>
 <td style="text-align:left;width: 3em; ">
 20.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-Relationship status
-</td>
-<td style="text-align:left;">
-In a relationship
-</td>
-<td style="text-align:left;width: 3em; ">
-317.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(29.682%)
-</td>
-<td style="text-align:left;width: 3em; ">
-190.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(29.549%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Not in a relationship
-</td>
-<td style="text-align:left;width: 3em; ">
-751.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(70.318%)
-</td>
-<td style="text-align:left;width: 3em; ">
-453.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(70.451%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Missing
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
 </td>
 <td style="text-align:left;width: 3em; ">
 </td>
@@ -1247,102 +1046,15 @@ Missing
 0.000
 </td>
 </tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-Generalised Anxiety Disorder Scale
-</td>
-<td style="text-align:left;">
-Mean (SD)
-</td>
-<td style="text-align:left;width: 3em; ">
-10.233
-</td>
-<td style="text-align:left;width: 3em; ">
-(5.532)
-</td>
-<td style="text-align:left;width: 3em; ">
-8.128
-</td>
-<td style="text-align:left;width: 3em; ">
-(5.232)
-</td>
-<td style="text-align:left;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Median (Q1, Q3)
-</td>
-<td style="text-align:left;width: 3em; ">
-10.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(6.000, 14.000)
-</td>
-<td style="text-align:left;width: 3em; ">
-8.000
-</td>
-<td style="text-align:left;width: 3em; ">
-(4.000, 11.000)
-</td>
-<td style="text-align:left;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Min - Max
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
-</td>
-<td style="text-align:left;width: 3em; ">
-21.000
-</td>
-<td style="text-align:left;width: 3em; ">
-0.000
-</td>
-<td style="text-align:left;width: 3em; ">
-21.000
-</td>
-<td style="text-align:left;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;width: 14em; font-weight: bold;">
-</td>
-<td style="text-align:left;">
-Missing
-</td>
-<td style="text-align:left;width: 3em; ">
-6.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;width: 3em; ">
-2.000
-</td>
-<td style="text-align:left;width: 3em; ">
-</td>
-<td style="text-align:left;">
-0.000
-</td>
-</tr>
 </tbody>
 </table>
 <p>The <code>depict</code> method can create plots, comparing numeric variables by timepoint.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">x</span>,
        type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,
-       var_nms_chr <span class="op">=</span> <span class="st">"c_sofas"</span>,
+       var_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>,
        label_fill_1L_chr <span class="op">=</span> <span class="st">"Time"</span>,<span class="co">#</span>
-       labels_chr <span class="op">=</span> <span class="st">"SOFAS"</span>,<span class="co">#</span>
+       labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SOFAS"</span><span class="op">)</span>,<span class="co">#</span>
        y_label_1L_chr <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
 <div class="figure">
 <img src="V_02_files/figure-html/totalsfig-1.png" alt="SOFAS total scores by data collection round" width="600px"><p class="caption">
