@@ -46,7 +46,6 @@ reference:
   - print_descv_stats_tbl
   - transform_ds_for_tstng
   - transform_raw_ds_for_analysis
-  - write_all_outp_dirs
   - write_descv_tbls
 - title: "Methods"
 - contents:

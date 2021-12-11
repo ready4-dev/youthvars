@@ -1,4 +1,5 @@
 write_all_outp_dirs <- function(paths_ls){
+  lifecycle::deprecate_soft("0.0.0.9087", "ready4show::write_all_outp_dirs()", "ready4show::write_all_outp_dirs()")
   output_data_dir_1L_chr <- paste0(here::here(paths_ls$path_from_top_level_1L_chr),
                                    "/",
                                    paths_ls$write_to_dir_nm_1L_chr,

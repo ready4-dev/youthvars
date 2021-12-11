@@ -15,7 +15,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To 
                                               "https://github.com/ready4-dev/youthvars",
                                               "https://ready4-dev.github.io/ready4/")) %>%
   ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
-                                                                       suggests_chr = "rmarkdown",
+                                                                       suggests_chr = c('lme4','quantreg',"recipes","rmarkdown"),
                                                                        imports_chr = "knitrBootstrap"),
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
                            check_type_1L_chr = "ready4",
@@ -35,7 +35,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To 
                                                                                                  "print_descv_stats_tbl",
                                                                                                  "transform_ds_for_tstng",
                                                                                                  "transform_raw_ds_for_analysis",
-                                                                                                 "write_all_outp_dirs",
+                                                                                                 #"write_all_outp_dirs",
                                                                                                  "write_desv_plots",
                                                                                                  "write_descv_tbls")),##
                            dev_pkgs_chr = c("ready4","ready4use","ready4show"),
