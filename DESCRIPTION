@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe Variables Used to Characterize Youth Populations
-Version: 0.0.0.9087
+Version: 0.0.0.9088
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -29,6 +29,8 @@ RoxygenNote: 7.1.2
 Imports: 
     arsenal,
     assertthat,
+    car,
+    caret,
     cowplot,
     dplyr,
     ggplot2,
@@ -41,6 +43,7 @@ Imports:
     knitr,
     knitrBootstrap,
     lifecycle,
+    lme4,
     lubridate,
     magrittr,
     Matrix,
@@ -49,8 +52,10 @@ Imports:
     mice,
     psych,
     purrr,
+    quantreg,
     ready4show (>= 0.0.0.9058),
     ready4use (>= 0.0.0.9201),
+    recipes,
     rlang,
     scales,
     simstudy,
@@ -104,9 +109,6 @@ Collate:
     'pkg_youthvars.R'
     'youthvars-package.R'
 Suggests: 
-    quantreg,
-    lme4,
-    recipes,
     rmarkdown
 Remotes: 
     ready4-dev/ready4,
