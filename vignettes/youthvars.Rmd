@@ -17,10 +17,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(youthvars)
 ```
-youthvars is a set of tools designed to help describe, summarise and score types of data commonly present in youth mental health collections.
+youthvars is a set of tools designed to help describe and validate types of data commonly present in youth mental health collections.
 
 The following vignettes demonstrate some of the tools currently included in the youthvars package:
 
-- [Variable (Vector) Classes](V_01.html)
-- [Creating descriptive tables and plots](V_02.html)
-
+- [Quality Assure Youth Mental Health Data with Variable (Vector) Classes](V_01.html)
+- [Describe Datasets With YouthvarsProfile and YouthvarsSeries](V_02.html)

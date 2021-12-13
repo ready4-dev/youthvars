@@ -1,5 +1,5 @@
 ---
-title: "Creating Descriptive Tables and Plots"
+title: "Describe Datasets With YouthvarsProfile and YouthvarsSeries"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,10 +7,13 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Creating Descriptive Tables and Plots}
+  %\VignetteIndexEntry{Describe Datasets With YouthvarsProfile and YouthvarsSeries}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---
+
+Note: **This vignette is illustrated with fake data**. The dataset explored in this example should not be used to inform decision-making.
+
 ```{r echo = F}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -18,10 +21,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(youthvars)
 ```
 
-Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.
+Youthvars provides a two classes - `YouthvarsProfile` and `YouthvarsSeries` that are useful for describing features of datasets. The tools in `youthvars` build on the metadata included in a [Ready4useDyad](https://ready4-dev.github.io/ready4use/articles/V_02.html).
 
 ## Ingest data
-The tools in `youthvars` extend classes and methods from the [ready4use](https://ready4-dev.github.io/ready4use/) package. Our starting point is `x`, a `Ready4useDyad` (dataset and data dictionary pair) that we can download from a remote repository.
+To start we ingest  `x`, a `Ready4useDyad` (dataset and data dictionary pair) that we can download from a remote repository.
 
 ```{r}
 x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
@@ -32,7 +35,15 @@ x <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
 ```
 
 ## Add metadata
-We can now add metadata about `x`, transforming the object into an instance of the `YouthvarsSeries` class that is appropriate for longitudinal datasets.
+We could add metadata about `x`, such as the unique identifier variable name, by transforming it to a `YouthvarsProfile` instance.
+
+```{r}
+## Not run
+# x <- YouthvarsProfile(a_Ready4useDyad = x,
+#                       id_var_nm_1L_chr = "fkClientID")
+```
+
+However, in this case the data we ingested includes a longitudinal dataset. It is therefore preferable to transform `x` into a `YouthvarsSeries` instance.  `YouthvarsSeries` objects contain all of the fields of `YouthvarsProfile` objects, but also include additional fields that are specific for longitudinal datasets (e.g. `timepoint_var_nm_1L_chr` and `timepoint_vals_chr` that respectively specify the data-collection timepoint variable name and values and `participation_var_1L_chr` that specifies the desired name of a yet to be created variable that will summarise the data-collection timepoints for which each unit record supplied data).
 
 ```{r}
 x <- YouthvarsSeries(a_Ready4useDyad = x,
@@ -42,15 +53,18 @@ x <- YouthvarsSeries(a_Ready4useDyad = x,
                      timepoint_var_nm_1L_chr = "round")
 ```
 
-## Validate data
-We next use the `ratify` method to ensure that `x` is appropriately configured for methods examining datasets reporting measures at two timepoints.
+## YouthvarsSeries methods
+Currently, only methods for `YouthvarsSeries` (and not yet `YouthvarsProfile`) have been included with the `youthvars` package. These methods are summarised in the following sections.
+
+### Validate data
+We use the `ratify` method to ensure that `x` has been appropriately configured for methods examining datasets reporting measures at two timepoints.
 
 ```{r}
 x <- ratify(x,
             type_1L_chr = "two_timepoints")
 ```
 
-## Inspect data
+### Inspect data
 We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified by passing a list to the `profiled_vars_ls` argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a `YouthvarsSeries` instance are "participation" (comparison based on whether cases reported data at one or both timepoints) and "temporal" (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.
 
 ```{r}
