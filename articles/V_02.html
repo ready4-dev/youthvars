@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creating Descriptive Tables and Plots • youthvars</title>
+<title>Describe Datasets With YouthvarsProfile and YouthvarsSeries • youthvars</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -17,7 +17,7 @@
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Creating Descriptive Tables and Plots">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Describe Datasets With YouthvarsProfile and YouthvarsSeries">
 <meta property="og:description" content="youthvars">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9087</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9088</span>
       </span>
     </div>
 
@@ -63,10 +63,10 @@
       <a href="../articles/Replication_DS.html">Dataset (Deprecated)</a>
     </li>
     <li>
-      <a href="../articles/V_01.html">Variable (Vector) Classes</a>
+      <a href="../articles/V_01.html">Quality Assure Youth Mental Health Data with Variable (Vector) Classes</a>
     </li>
     <li>
-      <a href="../articles/V_02.html">Creating Descriptive Tables and Plots</a>
+      <a href="../articles/V_02.html">Describe Datasets With YouthvarsProfile and YouthvarsSeries</a>
     </li>
   </ul>
 </li>
@@ -92,7 +92,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Creating Descriptive Tables and Plots</h1>
+      <h1 data-toc-skip>Describe Datasets With YouthvarsProfile and YouthvarsSeries</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/ready4-dev/youthvars/blob/HEAD/vignettes/V_02.Rmd" class="external-link"><code>vignettes/V_02.Rmd</code></a></small>
@@ -102,13 +102,14 @@
 
     
     
+<p>Note: <strong>This vignette is illustrated with fake data</strong>. The dataset explored in this example should not be used to inform decision-making.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ready4-dev.github.io/youthvars/" class="external-link">youthvars</a></span><span class="op">)</span></code></pre></div>
-<p>Youthvars provides a number of tools that are useful for describing features of longitudinal datasets.</p>
+<p>Youthvars provides a two classes - <code>YouthvarsProfile</code> and <code>YouthvarsSeries</code> that are useful for describing features of datasets. The tools in <code>youthvars</code> build on the metadata included in a <a href="https://ready4-dev.github.io/ready4use/articles/V_02.html" class="external-link">Ready4useDyad</a>.</p>
 <div class="section level2">
 <h2 id="ingest-data">Ingest data<a class="anchor" aria-label="anchor" href="#ingest-data"></a>
 </h2>
-<p>The tools in <code>youthvars</code> extend classes and methods from the <a href="https://ready4-dev.github.io/ready4use/" class="external-link">ready4use</a> package. Our starting point is <code>x</code>, a <code>Ready4useDyad</code> (dataset and data dictionary pair) that we can download from a remote repository.</p>
+<p>To start we ingest <code>x</code>, a <code>Ready4useDyad</code> (dataset and data dictionary pair) that we can download from a remote repository.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/Ready4useRepos-class.html" class="external-link">Ready4useRepos</a></span><span class="op">(</span>dv_nm_1L_chr <span class="op">=</span> <span class="st">"fakes"</span>,
                                dv_ds_nm_1L_chr <span class="op">=</span> <span class="st">"https://doi.org/10.7910/DVN/W95KED"</span>,
@@ -119,8 +120,13 @@
 <div class="section level2">
 <h2 id="add-metadata">Add metadata<a class="anchor" aria-label="anchor" href="#add-metadata"></a>
 </h2>
-<p>We can now add metadata about <code>x</code>, transforming the object into an instance of the <code>YouthvarsSeries</code> class that is appropriate for longitudinal datasets.</p>
+<p>We could add metadata about <code>x</code>, such as the unique identifier variable name, by transforming it to a <code>YouthvarsProfile</code> instance.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Not run</span>
+<span class="co"># x &lt;- YouthvarsProfile(a_Ready4useDyad = x,</span>
+<span class="co">#                       id_var_nm_1L_chr = "fkClientID")</span></code></pre></div>
+<p>However, in this case the data we ingested includes a longitudinal dataset. It is therefore preferable to transform <code>x</code> into a <code>YouthvarsSeries</code> instance. <code>YouthvarsSeries</code> objects contain all of the fields of <code>YouthvarsProfile</code> objects, but also include additional fields that are specific for longitudinal datasets (e.g. <code>timepoint_var_nm_1L_chr</code> and <code>timepoint_vals_chr</code> that respectively specify the data-collection timepoint variable name and values and <code>participation_var_1L_chr</code> that specifies the desired name of a yet to be created variable that will summarise the data-collection timepoints for which each unit record supplied data).</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/YouthvarsSeries-class.html">YouthvarsSeries</a></span><span class="op">(</span>a_Ready4useDyad <span class="op">=</span> <span class="va">x</span>,
                      id_var_nm_1L_chr <span class="op">=</span> <span class="st">"fkClientID"</span>,
                      participation_var_1L_chr <span class="op">=</span> <span class="st">"participation"</span>,
@@ -128,18 +134,22 @@
                      timepoint_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="validate-data">Validate data<a class="anchor" aria-label="anchor" href="#validate-data"></a>
+<h2 id="youthvarsseries-methods">YouthvarsSeries methods<a class="anchor" aria-label="anchor" href="#youthvarsseries-methods"></a>
 </h2>
-<p>We next use the <code>ratify</code> method to ensure that <code>x</code> is appropriately configured for methods examining datasets reporting measures at two timepoints.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<p>Currently, only methods for <code>YouthvarsSeries</code> (and not yet <code>YouthvarsProfile</code>) have been included with the <code>youthvars</code> package. These methods are summarised in the following sections.</p>
+<div class="section level3">
+<h3 id="validate-data">Validate data<a class="anchor" aria-label="anchor" href="#validate-data"></a>
+</h3>
+<p>We use the <code>ratify</code> method to ensure that <code>x</code> has been appropriately configured for methods examining datasets reporting measures at two timepoints.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/ratify-methods.html" class="external-link">ratify</a></span><span class="op">(</span><span class="va">x</span>,
             type_1L_chr <span class="op">=</span> <span class="st">"two_timepoints"</span><span class="op">)</span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
-</h2>
+<div class="section level3">
+<h3 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
+</h3>
 <p>We can now specify the variables that we would like to prepare descriptive statistics for using the <code>renewSlot</code> and <code>renew</code> methods. The variables to be profiled are specified by passing a list to the <code>profiled_vars_ls</code> argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a <code>YouthvarsSeries</code> instance are “participation” (comparison based on whether cases reported data at one or both timepoints) and “temporal” (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html" class="external-link">renewSlot</a></span><span class="op">(</span><span class="va">x</span>,
                profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_studying_working"</span><span class="op">)</span>,  
                                        temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span>, 
@@ -147,7 +157,7 @@
                slot_nm_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></code></pre></div>
 <p>The tables generated in the preceding step can be inspected using the <code>exhibit</code> method.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">1L</span>,
@@ -461,7 +471,7 @@ Missing
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">2L</span>,
@@ -734,7 +744,7 @@ Missing
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,
           profile_idx_int <span class="op">=</span> <span class="fl">3L</span>,
@@ -1049,7 +1059,7 @@ Missing
 </tbody>
 </table>
 <p>The <code>depict</code> method can create plots, comparing numeric variables by timepoint.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">x</span>,
        type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,
        var_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>,
@@ -1060,6 +1070,7 @@ Missing
 <img src="V_02_files/figure-html/totalsfig-1.png" alt="SOFAS total scores by data collection round" width="600px"><p class="caption">
 SOFAS total scores by data collection round
 </p>
+</div>
 </div>
 </div>
   </div>
