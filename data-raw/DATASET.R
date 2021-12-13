@@ -42,7 +42,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To 
                            lifecycle_stage_1L_chr = "experimental",
                            path_to_pkg_logo_1L_chr = "../../../../../Documentation/Images/youthvars-logo/default.png",
                            piggyback_to_1L_chr = "ready4-dev/ready4",
-                           ready4_type_1L_chr = "modelling",
+                           ready4_type_1L_chr = "description",
                            zenodo_badge_1L_chr = "[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646550.svg)](https://doi.org/10.5281/zenodo.5646550)")
 y <- ready4class::ready4class_constructor() %>%
   dplyr::bind_rows(tibble::tribble(
