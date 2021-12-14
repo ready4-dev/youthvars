@@ -5,20 +5,28 @@
 #' @param x An object of class YouthvarsSeries
 #' @param slot_nm_1L_chr Slot name (a character vector of length one), Default: 'descriptives_ls'
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 3
-#' @param profiled_vars_ls Profiled variables (a list), Default: NULL
+#' @param compare_by_time_chr Compare by time (a character vector), Default: 'NA'
+#' @param compare_by_time_with_test_chr Compare by time with test (a character vector), Default: 'NA'
+#' @param compare_ptcpn_chr Compare ptcpn (a character vector), Default: 'NA'
+#' @param compare_ptcpn_with_test_chr Compare ptcpn with test (a character vector), Default: 'NA'
+#' @param profiled_vars_ls Profiled variables (a list), Default: deprecated()
 #' @param timepoints_int Timepoints (an integer vector), Default: c(1L, 2L)
 #' @param ... Additional arguments
 #' @return x (An object of class YouthvarsSeries)
 #' @rdname renewSlot-methods
 #' @aliases renewSlot,YouthvarsSeries-method
 #' @export 
-#' @importFrom purrr map2
+#' @importFrom lifecycle is_present deprecate_warn
+#' @importFrom purrr discard map2
 #' @importFrom stats setNames
 #' @importFrom dplyr filter
 #' @importFrom methods callNextMethod
 #' @importFrom ready4 renewSlot
 methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr = "descriptives_ls", nbr_of_digits_1L_int = 3L, 
-    profiled_vars_ls = NULL, timepoints_int = c(1L, 2L), ...) 
+    compare_by_time_chr = NA_character_, compare_by_time_with_test_chr = NA_character_, 
+    compare_ptcpn_chr = NA_character_, compare_ptcpn_with_test_chr = NA_character_, 
+    profiled_vars_ls = deprecated(), timepoints_int = c(1L, 2L), 
+    ...) 
 {
     if (slot_nm_1L_chr == "descriptives_ls") {
         if (identical(x@descriptives_ls, list(list()))) {
@@ -26,6 +34,23 @@ methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr =
         }
         else {
             descriptives_ls <- x@descriptives_ls
+        }
+        if (lifecycle::is_present(profiled_vars_ls)) {
+            lifecycle::deprecate_warn("0.0.0.9421", "youthvars::renewSlot(profiled_vars_ls)", 
+                details = "Please use `renewSlot(compare_by_time_chr,compare_by_time_with_test_chr,compare_ptcpn_chr,compare_ptcpn_with_test_chr)` instead.")
+        }
+        else {
+            profiled_vars_ls <- list(compare_by_time_chr, compare_by_time_with_test_chr, 
+                compare_ptcpn_chr, compare_ptcpn_with_test_chr)
+            if (identical((profiled_vars_ls %>% purrr::discard(~is.na(.x[1]))), 
+                list())) {
+                profiled_vars_ls <- NULL
+            }
+            else {
+                profiled_vars_ls <- profiled_vars_ls %>% stats::setNames(c("temporal", 
+                  "temporal_tested", "participation", "participation_tested")) %>% 
+                  purrr::discard(~is.na(.x[1]))
+            }
         }
         if (!is.null(profiled_vars_ls)) {
             incl_idcs_int <- names(profiled_vars_ls) %>% startsWith("temporal")

@@ -1,7 +1,11 @@
 renewSlot_YouthvarsSeries <- function(x,
                                       slot_nm_1L_chr = "descriptives_ls",
                                       nbr_of_digits_1L_int = 3L,
-                                      profiled_vars_ls = NULL,
+                                      compare_by_time_chr = NA_character_,
+                                      compare_by_time_with_test_chr = NA_character_,
+                                      compare_ptcpn_chr = NA_character_,
+                                      compare_ptcpn_with_test_chr = NA_character_,
+                                      profiled_vars_ls = deprecated(),
                                       timepoints_int = c(1L,2L),
                                       ...#type_1L_chr = "characterize"
 ){
@@ -12,6 +16,26 @@ renewSlot_YouthvarsSeries <- function(x,
       descriptives_ls <- NULL
     }else{
       descriptives_ls <- x@descriptives_ls
+    }
+    if(lifecycle::is_present(profiled_vars_ls)) {
+      lifecycle::deprecate_warn("0.0.0.9421",
+                                "youthvars::renewSlot(profiled_vars_ls)",
+                                details = "Please use `renewSlot(compare_by_time_chr,compare_by_time_with_test_chr,compare_ptcpn_chr,compare_ptcpn_with_test_chr)` instead.")
+    }else{
+      profiled_vars_ls <- list(compare_by_time_chr,
+                               compare_by_time_with_test_chr,
+                               compare_ptcpn_chr,
+                               compare_ptcpn_with_test_chr)
+      if(identical((profiled_vars_ls %>% purrr::discard(~is.na(.x[1]))),list())){
+        profiled_vars_ls <- NULL
+      }else{
+        profiled_vars_ls <- profiled_vars_ls %>%
+          stats::setNames(c("temporal",
+                            "temporal_tested",
+                            "participation",
+                            "participation_tested")) %>%
+          purrr::discard(~is.na(.x[1]))
+      }
     }
     if(!is.null(profiled_vars_ls)){
       incl_idcs_int <- names(profiled_vars_ls) %>% startsWith("temporal")

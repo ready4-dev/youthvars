@@ -9,7 +9,11 @@
   x,
   slot_nm_1L_chr = "descriptives_ls",
   nbr_of_digits_1L_int = 3L,
-  profiled_vars_ls = NULL,
+  compare_by_time_chr = NA_character_,
+  compare_by_time_with_test_chr = NA_character_,
+  compare_ptcpn_chr = NA_character_,
+  compare_ptcpn_with_test_chr = NA_character_,
+  profiled_vars_ls = deprecated(),
   timepoints_int = c(1L, 2L),
   ...
 )
@@ -21,7 +25,15 @@
 
 \item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 3}
 
-\item{profiled_vars_ls}{Profiled variables (a list), Default: NULL}
+\item{compare_by_time_chr}{Compare by time (a character vector), Default: 'NA'}
+
+\item{compare_by_time_with_test_chr}{Compare by time with test (a character vector), Default: 'NA'}
+
+\item{compare_ptcpn_chr}{Compare ptcpn (a character vector), Default: 'NA'}
+
+\item{compare_ptcpn_with_test_chr}{Compare ptcpn with test (a character vector), Default: 'NA'}
+
+\item{profiled_vars_ls}{Profiled variables (a list), Default: deprecated()}
 
 \item{timepoints_int}{Timepoints (an integer vector), Default: c(1L, 2L)}
 

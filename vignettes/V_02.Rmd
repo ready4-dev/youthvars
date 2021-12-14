@@ -65,14 +65,13 @@ x <- ratify(x,
 ```
 
 ### Inspect data
-We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified by passing a list to the `profiled_vars_ls` argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a `YouthvarsSeries` instance are "participation" (comparison based on whether cases reported data at one or both timepoints) and "temporal" (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.
+We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified in arguments beginning with "compare_". Use `compare_ptcpn_chr` to compare variables based on whether cases reported data at one or both timepoints and `compare_by_time_chr` to compare the summary statistics of variables by timepoints, e.g at baseline and follow-up. If you wish these comparisons to report p values, then use the `compare_ptcpn_with_test_chr` and `compare_by_time_with_test_chr` arguments.
 
 ```{r}
 x <- renewSlot(x,
-               profiled_vars_ls = list(temporal = c("d_age","d_sexual_ori_s","d_studying_working"),  
-                                       temporal_tested = c("k6_total", "phq9_total", "bads_total"), 
-                                       participation_tested = c("k6_total", "phq9_total", "bads_total")),
-               slot_nm_1L_chr = "descriptives_ls") %>%
+               compare_by_time_chr = c("d_age","d_sexual_ori_s","d_studying_working"),
+               compare_by_time_with_test_chr = c("k6_total", "phq9_total", "bads_total"),
+               compare_ptcpn_with_test_chr = c("k6_total", "phq9_total", "bads_total")) %>%
   renew(type_1L_chr = "characterize")
 
 ```
