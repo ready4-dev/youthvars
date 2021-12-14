@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">youthvars</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9089</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9091</span>
       </span>
     </div>
 
@@ -148,13 +148,12 @@
 <div class="section level3">
 <h3 id="inspect-data">Inspect data<a class="anchor" aria-label="anchor" href="#inspect-data"></a>
 </h3>
-<p>We can now specify the variables that we would like to prepare descriptive statistics for using the <code>renewSlot</code> and <code>renew</code> methods. The variables to be profiled are specified by passing a list to the <code>profiled_vars_ls</code> argument, with each element of that list a set of variables for a type of descriptive summary. Currently, the type of descriptive summaries that can be prepared for a <code>YouthvarsSeries</code> instance are “participation” (comparison based on whether cases reported data at one or both timepoints) and “temporal” (comparison based on timepoints, e.g at baseline and follow-up). The extension "_tested" is used if p values are to be reported.</p>
+<p>We can now specify the variables that we would like to prepare descriptive statistics for using the <code>renewSlot</code> and <code>renew</code> methods. The variables to be profiled are specified in arguments beginning with “compare_”. Use <code>compare_ptcpn_chr</code> to compare variables based on whether cases reported data at one or both timepoints and <code>compare_by_time_chr</code> to compare the summary statistics of variables by timepoints, e.g at baseline and follow-up. If you wish these comparisons to report p values, then use the <code>compare_ptcpn_with_test_chr</code> and <code>compare_by_time_with_test_chr</code> arguments.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renewSlot-methods.html" class="external-link">renewSlot</a></span><span class="op">(</span><span class="va">x</span>,
-               profiled_vars_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>temporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_studying_working"</span><span class="op">)</span>,  
-                                       temporal_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span>, 
-                                       participation_tested <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span><span class="op">)</span>,
-               slot_nm_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
+               compare_by_time_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"d_age"</span>,<span class="st">"d_sexual_ori_s"</span>,<span class="st">"d_studying_working"</span><span class="op">)</span>,
+               compare_by_time_with_test_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span>,
+               compare_ptcpn_with_test_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></code></pre></div>
 <p>The tables generated in the preceding step can be inspected using the <code>exhibit</code> method.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
