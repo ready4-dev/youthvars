@@ -41,8 +41,9 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
 {
     vars_to_keep_chr <- c(depnt_var_nm_1L_chr, candidate_predrs_chr, 
         covar_var_nms_chr) %>% purrr::discard(is.na)
+    tfd_data_tb <- data_tb
     if (!is.na(round_var_nm_1L_chr) & !is.na(round_val_1L_chr)) 
-        tfd_data_tb <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
+        tfd_data_tb <- tfd_data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
             round_val_1L_chr)
     tfd_data_tb <- tfd_data_tb %>% dplyr::select(!!!rlang::syms(vars_to_keep_chr)) %>% 
         dplyr::mutate(`:=`(!!rlang::sym(depnt_var_nm_1L_chr), 
