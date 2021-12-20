@@ -111,14 +111,14 @@ depict(x,
 ```
 
 ## Share data
-We can share the dataset we created for this example using the `share` method and `Ready4useRepos` class ([described in this vignette from the ready4use package](https://ready4-dev.github.io/ready4use/articles/V_01.html)). 
+We can share the dataset we created for this example using the `share` method, specifying the repository to which we wish to publish the dataset (and for which we have write permissions) in a ([Ready4useRepos object](https://ready4-dev.github.io/ready4use/articles/V_01.html)). 
 
 ```{r eval = F}
 y <- Ready4useRepos(gh_repo_1L_chr = "ready4-dev/youthvars", # Replace with details of your repository 
-                          gh_tag_1L_chr = "Documentation_0.0"), # (you must have write permissions).
+                          gh_tag_1L_chr = "Documentation_0.0"), # (for which you have write permissions).
 y <- share(y,
            obj_to_share_xx = x,
            fl_nm_1L_chr = "ymh_YouthvarsSeries")
 ```
 
-`y` is now available for download as the file `ymh_YouthvarsSeries.RDS` from the ["Documentation_0.0" release of the youthvars package](https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0).
+`x` is now available for download as the file `ymh_YouthvarsSeries.RDS` from the ["Documentation_0.0" release of the youthvars package](https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0).
