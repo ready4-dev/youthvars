@@ -1075,13 +1075,13 @@ SOFAS total scores by data collection round
 <div class="section level2">
 <h2 id="share-data">Share data<a class="anchor" aria-label="anchor" href="#share-data"></a>
 </h2>
-<p>We can share the dataset we created for this example using the <code>share</code> method and <code>Ready4useRepos</code> class (<a href="https://ready4-dev.github.io/ready4use/articles/V_01.html" class="external-link">described in this vignette from the ready4use package</a>).</p>
+<p>We can share the dataset we created for this example using the <code>share</code> method, specifying the repository to which we wish to publish the dataset (and for which we have write permissions) in a (<a href="https://ready4-dev.github.io/ready4use/articles/V_01.html" class="external-link">Ready4useRepos object</a>).</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>y &lt;-<span class="st"> </span><span class="kw">Ready4useRepos</span>(<span class="dt">gh_repo_1L_chr =</span> <span class="st">"ready4-dev/youthvars"</span>, <span class="co"># Replace with details of your repository </span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>                          <span class="dt">gh_tag_1L_chr =</span> <span class="st">"Documentation_0.0"</span>), <span class="co"># (you must have write permissions).</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>                          <span class="dt">gh_tag_1L_chr =</span> <span class="st">"Documentation_0.0"</span>), <span class="co"># (for which you have write permissions).</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>y &lt;-<span class="st"> </span><span class="kw">share</span>(y,</span>
 <span id="cb11-4"><a href="#cb11-4"></a>           <span class="dt">obj_to_share_xx =</span> x,</span>
 <span id="cb11-5"><a href="#cb11-5"></a>           <span class="dt">fl_nm_1L_chr =</span> <span class="st">"ymh_YouthvarsSeries"</span>)</span></code></pre></div>
-<p><code>y</code> is now available for download as the file <code>ymh_YouthvarsSeries.RDS</code> from the <a href="https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0" class="external-link">“Documentation_0.0” release of the youthvars package</a>.</p>
+<p><code>x</code> is now available for download as the file <code>ymh_YouthvarsSeries.RDS</code> from the <a href="https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0" class="external-link">“Documentation_0.0” release of the youthvars package</a>.</p>
 </div>
   </div>
 
