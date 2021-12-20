@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe Variables Used to Characterize Youth Populations
-Version: 0.0.0.9093
+Version: 0.0.0.9094
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -29,6 +29,7 @@ RoxygenNote: 7.1.2
 Imports: 
     arsenal,
     assertthat,
+    car,
     cowplot,
     dplyr,
     ggplot2,
@@ -49,8 +50,8 @@ Imports:
     mice,
     psych,
     purrr,
-    ready4show (>= 0.0.0.9058),
-    ready4use (>= 0.0.0.9203),
+    ready4show (>= 0.0.0.9059),
+    ready4use (>= 0.0.0.9204),
     rlang,
     scales,
     simstudy,
