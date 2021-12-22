@@ -1,5 +1,5 @@
 #' 
-#' Renew an instance of a class by updating it with new data
+#' Renew (update) an object
 #' @name renew-YouthvarsDescriptives
 #' @description renew method applied to YouthvarsDescriptives
 #' @param x An object of class YouthvarsDescriptives
@@ -17,7 +17,7 @@ methods::setMethod("renew", "YouthvarsDescriptives", function (x, type_1L_chr = 
     return(x)
 })
 #' 
-#' Renew an instance of a class by updating it with new data
+#' Renew (update) an object
 #' @name renew-YouthvarsProfile
 #' @description renew method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile

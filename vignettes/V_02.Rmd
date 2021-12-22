@@ -69,6 +69,7 @@ We can now specify the variables that we would like to prepare descriptive stati
 
 ```{r}
 x <- renewSlot(x,
+               "descriptives_ls",
                compare_by_time_chr = c("d_age","d_sexual_ori_s","d_studying_working"),
                compare_by_time_with_test_chr = c("k6_total", "phq9_total", "bads_total"),
                compare_ptcpn_with_test_chr = c("k6_total", "phq9_total", "bads_total")) %>%

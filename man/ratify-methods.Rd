@@ -3,7 +3,7 @@
 \name{ratify-YouthvarsSeries}
 \alias{ratify-YouthvarsSeries}
 \alias{ratify,YouthvarsSeries-method}
-\title{Ratify that an instance of a class conforms to specified criteria}
+\title{Ratify (validate) an object}
 \usage{
 \S4method{ratify}{YouthvarsSeries}(x, timepoints_int = c(1L, 2L), type_1L_chr = "two_timepoints")
 }

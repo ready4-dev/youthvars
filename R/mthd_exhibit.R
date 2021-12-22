@@ -1,5 +1,5 @@
 #' 
-#' Exhibit features of a class instance by printing to console
+#' Exhibit (print to console) an object
 #' @name exhibit-YouthvarsSeries
 #' @description exhibit method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

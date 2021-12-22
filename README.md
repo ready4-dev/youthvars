@@ -1,4 +1,4 @@
-# youthvars <img src="man/figures/fav120.png" align="right" />
+# youthvars
 
 ## Describe Variables Used to Characterize Youth Populations
 

@@ -3,7 +3,7 @@
 \name{characterize-YouthvarsDescriptives}
 \alias{characterize-YouthvarsDescriptives}
 \alias{characterize,YouthvarsDescriptives-method}
-\title{Characterize a class instance by generating descriptive information}
+\title{Characterize the features of an object}
 \usage{
 \S4method{characterize}{YouthvarsDescriptives}(x, y_Ready4useDyad)
 }

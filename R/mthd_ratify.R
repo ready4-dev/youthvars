@@ -1,5 +1,5 @@
 #' 
-#' Ratify that an instance of a class conforms to specified criteria
+#' Ratify (validate) an object
 #' @name ratify-YouthvarsSeries
 #' @description ratify method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
