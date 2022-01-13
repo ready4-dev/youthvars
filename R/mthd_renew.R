@@ -1,5 +1,5 @@
 #' 
-#' Renew (update) an object
+#' Renew (update) a ready4 framework module (or sub-module)
 #' @name renew-YouthvarsDescriptives
 #' @description renew method applied to YouthvarsDescriptives
 #' @param x An object of class YouthvarsDescriptives
@@ -17,7 +17,7 @@ methods::setMethod("renew", "YouthvarsDescriptives", function (x, type_1L_chr = 
     return(x)
 })
 #' 
-#' Renew (update) an object
+#' Renew (update) a ready4 framework module (or sub-module)
 #' @name renew-YouthvarsProfile
 #' @description renew method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile

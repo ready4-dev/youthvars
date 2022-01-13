@@ -7,9 +7,9 @@ template:
 home:
   links:
   - text: Manual - User (PDF)
-    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_Developer.pdf
+    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_User.pdf
   - text: Manual - Developer (PDF)
-    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/ymh_YouthvarsSeries.RDS
+    href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_Developer.pdf
   - text: ready4 framework
     href:  https://www.ready4-dev.com/
 development:

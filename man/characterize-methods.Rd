@@ -3,7 +3,7 @@
 \name{characterize-YouthvarsDescriptives}
 \alias{characterize-YouthvarsDescriptives}
 \alias{characterize,YouthvarsDescriptives-method}
-\title{Characterize the features of an object}
+\title{Characterize the features of a ready4 framework module (or sub-module)}
 \usage{
 \S4method{characterize}{YouthvarsDescriptives}(x, y_Ready4useDyad)
 }

@@ -5,7 +5,7 @@
 \alias{renew,YouthvarsDescriptives-method}
 \alias{renew-YouthvarsProfile}
 \alias{renew,YouthvarsProfile-method}
-\title{Renew (update) an object}
+\title{Renew (update) a ready4 framework module (or sub-module)}
 \usage{
 \S4method{renew}{YouthvarsDescriptives}(x, type_1L_chr = "characterize", ...)
 

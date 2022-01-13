@@ -3,7 +3,7 @@
 \name{depict-YouthvarsSeries}
 \alias{depict-YouthvarsSeries}
 \alias{depict,YouthvarsSeries-method}
-\title{Depict (plot) an object}
+\title{Depict (plot) features of a ready4 framework module (or sub-module)}
 \usage{
 \S4method{depict}{YouthvarsSeries}(
   x,

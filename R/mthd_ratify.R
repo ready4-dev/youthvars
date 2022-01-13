@@ -1,5 +1,5 @@
 #' 
-#' Ratify (validate) an object
+#' Ratify (validate) a ready4 framework module (or sub-module)
 #' @name ratify-YouthvarsSeries
 #' @description ratify method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

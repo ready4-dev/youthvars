@@ -1,5 +1,5 @@
 #' 
-#' Renew (update) an element of an object
+#' Apply the renew method to a Ready4Module slot
 #' @name renewSlot-YouthvarsSeries
 #' @description renewSlot method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

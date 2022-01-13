@@ -3,7 +3,7 @@
 \name{exhibit-YouthvarsSeries}
 \alias{exhibit-YouthvarsSeries}
 \alias{exhibit,YouthvarsSeries-method}
-\title{Exhibit (print to console) an object}
+\title{Exhibit (print to console) features of a ready4 framework module (or sub-module)}
 \usage{
 \S4method{exhibit}{YouthvarsSeries}(
   x,

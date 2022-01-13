@@ -1,5 +1,5 @@
 #' 
-#' Exhibit (print to console) an object
+#' Exhibit (print to console) features of a ready4 framework module (or sub-module)
 #' @name exhibit-YouthvarsSeries
 #' @description exhibit method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
