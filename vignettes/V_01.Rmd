@@ -28,8 +28,6 @@ The `youthvars` package defines a number of vector based classes that can be use
 
 The initial set of classes included in the `youthvars` package are one class for Assessment of Quality of Life (Adolescent) health utility and one for each of the predictors used in the utility prediction algorithms included in the related [youthu](https://ready4-dev.github.io/youthu/) package. 
 
-Note: The current classes included in `youthvars` were created to facilitate modelling tasks and do not currently permit missing values.
-
 ### Assessment of Quality of Life Six Dimension (Adolescent) Health Utility 
 
 The `youthvars_aqol6d_adol`{.R} class is defined for numeric vectors with a minimum value of 0.03 and maximum value of 1.0.

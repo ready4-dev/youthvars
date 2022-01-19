@@ -10,7 +10,6 @@ renewSlot_YouthvarsSeries <- function(x,
                                       ...#type_1L_chr = "characterize"
 ){
   if(slot_nm_1L_chr == "descriptives_ls"){
-    #if(type_1L_chr == "characterize"){
     if(identical(x@descriptives_ls,
                  list(list()))){
       descriptives_ls <- NULL
