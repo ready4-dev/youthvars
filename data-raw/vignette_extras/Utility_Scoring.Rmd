@@ -41,7 +41,7 @@ Before displaying the updated dataset, it may be desirable to label variables so
 data("repln_ds_dict_r3", package = "youthvars")
 data("aqol_scrg_dict_r3", package = "youthvars")
 dictionary_tb <- ready4::renew(repln_ds_dict_r3,
-                               new_ready4_dict_r3 = aqol_scrg_dict_r3)
+                               new_cases_r3 = aqol_scrg_dict_r3)
 ```
 
 Labels from the new data dictionary can then be added to our updated (scored) dataset.

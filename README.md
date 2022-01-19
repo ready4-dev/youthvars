@@ -1,6 +1,6 @@
 # youthvars
 
-## Describe Variables Used to Characterize Youth Populations
+## Describe and Validate Youth Mental Health Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -8,7 +8,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646550.svg)](https://doi.org/10.5281/zenodo.5646550)
 <!-- badges: end -->
 
-Tools to describe and summarise types of data commonly
+Tools to describe and quality assure types of data commonly
 present in youth mental health collections.  The main motivation for
 this package is to facilitate automated data integrity checks, ensure
 that methods are applied to the appropriate data structures and

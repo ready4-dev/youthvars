@@ -225,7 +225,7 @@ depict(y,
 #                                         id_var_nm_1L_chr = x@a_YouthvarsProfile@id_var_nm_1L_chr,
 #                                         wtd_aqol_var_nm_1L_chr = x@total_wtd_var_nm_1L_chr)
 #     dictionary_r3 <- ready4::renew(x@a_YouthvarsProfile@a_Ready4useDyad@dictionary_r3,
-#                                    new_ready4_dict_r3 = x@instrument_dict_r3)
+#                                    new_cases_r3 = x@instrument_dict_r3)
 #     scored_data_tb <- scored_data_tb %>%
 #       ready4use::add_labels_from_dictionary(dictionary_r3)
 #     x@a_YouthvarsProfile@a_Ready4useDyad@ds_tb <- scored_data_tb

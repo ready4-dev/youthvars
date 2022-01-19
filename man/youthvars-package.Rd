@@ -4,15 +4,15 @@
 \name{youthvars-package}
 \alias{youthvars}
 \alias{youthvars-package}
-\title{youthvars: Describe Variables Used to Characterize Youth Populations}
+\title{youthvars: Describe and Validate Youth Mental Health Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Tools to describe and summarise types of data commonly present in youth mental health collections. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+Tools to describe and quality assure types of data commonly present in youth mental health collections. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
-Tools to describe and summarise types of data commonly present in youth mental health collections. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+Tools to describe and quality assure types of data commonly present in youth mental health collections. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 }
 \seealso{
 Useful links:

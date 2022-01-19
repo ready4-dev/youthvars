@@ -1,8 +1,8 @@
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
-x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe Variables Used To Characterize Youth Populations",
-                                 pkg_desc_1L_chr = "Tools to describe and summarise types of data commonly present in youth mental health collections.
+x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth Mental Health Datasets",
+                                 pkg_desc_1L_chr = "Tools to describe and quality assure types of data commonly present in youth mental health collections.
                             The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics.
   This development version of the youthvars package has been made available as part of the process of testing and documenting the package.
                             If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
@@ -227,4 +227,4 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              pkg_ds_ls_ls = datasets_ls) %>%
   ready4pack::ready4pack_manifest()
 z <- ready4::author(z)
-# devtools::build_vignettes()
+devtools::build_vignettes()

@@ -21,5 +21,5 @@ youthvars is a set of tools designed to help describe and validate types of data
 
 The following vignettes demonstrate some of the tools currently included in the youthvars package:
 
-- [Quality Assure Youth Mental Health Data with Youthvars Vector Classes](V_01.html)
-- [Describe Datasets With YouthvarsProfile and YouthvarsSeries](V_02.html)
+- [Quality Assure Youth Mental Health Variables](V_01.html)
+- [Describe And Disseminate Youth Mental Health Datasets](V_02.html)

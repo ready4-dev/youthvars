@@ -1,5 +1,5 @@
 ---
-title: "Quality Assure Youth Mental Health Data with Youthvars Vector Classes"
+title: "Quality Assure Youth Mental Health Variables"
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -7,7 +7,7 @@ output:
     highlight: null
     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Quality Assure Youth Mental Health Data with Youthvars Vector Classes}
+  %\VignetteIndexEntry{Quality Assure Youth Mental Health Variables}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---

@@ -426,7 +426,7 @@ make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = 
         utils::data("aqol_scrg_dict_r3", package = "youthvars", 
             envir = environment())
         dictionary_tb <- ready4::renew(make_tfd_repln_ds_dict_r3(), 
-            new_ready4_dict_r3 = aqol_scrg_dict_r3)
+            new_cases_r3 = aqol_scrg_dict_r3)
     }
     else {
         dictionary_tb <- seed_dictionary_tb
@@ -441,7 +441,7 @@ make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = 
     }
     Hmisc::label(additions_tb) <- as.list(Hmisc::label(dictionary_tb) %>% 
         unname())
-    dictionary_tb <- dictionary_tb %>% ready4::renew(new_ready4_dict_r3 = additions_tb)
+    dictionary_tb <- dictionary_tb %>% ready4::renew(new_cases_r3 = additions_tb)
     return(dictionary_tb)
 }
 #' Make formula

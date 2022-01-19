@@ -50,7 +50,7 @@ Some of the functions we are illustrating in this vignette also require that the
 data("repln_ds_dict_r3", package = "youthvars")
 data("aqol_scrg_dict_r3", package = "youthvars")
 dictionary_tb <- ready4::renew(repln_ds_dict_r3,
-                                      new_ready4_dict_r3 = aqol_scrg_dict_r3)
+                                      new_cases_r3 = aqol_scrg_dict_r3)
 ```
 
 Currently, youthvars plotting and tabular functions are designed for use with datasets that have the following structural properties:
