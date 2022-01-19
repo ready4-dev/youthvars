@@ -14,7 +14,7 @@ vignette: >
 ```{r echo = F}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r }
+```{r results='hide', message=FALSE}
 library(youthvars)
 ```
 
