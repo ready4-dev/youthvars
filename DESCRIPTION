@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe and Validate Youth Mental Health Datasets
-Version: 0.0.0.9102
+Version: 0.0.0.9103
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -49,8 +49,9 @@ Imports:
     mice,
     psych,
     purrr,
-    ready4show (>= 0.0.0.9086),
-    ready4use (>= 0.0.0.9218),
+    ready4 (>= 0.0.0.9084),
+    ready4show (>= 0.0.0.9087),
+    ready4use (>= 0.0.0.9219),
     rlang,
     scales,
     simstudy,
@@ -63,7 +64,6 @@ Imports:
     utils
 VignetteBuilder: knitr
 Depends: 
-    ready4,
     R (>= 2.10)
 LazyData: true
 Collate: 
