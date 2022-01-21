@@ -18,6 +18,7 @@ Note: **This vignette is illustrated with fake data**. The dataset explored in t
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r results='hide', message=FALSE}
+library(ready4)
 library(youthvars)
 ```
 
