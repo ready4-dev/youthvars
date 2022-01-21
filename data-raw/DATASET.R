@@ -1,3 +1,4 @@
+library(ready4)
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
@@ -14,7 +15,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth
                                  urls_chr = c("https://ready4-dev.github.io/youthvars/",
                                               "https://github.com/ready4-dev/youthvars",
                                               "https://www.ready4-dev.com/")) %>%
-  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(depends_chr = "ready4",
+  ready4fun::make_manifest(addl_pkgs_ls = ready4fun::make_addl_pkgs_ls(#depends_chr = "ready4",
                                                                        suggests_chr = c("rmarkdown"),
                                                                        imports_chr = c("car","knitrBootstrap")),#,"car", "caret", 'lme4','quantreg',"recipes"
                            build_ignore_ls = ready4fun::make_build_ignore_ls(file_nms_chr = c("initial_setup.R")),
@@ -228,3 +229,6 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
   ready4pack::ready4pack_manifest()
 z <- ready4::author(z)
 devtools::build_vignettes()
+# usethis::use_dev_package("ready4",
+#                          type = "Depends",
+#                          remote = "ready4-dev/ready4")
