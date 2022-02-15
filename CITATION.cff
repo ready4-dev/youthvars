@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Matthew Hamilton and Caroline Gao  (2022). youthvars: Describe and Validate Youth Mental Health Datasets. Version 0.0.0.9104. Zenodo. https://doi.org/10.5281/zenodo.5646550"
+authors:
+  - family-names: "Hamilton"
+    given-names: "Matthew"
+  - family-names: "Gao"
+    given-names: "Caroline"
+title: "youthvars: Describe and Validate Youth Mental Health Datasets"
+version: 0.0.0.9104
+doi: 10.5281/zenodo.5646550
+date-released: 2022-02-15
+url: "https://ready4-dev.github.io/youthvars/"

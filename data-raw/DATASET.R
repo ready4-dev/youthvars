@@ -229,6 +229,8 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              pkg_ds_ls_ls = datasets_ls) %>%
   ready4pack::ready4pack_manifest()
 z <- ready4::author(z)
+ready4::write_citation_cff(packageDescription("youthvars"),
+                           citation_chr = readLines("inst/CITATION"))
 devtools::build_vignettes()
 # usethis::use_dev_package("ready4",
 #                          type = "Depends",

@@ -650,10 +650,14 @@ make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, descv_tbl_ls, d
 #' @description make_sub_tot_plts() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make sub total plots. The function returns Composite (a plot).
 #' @param data_tb Data (a tibble)
 #' @param col_nms_chr Column names (a character vector)
-#' @param plot_rows_cols_pair_int Plot rows columns pair (an integer vector)
-#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
-#' @param make_log_log_tfmn_1L_lgl Make log log transformation (a logical vector of length one), Default: F
 #' @param heights_int Heights (an integer vector)
+#' @param plot_rows_cols_pair_int Plot rows columns pair (an integer vector)
+#' @param add_legend_1L_lgl Add legend (a logical vector of length one), Default: T
+#' @param axis_text_sclg_1L_dbl Axis text scaling (a double vector of length one), Default: 1
+#' @param axis_title_sclg_1L_dbl Axis title scaling (a double vector of length one), Default: 1
+#' @param legend_sclg_1L_dbl Legend scaling (a double vector of length one), Default: 1
+#' @param make_log_log_tfmn_1L_lgl Make log log transformation (a logical vector of length one), Default: F
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @return Composite (a plot)
 #' @rdname make_sub_tot_plts
@@ -663,8 +667,10 @@ make_predr_pars_and_cors_tbl <- function (data_tb, ds_descvs_ls, descv_tbl_ls, d
 #' @importFrom stringi stri_locate_last_fixed
 #' @importFrom gridExtra grid.arrange
 #' @importFrom ggpubr ggarrange
-make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, round_var_nm_1L_chr = "round", 
-    make_log_log_tfmn_1L_lgl = F, heights_int, y_label_1L_chr = "Percentage") 
+make_sub_tot_plts <- function (data_tb, col_nms_chr, heights_int, plot_rows_cols_pair_int, 
+    add_legend_1L_lgl = T, axis_text_sclg_1L_dbl = 1, axis_title_sclg_1L_dbl = 1, 
+    legend_sclg_1L_dbl = 1, make_log_log_tfmn_1L_lgl = F, round_var_nm_1L_chr = "round", 
+    y_label_1L_chr = "Percentage") 
 {
     if (!is.null(col_nms_chr)) {
         plots_ls <- list()
@@ -683,16 +689,30 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
             if (make_log_log_tfmn_1L_lgl) {
                 labelx <- paste0("log-log transformed ", labelx)
             }
-            plots_ls[[i]] <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
+            plots_ls[[i]] <- make_subtotal_plt(data_tb, legend_sclg_1L_dbl = legend_sclg_1L_dbl, 
+                round_var_nm_1L_chr = round_var_nm_1L_chr, axis_text_sclg_1L_dbl = axis_text_sclg_1L_dbl, 
+                axis_title_sclg_1L_dbl = axis_title_sclg_1L_dbl, 
                 var_nm_1L_chr = i, x_label_1L_chr = labelx, y_label_1L_chr = y_label_1L_chr)
         }
-        plot_for_lgd_plt <- make_subtotal_plt(data_tb, round_var_nm_1L_chr = round_var_nm_1L_chr, 
-            var_nm_1L_chr = i, x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
-            label_fill_1L_chr = "Data collection", y_label_1L_chr = y_label_1L_chr)
-        legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
-        composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
-            nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
-            legend_ls, nrow = length(heights_int), heights = heights_int)
+        if (add_legend_1L_lgl) {
+            plot_for_lgd_plt <- make_subtotal_plt(data_tb, legend_sclg_1L_dbl = legend_sclg_1L_dbl, 
+                round_var_nm_1L_chr = round_var_nm_1L_chr, var_nm_1L_chr = i, 
+                x_label_1L_chr = labelx, legend_position_1L_chr = "bottom", 
+                label_fill_1L_chr = "Data collection", axis_text_sclg_1L_dbl = axis_text_sclg_1L_dbl, 
+                axis_title_sclg_1L_dbl = axis_title_sclg_1L_dbl, 
+                y_label_1L_chr = y_label_1L_chr)
+            legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
+            composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
+                nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
+                legend_ls, nrow = length(heights_int), heights = heights_int)
+        }
+        else {
+            legend_ls <- NULL
+            heights_int <- heights_int[-length(heights_int)]
+            composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls, 
+                nrow = plot_rows_cols_pair_int[1], ncol = plot_rows_cols_pair_int[2]), 
+                nrow = length(heights_int), heights = heights_int)
+        }
     }
     else {
         composite_plt <- NULL
@@ -703,25 +723,28 @@ make_sub_tot_plts <- function (data_tb, col_nms_chr, plot_rows_cols_pair_int, ro
 #' @description make_subtotal_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make subtotal plot. The function returns Subtotal (a plot).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
-#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @param x_label_1L_chr X label (a character vector of length one)
+#' @param legend_position_1L_chr Legend position (a character vector of length one), Default: 'none'
+#' @param legend_sclg_1L_dbl Legend scaling (a double vector of length one), Default: 1
+#' @param label_fill_1L_chr Label fill (a character vector of length one), Default: NULL
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
+#' @param axis_text_sclg_1L_dbl Axis text scaling (a double vector of length one), Default: 1
+#' @param axis_title_sclg_1L_dbl Axis title scaling (a double vector of length one), Default: 1
+#' @param use_bw_theme_1L_lgl Use black and white theme (a logical vector of length one), Default: T
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
-#' @param use_bw_theme_1L_lgl Use black and white theme (a logical vector of length one), Default: T
-#' @param legend_position_1L_chr Legend position (a character vector of length one), Default: 'none'
-#' @param label_fill_1L_chr Label fill (a character vector of length one), Default: NULL
 #' @return Subtotal (a plot)
 #' @rdname make_subtotal_plt
 #' @export 
 #' @importFrom scales percent
-#' @importFrom ggplot2 ggplot aes_string geom_histogram aes labs theme_bw scale_y_continuous theme scale_fill_manual
+#' @importFrom ggplot2 ggplot aes_string geom_histogram aes labs theme_bw scale_y_continuous theme element_text rel scale_fill_manual
 #' @importFrom ready4use remove_labels_from_ds
 #' @importFrom rlang sym
 #' @keywords internal
-make_subtotal_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round", 
-    x_label_1L_chr, y_label_1L_chr = "Percentage", y_scale_scl_fn = scales::percent, 
-    use_bw_theme_1L_lgl = T, legend_position_1L_chr = "none", 
-    label_fill_1L_chr = NULL) 
+make_subtotal_plt <- function (data_tb, var_nm_1L_chr, x_label_1L_chr, legend_position_1L_chr = "none", 
+    legend_sclg_1L_dbl = 1, label_fill_1L_chr = NULL, round_var_nm_1L_chr = "round", 
+    axis_text_sclg_1L_dbl = 1, axis_title_sclg_1L_dbl = 1, use_bw_theme_1L_lgl = T, 
+    y_label_1L_chr = "Percentage", y_scale_scl_fn = scales::percent) 
 {
     subtotal_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(), 
         ggplot2::aes_string(var_nm_1L_chr)) + ggplot2::geom_histogram(bins = 8, 
@@ -736,7 +759,11 @@ make_subtotal_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "ro
     if (!is.null(y_scale_scl_fn)) {
         subtotal_plt <- subtotal_plt + ggplot2::scale_y_continuous(labels = y_scale_scl_fn)
     }
-    subtotal_plt <- subtotal_plt + ggplot2::theme(legend.position = legend_position_1L_chr) + 
+    subtotal_plt <- subtotal_plt + ggplot2::theme(legend.position = legend_position_1L_chr, 
+        legend.text = ggplot2::element_text(size = ggplot2::rel(legend_sclg_1L_dbl)), 
+        legend.title = ggplot2::element_text(size = ggplot2::rel(legend_sclg_1L_dbl)), 
+        axis.text = ggplot2::element_text(size = ggplot2::rel(axis_text_sclg_1L_dbl)), 
+        axis.title = ggplot2::element_text(size = ggplot2::rel(axis_title_sclg_1L_dbl))) + 
         ggplot2::scale_fill_manual(values = c("#de2d26", "#fc9272"))
     return(subtotal_plt)
 }
@@ -822,21 +849,25 @@ make_tfd_repln_ds_dict_r3 <- function (repln_ds_dict_r3 = NULL)
 #' @description make_var_by_round_plt() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make variable by round plot. The function returns Variable by round (a plot).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
-#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @param x_label_1L_chr X label (a character vector of length one)
+#' @param label_fill_1L_chr Label fill (a character vector of length one), Default: 'Data collection'
+#' @param legend_sclg_1L_dbl Legend scaling (a double vector of length one), Default: 1
+#' @param axis_text_sclg_1L_dbl Axis text scaling (a double vector of length one), Default: 1
+#' @param axis_title_sclg_1L_dbl Axis title scaling (a double vector of length one), Default: 1
+#' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
-#' @param label_fill_1L_chr Label fill (a character vector of length one), Default: 'Data collection'
 #' @return Variable by round (a plot)
 #' @rdname make_var_by_round_plt
 #' @export 
 #' @importFrom scales percent
-#' @importFrom ggplot2 ggplot aes theme_bw geom_histogram scale_y_continuous labs scale_fill_manual theme
+#' @importFrom ggplot2 ggplot aes theme_bw geom_histogram scale_y_continuous labs scale_fill_manual theme element_text rel
 #' @importFrom ready4use remove_labels_from_ds
 #' @importFrom rlang sym
-make_var_by_round_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr = "round", 
-    x_label_1L_chr, y_label_1L_chr = "Percentage", y_scale_scl_fn = scales::percent, 
-    label_fill_1L_chr = "Data collection") 
+make_var_by_round_plt <- function (data_tb, var_nm_1L_chr, x_label_1L_chr, label_fill_1L_chr = "Data collection", 
+    legend_sclg_1L_dbl = 1, axis_text_sclg_1L_dbl = 1, axis_title_sclg_1L_dbl = 1, 
+    round_var_nm_1L_chr = "round", y_label_1L_chr = "Percentage", 
+    y_scale_scl_fn = scales::percent) 
 {
     var_by_round_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(), 
         ggplot2::aes(x = !!rlang::sym(var_nm_1L_chr), fill = !!rlang::sym(round_var_nm_1L_chr))) + 
@@ -848,6 +879,10 @@ make_var_by_round_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_chr =
     }
     var_by_round_plt <- var_by_round_plt + ggplot2::labs(y = y_label_1L_chr, 
         x = x_label_1L_chr, fill = label_fill_1L_chr) + ggplot2::scale_fill_manual(values = c("#de2d26", 
-        "#fc9272")) + ggplot2::theme(legend.position = "bottom")
+        "#fc9272")) + ggplot2::theme(legend.position = "bottom", 
+        legend.text = ggplot2::element_text(size = ggplot2::rel(legend_sclg_1L_dbl)), 
+        legend.title = ggplot2::element_text(size = ggplot2::rel(legend_sclg_1L_dbl)), 
+        axis.text = ggplot2::element_text(size = ggplot2::rel(axis_text_sclg_1L_dbl)), 
+        axis.title = ggplot2::element_text(size = ggplot2::rel(axis_title_sclg_1L_dbl)))
     return(var_by_round_plt)
 }

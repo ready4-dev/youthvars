@@ -7,11 +7,14 @@
 make_var_by_round_plt(
   data_tb,
   var_nm_1L_chr,
-  round_var_nm_1L_chr = "round",
   x_label_1L_chr,
+  label_fill_1L_chr = "Data collection",
+  legend_sclg_1L_dbl = 1,
+  axis_text_sclg_1L_dbl = 1,
+  axis_title_sclg_1L_dbl = 1,
+  round_var_nm_1L_chr = "round",
   y_label_1L_chr = "Percentage",
-  y_scale_scl_fn = scales::percent,
-  label_fill_1L_chr = "Data collection"
+  y_scale_scl_fn = scales::percent
 )
 }
 \arguments{
@@ -19,15 +22,21 @@ make_var_by_round_plt(
 
 \item{var_nm_1L_chr}{Variable name (a character vector of length one)}
 
-\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
-
 \item{x_label_1L_chr}{X label (a character vector of length one)}
+
+\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: 'Data collection'}
+
+\item{legend_sclg_1L_dbl}{Legend scaling (a double vector of length one), Default: 1}
+
+\item{axis_text_sclg_1L_dbl}{Axis text scaling (a double vector of length one), Default: 1}
+
+\item{axis_title_sclg_1L_dbl}{Axis title scaling (a double vector of length one), Default: 1}
+
+\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
 
 \item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 
 \item{y_scale_scl_fn}{Y scale scale (a function), Default: scales::percent}
-
-\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: 'Data collection'}
 }
 \value{
 Variable by round (a plot)

@@ -172,8 +172,11 @@ write_descv_plots <- function(data_tb,
                                      rel_heights = combined_plot_params_ls$rel_heights_dbl,
                                      scale = combined_plot_params_ls$scale_dbl
   )
-  descv_plts_paths_ls$combined_utl <- paste0(descv_outp_dir_1L_chr,"/combined_utl.png")
-  cowplot::save_plot(descv_plts_paths_ls$combined_utl,combined_plt, base_height = combined_plot_params_ls$base_height_dbl)
+  descv_plts_paths_ls$combined_utl <- paste0(descv_outp_dir_1L_chr,
+                                             "/combined_utl.png")
+  cowplot::save_plot(descv_plts_paths_ls$combined_utl,
+                     combined_plt,
+                     base_height = combined_plot_params_ls$base_height_dbl)
   return(descv_plts_paths_ls)
 }
 write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")

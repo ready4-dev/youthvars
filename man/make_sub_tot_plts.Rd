@@ -7,10 +7,14 @@
 make_sub_tot_plts(
   data_tb,
   col_nms_chr,
-  plot_rows_cols_pair_int,
-  round_var_nm_1L_chr = "round",
-  make_log_log_tfmn_1L_lgl = F,
   heights_int,
+  plot_rows_cols_pair_int,
+  add_legend_1L_lgl = T,
+  axis_text_sclg_1L_dbl = 1,
+  axis_title_sclg_1L_dbl = 1,
+  legend_sclg_1L_dbl = 1,
+  make_log_log_tfmn_1L_lgl = F,
+  round_var_nm_1L_chr = "round",
   y_label_1L_chr = "Percentage"
 )
 }
@@ -19,13 +23,21 @@ make_sub_tot_plts(
 
 \item{col_nms_chr}{Column names (a character vector)}
 
+\item{heights_int}{Heights (an integer vector)}
+
 \item{plot_rows_cols_pair_int}{Plot rows columns pair (an integer vector)}
 
-\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
+\item{add_legend_1L_lgl}{Add legend (a logical vector of length one), Default: T}
+
+\item{axis_text_sclg_1L_dbl}{Axis text scaling (a double vector of length one), Default: 1}
+
+\item{axis_title_sclg_1L_dbl}{Axis title scaling (a double vector of length one), Default: 1}
+
+\item{legend_sclg_1L_dbl}{Legend scaling (a double vector of length one), Default: 1}
 
 \item{make_log_log_tfmn_1L_lgl}{Make log log transformation (a logical vector of length one), Default: F}
 
-\item{heights_int}{Heights (an integer vector)}
+\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
 
 \item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 }

@@ -451,13 +451,17 @@ make_predr_pars_and_cors_tbl <- function(data_tb,
 }
 make_subtotal_plt <- function(data_tb,
                               var_nm_1L_chr,
-                              round_var_nm_1L_chr = "round",
                               x_label_1L_chr,
-                              y_label_1L_chr = "Percentage",
-                              y_scale_scl_fn = scales::percent,
-                              use_bw_theme_1L_lgl = T,
                               legend_position_1L_chr = "none",
-                              label_fill_1L_chr = NULL){
+                              legend_sclg_1L_dbl = 1,
+                              label_fill_1L_chr = NULL,
+                              round_var_nm_1L_chr = "round",
+                              axis_text_sclg_1L_dbl = 1,
+                              axis_title_sclg_1L_dbl = 1,
+                              use_bw_theme_1L_lgl = T,
+                              y_label_1L_chr = "Percentage",
+                              y_scale_scl_fn = scales::percent
+                              ){
   subtotal_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(),
                                   ggplot2::aes_string(var_nm_1L_chr)) +
     ggplot2::geom_histogram(bins=8,
@@ -479,16 +483,24 @@ make_subtotal_plt <- function(data_tb,
       ggplot2::scale_y_continuous(labels = y_scale_scl_fn)
   }
   subtotal_plt <- subtotal_plt +
-    ggplot2::theme(legend.position = legend_position_1L_chr) +
+    ggplot2::theme(legend.position = legend_position_1L_chr,
+                   legend.text = ggplot2::element_text(size=ggplot2::rel(legend_sclg_1L_dbl)),
+                   legend.title = ggplot2::element_text(size=ggplot2::rel(legend_sclg_1L_dbl)),
+                   axis.text = ggplot2::element_text(size=ggplot2::rel(axis_text_sclg_1L_dbl)),
+                   axis.title = ggplot2::element_text(size=ggplot2::rel(axis_title_sclg_1L_dbl))) +
     ggplot2::scale_fill_manual(values = c("#de2d26","#fc9272"))
   return(subtotal_plt)
 }
 make_sub_tot_plts <- function(data_tb,
                               col_nms_chr,
-                              plot_rows_cols_pair_int,
-                              round_var_nm_1L_chr = "round",
-                              make_log_log_tfmn_1L_lgl = F,
                               heights_int,
+                              plot_rows_cols_pair_int,
+                              add_legend_1L_lgl = T,
+                              axis_text_sclg_1L_dbl = 1,
+                              axis_title_sclg_1L_dbl = 1,
+                              legend_sclg_1L_dbl = 1,
+                              make_log_log_tfmn_1L_lgl = F,
+                              round_var_nm_1L_chr = "round",
                               y_label_1L_chr = "Percentage"){
   if(!is.null(col_nms_chr)){
     plots_ls<-list()
@@ -506,26 +518,41 @@ make_sub_tot_plts <- function(data_tb,
         labelx<- paste0("log-log transformed ", labelx)
       }
       plots_ls[[i]]<- make_subtotal_plt(data_tb,
+                                        legend_sclg_1L_dbl = legend_sclg_1L_dbl,
                                         round_var_nm_1L_chr = round_var_nm_1L_chr,
+                                        axis_text_sclg_1L_dbl = axis_text_sclg_1L_dbl,
+                                        axis_title_sclg_1L_dbl = axis_title_sclg_1L_dbl,
                                         var_nm_1L_chr = i,
                                         x_label_1L_chr = labelx,
                                         y_label_1L_chr = y_label_1L_chr)
     }
-    plot_for_lgd_plt <- make_subtotal_plt(data_tb,
-                                          round_var_nm_1L_chr = round_var_nm_1L_chr,
-                                          var_nm_1L_chr = i,
-                                          x_label_1L_chr = labelx,
-                                          legend_position_1L_chr = "bottom",
-                                          label_fill_1L_chr = "Data collection",
-                                          y_label_1L_chr = y_label_1L_chr)
-    legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
-    composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist=plots_ls,
-                                                               nrow = plot_rows_cols_pair_int[1],
-                                                               ncol = plot_rows_cols_pair_int[2]),
-                                             legend_ls,
-                                             nrow = length(heights_int),
-                                             heights = heights_int)
-
+    if(add_legend_1L_lgl){
+      plot_for_lgd_plt <- make_subtotal_plt(data_tb,
+                                            legend_sclg_1L_dbl = legend_sclg_1L_dbl,
+                                            round_var_nm_1L_chr = round_var_nm_1L_chr,
+                                            var_nm_1L_chr = i,
+                                            x_label_1L_chr = labelx,
+                                            legend_position_1L_chr = "bottom",
+                                            label_fill_1L_chr = "Data collection",
+                                            axis_text_sclg_1L_dbl = axis_text_sclg_1L_dbl,
+                                            axis_title_sclg_1L_dbl = axis_title_sclg_1L_dbl,
+                                            y_label_1L_chr = y_label_1L_chr)
+      legend_ls <- get_guide_box_lgd(plot_for_lgd_plt)
+      composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist = plots_ls,
+                                                                 nrow = plot_rows_cols_pair_int[1],
+                                                                 ncol = plot_rows_cols_pair_int[2]),
+                                               legend_ls,
+                                               nrow = length(heights_int),
+                                               heights = heights_int)
+    }else{
+      legend_ls <- NULL
+      heights_int <- heights_int[-length(heights_int)]
+      composite_plt <- gridExtra::grid.arrange(ggpubr::ggarrange(plotlist=plots_ls,
+                                                                 nrow = plot_rows_cols_pair_int[1],
+                                                                 ncol = plot_rows_cols_pair_int[2]),
+                                               nrow = length(heights_int),
+                                               heights = heights_int)
+    }
   }else{
     composite_plt <- NULL
   }
@@ -589,11 +616,14 @@ make_tfd_repln_ds_dict_r3 <- function(repln_ds_dict_r3 = NULL){
 }
 make_var_by_round_plt <- function(data_tb,
                                   var_nm_1L_chr,
-                                  round_var_nm_1L_chr = "round",
                                   x_label_1L_chr,
+                                  label_fill_1L_chr = "Data collection",
+                                  legend_sclg_1L_dbl = 1,
+                                  axis_text_sclg_1L_dbl = 1,
+                                  axis_title_sclg_1L_dbl = 1,
+                                  round_var_nm_1L_chr = "round",
                                   y_label_1L_chr = "Percentage",
-                                  y_scale_scl_fn = scales::percent,
-                                  label_fill_1L_chr = "Data collection"){
+                                  y_scale_scl_fn = scales::percent){
   var_by_round_plt <- ggplot2::ggplot(data_tb %>% ready4use::remove_labels_from_ds(),
                                       ggplot2::aes(x = !!rlang::sym(var_nm_1L_chr),
                                                    fill = !!rlang::sym(round_var_nm_1L_chr))) +
@@ -612,7 +642,11 @@ make_var_by_round_plt <- function(data_tb,
     #ggplot2::scale_y_continuous(labels = scales::percent_format()) +
     ggplot2::labs(y = y_label_1L_chr, x= x_label_1L_chr, fill = label_fill_1L_chr)  +
     ggplot2::scale_fill_manual(values=c("#de2d26","#fc9272"))  +
-    ggplot2::theme(legend.position="bottom")
+    ggplot2::theme(legend.position="bottom",
+                   legend.text = ggplot2::element_text(size=ggplot2::rel(legend_sclg_1L_dbl)),
+                   legend.title = ggplot2::element_text(size=ggplot2::rel(legend_sclg_1L_dbl)),
+                   axis.text = ggplot2::element_text(size=ggplot2::rel(axis_text_sclg_1L_dbl)),
+                   axis.title = ggplot2::element_text(size=ggplot2::rel(axis_title_sclg_1L_dbl)))
   return(var_by_round_plt)
 }
 # make_vec_with_sum_of_int_val <- function (target_int, start_int, end_int, length_int)

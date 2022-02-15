@@ -7,13 +7,16 @@
 make_subtotal_plt(
   data_tb,
   var_nm_1L_chr,
-  round_var_nm_1L_chr = "round",
   x_label_1L_chr,
-  y_label_1L_chr = "Percentage",
-  y_scale_scl_fn = scales::percent,
-  use_bw_theme_1L_lgl = T,
   legend_position_1L_chr = "none",
-  label_fill_1L_chr = NULL
+  legend_sclg_1L_dbl = 1,
+  label_fill_1L_chr = NULL,
+  round_var_nm_1L_chr = "round",
+  axis_text_sclg_1L_dbl = 1,
+  axis_title_sclg_1L_dbl = 1,
+  use_bw_theme_1L_lgl = T,
+  y_label_1L_chr = "Percentage",
+  y_scale_scl_fn = scales::percent
 )
 }
 \arguments{
@@ -21,19 +24,25 @@ make_subtotal_plt(
 
 \item{var_nm_1L_chr}{Variable name (a character vector of length one)}
 
+\item{x_label_1L_chr}{X label (a character vector of length one)}
+
+\item{legend_position_1L_chr}{Legend position (a character vector of length one), Default: 'none'}
+
+\item{legend_sclg_1L_dbl}{Legend scaling (a double vector of length one), Default: 1}
+
+\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: NULL}
+
 \item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
 
-\item{x_label_1L_chr}{X label (a character vector of length one)}
+\item{axis_text_sclg_1L_dbl}{Axis text scaling (a double vector of length one), Default: 1}
+
+\item{axis_title_sclg_1L_dbl}{Axis title scaling (a double vector of length one), Default: 1}
+
+\item{use_bw_theme_1L_lgl}{Use black and white theme (a logical vector of length one), Default: T}
 
 \item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 
 \item{y_scale_scl_fn}{Y scale scale (a function), Default: scales::percent}
-
-\item{use_bw_theme_1L_lgl}{Use black and white theme (a logical vector of length one), Default: T}
-
-\item{legend_position_1L_chr}{Legend position (a character vector of length one), Default: 'none'}
-
-\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: NULL}
 }
 \value{
 Subtotal (a plot)
