@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9103</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9104</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,11 +62,14 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">make_var_by_round_plt</span><span class="op">(</span>
   <span class="va">data_tb</span>,
   <span class="va">var_nm_1L_chr</span>,
-  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
   <span class="va">x_label_1L_chr</span>,
+  label_fill_1L_chr <span class="op">=</span> <span class="st">"Data collection"</span>,
+  legend_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  axis_text_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  axis_title_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
   y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>,
-  y_scale_scl_fn <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">percent</a></span>,
-  label_fill_1L_chr <span class="op">=</span> <span class="st">"Data collection"</span>
+  y_scale_scl_fn <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/label_percent.html" class="external-link">percent</a></span>
 <span class="op">)</span></code></pre></div>
     </div>
 
@@ -76,16 +79,22 @@
 <dd><p>Data (a tibble)</p></dd>
 <dt>var_nm_1L_chr</dt>
 <dd><p>Variable name (a character vector of length one)</p></dd>
-<dt>round_var_nm_1L_chr</dt>
-<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
 <dt>x_label_1L_chr</dt>
 <dd><p>X label (a character vector of length one)</p></dd>
+<dt>label_fill_1L_chr</dt>
+<dd><p>Label fill (a character vector of length one), Default: 'Data collection'</p></dd>
+<dt>legend_sclg_1L_dbl</dt>
+<dd><p>Legend scaling (a double vector of length one), Default: 1</p></dd>
+<dt>axis_text_sclg_1L_dbl</dt>
+<dd><p>Axis text scaling (a double vector of length one), Default: 1</p></dd>
+<dt>axis_title_sclg_1L_dbl</dt>
+<dd><p>Axis title scaling (a double vector of length one), Default: 1</p></dd>
+<dt>round_var_nm_1L_chr</dt>
+<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
 <dt>y_label_1L_chr</dt>
 <dd><p>Y label (a character vector of length one), Default: 'Percentage'</p></dd>
 <dt>y_scale_scl_fn</dt>
 <dd><p>Y scale scale (a function), Default: scales::percent</p></dd>
-<dt>label_fill_1L_chr</dt>
-<dd><p>Label fill (a character vector of length one), Default: 'Data collection'</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>

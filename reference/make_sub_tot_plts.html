@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9103</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9104</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +62,14 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">make_sub_tot_plts</span><span class="op">(</span>
   <span class="va">data_tb</span>,
   <span class="va">col_nms_chr</span>,
-  <span class="va">plot_rows_cols_pair_int</span>,
-  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
-  make_log_log_tfmn_1L_lgl <span class="op">=</span> <span class="cn">F</span>,
   <span class="va">heights_int</span>,
+  <span class="va">plot_rows_cols_pair_int</span>,
+  add_legend_1L_lgl <span class="op">=</span> <span class="cn">T</span>,
+  axis_text_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  axis_title_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  legend_sclg_1L_dbl <span class="op">=</span> <span class="fl">1</span>,
+  make_log_log_tfmn_1L_lgl <span class="op">=</span> <span class="cn">F</span>,
+  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,
   y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>
 <span class="op">)</span></code></pre></div>
     </div>
@@ -76,14 +80,22 @@
 <dd><p>Data (a tibble)</p></dd>
 <dt>col_nms_chr</dt>
 <dd><p>Column names (a character vector)</p></dd>
-<dt>plot_rows_cols_pair_int</dt>
-<dd><p>Plot rows columns pair (an integer vector)</p></dd>
-<dt>round_var_nm_1L_chr</dt>
-<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
-<dt>make_log_log_tfmn_1L_lgl</dt>
-<dd><p>Make log log transformation (a logical vector of length one), Default: F</p></dd>
 <dt>heights_int</dt>
 <dd><p>Heights (an integer vector)</p></dd>
+<dt>plot_rows_cols_pair_int</dt>
+<dd><p>Plot rows columns pair (an integer vector)</p></dd>
+<dt>add_legend_1L_lgl</dt>
+<dd><p>Add legend (a logical vector of length one), Default: T</p></dd>
+<dt>axis_text_sclg_1L_dbl</dt>
+<dd><p>Axis text scaling (a double vector of length one), Default: 1</p></dd>
+<dt>axis_title_sclg_1L_dbl</dt>
+<dd><p>Axis title scaling (a double vector of length one), Default: 1</p></dd>
+<dt>legend_sclg_1L_dbl</dt>
+<dd><p>Legend scaling (a double vector of length one), Default: 1</p></dd>
+<dt>make_log_log_tfmn_1L_lgl</dt>
+<dd><p>Make log log transformation (a logical vector of length one), Default: F</p></dd>
+<dt>round_var_nm_1L_chr</dt>
+<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
 <dt>y_label_1L_chr</dt>
 <dd><p>Y label (a character vector of length one), Default: 'Percentage'</p></dd>
 </dl></div>
