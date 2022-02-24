@@ -663,7 +663,7 @@ make_adol_aqol6d_disv_lup <- function (aqol6d_scrg_dss_ls = NULL)
                             "youthvars::make_adol_aqol6d_disv_lup()",
                             "scorz::make_adol_aqol6d_disv_lup()")
   if(is.null(aqol6d_scrg_dss_ls))
-    aqol6d_scrg_dss_ls <- get_aqol6d_scrng_dss()
+    aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
   aqol6d_adult_disv_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_adult_disv_lup_tb
   adol_aqol6d_disv_lup <- aqol6d_adult_disv_lup_tb %>%
     dplyr::mutate(Answer_4_dbl = dplyr::case_when(Question_chr == "Q18" ~ 0.622,
@@ -685,7 +685,7 @@ make_aqol6d_adol_pop_tbs_ls <- function (aqol_items_prpns_tbs_ls, aqol_scores_pa
                             "youthvars::make_aqol6d_adol_pop_tbs_ls()",
                             "scorz::make_aqol6d_adol_pop_tbs_ls()")
   if(is.null(aqol6d_scrg_dss_ls)){
-    aqol6d_scrg_dss_ls <- get_aqol6d_scrng_dss()
+    aqol6d_scrg_dss_ls <- get_aqol6d_scrg_dss()
   }
   domain_qs_lup_tb <- aqol6d_scrg_dss_ls$aqol6d_domain_qs_lup_tb
   item_pfx_1L_chr <- prefix_chr[["aqol_item"]]

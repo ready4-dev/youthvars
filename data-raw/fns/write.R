@@ -212,7 +212,8 @@ write_results_to_csv <- function (synth_data_spine_ls, output_dir_1L_chr = ".")
                                          "Brief information about the data structure (whether discrete and allowable range) of AQoL6D health utility and six mental health outcome variables.",
                                          paste0("Correlation matrix for AQoL6D health utility and six mental health outcome measures at the ",
                                                 synth_data_spine_ls$timepoint_nms_chr, " study timepoint.")))
-  purrr::walk2(output_ls, names(output_ls), ~write.csv(.x,
-                                                       file = paste0(output_dir_1L_chr, "/", .y, ".csv"), row.names = F))
+  purrr::walk2(output_ls, names(output_ls),
+               ~write.csv(.x,
+                          file = paste0(output_dir_1L_chr, "/", .y, ".csv"), row.names = F))
   return(dss_tb)
 }
