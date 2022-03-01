@@ -47,3 +47,4 @@
 ^data-raw/vignette_extras/Summaries\.Rmd$
 ^data-raw/vignette_extras/Utility_Scoring\.Rmd$
 ^data-raw/Clippings\.R$
+^data-raw/fns/reorder\.R$
