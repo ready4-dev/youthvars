@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe and Validate Youth Mental Health Datasets
-Version: 0.0.0.9106
+Version: 0.0.0.9107
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -43,6 +43,7 @@ Imports:
     lifecycle,
     lubridate,
     magrittr,
+    MASS,
     Matrix,
     matrixcalc,
     methods,
@@ -90,6 +91,7 @@ Collate:
     'fn_impute.R'
     'fn_make.R'
     'fn_print.R'
+    'fn_reorder.R'
     'fn_replace.R'
     'fn_transform.R'
     'fn_write.R'
