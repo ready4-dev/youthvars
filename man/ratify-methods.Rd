@@ -3,7 +3,7 @@
 \name{ratify-YouthvarsSeries}
 \alias{ratify-YouthvarsSeries}
 \alias{ratify,YouthvarsSeries-method}
-\title{Ratify (validate) a ready4 framework module (or sub-module)}
+\title{Ratify that a dataset meets validity criteria}
 \usage{
 \S4method{ratify}{YouthvarsSeries}(x, timepoints_int = c(1L, 2L), type_1L_chr = "two_timepoints")
 }

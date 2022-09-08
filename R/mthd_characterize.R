@@ -1,5 +1,5 @@
 #' 
-#' Characterize the features of a ready4 framework module (or sub-module)
+#' Characterize data by generating (tabular) descriptive statistics
 #' @name characterize-YouthvarsDescriptives
 #' @description characterize method applied to YouthvarsDescriptives
 #' @param x An object of class YouthvarsDescriptives

@@ -1,5 +1,5 @@
 #' 
-#' Depict (plot) features of a ready4 framework module (or sub-module)
+#' Depict (plot) features of a dataset
 #' @name depict-YouthvarsSeries
 #' @description depict method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

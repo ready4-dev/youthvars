@@ -18,8 +18,8 @@ write_descv_plots(
   dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
     1L), width_1L_dbl = 8),
   utl_by_rnd_plots_params_ls = list(width_1L_dbl = 6, height_1L_dbl = 4),
-  combined_plot_params_ls = list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10),
-    scale_dbl = c(0.9, 0.9), base_height_dbl = 10)
+  combined_plot_params_ls = list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl
+    = c(0.9, 0.9), base_height_dbl = 10)
 )
 }
 \arguments{

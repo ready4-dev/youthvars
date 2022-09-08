@@ -12,8 +12,8 @@ make_aqol6d_adol_pop_tbs_ls(
   temporal_cors_ls,
   aqol6d_scrg_dss_ls = NULL,
   id_var_nm_1L_chr = "fkClientID",
-  prefix_chr = c(uid = "Participant_", aqol_item = "aqol6d_q", domain_unwtd_pfx_1L_chr
-    = "aqol6d_subtotal_c_", domain_wtd_pfx_1L_chr = "aqol6d_subtotal_w_")
+  prefix_chr = c(uid = "Participant_", aqol_item = "aqol6d_q", domain_unwtd_pfx_1L_chr =
+    "aqol6d_subtotal_c_", domain_wtd_pfx_1L_chr = "aqol6d_subtotal_w_")
 )
 }
 \arguments{

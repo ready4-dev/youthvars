@@ -1,4 +1,4 @@
-library(ready4)
+library(ready4fun)
 library(ready4show)
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
@@ -229,9 +229,4 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              pkg_ds_ls_ls = datasets_ls) %>%
   ready4pack::ready4pack_manifest()
 z <- ready4::author(z)
-ready4::write_citation_cff(packageDescription("youthvars"),
-                           citation_chr = readLines("inst/CITATION"))
 devtools::build_vignettes()
-# usethis::use_dev_package("ready4",
-#                          type = "Depends",
-#                          remote = "ready4-dev/ready4")

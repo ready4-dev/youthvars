@@ -3,7 +3,7 @@
 \name{renewSlot-YouthvarsSeries}
 \alias{renewSlot-YouthvarsSeries}
 \alias{renewSlot,YouthvarsSeries-method}
-\title{Apply the renew method to a Ready4Module slot}
+\title{Apply the renew method to a model module slot}
 \usage{
 \S4method{renewSlot}{YouthvarsSeries}(
   x,

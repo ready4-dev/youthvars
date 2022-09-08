@@ -1,5 +1,5 @@
 #' 
-#' Apply the renew method to a Ready4Module slot
+#' Apply the renew method to a model module slot
 #' @name renewSlot-YouthvarsSeries
 #' @description renewSlot method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

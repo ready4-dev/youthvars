@@ -1,5 +1,5 @@
 #' 
-#' Ratify (validate) a ready4 framework module (or sub-module)
+#' Ratify that a dataset meets validity criteria
 #' @name ratify-YouthvarsSeries
 #' @description ratify method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
