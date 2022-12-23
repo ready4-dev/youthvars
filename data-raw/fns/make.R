@@ -129,11 +129,10 @@ make_descv_stats_tbl <- function(data_tb,
                                           test_1L_lgl = test_1L_lgl) %>%
       as.data.frame() %>%
       dplyr::select(c("variable","label",
-                      tidyselect::all_of(key_var_vals_chr),
+                      key_var_vals_chr,
                       ifelse(test_1L_lgl,
                              "p.value",
-                             character(0)))
-                    %>% purrr::discard(is.na))
+                             character(0))) %>% purrr::discard(is.na))
     if(!is.null(dictionary_tb)){
       descv_stats_tbl_tb <- descv_stats_tbl_tb %>%
         dplyr::mutate(variable = variable %>% purrr::map_chr(~ready4::get_from_lup_obj(dictionary_tb,

@@ -91,7 +91,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
             heights_int = dim_plots_params_ls$heights_int), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
             path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
-            plt_nm_1L_chr = "wtd_sub_tots"), ll_sub_ttl = list(plt_fn = make_sub_tot_plts, 
+            plt_nm_1L_chr = "wtd_sub_tots"), ll_sub_tot = list(plt_fn = make_sub_tot_plts, 
             fn_args_ls = list(data_tb, col_nms_chr = maui_domains_col_nms_chr, 
                 plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int, 
                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
@@ -99,7 +99,7 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
                 make_log_log_tfmn_1L_lgl = T), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
             path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
-            plt_nm_1L_chr = "ll_sub_ttl"), utl_by_rnd = list(plt_fn = make_var_by_round_plt, 
+            plt_nm_1L_chr = "ll_sub_tot"), utl_by_rnd = list(plt_fn = make_var_by_round_plt, 
             fn_args_ls = list(data_tb, var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
                 x_label_1L_chr = ds_descvs_ls$dictionary_tb %>% 

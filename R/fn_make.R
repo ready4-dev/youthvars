@@ -280,9 +280,9 @@ make_corstars_tbl_xx <- function (x, caption_1L_chr = NULL, mkdn_tbl_ref_1L_chr 
 #' @rdname make_descv_stats_tbl
 #' @export 
 #' @importFrom dplyr pull select mutate filter across
-#' @importFrom tidyselect all_of
 #' @importFrom purrr discard map_chr pmap_dbl pmap map flatten_chr reduce map2_chr
 #' @importFrom ready4 get_from_lup_obj
+#' @importFrom tidyselect all_of
 #' @importFrom rlang sym
 make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_vals_chr = NULL, 
     variable_nms_chr, dictionary_tb = NULL, test_1L_lgl = F, 
@@ -299,8 +299,8 @@ make_descv_stats_tbl <- function (data_tb, key_var_nm_1L_chr = "round", key_var_
         descv_stats_tbl_tb <- make_tableby_ls(data_tb, key_var_nm_1L_chr = key_var_nm_1L_chr, 
             variable_nms_chr = variable_nms_chr, test_1L_lgl = test_1L_lgl) %>% 
             as.data.frame() %>% dplyr::select(c("variable", "label", 
-            tidyselect::all_of(key_var_vals_chr), ifelse(test_1L_lgl, 
-                "p.value", character(0))) %>% purrr::discard(is.na))
+            key_var_vals_chr, ifelse(test_1L_lgl, "p.value", 
+                character(0))) %>% purrr::discard(is.na))
         if (!is.null(dictionary_tb)) {
             descv_stats_tbl_tb <- descv_stats_tbl_tb %>% dplyr::mutate(variable = variable %>% 
                 purrr::map_chr(~ready4::get_from_lup_obj(dictionary_tb, 
@@ -449,7 +449,7 @@ make_final_repln_ds_dict <- function (seed_dictionary_tb = NULL, additions_tb = 
 #' @param depnt_var_nm_1L_chr Dependent variable name (a character vector of length one)
 #' @param predictors_chr Predictors (a character vector)
 #' @param environment_env Environment (an environment), Default: parent.frame()
-#' @return formula_fml (An object)
+#' @return Formula (formula)
 #' @rdname make_formula
 #' @export 
 #' @importFrom stats formula

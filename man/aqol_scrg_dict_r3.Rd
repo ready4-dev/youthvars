@@ -18,7 +18,7 @@ A tibble
 
 \describe{
 \item{var_nm_chr}{Variable name (a character vector)}
-\item{var_ctg_chr}{Variable category categories (a character vector)}
+\item{var_ctg_chr}{Variable category (a character vector)}
 \item{var_desc_chr}{Variable description (a character vector)}
 \item{var_type_chr}{Variable type (a character vector)}
 }

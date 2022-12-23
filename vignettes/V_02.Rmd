@@ -17,7 +17,7 @@ Note: **This vignette is illustrated with fake data**. The dataset explored in t
 ```{r echo = F}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r results='hide', message=FALSE}
+```{r results='hide', message=FALSE, warning=FALSE}
 library(ready4)
 library(youthvars)
 ```
@@ -107,6 +107,7 @@ depict(X,
 ```
 
 ## Share data
+**If and only if the dataset you are working with is appropriate for public dissemination (e.g. is synthetic data), you can use the following workflow for sharing it.**
 We can share the dataset we created for this example using the `share` method, specifying the repository to which we wish to publish the dataset (and for which we have write permissions) in a ([Ready4useRepos object](https://ready4-dev.github.io/ready4use/articles/V_01.html)). 
 
 ```{r eval = F}

@@ -1,6 +1,6 @@
 # youthvars
 
-## Describe and Validate Youth Mental Health Datasets
+## Describe and Validate Ready4 Person Record Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -9,15 +9,15 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646550.svg)](https://doi.org/10.5281/zenodo.5646550)
 <!-- badges: end -->
 
-Tools to describe and quality assure types of data commonly
-present in youth mental health collections.  The main motivation for
-this package is to facilitate automated data integrity checks, ensure
-that methods are applied to the appropriate data structures and
-streamline reporting of descriptive statistics.  This development
-version of the youthvars package has been made available as part of
-the process of testing and documenting the package.  If you have any
-questions, please contact the authors
-(matthew.hamilton@orygen.org.au).
+Tools to describe and quality assure individual human record
+datasets for use with the ready4 youth mental health systems model
+(https://www.ready4-dev.com/).  The main motivation for this package
+is to facilitate automated data integrity checks, ensure that methods
+are applied to the appropriate data structures and streamline
+reporting of descriptive statistics.  This development version of the
+youthvars package has been made available as part of the process of
+testing and documenting the package.  If you have any questions,
+please contact the authors (matthew.hamilton@orygen.org.au).
 
 To install a development version of this software, run the following commands in your R console:
 

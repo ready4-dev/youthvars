@@ -3,14 +3,15 @@ library(ready4show)
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
-x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth Mental Health Datasets",
-                                 pkg_desc_1L_chr = "Tools to describe and quality assure types of data commonly present in youth mental health collections.
+x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Ready4 Person Record Datasets",
+                                 pkg_desc_1L_chr = "Tools to describe and quality assure individual human record datasets for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/).
                             The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics.
   This development version of the youthvars package has been made available as part of the process of testing and documenting the package.
                             If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",
                                  authors_prsn = c(utils::person(given = "Matthew",family = "Hamilton",email = "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),comment = c(ORCID = "0000-0001-7407-9194")),
                                                   utils::person(given = "Caroline",family = "Gao",email = "caroline.gao@orygen.org.au", role = c("aut"),comment = c(ORCID = "0000-0002-0987-2759")),
                                                   utils::person("Orygen", role = c("cph", "fnd")),
+                                                  utils::person("Australian Government Research Training Program", role =c("fnd")),
                                                   utils::person("Headspace", role = c( "fnd")),
                                                   utils::person("National Health and Medical Research Council", role = c( "fnd"))),
                                  urls_chr = c("https://ready4-dev.github.io/youthvars/",
@@ -97,10 +98,6 @@ y <- dplyr::bind_rows(y,
                                                                                 "character") %>% list(),
                                                                    class_desc_chr = "A longitudinal dataset and its associated dictionary, descriptive statistics and metadata.",
                                                                    parent_class_chr = "YouthvarsProfile"))
-
-
-
-##
 ##
 replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
   dplyr::mutate(c_sofas = as.integer(round(c_sofas,0))) %>%
@@ -122,7 +119,7 @@ replication_popl_tb <- read.csv("data-raw/csvs/fake_pop_tb.csv") %>%
                 scared_total = SCARED,
                 k6_total = K6,
                 c_sofas = SOFAS)
-scored_data_tb <- fns_env_ls$fns_env$add_adol6d_scores(replication_popl_tb,
+scored_data_tb <- scorz::add_adol6d_scores(replication_popl_tb,
                                                        prefix_1L_chr = "aqol6d_q",
                                                        id_var_nm_1L_chr = "fkClientID",
                                                        wtd_aqol_var_nm_1L_chr = "aqol6d_total_w",
@@ -229,4 +226,5 @@ z <- ready4pack::make_pt_ready4pack_manifest(x,
                                              pkg_ds_ls_ls = datasets_ls) %>%
   ready4pack::ready4pack_manifest()
 z <- ready4::author(z)
+ready4::write_extra_pkgs_to_actions()
 devtools::build_vignettes()
