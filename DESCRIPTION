@@ -1,30 +1,31 @@
 Package: youthvars
-Title: Describe and Validate Youth Mental Health Datasets
-Version: 0.0.0.9108
+Title: Describe and Validate Ready4 Person Record Datasets
+Version: 0.0.0.9109
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
     person("Caroline", "Gao", , "caroline.gao@orygen.org.au", role = "aut",
            comment = c(ORCID = "0000-0002-0987-2759")),
     person("Orygen", role = c("cph", "fnd")),
+    person("Australian Government Research Training Program", role = "fnd"),
     person("Headspace", role = "fnd"),
     person("National Health and Medical Research Council", role = "fnd")
   )
-Description: Tools to describe and quality assure types of data commonly
-    present in youth mental health collections.  The main motivation for
-    this package is to facilitate automated data integrity checks, ensure
-    that methods are applied to the appropriate data structures and
-    streamline reporting of descriptive statistics.  This development
-    version of the youthvars package has been made available as part of
-    the process of testing and documenting the package.  If you have any
-    questions, please contact the authors
-    (matthew.hamilton@orygen.org.au).
+Description: Tools to describe and quality assure individual human record
+    datasets for use with the ready4 youth mental health systems model
+    (https://www.ready4-dev.com/).  The main motivation for this package
+    is to facilitate automated data integrity checks, ensure that methods
+    are applied to the appropriate data structures and streamline
+    reporting of descriptive statistics.  This development version of the
+    youthvars package has been made available as part of the process of
+    testing and documenting the package.  If you have any questions,
+    please contact the authors (matthew.hamilton@orygen.org.au).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/youthvars/,
     https://github.com/ready4-dev/youthvars, https://www.ready4-dev.com/
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Imports: 
     arsenal,
     assertthat,
@@ -50,9 +51,9 @@ Imports:
     mice,
     psych,
     purrr,
-    ready4 (>= 0.0.0.9102),
-    ready4show (>= 0.0.0.9098),
-    ready4use (>= 0.0.0.9222),
+    ready4 (>= 0.0.0.9109),
+    ready4show (>= 0.0.0.9103),
+    ready4use (>= 0.0.0.9225),
     rlang,
     scales,
     simstudy,
