@@ -1,12 +1,12 @@
-pandoc: 2.14.2
-pkgdown: 2.0.6
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   Replication_DS: Replication_DS.html
   V_01: V_01.html
   V_02: V_02.html
   youthvars: youthvars.html
-last_built: 2022-09-13T03:37Z
+last_built: 2022-12-23T05:45Z
 urls:
   reference: https://ready4-dev.github.io/youthvars/reference
   article: https://ready4-dev.github.io/youthvars/articles
