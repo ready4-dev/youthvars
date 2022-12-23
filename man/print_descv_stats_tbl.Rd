@@ -15,7 +15,9 @@ print_descv_stats_tbl(
   caption_1L_chr = NULL,
   header_col_nms_chr = NULL,
   mkdn_tbl_ref_1L_chr = NULL,
-  test_1L_lgl = F
+  scroll_box_args_ls = NULL,
+  test_1L_lgl = F,
+  ...
 )
 }
 \arguments{
@@ -39,7 +41,11 @@ print_descv_stats_tbl(
 
 \item{mkdn_tbl_ref_1L_chr}{Markdown table reference (a character vector of length one), Default: NULL}
 
+\item{scroll_box_args_ls}{Scroll box arguments (a list), Default: NULL}
+
 \item{test_1L_lgl}{Test (a logical vector of length one), Default: F}
+
+\item{...}{Additional arguments}
 }
 \description{
 print_descv_stats_tbl() is a Print function that prints output to console Specifically, this function implements an algorithm to print descriptive statistics table. The function is called for its side effects and does not return a value.

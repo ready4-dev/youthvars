@@ -42,7 +42,6 @@ Authors:
 Other contributors:
 \itemize{
   \item Orygen [copyright holder, funder]
-  \item Australian Government Research Training Program [funder]
   \item Headspace [funder]
   \item National Health and Medical Research Council [funder]
 }

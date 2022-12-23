@@ -8,7 +8,9 @@ print_descv_stats_tbl <- function (df,
                                    caption_1L_chr = NULL,
                                    header_col_nms_chr = NULL,
                                    mkdn_tbl_ref_1L_chr = NULL,
-                                   test_1L_lgl = F)
+                                   scroll_box_args_ls = NULL,
+                                   test_1L_lgl = F,
+                                   ...)
 {
   if(capitalise_1L_lgl)
     df <- df %>%
@@ -90,6 +92,7 @@ print_descv_stats_tbl <- function (df,
                                                              T,
                                                              F),
                                    add_to_row_ls = add_to_row_ls,
-                                   sanitize_fn = force)
+                                   sanitize_fn = force,
+                                   scroll_box_args_ls = scroll_box_args_ls)
   }
 }

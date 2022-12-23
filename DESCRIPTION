@@ -1,13 +1,12 @@
 Package: youthvars
 Title: Describe and Validate Ready4 Person Record Datasets
-Version: 0.0.0.9110
+Version: 0.0.0.9111
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
     person("Caroline", "Gao", , "caroline.gao@orygen.org.au", role = "aut",
            comment = c(ORCID = "0000-0002-0987-2759")),
     person("Orygen", role = c("cph", "fnd")),
-    person("Australian Government Research Training Program", role = "fnd"),
     person("Headspace", role = "fnd"),
     person("National Health and Medical Research Council", role = "fnd")
   )

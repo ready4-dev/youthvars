@@ -82,17 +82,20 @@ The tables generated in the preceding step can be inspected using the `exhibit` 
 
 ```{r participtb, tab.cap='Outcomes by data completeness', tab.id = 'participtb', results="asis"}
 X %>%
-  exhibit(profile_idx_int = 1L)
+  exhibit(profile_idx_int = 1L,
+          scroll_box_args_ls = list(width = "100%"))
 ```
 
 ```{r outcomestb, tab.cap='Outcomes by data collection round', tab.id = 'outcomestb', results="asis"}
 X %>%
-  exhibit(profile_idx_int = 2L)
+  exhibit(profile_idx_int = 2L,
+          scroll_box_args_ls = list(width = "100%"))
 ```
 
 ```{r outcomestbtst, tab.cap='Outcomes by data collection round (with p values)', tab.id = 'outcomestbtst', results="asis"}
 X %>%
-  exhibit(profile_idx_int = 3L)
+  exhibit(profile_idx_int = 3L,
+          scroll_box_args_ls = list(width = "100%"))
 ```
 
 The `depict` method can create plots, comparing numeric variables by timepoint.
