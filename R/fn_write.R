@@ -35,24 +35,24 @@ write_all_outp_dirs <- function (paths_ls)
 #' @param data_tb Data (a tibble)
 #' @param ds_descvs_ls Dataset descriptives (a list)
 #' @param descv_outp_dir_1L_chr Descriptive output directory (a character vector of length one)
-#' @param lbl_nms_chr Label names (a character vector), Default: c("Household tasks", "Getting around", "Morbility", "Self care", 
-#'    "Enjoy close rels", "Family rels", "Community involvement", 
-#'    "Despair", "Worry", "Sad", "Agitated", "Energy level", "Control", 
-#'    "Coping", "Frequency of pain", "Degree of pain", "Pain interference", 
-#'    "Vision", "Hearing", "Communication")
-#' @param maui_domains_pfxs_1L_chr Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'
-#' @param item_plots_params_ls Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L, 
-#'    1L), width_1L_dbl = 9)
-#' @param dim_plots_params_ls Dimension plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L, 
-#'    1L), width_1L_dbl = 8)
-#' @param utl_by_rnd_plots_params_ls Utility by round plots parameters (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)
 #' @param combined_plot_params_ls Combined plot parameters (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 
 #'    0.9), base_height_dbl = 10)
+#' @param consent_1L_chr Consent (a character vector of length one), Default: ''
+#' @param consent_indcs_int Consent indices (an integer vector), Default: 1
+#' @param dim_plots_params_ls Dimension plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L, 
+#'    1L), width_1L_dbl = 8)
+#' @param item_plots_params_ls Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L, 
+#'    1L), width_1L_dbl = 9)
+#' @param lbl_nms_chr Label names (a character vector), Default: character(0)
+#' @param maui_domains_pfxs_1L_chr Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'
+#' @param options_chr Options (a character vector), Default: c("Y", "N")
+#' @param utl_by_rnd_plots_params_ls Utility by round plots parameters (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)
+#' @param x_labels_chr X labels (a character vector), Default: character(0)
 #' @return Descriptive plots paths (a list)
 #' @rdname write_descv_plots
 #' @export 
 #' @importFrom dplyr select starts_with
-#' @importFrom ready4 get_from_lup_obj
+#' @importFrom ready4 get_from_lup_obj write_with_consent
 #' @importFrom purrr map
 #' @importFrom rlang exec
 #' @importFrom ready4show write_mdl_plt_fl
@@ -60,17 +60,22 @@ write_all_outp_dirs <- function (paths_ls)
 #' @importFrom cowplot plot_grid save_plot
 #' @importFrom ggplot2 theme
 #' @keywords internal
-write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl_nms_chr = c("Household tasks", 
-    "Getting around", "Morbility", "Self care", "Enjoy close rels", 
-    "Family rels", "Community involvement", "Despair", "Worry", 
-    "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain", 
-    "Degree of pain", "Pain interference", "Vision", "Hearing", 
-    "Communication"), maui_domains_pfxs_1L_chr = "vD", item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 
-    4L), heights_int = c(10L, 1L), width_1L_dbl = 9), dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 
-    2L), heights_int = c(10L, 1L), width_1L_dbl = 8), utl_by_rnd_plots_params_ls = list(width_1L_dbl = 6, 
-    height_1L_dbl = 4), combined_plot_params_ls = list(nrow_1L_int = 2L, 
-    rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 0.9), base_height_dbl = 10)) 
+write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, combined_plot_params_ls = list(nrow_1L_int = 2L, 
+    rel_heights_dbl = c(4, 10), scale_dbl = c(0.9, 0.9), base_height_dbl = 10), 
+    consent_1L_chr = "", consent_indcs_int = 1L, dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 
+        2L), heights_int = c(10L, 1L), width_1L_dbl = 8), item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 
+        4L), heights_int = c(10L, 1L), width_1L_dbl = 9), lbl_nms_chr = character(0), 
+    maui_domains_pfxs_1L_chr = "vD", options_chr = c("Y", "N"), 
+    utl_by_rnd_plots_params_ls = list(width_1L_dbl = 6, height_1L_dbl = 4), 
+    x_labels_chr = character(0)) 
 {
+    if (identical(lbl_nms_chr, character(0))) 
+        lbl_nms_chr <- c("Household tasks", "Getting around", 
+            "Morbility", "Self care", "Enjoy close rels", "Family rels", 
+            "Community involvement", "Despair", "Worry", "Sad", 
+            "Agitated", "Energy level", "Control", "Coping", 
+            "Frequency of pain", "Degree of pain", "Pain interference", 
+            "Vision", "Hearing", "Communication")
     if (is.null(maui_domains_pfxs_1L_chr)) {
         maui_domains_col_nms_chr <- NULL
     }
@@ -88,7 +93,8 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
         wtd_sub_tots = list(plt_fn = make_sub_tot_plts, fn_args_ls = list(data_tb, 
             col_nms_chr = maui_domains_col_nms_chr, plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int, 
             round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
-            heights_int = dim_plots_params_ls$heights_int), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
+            heights_int = dim_plots_params_ls$heights_int, x_labels_chr = x_labels_chr), 
+            width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
             path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "wtd_sub_tots"), ll_sub_tot = list(plt_fn = make_sub_tot_plts, 
@@ -96,7 +102,8 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
                 plot_rows_cols_pair_int = dim_plots_params_ls$plot_rows_cols_pair_int, 
                 round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
                 heights_int = dim_plots_params_ls$heights_int, 
-                make_log_log_tfmn_1L_lgl = T), width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
+                make_log_log_tfmn_1L_lgl = T, x_labels_chr = x_labels_chr), 
+            width_1L_dbl = dim_plots_params_ls$width_1L_dbl, 
             height_1L_dbl = sum(dim_plots_params_ls$heights_int), 
             path_to_write_to_1L_chr = descv_outp_dir_1L_chr, 
             plt_nm_1L_chr = "ll_sub_tot"), utl_by_rnd = list(plt_fn = make_var_by_round_plt, 
@@ -118,8 +125,15 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
         scale = combined_plot_params_ls$scale_dbl)
     descv_plts_paths_ls$combined_utl <- paste0(descv_outp_dir_1L_chr, 
         "/combined_utl.png")
-    cowplot::save_plot(descv_plts_paths_ls$combined_utl, combined_plt, 
-        base_height = combined_plot_params_ls$base_height_dbl)
+    ready4::write_with_consent(consented_fn = cowplot::save_plot, 
+        prompt_1L_chr = paste0("Are you sure that you want to write the following plot", 
+            " to your machine? \n", descv_plts_paths_ls$combined_utl), 
+        consent_1L_chr = consent_1L_chr, consent_indcs_int = consent_indcs_int, 
+        consented_args_ls = list(filename = descv_plts_paths_ls$combined_utl, 
+            plot = combined_plt, base_height = combined_plot_params_ls$base_height_dbl), 
+        consented_msg_1L_chr = paste0("New plot created:\n", 
+            descv_plts_paths_ls$combined_utl), declined_msg_1L_chr = "Write request cancelled - no plot has been saved.", 
+        options_chr = options_chr, return_1L_lgl = F)
     return(descv_plts_paths_ls)
 }
 #' Write descriptive tables
@@ -128,15 +142,21 @@ write_descv_plots <- function (data_tb, ds_descvs_ls, descv_outp_dir_1L_chr, lbl
 #' @param ds_descvs_ls Dataset descriptives (a list)
 #' @param predictors_lup Predictors (a lookup table)
 #' @param descv_outp_dir_1L_chr Descriptive output directory (a character vector of length one)
+#' @param consent_1L_chr Consent (a character vector of length one), Default: ''
+#' @param consent_indcs_int Consent indices (an integer vector), Default: 1
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 2
+#' @param options_chr Options (a character vector), Default: c("Y", "N")
 #' @param participation_var_1L_chr Participation variable (a character vector of length one), Default: 'participation'
 #' @return Descriptive table (a list)
 #' @rdname write_descv_tbls
 #' @export 
-#' @importFrom dplyr filter pull
+#' @importFrom dplyr filter pull mutate
 #' @importFrom rlang sym
+#' @importFrom purrr list_modify
+#' @importFrom ready4 write_with_consent
 write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_dir_1L_chr, 
-    nbr_of_digits_1L_int = 2, participation_var_1L_chr = "participation") 
+    consent_1L_chr = "", consent_indcs_int = 1L, nbr_of_digits_1L_int = 2, 
+    options_chr = c("Y", "N"), participation_var_1L_chr = "participation") 
 {
     descv_tbl_ls <- list(cohort_desc_tb = make_descv_stats_tbl(data_tb = data_tb, 
         key_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
@@ -147,31 +167,74 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
         key_var_vals_chr = ds_descvs_ls$round_vals_chr, dictionary_tb = ds_descvs_ls$dictionary_tb, 
         variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
             ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
-        test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
-        outc_by_partcn_tbl_tb = make_descv_stats_tbl(data_tb = data_tb %>% 
-            dplyr::filter(!!rlang::sym(ds_descvs_ls$round_var_nm_1L_chr) == 
-                ds_descvs_ls$round_vals_chr[1]), key_var_nm_1L_chr = participation_var_1L_chr, 
+        test_1L_lgl = if (ds_descvs_ls$round_vals_chr == "Overall" & 
+            identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
+            F
+        } else {
+            T
+        }, nbr_of_digits_1L_int = nbr_of_digits_1L_int), outc_by_partcn_tbl_tb = if (ds_descvs_ls$round_vals_chr == 
+        "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+        character(0))) {
+        NULL
+    } else {
+        make_descv_stats_tbl(data_tb = data_tb %>% dplyr::filter(!!rlang::sym(ds_descvs_ls$round_var_nm_1L_chr) == 
+            ds_descvs_ls$round_vals_chr[1]), key_var_nm_1L_chr = participation_var_1L_chr, 
             key_var_vals_chr = data_tb %>% dplyr::pull(participation_var_1L_chr) %>% 
                 unique(), dictionary_tb = ds_descvs_ls$dictionary_tb, 
             variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
                 ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
-            test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int), 
-        bl_cors_tb = transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
-            depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
-            round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
-            round_val_1L_chr = ds_descvs_ls$round_vals_chr[1]) %>% 
-            make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = transform_ds_for_tstng(data_tb, 
-            depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+            test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int)
+    }, bl_cors_tb = transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
+        depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
+        round_var_nm_1L_chr = if (ds_descvs_ls$round_vals_chr == 
+            "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+            character(0))) {
+            NA_character_
+        } else {
+            ds_descvs_ls$round_var_nm_1L_chr
+        }, round_val_1L_chr = if (ds_descvs_ls$round_vals_chr == 
+            "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+            character(0))) {
+            NA_character_
+        } else {
+            ds_descvs_ls$round_vals_chr[1]
+        }) %>% make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = if (ds_descvs_ls$round_vals_chr == 
+        "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+        character(0))) {
+        NULL
+    } else {
+        transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
             depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
             round_var_nm_1L_chr = ds_descvs_ls$round_var_nm_1L_chr, 
             round_val_1L_chr = ds_descvs_ls$round_vals_chr[2]) %>% 
-            make_corstars_tbl_xx(result_chr = "none"), cors_with_utl_tb = make_cors_with_utl_tbl(data_tb, 
-            ds_descvs_ls = ds_descvs_ls), ds_descvs_ls = ds_descvs_ls)
-    descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb, 
-        ds_descvs_ls = ds_descvs_ls, descv_tbl_ls = descv_tbl_ls, 
-        dictionary_tb = ds_descvs_ls$dictionary_tb, nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
-        predictors_lup = predictors_lup)
-    saveRDS(descv_tbl_ls, paste0(descv_outp_dir_1L_chr, "/descv_tbls_ls.RDS"))
+            make_corstars_tbl_xx(result_chr = "none")
+    }, cors_with_utl_tb = make_cors_with_utl_tbl(data_tb %>% 
+        dplyr::mutate(catch_all_round_chr = ds_descvs_ls$round_vals_chr[1]), 
+        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr == "Overall" & 
+            identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
+            ds_descvs_ls %>% purrr::list_modify(round_var_nm_1L_chr = "catch_all_round_chr")
+        } else {
+            ds_descvs_ls
+        }), ds_descvs_ls = ds_descvs_ls)
+    descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb %>% 
+        dplyr::mutate(catch_all_round_chr = ds_descvs_ls$round_vals_chr[1]), 
+        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr == "Overall" & 
+            identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
+            ds_descvs_ls %>% purrr::list_modify(round_var_nm_1L_chr = "catch_all_round_chr")
+        }
+        else {
+            ds_descvs_ls
+        }, descv_tbl_ls = descv_tbl_ls, dictionary_tb = ds_descvs_ls$dictionary_tb, 
+        nbr_of_digits_1L_int = nbr_of_digits_1L_int, predictors_lup = predictors_lup)
+    ready4::write_with_consent(consented_fn = saveRDS, prompt_1L_chr = paste0("Are you sure that you want to write the following file", 
+        " to your machine? \n", paste0(descv_outp_dir_1L_chr, 
+            "/descv_tbls_ls.RDS")), consent_1L_chr = consent_1L_chr, 
+        consent_indcs_int = consent_indcs_int, consented_args_ls = list(object = descv_tbl_ls, 
+            file = paste0(descv_outp_dir_1L_chr, "/descv_tbls_ls.RDS")), 
+        consented_msg_1L_chr = paste0("New file created:\n", 
+            paste0(descv_outp_dir_1L_chr, "/descv_tbls_ls.RDS")), 
+        declined_msg_1L_chr = "Write request cancelled - no new file has been created.", 
+        options_chr = options_chr, return_1L_lgl = F)
     return(descv_tbl_ls)
 }
 #' Write results to comma separated variables file

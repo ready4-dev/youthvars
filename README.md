@@ -1,6 +1,6 @@
 # youthvars
 
-## Describe and Validate Ready4 Person Record Datasets
+## Describe and Validate Person Record Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
@@ -10,7 +10,7 @@
 <!-- badges: end -->
 
 Tools to describe and quality assure individual human record
-datasets for use with the ready4 youth mental health systems model
+datasets for in models developed with the ready4 framework
 (https://www.ready4-dev.com/).  The main motivation for this package
 is to facilitate automated data integrity checks, ensure that methods
 are applied to the appropriate data structures and streamline

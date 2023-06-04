@@ -9,7 +9,10 @@ write_descv_tbls(
   ds_descvs_ls,
   predictors_lup,
   descv_outp_dir_1L_chr,
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
   nbr_of_digits_1L_int = 2,
+  options_chr = c("Y", "N"),
   participation_var_1L_chr = "participation"
 )
 }
@@ -22,7 +25,13 @@ write_descv_tbls(
 
 \item{descv_outp_dir_1L_chr}{Descriptive output directory (a character vector of length one)}
 
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
+
+\item{consent_indcs_int}{Consent indices (an integer vector), Default: 1}
+
 \item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 2}
+
+\item{options_chr}{Options (a character vector), Default: c("Y", "N")}
 
 \item{participation_var_1L_chr}{Participation variable (a character vector of length one), Default: 'participation'}
 }

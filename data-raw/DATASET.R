@@ -3,8 +3,8 @@ library(ready4show)
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
-x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Ready4 Person Record Datasets",
-                                 pkg_desc_1L_chr = "Tools to describe and quality assure individual human record datasets for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/).
+x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Person Record Datasets",
+                                 pkg_desc_1L_chr = "Tools to describe and quality assure individual human record datasets for in models developed with the ready4 framework (https://www.ready4-dev.com/).
                             The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics.
   This development version of the youthvars package has been made available as part of the process of testing and documenting the package.
                             If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).",

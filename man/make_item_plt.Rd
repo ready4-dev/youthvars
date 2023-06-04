@@ -7,13 +7,15 @@
 make_item_plt(
   tfd_data_tb,
   var_nm_1L_chr,
-  round_var_nm_1L_chr = "round",
   x_label_1L_chr,
-  y_label_1L_chr = "Percentage",
   fill_label_1L_chr = "Data collection",
-  y_scale_scl_fn = NULL,
+  legend_position_1L_chr = "none",
+  round_var_nm_1L_chr = "round",
+  sngl_round_lbl_1L_chr = "n",
+  sngl_round_var_nm_1L_chr = "n",
   use_bw_theme_1L_lgl = F,
-  legend_position_1L_chr = "none"
+  y_label_1L_chr = "Percentage",
+  y_scale_scl_fn = NULL
 )
 }
 \arguments{
@@ -21,19 +23,23 @@ make_item_plt(
 
 \item{var_nm_1L_chr}{Variable name (a character vector of length one)}
 
-\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
-
 \item{x_label_1L_chr}{X label (a character vector of length one)}
-
-\item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 
 \item{fill_label_1L_chr}{Fill label (a character vector of length one), Default: 'Data collection'}
 
-\item{y_scale_scl_fn}{Y scale scale (a function), Default: NULL}
+\item{legend_position_1L_chr}{Legend position (a character vector of length one), Default: 'none'}
+
+\item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
+
+\item{sngl_round_lbl_1L_chr}{Single round label (a character vector of length one), Default: 'n'}
+
+\item{sngl_round_var_nm_1L_chr}{Single round variable name (a character vector of length one), Default: 'n'}
 
 \item{use_bw_theme_1L_lgl}{Use black and white theme (a logical vector of length one), Default: F}
 
-\item{legend_position_1L_chr}{Legend position (a character vector of length one), Default: 'none'}
+\item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
+
+\item{y_scale_scl_fn}{Y scale scale (a function), Default: NULL}
 }
 \value{
 Item (a plot)

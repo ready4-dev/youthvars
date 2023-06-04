@@ -8,18 +8,19 @@ write_descv_plots(
   data_tb,
   ds_descvs_ls,
   descv_outp_dir_1L_chr,
-  lbl_nms_chr = c("Household tasks", "Getting around", "Morbility", "Self care",
-    "Enjoy close rels", "Family rels", "Community involvement", "Despair", "Worry",
-    "Sad", "Agitated", "Energy level", "Control", "Coping", "Frequency of pain",
-    "Degree of pain", "Pain interference", "Vision", "Hearing", "Communication"),
-  maui_domains_pfxs_1L_chr = "vD",
-  item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
-    1L), width_1L_dbl = 9),
+  combined_plot_params_ls = list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl
+    = c(0.9, 0.9), base_height_dbl = 10),
+  consent_1L_chr = "",
+  consent_indcs_int = 1L,
   dim_plots_params_ls = list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
     1L), width_1L_dbl = 8),
+  item_plots_params_ls = list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
+    1L), width_1L_dbl = 9),
+  lbl_nms_chr = character(0),
+  maui_domains_pfxs_1L_chr = "vD",
+  options_chr = c("Y", "N"),
   utl_by_rnd_plots_params_ls = list(width_1L_dbl = 6, height_1L_dbl = 4),
-  combined_plot_params_ls = list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl
-    = c(0.9, 0.9), base_height_dbl = 10)
+  x_labels_chr = character(0)
 )
 }
 \arguments{
@@ -29,24 +30,28 @@ write_descv_plots(
 
 \item{descv_outp_dir_1L_chr}{Descriptive output directory (a character vector of length one)}
 
-\item{lbl_nms_chr}{Label names (a character vector), Default: c("Household tasks", "Getting around", "Morbility", "Self care",
-"Enjoy close rels", "Family rels", "Community involvement",
-"Despair", "Worry", "Sad", "Agitated", "Energy level", "Control",
-"Coping", "Frequency of pain", "Degree of pain", "Pain interference",
-"Vision", "Hearing", "Communication")}
+\item{combined_plot_params_ls}{Combined plot parameters (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9,
+0.9), base_height_dbl = 10)}
 
-\item{maui_domains_pfxs_1L_chr}{Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'}
+\item{consent_1L_chr}{Consent (a character vector of length one), Default: ''}
 
-\item{item_plots_params_ls}{Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
-1L), width_1L_dbl = 9)}
+\item{consent_indcs_int}{Consent indices (an integer vector), Default: 1}
 
 \item{dim_plots_params_ls}{Dimension plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(3L, 2L), heights_int = c(10L,
 1L), width_1L_dbl = 8)}
 
+\item{item_plots_params_ls}{Item plots parameters (a list), Default: list(plot_rows_cols_pair_int = c(5L, 4L), heights_int = c(10L,
+1L), width_1L_dbl = 9)}
+
+\item{lbl_nms_chr}{Label names (a character vector), Default: character(0)}
+
+\item{maui_domains_pfxs_1L_chr}{Multi-attribute utility instrument domains prefixes (a character vector of length one), Default: 'vD'}
+
+\item{options_chr}{Options (a character vector), Default: c("Y", "N")}
+
 \item{utl_by_rnd_plots_params_ls}{Utility by round plots parameters (a list), Default: list(width_1L_dbl = 6, height_1L_dbl = 4)}
 
-\item{combined_plot_params_ls}{Combined plot parameters (a list), Default: list(nrow_1L_int = 2L, rel_heights_dbl = c(4, 10), scale_dbl = c(0.9,
-0.9), base_height_dbl = 10)}
+\item{x_labels_chr}{X labels (a character vector), Default: character(0)}
 }
 \value{
 Descriptive plots paths (a list)

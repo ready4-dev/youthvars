@@ -1,13 +1,14 @@
 ---
 title: "Dataset (Deprecated)"
-output: 
-  rmarkdown::html_vignette:
-    toc: true
-  pdf_document:
-    highlight: null
-    includes:
-      in_header: preamble.tex
-    number_sections: no
+output: rmarkdown::html_vignette
+# output: 
+#   rmarkdown::html_vignette:
+#     toc: true
+#   pdf_document:
+#     highlight: null
+#     includes:
+#       in_header: preamble.tex
+#     number_sections: no
 vignette: >
   %\VignetteIndexEntry{Dataset (Deprecated)}
   %\VignetteEngine{knitr::rmarkdown}

@@ -15,6 +15,7 @@ make_sub_tot_plts(
   legend_sclg_1L_dbl = 1,
   make_log_log_tfmn_1L_lgl = F,
   round_var_nm_1L_chr = "round",
+  x_labels_chr = character(0),
   y_label_1L_chr = "Percentage"
 )
 }
@@ -38,6 +39,8 @@ make_sub_tot_plts(
 \item{make_log_log_tfmn_1L_lgl}{Make log log transformation (a logical vector of length one), Default: F}
 
 \item{round_var_nm_1L_chr}{Round variable name (a character vector of length one), Default: 'round'}
+
+\item{x_labels_chr}{X labels (a character vector), Default: character(0)}
 
 \item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 }

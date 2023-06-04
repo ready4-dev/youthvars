@@ -1,11 +1,108 @@
+transform_csnl_example_ds <- function(ds_df){ # New to youthvars
+  ds_tb <- ds_df %>%
+    tibble::as_tibble() %>%
+    dplyr::mutate(c_p_diag_grouped = dplyr::case_when(as.character(DiagnosisPrimary) %in% c("Acute stress disorder",
+                                                                                            "Adjustment disorder",
+                                                                                            "Agoraphobia",
+                                                                                            "Anxiety symptoms",
+                                                                                            "Bipolar disorder",
+                                                                                            "Cyclothymic disorder",
+                                                                                            "Depressive disorder NOS",
+                                                                                            "Depressive symptoms",
+                                                                                            "Dysthymia",
+                                                                                            "Generalised anxiety disorder",
+                                                                                            "Major depressive disorder",
+                                                                                            "Mixed anxiety and depressive symptoms",
+                                                                                            "Obsessive-compulsive disorder",
+                                                                                            "Other affective disorder",
+                                                                                            "Other anxiety disorder",
+                                                                                            "Panic disorder",
+                                                                                            "Post-traumatic stress disorder",
+                                                                                            "Separation anxiety disorder",
+                                                                                            "Social phobia",
+                                                                                            "Stress related") ~ "Anxiety and Depression",
+                                                      as.character(DiagnosisPrimary) %in% c("Attention deficit hyperactivity disorder (ADHD)",
+                                                                                            "Conduct disorder",
+                                                                                            "Feeding and Eating Disorders",
+                                                                                            "Gender Dysphoria",
+                                                                                            "Neurocognitive Disorders",
+                                                                                            "Neurodevelopmental Disorders",
+                                                                                            "Oppositional defiant disorder",
+                                                                                            "Other",
+                                                                                            "Personality Disorders",
+                                                                                            "Pervasive developmental disorder",
+                                                                                            "Schizoaffective disorder",
+                                                                                            "Schizophrenia",
+                                                                                            "Sleep-Wake Disorders",
+                                                                                            "Somatic Symptom and Related Disorders" ) ~ "Other Mental Disorder",
+                                                      as.character(DiagnosisPrimary) %in% c("Alcohol dependence",
+                                                                                            "Other drug dependence") ~ "Substance Use",
+                                                      as.character(DiagnosisPrimary) %in% c("Not applicable (e.g. for non-Mental Health related services, or service provider not qualified to give diagnosis)",
+                                                                                            "Diagnosis not yet assessed or requires further assessment",
+                                                                                            "No diagnosis (and no sub-syndromal mental health problems)") ~ "Not applicable",
+                                                      is.na(DiagnosisPrimary) ~ NA_character_,
+                                                      T ~ "Uncategorised") %>%
+                    as.factor()) %>%
+    dplyr::rename(c_days_cut_back = K12_DaysCutDown,
+                  c_days_unable = K11_DaysTotallyUnable,
+                  CHU9D = chu9_total_w,
+                  c_p_diag_s = DiagnosisPrimary,
+                  d_age = Age,
+                  d_ATSI = ATSI,
+                  d_CALD = CALD, # Uncomment when dictionary is updated
+                  d_employed = Working,
+                  d_employment_type = EmploymentType,
+                  d_gender = Gender,
+                  d_studying = Studying,
+                  K10 = K10_total,
+                  MLT = MLT_mean,
+                  s_IRSD = IRSD,
+                  s_remoteness = Remoteness,
+                  validation_aqol_c = aqol6d_total_c,
+                  validation_aqol_w = aqol6d_total_w)
+  ds_tb <- ds_tb %>%
+    dplyr::mutate(dplyr::across(c(dplyr::starts_with("aqol6d_q"),
+                                  dplyr::starts_with("chu9_q"),
+                                  dplyr::starts_with("c_days_"),
+                                  d_age,
+                                  K10,
+                                  s_IRSD,
+                                  SOFAS), ~as.integer(.x))) %>%
+    dplyr::mutate(dplyr::across(c(c_p_diag_s,
+                                  d_ATSI,
+                                  d_gender), ~as.factor(.x)))
+  ds_tb <- ds_tb %>%
+    dplyr::mutate(c_days_oor = c_days_cut_back + c_days_unable) %>%
+    dplyr::mutate(d_studying_working = dplyr::case_when(purrr::map2_lgl(as.character(d_employed), as.character(d_studying), ~ is.na(.x) | is.na(.y)) ~ NA_character_,
+                                                        purrr::map2_lgl(as.character(d_employed), as.character(d_studying), ~ .x == "No" && .y == "No") ~ "Not studying or working",
+                                                        purrr::map2_lgl(as.character(d_employed), as.character(d_studying), ~ .x == "No" && .y == "Yes") ~ "Studying only",
+                                                        purrr::map2_lgl(as.character(d_employed), as.character(d_studying), ~ .x == "Yes" && .y == "No") ~ "Working only",
+                                                        purrr::map2_lgl(as.character(d_employed), as.character(d_studying), ~ .x == "Yes" && .y == "Yes") ~ "Studying and working",
+                                                        T ~ "Uncategorised"
+    ) %>% as.factor()) %>%
+    dplyr::mutate(difference_mauis = validation_aqol_w - CHU9D) %>%
+    dplyr::mutate(difference_aqol_calcs = NA_real_)
+  ds_tb <- add_uids_to_tbs_ls(list(ds_tb),"Participant_") %>% purrr::pluck(1)  %>% ready4::remove_lbls_from_df()
+  return(ds_tb)
+}
 transform_ds_for_item_plt <- function(data_tb,
                                       var_nm_1L_chr,
                                       round_var_nm_1L_chr = "round"){
   tfd_data_tb <- data_tb %>%
-    dplyr::filter(!is.na(!!as.name(var_nm_1L_chr) )) %>%
-    dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr), !!as.name(var_nm_1L_chr) ) %>%
-    dplyr::summarise(n = dplyr::n()) %>%
-    dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr)) %>%
+    dplyr::filter(!is.na(!!as.name(var_nm_1L_chr) ))
+  if(!identical(round_var_nm_1L_chr, character(0))){
+    tfd_data_tb <- tfd_data_tb %>%
+      dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr), !!as.name(var_nm_1L_chr) )
+  }else{
+    tfd_data_tb <- tfd_data_tb %>%
+      dplyr::group_by(!!as.name(var_nm_1L_chr) )
+  }
+  tfd_data_tb <- tfd_data_tb %>%
+    dplyr::summarise(n = dplyr::n())
+  if(!identical(round_var_nm_1L_chr, character(0)))
+    tfd_data_tb <- tfd_data_tb %>%
+    dplyr::group_by(!!rlang::sym(round_var_nm_1L_chr))
+  tfd_data_tb <- tfd_data_tb %>%
     dplyr::mutate(y = n/sum(n))
   return(tfd_data_tb)
 }
@@ -17,8 +114,8 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
   vars_to_keep_chr <- c(depnt_var_nm_1L_chr, candidate_predrs_chr,
                         covar_var_nms_chr) %>% purrr::discard(is.na)
   tfd_data_tb <- data_tb
-  if(!is.na(round_var_nm_1L_chr) & !is.na(round_val_1L_chr))
-  tfd_data_tb <- tfd_data_tb %>%
+  if(!identical(round_var_nm_1L_chr, character(0)) && (!is.na(round_var_nm_1L_chr) & !is.na(round_val_1L_chr)))
+    tfd_data_tb <- tfd_data_tb %>%
     dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == round_val_1L_chr)
   tfd_data_tb <- tfd_data_tb %>%
     dplyr::select(!!!rlang::syms(vars_to_keep_chr)) %>%

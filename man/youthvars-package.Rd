@@ -4,15 +4,15 @@
 \name{youthvars-package}
 \alias{youthvars}
 \alias{youthvars-package}
-\title{youthvars: Describe and Validate Ready4 Person Record Datasets}
+\title{youthvars: Describe and Validate Person Record Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to describe and quality assure individual human record datasets for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/). The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+Tools to describe and quality assure individual human record datasets for in models developed with the ready4 framework (https://www.ready4-dev.com/). The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to describe and quality assure individual human record datasets for use with the ready4 youth mental health systems model (https://www.ready4-dev.com/). The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
+Tools to describe and quality assure individual human record datasets for in models developed with the ready4 framework (https://www.ready4-dev.com/). The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton@orygen.org.au).
 }
 \seealso{
 Useful links:
