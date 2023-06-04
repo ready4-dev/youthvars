@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9111</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9112</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,13 +62,15 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">make_item_plt</span><span class="op">(</span></span>
 <span>  <span class="va">tfd_data_tb</span>,</span>
 <span>  <span class="va">var_nm_1L_chr</span>,</span>
-<span>  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,</span>
 <span>  <span class="va">x_label_1L_chr</span>,</span>
-<span>  y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>,</span>
 <span>  fill_label_1L_chr <span class="op">=</span> <span class="st">"Data collection"</span>,</span>
-<span>  y_scale_scl_fn <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  legend_position_1L_chr <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>  round_var_nm_1L_chr <span class="op">=</span> <span class="st">"round"</span>,</span>
+<span>  sngl_round_lbl_1L_chr <span class="op">=</span> <span class="st">"n"</span>,</span>
+<span>  sngl_round_var_nm_1L_chr <span class="op">=</span> <span class="st">"n"</span>,</span>
 <span>  use_bw_theme_1L_lgl <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>  legend_position_1L_chr <span class="op">=</span> <span class="st">"none"</span></span>
+<span>  y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>,</span>
+<span>  y_scale_scl_fn <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -82,32 +84,40 @@
 <dd><p>Variable name (a character vector of length one)</p></dd>
 
 
-<dt>round_var_nm_1L_chr</dt>
-<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
-
-
 <dt>x_label_1L_chr</dt>
 <dd><p>X label (a character vector of length one)</p></dd>
-
-
-<dt>y_label_1L_chr</dt>
-<dd><p>Y label (a character vector of length one), Default: 'Percentage'</p></dd>
 
 
 <dt>fill_label_1L_chr</dt>
 <dd><p>Fill label (a character vector of length one), Default: 'Data collection'</p></dd>
 
 
-<dt>y_scale_scl_fn</dt>
-<dd><p>Y scale scale (a function), Default: NULL</p></dd>
+<dt>legend_position_1L_chr</dt>
+<dd><p>Legend position (a character vector of length one), Default: 'none'</p></dd>
+
+
+<dt>round_var_nm_1L_chr</dt>
+<dd><p>Round variable name (a character vector of length one), Default: 'round'</p></dd>
+
+
+<dt>sngl_round_lbl_1L_chr</dt>
+<dd><p>Single round label (a character vector of length one), Default: 'n'</p></dd>
+
+
+<dt>sngl_round_var_nm_1L_chr</dt>
+<dd><p>Single round variable name (a character vector of length one), Default: 'n'</p></dd>
 
 
 <dt>use_bw_theme_1L_lgl</dt>
 <dd><p>Use black and white theme (a logical vector of length one), Default: F</p></dd>
 
 
-<dt>legend_position_1L_chr</dt>
-<dd><p>Legend position (a character vector of length one), Default: 'none'</p></dd>
+<dt>y_label_1L_chr</dt>
+<dd><p>Y label (a character vector of length one), Default: 'Percentage'</p></dd>
+
+
+<dt>y_scale_scl_fn</dt>
+<dd><p>Y scale scale (a function), Default: NULL</p></dd>
 
 </dl></div>
     <div class="section level2">

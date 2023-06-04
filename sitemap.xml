@@ -172,6 +172,9 @@
     <loc>https://ready4-dev.github.io/youthvars/reference/make_corstars_tbl_xx.html</loc>
   </url>
   <url>
+    <loc>https://ready4-dev.github.io/youthvars/reference/make_csnl_example_dict.html</loc>
+  </url>
+  <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/make_descv_stats_tbl.html</loc>
   </url>
   <url>
@@ -275,6 +278,9 @@
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/repln_ds_dict_r3.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/youthvars/reference/transform_csnl_example_ds.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/transform_ds_for_item_plt.html</loc>
