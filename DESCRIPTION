@@ -1,6 +1,6 @@
 Package: youthvars
-Title: Describe and Validate Ready4 Person Record Datasets
-Version: 0.0.0.9111
+Title: Describe and Validate Person Record Datasets
+Version: 0.0.0.9112
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -11,7 +11,7 @@ Authors@R: c(
     person("National Health and Medical Research Council", role = "fnd")
   )
 Description: Tools to describe and quality assure individual human record
-    datasets for use with the ready4 youth mental health systems model
+    datasets for in models developed with the ready4 framework
     (https://www.ready4-dev.com/).  The main motivation for this package
     is to facilitate automated data integrity checks, ensure that methods
     are applied to the appropriate data structures and streamline
@@ -50,9 +50,9 @@ Imports:
     mice,
     psych,
     purrr,
-    ready4 (>= 0.0.0.9109),
-    ready4show (>= 0.0.0.9103),
-    ready4use (>= 0.0.0.9225),
+    ready4 (>= 0.0.0.9117),
+    ready4show (>= 0.0.0.9106),
+    ready4use (>= 0.0.0.9227),
     rlang,
     scales,
     simstudy,
