@@ -5,12 +5,14 @@
 \alias{characterize,YouthvarsDescriptives-method}
 \title{Characterize data by generating (tabular) descriptive statistics}
 \usage{
-\S4method{characterize}{YouthvarsDescriptives}(x, y_Ready4useDyad)
+\S4method{characterize}{YouthvarsDescriptives}(x, y_Ready4useDyad, ...)
 }
 \arguments{
 \item{x}{An object of class YouthvarsDescriptives}
 
 \item{y_Ready4useDyad}{PARAM_DESCRIPTION}
+
+\item{...}{Additional arguments}
 }
 \value{
 Descriptives (a data.frame)

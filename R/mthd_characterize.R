@@ -4,13 +4,14 @@
 #' @description characterize method applied to YouthvarsDescriptives
 #' @param x An object of class YouthvarsDescriptives
 #' @param y_Ready4useDyad PARAM_DESCRIPTION
+#' @param ... Additional arguments
 #' @return Descriptives (a data.frame)
 #' @rdname characterize-methods
 #' @aliases characterize,YouthvarsDescriptives-method
 #' @export 
 #' @importFrom rlang exec
 #' @importFrom ready4 characterize
-methods::setMethod("characterize", "YouthvarsDescriptives", function (x, y_Ready4useDyad) 
+methods::setMethod("characterize", "YouthvarsDescriptives", function (x, y_Ready4useDyad, ...) 
 {
     if (!is.null(x@ds_tfmn_ls$args_ls)) {
         data_tb <- rlang::exec(x@ds_tfmn_ls$fn, y_Ready4useDyad@ds_tb, 

@@ -4,7 +4,8 @@ depict_YouthvarsSeries <- function(x,
                                    labels_chr = NA_character_,
                                    label_fill_1L_chr = "Data collection",
                                    y_label_1L_chr = "Percentage",
-                                   y_scale_scl_fn = scales::percent){
+                                   y_scale_scl_fn = scales::percent,
+                                   ...){
   if(is.na(labels_chr[1]))
     labels_chr <- var_nms_chr %>%
       purrr::map_chr(~ready4::get_from_lup_obj(x@a_Ready4useDyad@dictionary_r3,

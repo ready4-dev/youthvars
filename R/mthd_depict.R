@@ -9,6 +9,7 @@
 #' @param label_fill_1L_chr Label fill (a character vector of length one), Default: 'Data collection'
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
+#' @param ... Additional arguments
 #' @return NULL
 #' @rdname depict-methods
 #' @aliases depict,YouthvarsSeries-method
@@ -18,7 +19,7 @@
 #' @importFrom ready4 get_from_lup_obj depict
 methods::setMethod("depict", "YouthvarsSeries", function (x, var_nms_chr, type_1L_chr = "by_time", labels_chr = NA_character_, 
     label_fill_1L_chr = "Data collection", y_label_1L_chr = "Percentage", 
-    y_scale_scl_fn = scales::percent) 
+    y_scale_scl_fn = scales::percent, ...) 
 {
     if (is.na(labels_chr[1])) 
         labels_chr <- var_nms_chr %>% purrr::map_chr(~ready4::get_from_lup_obj(x@a_Ready4useDyad@dictionary_r3, 

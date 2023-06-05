@@ -41,8 +41,7 @@ We could add metadata about `X`, such as the unique identifier variable name, by
 
 ```{r}
 ## Not run
-# X <- YouthvarsProfile(a_Ready4useDyad = X,
-#                       id_var_nm_1L_chr = "fkClientID")
+# X <- YouthvarsProfile(a_Ready4useDyad = X, id_var_nm_1L_chr = "fkClientID")
 ```
 
 However, in this case the data we ingested includes a longitudinal dataset. It is therefore preferable to transform `X` into a `YouthvarsSeries` instance.  `YouthvarsSeries` objects contain all of the fields of `YouthvarsProfile` objects, but also include additional fields that are specific for longitudinal datasets (e.g. `timepoint_var_nm_1L_chr` and `timepoint_vals_chr` that respectively specify the data-collection timepoint variable name and values and `participation_var_1L_chr` that specifies the desired name of a yet to be created variable that will summarise the data-collection timepoints for which each unit record supplied data).

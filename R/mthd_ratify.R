@@ -1,10 +1,27 @@
 #' 
 #' Ratify that a dataset meets validity criteria
+#' @name ratify-YouthvarsProfile
+#' @description ratify method applied to YouthvarsProfile
+#' @param x An object of class YouthvarsProfile
+#' @param ... Additional arguments
+#' @return x (An object of class YouthvarsProfile)
+#' @rdname ratify-methods
+#' @aliases ratify,YouthvarsProfile-method
+#' @export 
+#' @importFrom ready4 ratify
+methods::setMethod("ratify", "YouthvarsProfile", function (x, ...) 
+{
+    message("No checks were peformed or modifications made.")
+    return(x)
+})
+#' 
+#' Ratify that a dataset meets validity criteria
 #' @name ratify-YouthvarsSeries
 #' @description ratify method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
 #' @param timepoints_int Timepoints (an integer vector), Default: c(1L, 2L)
 #' @param type_1L_chr Type (a character vector of length one), Default: 'two_timepoints'
+#' @param ... Additional arguments
 #' @return x (An object of class YouthvarsSeries)
 #' @rdname ratify-methods
 #' @aliases ratify,YouthvarsSeries-method
@@ -14,7 +31,8 @@
 #' @importFrom ready4use remove_labels_from_ds add_labels_from_dictionary
 #' @importFrom dplyr arrange
 #' @importFrom ready4 ratify
-methods::setMethod("ratify", "YouthvarsSeries", function (x, timepoints_int = c(1L, 2L), type_1L_chr = "two_timepoints") 
+methods::setMethod("ratify", "YouthvarsSeries", function (x, timepoints_int = c(1L, 2L), type_1L_chr = "two_timepoints", 
+    ...) 
 {
     if (type_1L_chr == "two_timepoints") 
         assert_ds_is_valid(x@a_Ready4useDyad@ds_tb, id_var_nm_1L_chr = x@id_var_nm_1L_chr, 

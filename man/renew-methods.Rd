@@ -9,7 +9,14 @@
 \usage{
 \S4method{renew}{YouthvarsDescriptives}(x, type_1L_chr = "characterize", ...)
 
-\S4method{renew}{YouthvarsProfile}(x, type_1L_chr = "characterize")
+\S4method{renew}{YouthvarsProfile}(
+  x,
+  nbr_of_digits_1L_int = 3L,
+  profile_chr = character(0),
+  type_1L_chr = "characterize",
+  what_1L_chr = "descriptives_ls",
+  ...
+)
 }
 \arguments{
 \item{x}{An object of class YouthvarsProfile}
@@ -17,6 +24,12 @@
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'characterize'}
 
 \item{...}{Additional arguments}
+
+\item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 3}
+
+\item{profile_chr}{Profile (a character vector), Default: character(0)}
+
+\item{what_1L_chr}{What (a character vector of length one), Default: 'descriptives_ls'}
 }
 \value{
 x (An object of class YouthvarsDescriptives)

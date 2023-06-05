@@ -1,58 +1,74 @@
 #' 
-#' Apply the renew method to a model module slot
-#' @name renewSlot-YouthvarsSeries
-#' @description renewSlot method applied to YouthvarsSeries
-#' @param x An object of class YouthvarsSeries
-#' @param slot_nm_1L_chr Slot name (a character vector of length one), Default: 'descriptives_ls'
+#' Manufacture a new object
+#' @name manufacture-YouthvarsProfile
+#' @description manufacture method applied to YouthvarsProfile
+#' @param x An object of class YouthvarsProfile
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 3
+#' @param profile_chr Profile (a character vector), Default: character(0)
+#' @param what_1L_chr What (a character vector of length one), Default: 'descriptives_ls'
+#' @param ... Additional arguments
+#' @return Object (an output object of multiple potential types)
+#' @rdname manufacture-methods
+#' @aliases manufacture,YouthvarsProfile-method
+#' @export 
+#' @importFrom ready4 manufacture
+methods::setMethod("manufacture", "YouthvarsProfile", function (x, nbr_of_digits_1L_int = 3L, profile_chr = character(0), 
+    what_1L_chr = "descriptives_ls", ...) 
+{
+    object_xx <- NULL
+    if (what_1L_chr == "descriptives_ls") {
+        object_xx <- list(overall = YouthvarsDescriptives(key_var_nm_1L_chr = character(0), 
+            key_var_vals_chr = "Overall", nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
+            profiled_vars_chr = profile_chr, sections_as_row_1L_lgl = F, 
+            test_1L_lgl = F))
+    }
+    return(object_xx)
+})
+#' 
+#' Manufacture a new object
+#' @name manufacture-YouthvarsSeries
+#' @description manufacture method applied to YouthvarsSeries
+#' @param x An object of class YouthvarsSeries
 #' @param compare_by_time_chr Compare by time (a character vector), Default: 'NA'
 #' @param compare_by_time_with_test_chr Compare by time with test (a character vector), Default: 'NA'
 #' @param compare_ptcpn_chr Compare ptcpn (a character vector), Default: 'NA'
 #' @param compare_ptcpn_with_test_chr Compare ptcpn with test (a character vector), Default: 'NA'
-#' @param profiled_vars_ls Profiled variables (a list), Default: deprecated()
+#' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 3
 #' @param timepoints_int Timepoints (an integer vector), Default: c(1L, 2L)
+#' @param what_1L_chr What (a character vector of length one), Default: 'descriptives_ls'
 #' @param ... Additional arguments
-#' @return x (An object of class YouthvarsSeries)
-#' @rdname renewSlot-methods
-#' @aliases renewSlot,YouthvarsSeries-method
+#' @return Object (an output object of multiple potential types)
+#' @rdname manufacture-methods
+#' @aliases manufacture,YouthvarsSeries-method
 #' @export 
-#' @importFrom lifecycle deprecate_warn is_present
 #' @importFrom purrr discard map2
 #' @importFrom stats setNames
 #' @importFrom dplyr filter
 #' @importFrom methods callNextMethod
-#' @importFrom ready4 renewSlot
-methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr = "descriptives_ls", nbr_of_digits_1L_int = 3L, 
-    compare_by_time_chr = NA_character_, compare_by_time_with_test_chr = NA_character_, 
+#' @importFrom ready4 manufacture
+methods::setMethod("manufacture", "YouthvarsSeries", function (x, compare_by_time_chr = NA_character_, compare_by_time_with_test_chr = NA_character_, 
     compare_ptcpn_chr = NA_character_, compare_ptcpn_with_test_chr = NA_character_, 
-    profiled_vars_ls = deprecated(), timepoints_int = c(1L, 2L), 
+    nbr_of_digits_1L_int = 3L, timepoints_int = c(1L, 2L), what_1L_chr = "descriptives_ls", 
     ...) 
 {
-    lifecycle::deprecate_warn("0.0.0.9112", "youthvars::renewSlot()", 
-        details = "Please use `renew(x, what_1L_chr = 'descriptives_ls', compare_by_time_chr,compare_by_time_with_test_chr,compare_ptcpn_chr,compare_ptcpn_with_test_chr)` instead.")
-    if (slot_nm_1L_chr == "descriptives_ls") {
+    object_xx <- NULL
+    if (what_1L_chr == "descriptives_ls") {
         if (identical(x@descriptives_ls, list(list()))) {
             descriptives_ls <- NULL
         }
         else {
             descriptives_ls <- x@descriptives_ls
         }
-        if (lifecycle::is_present(profiled_vars_ls)) {
-            lifecycle::deprecate_warn("0.0.0.9112", "youthvars::renewSlot(profiled_vars_ls)", 
-                details = "Please use `renew(x, what_1L_chr = 'descriptives_ls', compare_by_time_chr,compare_by_time_with_test_chr,compare_ptcpn_chr,compare_ptcpn_with_test_chr)` instead.")
+        profiled_vars_ls <- list(compare_by_time_chr, compare_by_time_with_test_chr, 
+            compare_ptcpn_chr, compare_ptcpn_with_test_chr)
+        if (identical((profiled_vars_ls %>% purrr::discard(~is.na(.x[1]))), 
+            list())) {
+            profiled_vars_ls <- NULL
         }
         else {
-            profiled_vars_ls <- list(compare_by_time_chr, compare_by_time_with_test_chr, 
-                compare_ptcpn_chr, compare_ptcpn_with_test_chr)
-            if (identical((profiled_vars_ls %>% purrr::discard(~is.na(.x[1]))), 
-                list())) {
-                profiled_vars_ls <- NULL
-            }
-            else {
-                profiled_vars_ls <- profiled_vars_ls %>% stats::setNames(c("temporal", 
-                  "temporal_tested", "participation", "participation_tested")) %>% 
-                  purrr::discard(~is.na(.x[1]))
-            }
+            profiled_vars_ls <- profiled_vars_ls %>% stats::setNames(c("temporal", 
+                "temporal_tested", "participation", "participation_tested")) %>% 
+                purrr::discard(~is.na(.x[1]))
         }
         if (!is.null(profiled_vars_ls)) {
             incl_idcs_int <- names(profiled_vars_ls) %>% startsWith("temporal")
@@ -81,11 +97,14 @@ methods::setMethod("renewSlot", "YouthvarsSeries", function (x, slot_nm_1L_chr =
                       test_1L_lgl = T)) %>% stats::setNames(participation_chr) %>% 
                   append(descriptives_ls)
             }
-            x@descriptives_ls <- descriptives_ls
+            object_xx <- descriptives_ls
+        }
+        else {
+            object_xx <- methods::callNextMethod()
         }
     }
     else {
-        methods::callNextMethod()
+        object_xx <- methods::callNextMethod()
     }
-    return(x)
+    return(object_xx)
 })

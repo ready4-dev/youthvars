@@ -12,7 +12,8 @@
   labels_chr = NA_character_,
   label_fill_1L_chr = "Data collection",
   y_label_1L_chr = "Percentage",
-  y_scale_scl_fn = scales::percent
+  y_scale_scl_fn = scales::percent,
+  ...
 )
 }
 \arguments{
@@ -29,6 +30,8 @@
 \item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
 
 \item{y_scale_scl_fn}{Y scale scale (a function), Default: scales::percent}
+
+\item{...}{Additional arguments}
 }
 \description{
 depict method applied to YouthvarsSeries

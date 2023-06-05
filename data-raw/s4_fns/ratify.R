@@ -1,6 +1,12 @@
+ratify_YouthvarsProfile <- function(x,
+                                    ...){
+  message("No checks were peformed or modifications made.")
+  return(x)
+}
 ratify_YouthvarsSeries <- function(x,
                                    timepoints_int = c(1L,2L),
-                                   type_1L_chr = "two_timepoints"){
+                                   type_1L_chr = "two_timepoints",
+                                   ...){
   if(type_1L_chr=="two_timepoints")
     assert_ds_is_valid(x@a_Ready4useDyad@ds_tb,
                        id_var_nm_1L_chr = x@id_var_nm_1L_chr,
