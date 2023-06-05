@@ -9,6 +9,7 @@
 \usage{
 \S4method{manufacture}{YouthvarsProfile}(
   x,
+  element_nm_1L_chr = "overall",
   nbr_of_digits_1L_int = 3L,
   profile_chr = character(0),
   what_1L_chr = "descriptives_ls",
@@ -29,6 +30,8 @@
 }
 \arguments{
 \item{x}{An object of class YouthvarsSeries}
+
+\item{element_nm_1L_chr}{Element name (a character vector of length one), Default: 'overall'}
 
 \item{nbr_of_digits_1L_int}{Number of digits (an integer vector of length one), Default: 3}
 

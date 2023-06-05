@@ -11,7 +11,7 @@
 #' @importFrom ready4 ratify
 methods::setMethod("ratify", "YouthvarsProfile", function (x, ...) 
 {
-    message("No checks were peformed or modifications made.")
+    message("No checks were performed or modifications made.")
     return(x)
 })
 #' 

@@ -1,6 +1,6 @@
 ratify_YouthvarsProfile <- function(x,
                                     ...){
-  message("No checks were peformed or modifications made.")
+  message("No checks were performed or modifications made.")
   return(x)
 }
 ratify_YouthvarsSeries <- function(x,

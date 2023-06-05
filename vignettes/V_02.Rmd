@@ -37,63 +37,79 @@ X <- ready4use::Ready4useRepos(dv_nm_1L_chr = "fakes",
 ```
 
 ## Add metadata
-We could add metadata about `X`, such as the unique identifier variable name, by transforming it to a `YouthvarsProfile` instance.
+If a dataset is cross-sectional or we wish to treat it as if it were (i.e., where data collection rounds are ignored) we can create `Y`, an instance of the `YouthvarsProfile` module, to add minimal metadata (the name of the  unique identifier variable).
 
 ```{r}
-## Not run
-# X <- YouthvarsProfile(a_Ready4useDyad = X, id_var_nm_1L_chr = "fkClientID")
+Y <- YouthvarsProfile(a_Ready4useDyad = X, id_var_nm_1L_chr = "fkClientID")
 ```
 
-However, in this case the data we ingested includes a longitudinal dataset. It is therefore preferable to transform `X` into a `YouthvarsSeries` instance.  `YouthvarsSeries` objects contain all of the fields of `YouthvarsProfile` objects, but also include additional fields that are specific for longitudinal datasets (e.g. `timepoint_var_nm_1L_chr` and `timepoint_vals_chr` that respectively specify the data-collection timepoint variable name and values and `participation_var_1L_chr` that specifies the desired name of a yet to be created variable that will summarise the data-collection timepoints for which each unit record supplied data).
+If the temporal dimension of the dataset is important, it may be therefore preferable to instead transform `X` into a `YouthvarsSeries` module instance.  `YouthvarsSeries` objects contain all of the fields of `YouthvarsProfile` objects, but also include additional fields that are specific for longitudinal datasets (e.g. `timepoint_var_nm_1L_chr` and `timepoint_vals_chr` that respectively specify the data-collection timepoint variable name and values and `participation_var_1L_chr` that specifies the desired name of a yet to be created variable that will summarise the data-collection timepoints for which each unit record supplied data).
 
 ```{r}
-X <- YouthvarsSeries(a_Ready4useDyad = X,
+Z <- YouthvarsSeries(a_Ready4useDyad = X,
                      id_var_nm_1L_chr = "fkClientID",
                      participation_var_1L_chr = "participation",
                      timepoint_vals_chr = c("Baseline","Follow-up"),
                      timepoint_var_nm_1L_chr = "round")
 ```
 
-## YouthvarsSeries methods
-Currently, only methods for `YouthvarsSeries` (and not yet `YouthvarsProfile`) have been included with the `youthvars` package. These methods are summarised in the following sections.
-
-### Validate data
-We use the `ratify` method to ensure that `X` has been appropriately configured for methods examining datasets reporting measures at two timepoints.
+## YouthvarsProfile methods
+### Inspect data
+We can now specify the variables that we would like to prepare descriptive statistics for using the `renew` method. The variables to be profiled are specified in the `profile_chr` argument, the number of decimal digits (default = 3) of numeric values in the summary tables to be generated can be specified with `nbr_of_digits_1L_int`.
 
 ```{r}
-X <- ratify(X,
+Y <- renew(Y, nbr_of_digits_1L_int = 2L, profile_chr = c("d_age","d_sexual_ori_s","d_studying_working"))
+```
+
+We can now view the descriptive statistics we created in the previous step.
+
+```{r overalltb, tab.cap='Descriptive summary', tab.id = 'overalltb', results="asis"}
+Y %>%
+  exhibit(profile_idx_int = 1L, scroll_box_args_ls = list(width = "100%"))
+```
+
+We can also plot the distributions of selected variables in our dataset.
+
+```{r totalscsnlfig, fig.cap="SOFAS total scores", out.width = "600px"}
+depict(Y, var_nms_chr = c("c_sofas"), labels_chr = c("SOFAS"))
+```
+
+
+## YouthvarsSeries methods
+### Validate data
+To explore longitudinal data we need to first use the `ratify` method to ensure that `Z` has been appropriately configured for methods examining datasets reporting measures at two timepoints.
+
+```{r}
+Z <- ratify(Z,
             type_1L_chr = "two_timepoints")
 ```
 
 ### Inspect data
-We can now specify the variables that we would like to prepare descriptive statistics for using the `renewSlot` and `renew` methods. The variables to be profiled are specified in arguments beginning with "compare_". Use `compare_ptcpn_chr` to compare variables based on whether cases reported data at one or both timepoints and `compare_by_time_chr` to compare the summary statistics of variables by timepoints, e.g at baseline and follow-up. If you wish these comparisons to report p values, then use the `compare_ptcpn_with_test_chr` and `compare_by_time_with_test_chr` arguments.
+We can now specify the variables that we would like to prepare descriptive statistics for using the `renew` method. The variables to be profiled are specified in arguments beginning with "compare_". Use `compare_ptcpn_chr` to compare variables based on whether cases reported data at one or both timepoints and `compare_by_time_chr` to compare the summary statistics of variables by timepoints, e.g at baseline and follow-up. If you wish these comparisons to report p values, then use the `compare_ptcpn_with_test_chr` and `compare_by_time_with_test_chr` arguments.
 
 ```{r}
-X <- renewSlot(X,
-               "descriptives_ls",
-               compare_by_time_chr = c("d_age","d_sexual_ori_s","d_studying_working"),
-               compare_by_time_with_test_chr = c("k6_total", "phq9_total", "bads_total"),
-               compare_ptcpn_with_test_chr = c("k6_total", "phq9_total", "bads_total")) %>%
-  renew(type_1L_chr = "characterize")
-
+Z <- renew(Z,
+           compare_by_time_chr = c("d_age","d_sexual_ori_s","d_studying_working"),
+           compare_by_time_with_test_chr = c("k6_total", "phq9_total", "bads_total"),
+           compare_ptcpn_with_test_chr = c("k6_total", "phq9_total", "bads_total")) 
 ```
 
 The tables generated in the preceding step can be inspected using the `exhibit` method.
 
 ```{r participtb, tab.cap='Outcomes by data completeness', tab.id = 'participtb', results="asis"}
-X %>%
+Z %>%
   exhibit(profile_idx_int = 1L,
           scroll_box_args_ls = list(width = "100%"))
 ```
 
 ```{r outcomestb, tab.cap='Outcomes by data collection round', tab.id = 'outcomestb', results="asis"}
-X %>%
+Z %>%
   exhibit(profile_idx_int = 2L,
           scroll_box_args_ls = list(width = "100%"))
 ```
 
 ```{r outcomestbtst, tab.cap='Outcomes by data collection round (with p values)', tab.id = 'outcomestbtst', results="asis"}
-X %>%
+Z %>%
   exhibit(profile_idx_int = 3L,
           scroll_box_args_ls = list(width = "100%"))
 ```
@@ -101,7 +117,7 @@ X %>%
 The `depict` method can create plots, comparing numeric variables by timepoint.
 
 ```{r totalsfig, fig.cap="SOFAS total scores by data collection round", out.width = "600px"}
-depict(X,
+depict(Z,
        type_1L_chr = "by_time",
        var_nms_chr = c("c_sofas"),
        label_fill_1L_chr = "Time",#
@@ -114,11 +130,11 @@ depict(X,
 We can share the dataset we created for this example using the `share` method, specifying the repository to which we wish to publish the dataset (and for which we have write permissions) in a ([Ready4useRepos object](https://ready4-dev.github.io/ready4use/articles/V_01.html)). 
 
 ```{r eval = F}
-Y <- Ready4useRepos(gh_repo_1L_chr = "ready4-dev/youthvars", # Replace with your repository 
+A <- Ready4useRepos(gh_repo_1L_chr = "ready4-dev/youthvars", # Replace with your repository 
                           gh_tag_1L_chr = "Documentation_0.0"), # (need write permissions).
-Y <- share(Y,
-           obj_to_share_xx = X,
+A <- share(A,
+           obj_to_share_xx = Z,
            fl_nm_1L_chr = "ymh_YouthvarsSeries")
 ```
 
-`X` is now available for download as the file `ymh_YouthvarsSeries.RDS` from the ["Documentation_0.0" release of the youthvars package](https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0).
+`Z` is now available for download as the file `ymh_YouthvarsSeries.RDS` from the ["Documentation_0.0" release of the youthvars package](https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0).

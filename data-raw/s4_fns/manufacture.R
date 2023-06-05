@@ -1,16 +1,25 @@
 manufacture_YouthvarsProfile <- function(x,
+                                         element_nm_1L_chr = "overall",
                                          nbr_of_digits_1L_int = 3L,
                                          profile_chr = character(0),
                                          what_1L_chr = "descriptives_ls",
                                          ...){
   object_xx <- NULL
   if(what_1L_chr == "descriptives_ls"){
-    object_xx <- list(overall = YouthvarsDescriptives(key_var_nm_1L_chr = character(0),
+    if(identical(x@descriptives_ls,
+                 list(list()))){
+      descriptives_ls <- NULL
+    }else{
+      descriptives_ls <- x@descriptives_ls
+    }
+    object_xx <- list(YouthvarsDescriptives(key_var_nm_1L_chr = character(0),
                                                       key_var_vals_chr = "Overall",
                                                       nbr_of_digits_1L_int = nbr_of_digits_1L_int,
                                                       profiled_vars_chr = profile_chr,
                                                       sections_as_row_1L_lgl = F,
-                                                      test_1L_lgl = F))
+                                                      test_1L_lgl = F)) %>%
+      stats::setNames(element_nm_1L_chr) %>%
+      append(descriptives_ls)
   }
   return(object_xx)
 }

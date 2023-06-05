@@ -3,6 +3,8 @@
 \name{exhibit-YouthvarsSeries}
 \alias{exhibit-YouthvarsSeries}
 \alias{exhibit,YouthvarsSeries-method}
+\alias{exhibit-YouthvarsProfile}
+\alias{exhibit,YouthvarsProfile-method}
 \title{Exhibit features of a dataset by printing them to the R console}
 \usage{
 \S4method{exhibit}{YouthvarsSeries}(
@@ -13,11 +15,24 @@
   output_type_1L_chr = "HTML",
   timepoints_int = c(1L, 2L),
   type_1L_chr = "characterize",
+  what_1L_chr = "descriptives",
+  ...
+)
+
+\S4method{exhibit}{YouthvarsProfile}(
+  x,
+  captions_chr = NULL,
+  header_1L_chr = "",
+  header_col_nms_chr = " ",
+  mkdn_tbl_refs_chr = NULL,
+  profile_idx_int = NA_integer_,
+  output_type_1L_chr = "HTML",
+  what_1L_chr = "descriptives",
   ...
 )
 }
 \arguments{
-\item{x}{An object of class YouthvarsSeries}
+\item{x}{An object of class YouthvarsProfile}
 
 \item{captions_chr}{Captions (a character vector), Default: NULL}
 
@@ -31,8 +46,16 @@
 
 \item{type_1L_chr}{Type (a character vector of length one), Default: 'characterize'}
 
+\item{what_1L_chr}{What (a character vector of length one), Default: 'descriptives'}
+
 \item{...}{Additional arguments}
+
+\item{header_1L_chr}{Header (a character vector of length one), Default: ''}
+
+\item{header_col_nms_chr}{Header column names (a character vector), Default: ' '}
 }
 \description{
 exhibit method applied to YouthvarsSeries
+
+exhibit method applied to YouthvarsProfile
 }

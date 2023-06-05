@@ -3,6 +3,7 @@
 #' @name manufacture-YouthvarsProfile
 #' @description manufacture method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile
+#' @param element_nm_1L_chr Element name (a character vector of length one), Default: 'overall'
 #' @param nbr_of_digits_1L_int Number of digits (an integer vector of length one), Default: 3
 #' @param profile_chr Profile (a character vector), Default: character(0)
 #' @param what_1L_chr What (a character vector of length one), Default: 'descriptives_ls'
@@ -11,16 +12,25 @@
 #' @rdname manufacture-methods
 #' @aliases manufacture,YouthvarsProfile-method
 #' @export 
+#' @importFrom stats setNames
 #' @importFrom ready4 manufacture
-methods::setMethod("manufacture", "YouthvarsProfile", function (x, nbr_of_digits_1L_int = 3L, profile_chr = character(0), 
-    what_1L_chr = "descriptives_ls", ...) 
+methods::setMethod("manufacture", "YouthvarsProfile", function (x, element_nm_1L_chr = "overall", nbr_of_digits_1L_int = 3L, 
+    profile_chr = character(0), what_1L_chr = "descriptives_ls", 
+    ...) 
 {
     object_xx <- NULL
     if (what_1L_chr == "descriptives_ls") {
-        object_xx <- list(overall = YouthvarsDescriptives(key_var_nm_1L_chr = character(0), 
+        if (identical(x@descriptives_ls, list(list()))) {
+            descriptives_ls <- NULL
+        }
+        else {
+            descriptives_ls <- x@descriptives_ls
+        }
+        object_xx <- list(YouthvarsDescriptives(key_var_nm_1L_chr = character(0), 
             key_var_vals_chr = "Overall", nbr_of_digits_1L_int = nbr_of_digits_1L_int, 
             profiled_vars_chr = profile_chr, sections_as_row_1L_lgl = F, 
-            test_1L_lgl = F))
+            test_1L_lgl = F)) %>% stats::setNames(element_nm_1L_chr) %>% 
+            append(descriptives_ls)
     }
     return(object_xx)
 })

@@ -3,6 +3,8 @@
 \name{depict-YouthvarsSeries}
 \alias{depict-YouthvarsSeries}
 \alias{depict,YouthvarsSeries-method}
+\alias{depict-YouthvarsProfile}
+\alias{depict,YouthvarsProfile-method}
 \title{Depict (plot) features of a dataset}
 \usage{
 \S4method{depict}{YouthvarsSeries}(
@@ -15,9 +17,18 @@
   y_scale_scl_fn = scales::percent,
   ...
 )
+
+\S4method{depict}{YouthvarsProfile}(
+  x,
+  var_nms_chr,
+  labels_chr = NA_character_,
+  y_label_1L_chr = "Percentage",
+  y_scale_scl_fn = scales::percent,
+  ...
+)
 }
 \arguments{
-\item{x}{An object of class YouthvarsSeries}
+\item{x}{An object of class YouthvarsProfile}
 
 \item{var_nms_chr}{Variable names (a character vector)}
 
@@ -35,4 +46,6 @@
 }
 \description{
 depict method applied to YouthvarsSeries
+
+depict method applied to YouthvarsProfile
 }

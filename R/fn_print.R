@@ -47,10 +47,15 @@ print_descv_stats_tbl <- function (df, data_tb, output_type_1L_chr, round_var_nm
         ready4::get_from_lup_obj(rename_lup, match_value_xx = .x, 
             match_var_nm_1L_chr = "old_nms_chr", target_var_nm_1L_chr = "new_nms_chr", 
             evaluate_1L_lgl = F), .x))
-    n_inc_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
-        bl_fup_vals_chr[1]) %>% nrow()
-    n_fup_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
-        bl_fup_vals_chr[2]) %>% nrow()
+    if (!identical(round_var_nm_1L_chr, character(0))) {
+        n_inc_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
+            bl_fup_vals_chr[1]) %>% nrow()
+        n_fup_1L_dbl <- data_tb %>% dplyr::filter(!!rlang::sym(round_var_nm_1L_chr) == 
+            bl_fup_vals_chr[2]) %>% nrow()
+    }
+    else {
+        n_inc_1L_dbl <- nrow(data_tb)
+    }
     if (is.null(caption_1L_chr)) 
         caption_1L_chr <- knitr::opts_current$get("tab.cap")
     if (is.null(mkdn_tbl_ref_1L_chr)) 
@@ -62,11 +67,18 @@ print_descv_stats_tbl <- function (df, data_tb, output_type_1L_chr, round_var_nm
             "%", "\\\\%") %>% stringr::str_replace(",", "\\\\,"))
     }
     if (output_type_1L_chr %in% c("PDF", "HTML")) {
+        if (!identical(round_var_nm_1L_chr, character(0))) {
+            fup_bits_chr <- c("(N =", paste0(n_fup_1L_dbl, ifelse(output_type_1L_chr == 
+                "HTML", "\\)", ")")))
+        }
+        else {
+            fup_bits_chr <- character(0)
+        }
         names_chr <- c("", "", "(N =", paste0(n_inc_1L_dbl, ifelse(output_type_1L_chr == 
-            "HTML", "\\)", ")")), "(N =", paste0(n_fup_1L_dbl, 
-            ifelse(output_type_1L_chr == "HTML", "\\)", ")")))
-        header_chr <- c(" ", " ", 2, 2) %>% stats::setNames(c(c("", 
-            ""), header_col_nms_chr))
+            "HTML", "\\)", ")")), fup_bits_chr)
+        header_chr <- c(" ", " ", rep(2, length(header_col_nms_chr))) %>% 
+            stats::setNames(c(c("", ""), header_col_nms_chr))
+        last_indx_1L_int <- length(names_chr)
         if (test_1L_lgl) {
             names_chr <- c(names_chr, ifelse(output_type_1L_chr == 
                 "HTML", "*p*", "\\textit{p}"))
@@ -74,7 +86,7 @@ print_descv_stats_tbl <- function (df, data_tb, output_type_1L_chr, round_var_nm
         }
         names(df) <- names_chr
         df %>% kableExtra::kbl(booktabs = T, caption = caption_1L_chr, 
-            escape = F) %>% kableExtra::kable_styling() %>% kableExtra::column_spec(3:6, 
+            escape = F) %>% kableExtra::kable_styling() %>% kableExtra::column_spec(3:last_indx_1L_int, 
             width = "3em") %>% kableExtra::column_spec(1, bold = T, 
             width = "14em") %>% kableExtra::add_header_above(header_chr) %>% 
             kableExtra::collapse_rows(columns = 1)

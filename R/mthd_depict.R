@@ -38,3 +38,35 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, var_nms_chr, type_1
     }
     plot_ls
 })
+#' 
+#' Depict (plot) features of a dataset
+#' @name depict-YouthvarsProfile
+#' @description depict method applied to YouthvarsProfile
+#' @param x An object of class YouthvarsProfile
+#' @param var_nms_chr Variable names (a character vector)
+#' @param labels_chr Labels (a character vector), Default: 'NA'
+#' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
+#' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
+#' @param ... Additional arguments
+#' @return NULL
+#' @rdname depict-methods
+#' @aliases depict,YouthvarsProfile-method
+#' @export 
+#' @importFrom scales percent
+#' @importFrom purrr map_chr map2 pluck
+#' @importFrom ready4 get_from_lup_obj depict
+methods::setMethod("depict", "YouthvarsProfile", function (x, var_nms_chr, labels_chr = NA_character_, y_label_1L_chr = "Percentage", 
+    y_scale_scl_fn = scales::percent, ...) 
+{
+    if (is.na(labels_chr[1])) 
+        labels_chr <- var_nms_chr %>% purrr::map_chr(~ready4::get_from_lup_obj(x@a_Ready4useDyad@dictionary_r3, 
+            match_var_nm_1L_chr = "var_nm_chr", match_value_xx = .x, 
+            target_var_nm_1L_chr = "var_desc_chr"))
+    plot_ls <- purrr::map2(var_nms_chr, labels_chr, ~make_var_by_round_plt(x@a_Ready4useDyad@ds_tb, 
+        round_var_nm_1L_chr = character(0), var_nm_1L_chr = .x, 
+        x_label_1L_chr = .y, y_label_1L_chr = y_label_1L_chr, 
+        y_scale_scl_fn = y_scale_scl_fn))
+    if (length(var_nms_chr) == 1) 
+        plot_ls <- plot_ls %>% purrr::pluck(1)
+    plot_ls
+})
