@@ -12,7 +12,7 @@ manufacture method applied to YouthvarsSeries"><meta property="og:image" content
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9113</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9115</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,6 +65,7 @@ manufacture method applied to YouthvarsSeries"><meta property="og:image" content
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for YouthvarsProfile</span></span>
 <span><span class="fu">manufacture</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
+<span>  element_nm_1L_chr <span class="op">=</span> <span class="st">"overall"</span>,</span>
 <span>  nbr_of_digits_1L_int <span class="op">=</span> <span class="fl">3L</span>,</span>
 <span>  profile_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
 <span>  what_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span>,</span>
@@ -89,6 +90,10 @@ manufacture method applied to YouthvarsSeries"><meta property="og:image" content
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>x</dt>
 <dd><p>An object of class YouthvarsSeries</p></dd>
+
+
+<dt>element_nm_1L_chr</dt>
+<dd><p>Element name (a character vector of length one), Default: 'overall'</p></dd>
 
 
 <dt>nbr_of_digits_1L_int</dt>
