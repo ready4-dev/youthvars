@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9112</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9113</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,8 +121,7 @@ identifier variable name, by transforming it to a
 <code>YouthvarsProfile</code> instance.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Not run</span></span>
-<span><span class="co"># X &lt;- YouthvarsProfile(a_Ready4useDyad = X,</span></span>
-<span><span class="co">#                       id_var_nm_1L_chr = "fkClientID")</span></span></code></pre></div>
+<span><span class="co"># X &lt;- YouthvarsProfile(a_Ready4useDyad = X, id_var_nm_1L_chr = "fkClientID")</span></span></code></pre></div>
 <p>However, in this case the data we ingested includes a longitudinal
 dataset. It is therefore preferable to transform <code>X</code> into a
 <code>YouthvarsSeries</code> instance. <code>YouthvarsSeries</code>
@@ -179,9 +178,18 @@ these comparisons to report p values, then use the
 <span>               compare_by_time_with_test_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span>,</span>
 <span>               compare_ptcpn_with_test_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"k6_total"</span>, <span class="st">"phq9_total"</span>, <span class="st">"bads_total"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/renew-methods.html" class="external-link">renew</a></span><span class="op">(</span>type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: `renewSlot()` was deprecated in youthvars 0.0.0.9112.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Please use `renew(x, what_1L_chr = 'descriptives_ls',</span></span>
+<span><span class="co">##   compare_by_time_chr,compare_by_time_with_test_chr,compare_ptcpn_chr,compare_ptcpn_with_test_chr)`</span></span>
+<span><span class="co">##   instead.</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">youthvars</span> package.</span></span>
+<span><span class="co">##   Please report the issue to the authors.</span></span>
+<span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
 <p>The tables generated in the preceding step can be inspected using the
 <code>exhibit</code> method.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>profile_idx_int <span class="op">=</span> <span class="fl">1L</span>,</span>
 <span>          scroll_box_args_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -494,7 +502,7 @@ Missing
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>profile_idx_int <span class="op">=</span> <span class="fl">2L</span>,</span>
 <span>          scroll_box_args_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -766,7 +774,7 @@ Missing
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">X</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/exhibit-methods.html" class="external-link">exhibit</a></span><span class="op">(</span>profile_idx_int <span class="op">=</span> <span class="fl">3L</span>,</span>
 <span>          scroll_box_args_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="st">"100%"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -1081,7 +1089,7 @@ Missing
 </table>
 <p>The <code>depict</code> method can create plots, comparing numeric
 variables by timepoint.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">X</span>,</span>
 <span>       type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,</span>
 <span>       var_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>,</span>
@@ -1105,11 +1113,11 @@ dataset we created for this example using the <code>share</code> method,
 specifying the repository to which we wish to publish the dataset (and
 for which we have write permissions) in a (<a href="https://ready4-dev.github.io/ready4use/articles/V_01.html" class="external-link">Ready4useRepos
 object</a>).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">Ready4useRepos</span>(<span class="at">gh_repo_1L_chr =</span> <span class="st">"ready4-dev/youthvars"</span>, <span class="co"># Replace with your repository </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gh_tag_1L_chr =</span> <span class="st">"Documentation_0.0"</span>), <span class="co"># (need write permissions).</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">share</span>(Y,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">obj_to_share_xx =</span> X,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fl_nm_1L_chr =</span> <span class="st">"ymh_YouthvarsSeries"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">Ready4useRepos</span>(<span class="at">gh_repo_1L_chr =</span> <span class="st">"ready4-dev/youthvars"</span>, <span class="co"># Replace with your repository </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gh_tag_1L_chr =</span> <span class="st">"Documentation_0.0"</span>), <span class="co"># (need write permissions).</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">share</span>(Y,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">obj_to_share_xx =</span> X,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">fl_nm_1L_chr =</span> <span class="st">"ymh_YouthvarsSeries"</span>)</span></code></pre></div>
 <p><code>X</code> is now available for download as the file
 <code>ymh_YouthvarsSeries.RDS</code> from the <a href="https://github.com/ready4-dev/youthvars/releases/tag/Documentation_0.0" class="external-link">“Documentation_0.0”
 release of the youthvars package</a>.</p>

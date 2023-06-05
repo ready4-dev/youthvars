@@ -12,7 +12,7 @@ renew method applied to YouthvarsProfile"><meta property="og:image" content="htt
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9112</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9113</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,14 @@ renew method applied to YouthvarsProfile"><meta property="og:image" content="htt
 <span><span class="fu">renew</span><span class="op">(</span><span class="va">x</span>, type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for YouthvarsProfile</span></span>
-<span><span class="fu">renew</span><span class="op">(</span><span class="va">x</span>, type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">renew</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  nbr_of_digits_1L_int <span class="op">=</span> <span class="fl">3L</span>,</span>
+<span>  profile_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  type_1L_chr <span class="op">=</span> <span class="st">"characterize"</span>,</span>
+<span>  what_1L_chr <span class="op">=</span> <span class="st">"descriptives_ls"</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -81,6 +88,18 @@ renew method applied to YouthvarsProfile"><meta property="og:image" content="htt
 
 <dt>...</dt>
 <dd><p>Additional arguments</p></dd>
+
+
+<dt>nbr_of_digits_1L_int</dt>
+<dd><p>Number of digits (an integer vector of length one), Default: 3</p></dd>
+
+
+<dt>profile_chr</dt>
+<dd><p>Profile (a character vector), Default: character(0)</p></dd>
+
+
+<dt>what_1L_chr</dt>
+<dd><p>What (a character vector of length one), Default: 'descriptives_ls'</p></dd>
 
 </dl></div>
     <div class="section level2">
