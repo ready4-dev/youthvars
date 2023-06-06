@@ -4,7 +4,7 @@
 \alias{youthvars_phq9}
 \alias{make_pt_youthvars_phq9}
 \alias{is_youthvars_phq9}
-\title{youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 youthvars_phq9(x = make_pt_youthvars_phq9())
 
@@ -16,15 +16,15 @@ is_youthvars_phq9(x)
 \item{x}{An object of any type}
 }
 \value{
-A validated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+A validated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 
-A prototype for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+A prototype for youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 
-A logical value, TRUE if a valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
-Create a new valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }
 \details{
-youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }

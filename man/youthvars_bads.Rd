@@ -4,7 +4,7 @@
 \alias{youthvars_bads}
 \alias{make_pt_youthvars_bads}
 \alias{is_youthvars_bads}
-\title{youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 youthvars_bads(x = make_pt_youthvars_bads())
 
@@ -16,15 +16,15 @@ is_youthvars_bads(x)
 \item{x}{An object of any type}
 }
 \value{
-A validated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A validated instance of the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 
-A prototype for youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A prototype for youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 
-A logical value, TRUE if a valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }
 \description{
-Create a new valid instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }
 \details{
-youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }

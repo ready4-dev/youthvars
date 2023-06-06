@@ -3,21 +3,29 @@ library(ready4use)
 x <- ready4use::Ready4useRepos(gh_repo_1L_chr = "ready4-dev/ready4",
                                gh_tag_1L_chr = "Documentation_0.0")
 y <- ingest(x)
-prototype_lup <- procure(procureSlot(y,
-                                     "b_Ready4useIngest"),
-                         "prototype_lup")
-prototype_lup <- prototype_lup %>%
-  tibble::add_case(type_chr = "data.frame",val_chr = "data.frame()",
-                   pt_ns_chr = "base",
-                   fn_to_call_chr ="",
-                   default_val_chr = "data.frame()",
-                   old_class_lgl = F) %>%
-  dplyr::arrange(pt_ns_chr,type_chr)
+# prototype_lup <- procure(procureSlot(y,
+#                                      "b_Ready4useIngest"),
+#                          "prototype_lup")
+# prototype_lup <- prototype_lup %>%
+#   tibble::add_case(type_chr = "data.frame",val_chr = "data.frame()",
+#                    pt_ns_chr = "base",
+#                    fn_to_call_chr ="",
+#                    default_val_chr = "data.frame()",
+#                    old_class_lgl = F) %>%
+#   dplyr::arrange(pt_ns_chr,type_chr)
+# y <- renewSlot(y,
+#                new_val_xx = Ready4useIngest(objects_ls = list(prototype_lup = prototype_lup)),
+               # slot_nm_1L_chr = "b_Ready4useIngest")
+abbreviations_lup <- y@b_Ready4useIngest@objects_ls$abbreviations_lup %>% ready4fun::renew.ready4fun_abbreviations(filter_cdn_1L_chr = "!startsWith(short_name_chr,'youthvars')") %>% dplyr::filter(rowSums(is.na(.)) != ncol(.))
+classes_lup <- y@b_Ready4useIngest@objects_ls$classes_lup %>% dplyr::filter(!startsWith(type_chr,"youthvars_"))
+prototype_lup <- y@b_Ready4useIngest@objects_ls$prototype_lup %>% dplyr::filter(!startsWith(type_chr,"youthvars_"))
 y <- renewSlot(y,
-               new_val_xx = Ready4useIngest(objects_ls = list(prototype_lup = prototype_lup)),
+               new_val_xx = Ready4useIngest(objects_ls = list(abbreviations_lup = abbreviations_lup,
+                                                              classes_lup = classes_lup,
+                                                              prototype_lup = prototype_lup)),
                slot_nm_1L_chr = "b_Ready4useIngest")
 y <- share(y,
-           type_1L_chr = "prefer_gh")
+           type_1L_chr = "prefer_gh") # DON'T FORGET TO RECREATE NAMESPACE IF CHANGING / ADDING S3 CLASSES
 # x_xx$x_ready4fun_manifest <- renew.ready4fun_manifest(x_xx$x_ready4fun_manifest,
 #                                                         tf_to_singular_chr = c(cntrl = "cntrls",
 #                                                                                corstar = "corstars",

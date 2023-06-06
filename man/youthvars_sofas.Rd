@@ -4,7 +4,7 @@
 \alias{youthvars_sofas}
 \alias{make_pt_youthvars_sofas}
 \alias{is_youthvars_sofas}
-\title{youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 youthvars_sofas(x = make_pt_youthvars_sofas())
 
@@ -16,15 +16,15 @@ is_youthvars_sofas(x)
 \item{x}{An object of any type}
 }
 \value{
-A validated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A validated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 
-A prototype for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A prototype for youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 
-A logical value, TRUE if a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \description{
-Create a new valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \details{
-youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }

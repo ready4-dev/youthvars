@@ -1,19 +1,19 @@
 
-#' youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @description Create a new valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @param x A prototype for the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores, Default: make_pt_youthvars_phq9()
-#' @return A validated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @details youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @description Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores, Default: make_pt_youthvars_phq9()
+#' @return A validated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @details youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' @rdname youthvars_phq9
 #' @export 
 youthvars_phq9 <- function(x = make_pt_youthvars_phq9()){ 
 validate_youthvars_phq9(make_new_youthvars_phq9(x))
 }
-#' make new youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @description Create a new unvalidated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @param x A prototype for the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @return An unvalidated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @details youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' make new youthvars PHQ-9 youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @description Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @return An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @details youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' @rdname make_new_youthvars_phq9
 #' @export 
 #' @keywords internal
@@ -23,20 +23,20 @@ class(x) <- append(c("youthvars_phq9",setdiff(make_pt_youthvars_phq9() %>% class
 class(x))
 x
 }
-#' make prototype youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' make prototype youthvars PHQ-9 youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 
-#' @return A prototype for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' @return A prototype for youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' 
 #' @rdname youthvars_phq9
 #' @export 
 make_pt_youthvars_phq9 <- function(){ 
 integer(0)
 }
-#' validate youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @description Validate an instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @param x An unvalidated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @return A prototpe for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
-#' @details youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' validate youthvars PHQ-9 youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @description Validate an instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @param x An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @return A prototpe for youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
+#' @details youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' @rdname validate_youthvars_phq9
 #' @export 
 #' @keywords internal
@@ -52,9 +52,9 @@ call. = FALSE)
 }
 
 x}
-#' is youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' is youthvars PHQ-9 youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+#' @return A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 #' 
 #' @rdname youthvars_phq9
 #' @export 

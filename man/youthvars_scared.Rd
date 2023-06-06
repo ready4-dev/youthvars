@@ -4,7 +4,7 @@
 \alias{youthvars_scared}
 \alias{make_pt_youthvars_scared}
 \alias{is_youthvars_scared}
-\title{youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 youthvars_scared(x = make_pt_youthvars_scared())
 
@@ -16,15 +16,15 @@ is_youthvars_scared(x)
 \item{x}{An object of any type}
 }
 \value{
-A validated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A validated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 
-A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A prototype for youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 
-A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
-Create a new valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \details{
-youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }

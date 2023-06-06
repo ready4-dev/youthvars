@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{validate_youthvars_scared}
 \alias{validate_youthvars_scared}
-\title{validate youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{validate youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 validate_youthvars_scared(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\item{x}{An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores}
 }
 \value{
-A prototpe for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+A prototpe for youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
-Validate an instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+Validate an instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \details{
-youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \keyword{internal}

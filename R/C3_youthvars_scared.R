@@ -1,19 +1,19 @@
 
-#' youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @description Create a new valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @param x A prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores, Default: make_pt_youthvars_scared()
-#' @return A validated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @description Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores, Default: make_pt_youthvars_scared()
+#' @return A validated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @details youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @rdname youthvars_scared
 #' @export 
 youthvars_scared <- function(x = make_pt_youthvars_scared()){ 
 validate_youthvars_scared(make_new_youthvars_scared(x))
 }
-#' make new youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @description Create a new unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @param x A prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @return An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' make new youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @description Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @return An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @details youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @rdname make_new_youthvars_scared
 #' @export 
 #' @keywords internal
@@ -23,20 +23,20 @@ class(x) <- append(c("youthvars_scared",setdiff(make_pt_youthvars_scared() %>% c
 class(x))
 x
 }
-#' make prototype youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' make prototype youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 
-#' @return A prototype for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @return A prototype for youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' 
 #' @rdname youthvars_scared
 #' @export 
 make_pt_youthvars_scared <- function(){ 
 integer(0)
 }
-#' validate youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @description Validate an instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @param x An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @return A prototpe for youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
-#' @details youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' validate youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @description Validate an instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @param x An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @return A prototpe for youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @details youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @rdname validate_youthvars_scared
 #' @export 
 #' @keywords internal
@@ -52,9 +52,9 @@ call. = FALSE)
 }
 
 x}
-#' is youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' is youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+#' @return A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 #' 
 #' @rdname youthvars_scared
 #' @export 

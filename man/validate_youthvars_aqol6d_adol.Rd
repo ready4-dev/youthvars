@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_aqol6d_adol.R
 \name{validate_youthvars_aqol6d_adol}
 \alias{validate_youthvars_aqol6d_adol}
-\title{validate youthvars Assessment of Quality of Life Six Dimension adolescent youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{validate youthvars Assessment of Quality of Life Six Dimension adolescent youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)}
 \usage{
 validate_youthvars_aqol6d_adol(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\item{x}{An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)}
 }
 \value{
-A prototpe for youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A prototpe for youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }
 \description{
-Validate an instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+Validate an instance of the youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }
 \details{
-youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }
 \keyword{internal}

@@ -55,7 +55,7 @@ Z <- YouthvarsSeries(a_Ready4useDyad = X,
 
 ## YouthvarsProfile methods
 ### Inspect data
-We can now specify the variables that we would like to prepare descriptive statistics for using the `renew` method. The variables to be profiled are specified in the `profile_chr` argument, the number of decimal digits (default = 3) of numeric values in the summary tables to be generated can be specified with `nbr_of_digits_1L_int`.
+We can now specify the variables that we would like to prepare descriptive statistics for by using the `renew` method. The variables to be profiled are specified in the `profile_chr` argument, the number of decimal digits (default = 3) of numeric values in the summary tables to be generated can be specified with `nbr_of_digits_1L_int`.
 
 ```{r}
 Y <- renew(Y, nbr_of_digits_1L_int = 2L, profile_chr = c("d_age","d_sexual_ori_s","d_studying_working"))

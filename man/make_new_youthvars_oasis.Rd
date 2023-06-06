@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_oasis.R
 \name{make_new_youthvars_oasis}
 \alias{make_new_youthvars_oasis}
-\title{make new youthvars oasis youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\title{make new youthvars oasis youthvars ready4 sub-module (S3 class) for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 \usage{
 make_new_youthvars_oasis(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
+\item{x}{A prototype for the youthvars ready4 sub-module (S3 class) for Overall Anxiety Severity and Impairment Scale (OASIS) scores}
 }
 \value{
-An unvalidated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \description{
-Create a new unvalidated instance of the youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \details{
-youthvars S3 class for Overall Anxiety Severity and Impairment Scale (OASIS) scores
+youthvars ready4 sub-module (S3 class) for Overall Anxiety Severity and Impairment Scale (OASIS) scores
 }
 \keyword{internal}

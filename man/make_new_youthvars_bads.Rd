@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_bads.R
 \name{make_new_youthvars_bads}
 \alias{make_new_youthvars_bads}
-\title{make new youthvars bads youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\title{make new youthvars bads youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores}
 \usage{
 make_new_youthvars_bads(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores}
+\item{x}{A prototype for the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores}
 }
 \value{
-An unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }
 \description{
-Create a new unvalidated instance of the youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }
 \details{
-youthvars S3 class for Behavioural Activation for Depression Scale (BADS) scores
+youthvars ready4 sub-module (S3 class) for Behavioural Activation for Depression Scale (BADS) scores
 }
 \keyword{internal}

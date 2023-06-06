@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_scared.R
 \name{make_new_youthvars_scared}
 \alias{make_new_youthvars_scared}
-\title{make new youthvars scared youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\title{make new youthvars scared youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores}
 \usage{
 make_new_youthvars_scared(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores}
+\item{x}{A prototype for the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores}
 }
 \value{
-An unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \description{
-Create a new unvalidated instance of the youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \details{
-youthvars S3 class for Screen for Child Anxiety Related Disorders (SCARED) scores
+youthvars ready4 sub-module (S3 class) for Screen for Child Anxiety Related Disorders (SCARED) scores
 }
 \keyword{internal}

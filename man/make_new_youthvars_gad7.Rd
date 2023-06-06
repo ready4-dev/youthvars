@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_gad7.R
 \name{make_new_youthvars_gad7}
 \alias{make_new_youthvars_gad7}
-\title{make new youthvars GAD-7 youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\title{make new youthvars GAD-7 youthvars ready4 sub-module (S3 class) for Generalised Anxiety Disorder Scale (GAD-7) scores}
 \usage{
 make_new_youthvars_gad7(x)
 }
 \arguments{
-\item{x}{A prototype for the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores}
+\item{x}{A prototype for the youthvars ready4 sub-module (S3 class) for Generalised Anxiety Disorder Scale (GAD-7) scores}
 }
 \value{
-An unvalidated instance of the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \description{
-Create a new unvalidated instance of the youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \details{
-youthvars S3 class for Generalised Anxiety Disorder Scale (GAD-7) scores
+youthvars ready4 sub-module (S3 class) for Generalised Anxiety Disorder Scale (GAD-7) scores
 }
 \keyword{internal}

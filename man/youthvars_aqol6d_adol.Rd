@@ -4,7 +4,7 @@
 \alias{youthvars_aqol6d_adol}
 \alias{make_pt_youthvars_aqol6d_adol}
 \alias{is_youthvars_aqol6d_adol}
-\title{youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))}
+\title{youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)}
 \usage{
 youthvars_aqol6d_adol(x = make_pt_youthvars_aqol6d_adol())
 
@@ -16,15 +16,15 @@ is_youthvars_aqol6d_adol(x)
 \item{x}{An object of any type}
 }
 \value{
-A validated instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A validated instance of the youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 
-A prototype for youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A prototype for youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 
-A logical value, TRUE if a valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }
 \description{
-Create a new valid instance of the youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }
 \details{
-youthvars S3 class for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent))
+youthvars ready4 sub-module (S3 class) for Assessment of Quality of Life Six Dimension Health Utility - Adolescent Version (AQoL6d Adolescent)
 }

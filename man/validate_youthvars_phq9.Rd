@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_phq9.R
 \name{validate_youthvars_phq9}
 \alias{validate_youthvars_phq9}
-\title{validate youthvars PHQ-9 youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\title{validate youthvars PHQ-9 youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores}
 \usage{
 validate_youthvars_phq9(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores}
+\item{x}{An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores}
 }
 \value{
-A prototpe for youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+A prototpe for youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }
 \description{
-Validate an instance of the youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+Validate an instance of the youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }
 \details{
-youthvars S3 class for Patient Health Questionnaire (PHQ-9) scores
+youthvars ready4 sub-module (S3 class) for Patient Health Questionnaire (PHQ-9) scores
 }
 \keyword{internal}

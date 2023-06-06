@@ -1,19 +1,19 @@
 
-#' youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Create a new valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()
-#' @return A validated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS), Default: make_pt_youthvars_sofas()
+#' @return A validated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname youthvars_sofas
 #' @export 
 youthvars_sofas <- function(x = make_pt_youthvars_sofas()){ 
 validate_youthvars_sofas(make_new_youthvars_sofas(x))
 }
-#' make new youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Create a new unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x A prototype for the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @return An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' make new youthvars sofas youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname make_new_youthvars_sofas
 #' @export 
 #' @keywords internal
@@ -23,20 +23,20 @@ class(x) <- append(c("youthvars_sofas",setdiff(make_pt_youthvars_sofas() %>% cla
 class(x))
 x
 }
-#' make prototype youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' make prototype youthvars sofas youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 
-#' @return A prototype for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A prototype for youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' 
 #' @rdname youthvars_sofas
 #' @export 
 make_pt_youthvars_sofas <- function(){ 
 integer(0)
 }
-#' validate youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @description Validate an instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @param x An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @return A prototpe for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
-#' @details youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' validate youthvars sofas youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @description Validate an instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @param x An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A prototpe for youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @details youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @rdname validate_youthvars_sofas
 #' @export 
 #' @keywords internal
@@ -52,9 +52,9 @@ call. = FALSE)
 }
 
 x}
-#' is youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' is youthvars sofas youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' @param x An object of any type
-#' @return A logical value, TRUE if a valid instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+#' @return A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 #' 
 #' @rdname youthvars_sofas
 #' @export 

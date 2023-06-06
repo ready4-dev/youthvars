@@ -2,20 +2,20 @@
 % Please edit documentation in R/C3_youthvars_sofas.R
 \name{validate_youthvars_sofas}
 \alias{validate_youthvars_sofas}
-\title{validate youthvars sofas youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\title{validate youthvars sofas youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)}
 \usage{
 validate_youthvars_sofas(x)
 }
 \arguments{
-\item{x}{An unvalidated instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)}
+\item{x}{An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)}
 }
 \value{
-A prototpe for youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+A prototpe for youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \description{
-Validate an instance of the youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+Validate an instance of the youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \details{
-youthvars S3 class for Social and Occupational Functioning Assessment Scale (SOFAS)
+youthvars ready4 sub-module (S3 class) for Social and Occupational Functioning Assessment Scale (SOFAS)
 }
 \keyword{internal}
