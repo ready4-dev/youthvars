@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe and Validate Person Record Datasets
-Version: 0.0.0.9115
+Version: 0.0.0.9116
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton@orygen.org.au", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -70,8 +70,12 @@ LazyData: true
 Collate: 
     'C3_youthvars_aqol6d_adol.R'
     'C3_youthvars_bads.R'
+    'C3_youthvars_chu9d_adolaus.R'
     'C3_youthvars_gad7.R'
+    'C3_youthvars_k10.R'
+    'C3_youthvars_k10_aus.R'
     'C3_youthvars_k6.R'
+    'C3_youthvars_k6_aus.R'
     'C3_youthvars_oasis.R'
     'C3_youthvars_phq9.R'
     'C3_youthvars_scared.R'
