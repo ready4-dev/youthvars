@@ -16,6 +16,6 @@ A prototpe for youthvars ready4 sub-module (S3 class) for Child Health Utility N
 Validate an instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 }
 \details{
-youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
+youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 }
 \keyword{internal}

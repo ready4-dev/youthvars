@@ -4,7 +4,7 @@
 \name{youthvars-package}
 \alias{youthvars}
 \alias{youthvars-package}
-\title{youthvars: Describe and Validate Person Record Datasets}
+\title{youthvars: Describe and Validate Person Records for Use in Youth Mental Health Models}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

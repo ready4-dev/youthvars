@@ -1,6 +1,6 @@
 # youthvars
 
-## Describe and Validate Person Record Datasets
+## Describe and Validate Person Records for Use in Youth Mental Health Models
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

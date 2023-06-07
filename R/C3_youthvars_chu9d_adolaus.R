@@ -3,7 +3,7 @@
 #' @description Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent), Default: make_pt_youthvars_chu9d_adolaus()
 #' @return A validated instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
-#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
+#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @rdname youthvars_chu9d_adolaus
 #' @export 
 youthvars_chu9d_adolaus <- function(x = make_pt_youthvars_chu9d_adolaus()){ 
@@ -13,7 +13,7 @@ validate_youthvars_chu9d_adolaus(make_new_youthvars_chu9d_adolaus(x))
 #' @description Create a new unvalidated instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @param x A prototype for the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @return An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
-#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
+#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @rdname make_new_youthvars_chu9d_adolaus
 #' @export 
 #' @keywords internal
@@ -36,7 +36,7 @@ numeric(0)
 #' @description Validate an instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @param x An unvalidated instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @return A prototpe for youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
-#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
+#' @details youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 #' @rdname validate_youthvars_chu9d_adolaus
 #' @export 
 #' @keywords internal

@@ -26,5 +26,5 @@ A logical value, TRUE if a valid instance of the youthvars ready4 sub-module (S3
 Create a new valid instance of the youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 }
 \details{
-youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension Health Utility - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
+youthvars ready4 sub-module (S3 class) for Child Health Utility Nine Dimension - Australian Adolescent Scoring (CHU-9D Australian Adolescent)
 }
