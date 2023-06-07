@@ -56,6 +56,32 @@ youthvars_aqol6d_adol(-0.1)
 youthvars_aqol6d_adol(1.2)
 ```
 
+### Child Health Utility Nine Dimension - Australian Adolescent Scoring
+
+The `youthvars_chu9d_adolaus`{.R} class is defined for numeric vectors with a minimum value of -0.2118 and maximum value of 1.0.
+
+```{r}
+youthvars_chu9d_adolaus(0.4)
+```
+
+```{r}
+youthvars_chu9d_adolaus(c(0.03,0.2,1))
+```
+
+Non numeric objects and values outside these ranges will produce errors.
+
+```{r error = T}
+youthvars_chu9d_adolaus("0.5")
+```
+
+```{r error = T}
+youthvars_chu9d_adolaus(-0.3)
+```
+
+```{r, error = T}
+youthvars_chu9d_adolaus(1.2)
+```
+
 ### Behavioural Activation for Depression Scale (BADS)
 
 The `youthvars_bads`{.R} class is defined for integer vectors with a minimum value of 0 and maximum value of 150.
@@ -107,6 +133,33 @@ youthvars_gad7(-1L)
 ```{r error = T}
 youthvars_gad7(22L)
 ```
+
+### Kessler Psychological Distress Scale (K6) - Australian Scoring System
+
+The `youthvars_k6_aus`{.R} class is defined for integer vectors with a minimum value of 6 and a maximum value of 30.
+
+```{r}
+youthvars_k6_aus(21L)
+```
+
+```{r}
+youthvars_k6_aus(as.integer(c(6,13,25)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_k6_aus(11.2)
+```
+
+```{r error = T}
+youthvars_k6_aus(1L)
+```
+
+```{r error = T}
+youthvars_k6_aus(31L)
+```
+
 ### Kessler Psychological Distress Scale (K6) - US Scoring System
 
 The `youthvars_k6`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 24.
@@ -132,6 +185,59 @@ youthvars_k6(-1L)
 ```{r error = T}
 youthvars_k6(25L)
 ```
+
+### Kessler Psychological Distress Scale (K10) - Australian Scoring System
+
+The `youthvars_k10_aus`{.R} class is defined for integer vectors with a minimum value of 10 and a maximum value of 50.
+
+```{r}
+youthvars_k10_aus(21L)
+```
+
+```{r}
+youthvars_k10_aus(as.integer(c(13,25,41)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_k10_aus(11.2)
+```
+
+```{r error = T}
+youthvars_k10_aus(9L)
+```
+
+```{r error = T}
+youthvars_k10_aus(51L)
+```
+
+### Kessler Psychological Distress Scale (K10) - US Scoring System
+
+The `youthvars_k10`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 40.
+
+```{r}
+youthvars_k10(21L)
+```
+
+```{r}
+youthvars_k10(as.integer(c(0,13,34)))
+```
+
+Non-integers and values outside these ranges will produce errors.
+
+```{r, error = T}
+youthvars_k10(11.2)
+```
+
+```{r error = T}
+youthvars_k10(-1L)
+```
+
+```{r error = T}
+youthvars_k10(41L)
+```
+
 ### Overall Anxiety Severity and Impairment Scale (OASIS)
 
 The `youthvars_oasis`{.R} class is defined for integer vectors with a minimum value of 0 and a maximum value of 20.
