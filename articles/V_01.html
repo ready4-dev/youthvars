@@ -34,7 +34,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9116</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9117</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,29 +145,58 @@ errors.</p>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_aqol6d_adol object must be less than or equal to 1.</span></span></code></pre>
 </div>
 <div class="section level3">
+<h3 id="child-health-utility-nine-dimension---australian-adolescent-scoring">Child Health Utility Nine Dimension - Australian Adolescent
+Scoring<a class="anchor" aria-label="anchor" href="#child-health-utility-nine-dimension---australian-adolescent-scoring"></a>
+</h3>
+<p>The <code class="sourceCode r">youthvars_chu9d_adolaus</code> class
+is defined for numeric vectors with a minimum value of -0.2118 and
+maximum value of 1.0.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_chu9d_adolaus.html">youthvars_chu9d_adolaus</a></span><span class="op">(</span><span class="fl">0.4</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.4</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_chu9d_adolaus" "numeric"</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_chu9d_adolaus.html">youthvars_chu9d_adolaus</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.03</span>,<span class="fl">0.2</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 0.03 0.20 1.00</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_chu9d_adolaus" "numeric"</span></span></code></pre>
+<p>Non numeric objects and values outside these ranges will produce
+errors.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_chu9d_adolaus.html">youthvars_chu9d_adolaus</a></span><span class="op">(</span><span class="st">"0.5"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in make_new_youthvars_chu9d_adolaus(x): is.numeric(x) is not TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_chu9d_adolaus.html">youthvars_chu9d_adolaus</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_chu9d_adolaus object must be greater than or equal to -0.2118.</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_chu9d_adolaus.html">youthvars_chu9d_adolaus</a></span><span class="op">(</span><span class="fl">1.2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_chu9d_adolaus object must be less than or equal to 1.</span></span></code></pre>
+</div>
+<div class="section level3">
 <h3 id="behavioural-activation-for-depression-scale-bads">Behavioural Activation for Depression Scale (BADS)<a class="anchor" aria-label="anchor" href="#behavioural-activation-for-depression-scale-bads"></a>
 </h3>
 <p>The <code class="sourceCode r">youthvars_bads</code> class is defined
 for integer vectors with a minimum value of 0 and maximum value of
 150.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_bads.html">youthvars_bads</a></span><span class="op">(</span><span class="fl">143L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 143</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_bads" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_bads.html">youthvars_bads</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">15</span>,<span class="fl">150</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]   1  15 150</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_bads" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_bads.html">youthvars_bads</a></span><span class="op">(</span><span class="fl">22.5</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_bads(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_bads.html">youthvars_bads</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_bads object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_bads.html">youthvars_bads</a></span><span class="op">(</span><span class="fl">160L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_bads object must be less than or equal to 150.</span></span></code></pre>
 </div>
@@ -177,26 +206,54 @@ for integer vectors with a minimum value of 0 and maximum value of
 <p>The <code class="sourceCode r">youthvars_gad7</code> class is defined
 for integer vectors with a minimum value of 0 and a maximum value of
 21.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_gad7.html">youthvars_gad7</a></span><span class="op">(</span><span class="fl">15L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 15</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_gad7" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_gad7.html">youthvars_gad7</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">14</span>,<span class="fl">21</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 14 21</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_gad7" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_gad7.html">youthvars_gad7</a></span><span class="op">(</span><span class="fl">14.6</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_gad7(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_gad7.html">youthvars_gad7</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_gad7 object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_gad7.html">youthvars_gad7</a></span><span class="op">(</span><span class="fl">22L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_gad7 object must be less than or equal to 21.</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="kessler-psychological-distress-scale-k6---australian-scoring-system">Kessler Psychological Distress Scale (K6) - Australian Scoring
+System<a class="anchor" aria-label="anchor" href="#kessler-psychological-distress-scale-k6---australian-scoring-system"></a>
+</h3>
+<p>The <code class="sourceCode r">youthvars_k6_aus</code> class is
+defined for integer vectors with a minimum value of 6 and a maximum
+value of 30.</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6_aus.html">youthvars_k6_aus</a></span><span class="op">(</span><span class="fl">21L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 21</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k6_aus" "integer"</span></span></code></pre>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6_aus.html">youthvars_k6_aus</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">6</span>,<span class="fl">13</span>,<span class="fl">25</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1]  6 13 25</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k6_aus" "integer"</span></span></code></pre>
+<p>Non-integers and values outside these ranges will produce errors.</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6_aus.html">youthvars_k6_aus</a></span><span class="op">(</span><span class="fl">11.2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in make_new_youthvars_k6_aus(x): is.integer(x) is not TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6_aus.html">youthvars_k6_aus</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k6_aus object must be greater than or equal to 6.</span></span></code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6_aus.html">youthvars_k6_aus</a></span><span class="op">(</span><span class="fl">31L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k6_aus object must be less than or equal to 30.</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="kessler-psychological-distress-scale-k6---us-scoring-system">Kessler Psychological Distress Scale (K6) - US Scoring System<a class="anchor" aria-label="anchor" href="#kessler-psychological-distress-scale-k6---us-scoring-system"></a>
@@ -204,26 +261,81 @@ for integer vectors with a minimum value of 0 and a maximum value of
 <p>The <code class="sourceCode r">youthvars_k6</code> class is defined
 for integer vectors with a minimum value of 0 and a maximum value of
 24.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6.html">youthvars_k6</a></span><span class="op">(</span><span class="fl">21L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 21</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_k6" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6.html">youthvars_k6</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">13</span>,<span class="fl">24</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 13 24</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_k6" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6.html">youthvars_k6</a></span><span class="op">(</span><span class="fl">11.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_k6(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6.html">youthvars_k6</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k6 object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k6.html">youthvars_k6</a></span><span class="op">(</span><span class="fl">25L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k6 object must be less than or equal to 24.</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="kessler-psychological-distress-scale-k10---australian-scoring-system">Kessler Psychological Distress Scale (K10) - Australian Scoring
+System<a class="anchor" aria-label="anchor" href="#kessler-psychological-distress-scale-k10---australian-scoring-system"></a>
+</h3>
+<p>The <code class="sourceCode r">youthvars_k10_aus</code> class is
+defined for integer vectors with a minimum value of 10 and a maximum
+value of 50.</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10_aus.html">youthvars_k10_aus</a></span><span class="op">(</span><span class="fl">21L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 21</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k10_aus" "integer"</span></span></code></pre>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10_aus.html">youthvars_k10_aus</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">13</span>,<span class="fl">25</span>,<span class="fl">41</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 13 25 41</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k10_aus" "integer"</span></span></code></pre>
+<p>Non-integers and values outside these ranges will produce errors.</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10_aus.html">youthvars_k10_aus</a></span><span class="op">(</span><span class="fl">11.2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in make_new_youthvars_k10_aus(x): is.integer(x) is not TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10_aus.html">youthvars_k10_aus</a></span><span class="op">(</span><span class="fl">9L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k10_aus object must be greater than or equal to 10.</span></span></code></pre>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10_aus.html">youthvars_k10_aus</a></span><span class="op">(</span><span class="fl">51L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k10_aus object must be less than or equal to 50.</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="kessler-psychological-distress-scale-k10---us-scoring-system">Kessler Psychological Distress Scale (K10) - US Scoring System<a class="anchor" aria-label="anchor" href="#kessler-psychological-distress-scale-k10---us-scoring-system"></a>
+</h3>
+<p>The <code class="sourceCode r">youthvars_k10</code> class is defined
+for integer vectors with a minimum value of 0 and a maximum value of
+40.</p>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10.html">youthvars_k10</a></span><span class="op">(</span><span class="fl">21L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 21</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k10" "integer"</span></span></code></pre>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10.html">youthvars_k10</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">13</span>,<span class="fl">34</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1]  0 13 34</span></span>
+<span><span class="co">## attr(,"class")</span></span>
+<span><span class="co">## [1] "youthvars_k10" "integer"</span></span></code></pre>
+<p>Non-integers and values outside these ranges will produce errors.</p>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10.html">youthvars_k10</a></span><span class="op">(</span><span class="fl">11.2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in make_new_youthvars_k10(x): is.integer(x) is not TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10.html">youthvars_k10</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k10 object must be greater than or equal to 0.</span></span></code></pre>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_k10.html">youthvars_k10</a></span><span class="op">(</span><span class="fl">41L</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_k10 object must be less than or equal to 40.</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="overall-anxiety-severity-and-impairment-scale-oasis">Overall Anxiety Severity and Impairment Scale (OASIS)<a class="anchor" aria-label="anchor" href="#overall-anxiety-severity-and-impairment-scale-oasis"></a>
@@ -231,24 +343,24 @@ for integer vectors with a minimum value of 0 and a maximum value of
 <p>The <code class="sourceCode r">youthvars_oasis</code> class is
 defined for integer vectors with a minimum value of 0 and a maximum
 value of 20.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_oasis.html">youthvars_oasis</a></span><span class="op">(</span><span class="fl">15L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 15</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_oasis" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_oasis.html">youthvars_oasis</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">12</span>,<span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 12 20</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_oasis" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_oasis.html">youthvars_oasis</a></span><span class="op">(</span><span class="fl">14.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_oasis(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_oasis.html">youthvars_oasis</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_oasis object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_oasis.html">youthvars_oasis</a></span><span class="op">(</span><span class="fl">21L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_oasis object must be less than or equal to 20.</span></span></code></pre>
 </div>
@@ -258,24 +370,24 @@ value of 20.</p>
 <p>The <code class="sourceCode r">youthvars_phq9</code> class is defined
 for integer vectors with a minimum value of 0 and a maximum value of
 27.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_phq9.html">youthvars_phq9</a></span><span class="op">(</span><span class="fl">11L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 11</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_phq9" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_phq9.html">youthvars_phq9</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">13</span>,<span class="fl">27</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 13 27</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_phq9" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_phq9.html">youthvars_phq9</a></span><span class="op">(</span><span class="fl">15.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_phq9(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_phq9.html">youthvars_phq9</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_phq9 object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_phq9.html">youthvars_phq9</a></span><span class="op">(</span><span class="fl">28L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_phq9 object must be less than or equal to 27.</span></span></code></pre>
 </div>
@@ -285,24 +397,24 @@ for integer vectors with a minimum value of 0 and a maximum value of
 <p>The <code class="sourceCode r">youthvars_scared</code> class is
 defined for integer vectors with a minimum value of 0 and a maximum
 value of 82.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_scared.html">youthvars_scared</a></span><span class="op">(</span><span class="fl">77L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 77</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_scared" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_scared.html">youthvars_scared</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">42</span>,<span class="fl">82</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 42 82</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_scared" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_scared.html">youthvars_scared</a></span><span class="op">(</span><span class="fl">33.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_scared(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_scared.html">youthvars_scared</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_scared object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_scared.html">youthvars_scared</a></span><span class="op">(</span><span class="fl">83</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_scared(x): is.integer(x) is not TRUE</span></span></code></pre>
 </div>
@@ -312,24 +424,24 @@ value of 82.</p>
 <p>The <code class="sourceCode r">youthvars_sofas</code> class is
 defined for integer vectors with a minimum value of 0 and a maximum
 value of 100.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_sofas.html">youthvars_sofas</a></span><span class="op">(</span><span class="fl">44L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] 44</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_sofas" "integer"</span></span></code></pre>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_sofas.html">youthvars_sofas</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">23</span>,<span class="fl">89</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  0 23 89</span></span>
 <span><span class="co">## attr(,"class")</span></span>
 <span><span class="co">## [1] "youthvars_sofas" "integer"</span></span></code></pre>
 <p>Non-integers and values outside these ranges will produce errors.</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_sofas.html">youthvars_sofas</a></span><span class="op">(</span><span class="fl">73.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error in make_new_youthvars_sofas(x): is.integer(x) is not TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_sofas.html">youthvars_sofas</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_sofas object must be greater than or equal to 0.</span></span></code></pre>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/youthvars_sofas.html">youthvars_sofas</a></span><span class="op">(</span><span class="fl">103L</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: All non-missing values in valid youthvars_sofas object must be less than or equal to 100.</span></span></code></pre>
 </div>
