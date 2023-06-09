@@ -167,12 +167,12 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
         key_var_vals_chr = ds_descvs_ls$round_vals_chr, dictionary_tb = ds_descvs_ls$dictionary_tb, 
         variable_nms_chr = c(ds_descvs_ls$candidate_predrs_chr, 
             ds_descvs_ls$utl_wtd_var_nm_1L_chr, ds_descvs_ls$utl_unwtd_var_nm_1L_chr), 
-        test_1L_lgl = if (ds_descvs_ls$round_vals_chr == "Overall" & 
+        test_1L_lgl = if (ds_descvs_ls$round_vals_chr[1] == "Overall" & 
             identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
             F
         } else {
             T
-        }, nbr_of_digits_1L_int = nbr_of_digits_1L_int), outc_by_partcn_tbl_tb = if (ds_descvs_ls$round_vals_chr == 
+        }, nbr_of_digits_1L_int = nbr_of_digits_1L_int), outc_by_partcn_tbl_tb = if (ds_descvs_ls$round_vals_chr[1] == 
         "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
         character(0))) {
         NULL
@@ -186,19 +186,19 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
             test_1L_lgl = T, nbr_of_digits_1L_int = nbr_of_digits_1L_int)
     }, bl_cors_tb = transform_ds_for_tstng(data_tb, depnt_var_nm_1L_chr = ds_descvs_ls$utl_wtd_var_nm_1L_chr, 
         depnt_var_max_val_1L_dbl = Inf, candidate_predrs_chr = ds_descvs_ls$candidate_predrs_chr, 
-        round_var_nm_1L_chr = if (ds_descvs_ls$round_vals_chr == 
+        round_var_nm_1L_chr = if (ds_descvs_ls$round_vals_chr[1] == 
             "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
             character(0))) {
             NA_character_
         } else {
             ds_descvs_ls$round_var_nm_1L_chr
-        }, round_val_1L_chr = if (ds_descvs_ls$round_vals_chr == 
+        }, round_val_1L_chr = if (ds_descvs_ls$round_vals_chr[1] == 
             "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
             character(0))) {
             NA_character_
         } else {
             ds_descvs_ls$round_vals_chr[1]
-        }) %>% make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = if (ds_descvs_ls$round_vals_chr == 
+        }) %>% make_corstars_tbl_xx(result_chr = "none"), fup_cors_tb = if (ds_descvs_ls$round_vals_chr[1] == 
         "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
         character(0))) {
         NULL
@@ -210,16 +210,18 @@ write_descv_tbls <- function (data_tb, ds_descvs_ls, predictors_lup, descv_outp_
             make_corstars_tbl_xx(result_chr = "none")
     }, cors_with_utl_tb = make_cors_with_utl_tbl(data_tb %>% 
         dplyr::mutate(catch_all_round_chr = ds_descvs_ls$round_vals_chr[1]), 
-        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr == "Overall" & 
-            identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
+        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr[1] == 
+            "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+            character(0))) {
             ds_descvs_ls %>% purrr::list_modify(round_var_nm_1L_chr = "catch_all_round_chr")
         } else {
             ds_descvs_ls
         }), ds_descvs_ls = ds_descvs_ls)
     descv_tbl_ls$predr_pars_and_cors_tb <- make_predr_pars_and_cors_tbl(data_tb %>% 
         dplyr::mutate(catch_all_round_chr = ds_descvs_ls$round_vals_chr[1]), 
-        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr == "Overall" & 
-            identical(ds_descvs_ls$round_var_nm_1L_chr, character(0))) {
+        ds_descvs_ls = if (ds_descvs_ls$round_vals_chr[1] == 
+            "Overall" & identical(ds_descvs_ls$round_var_nm_1L_chr, 
+            character(0))) {
             ds_descvs_ls %>% purrr::list_modify(round_var_nm_1L_chr = "catch_all_round_chr")
         }
         else {
