@@ -1,6 +1,6 @@
 Package: youthvars
 Title: Describe and Validate Youth Mental Health Dataset Variables
-Version: 0.0.0.9122
+Version: 0.0.0.9123
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton1@monash.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -10,15 +10,16 @@ Authors@R: c(
     person("Headspace", role = "fnd"),
     person("National Health and Medical Research Council", role = "fnd")
   )
-Description: Tools to describe and quality assure individual human record
-    datasets for in models developed with the ready4 framework
-    (https://www.ready4-dev.com/).  The main motivation for this package
-    is to facilitate automated data integrity checks, ensure that methods
-    are applied to the appropriate data structures and streamline
-    reporting of descriptive statistics.  This development version of the
-    youthvars package has been made available as part of the process of
-    testing and documenting the package.  If you have any questions,
-    please contact the authors (matthew.hamilton1@monash.edu).
+Description: Modules from the ready4 youth mental health economic model
+    (https://www.ready4-dev.com/docs/model/) that can be used to describe
+    and quality assure individual human record datasets.  The main
+    motivation for this package is to facilitate automated data integrity
+    checks, ensure that methods are applied to the appropriate data
+    structures and streamline reporting of descriptive statistics.  This
+    development version of the youthvars package has been made available
+    as part of the process of testing and documenting the package.  If you
+    have any questions, please contact the authors
+    (matthew.hamilton1@monash.edu).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/youthvars/,
     https://github.com/ready4-dev/youthvars, https://www.ready4-dev.com/
