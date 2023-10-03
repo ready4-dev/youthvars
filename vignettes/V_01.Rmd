@@ -21,10 +21,10 @@ library(youthvars)
 ```
 
 ## Variable classes and data integrity
-The `youthvars` package defines a number of [ready4 framework sub-module classes](https://www.ready4-dev.com/docs/framework/implementation/modularity/#ready4-model-sub-modules) that can be used to quality assure input or output datasets for the [ready4 economic model of youth mental health](https://www.ready4-dev.com/). `youthvars` sub-modules are potentially useful for:
+The `youthvars` package includes a number of [ready4 framework sub-module classes](https://www.ready4-dev.com/docs/framework/implementation/modularity/#ready4-model-sub-modules) that form part of the [ready4 economic model of youth mental health](https://www.ready4-dev.com/docs/model/). The primary use of `youthvars` sub-modules is to quality assure the variables used in model input and output datasets by:
 
 1) facilitating automated data integrity checks that verify no impermissible values (e.g. utility scores greater than one) are present in source data, transformed data or results; and
-2) automating the selection of the appropriate method to apply to each data type.
+2) implementing rules-based automated selection and application of appropriate methods for each dataset variable.
 
 ## Included sub-module classes
 
