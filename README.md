@@ -9,15 +9,16 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5646550.svg)](https://doi.org/10.5281/zenodo.5646550)
 <!-- badges: end -->
 
-Tools to describe and quality assure individual human record
-datasets for in models developed with the ready4 framework
-(https://www.ready4-dev.com/).  The main motivation for this package
-is to facilitate automated data integrity checks, ensure that methods
-are applied to the appropriate data structures and streamline
-reporting of descriptive statistics.  This development version of the
-youthvars package has been made available as part of the process of
-testing and documenting the package.  If you have any questions,
-please contact the authors (matthew.hamilton1@monash.edu).
+Modules from the ready4 youth mental health economic model
+(https://www.ready4-dev.com/docs/model/) that can be used to describe
+and quality assure individual human record datasets.  The main
+motivation for this package is to facilitate automated data integrity
+checks, ensure that methods are applied to the appropriate data
+structures and streamline reporting of descriptive statistics.  This
+development version of the youthvars package has been made available
+as part of the process of testing and documenting the package.  If you
+have any questions, please contact the authors
+(matthew.hamilton1@monash.edu).
 
 To install a development version of this software, run the following commands in your R console:
 

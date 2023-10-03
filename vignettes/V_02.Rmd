@@ -23,7 +23,7 @@ library(ready4)
 library(youthvars)
 ```
 
-Youthvars provides a two classes - `YouthvarsProfile` and `YouthvarsSeries` that are useful for describing features of datasets. The tools in `youthvars` build on the metadata included in a [Ready4useDyad](https://ready4-dev.github.io/ready4use/articles/V_02.html).
+Youthvars provides two [ready4 modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/#ready4-model-modules) - `YouthvarsProfile` and `YouthvarsSeries` to help describe key features of youth mental health datasets. The ready4 modules in `youthvars` extend the [Ready4useDyad module](https://www.ready4-dev.com/docs/framework/use/authoring-data/label-data/) .
 
 ## Ingest data
 To start we ingest  `X`, a `Ready4useDyad` (dataset and data dictionary pair) that we can download from a remote repository.

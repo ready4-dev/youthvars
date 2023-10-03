@@ -17,11 +17,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(youthvars)
 ```
-The tools in youthvars are designed to make it easier to use youth mental health human record data (including synthetic data) in models developed with the [ready4 framework](https://www.ready4-dev.com).
+The [modules and sub-modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/) in youthvars are designed to make it easier to use youth mental health human record data (including synthetic data) in the [ready4 economic model of youth mental health](https://www.ready4-dev.com/).
 
-youthvars is a set of tools designed to help describe and validate types of data commonly present in youth mental health collections.
-
-The following vignettes demonstrate some of the tools currently included in the youthvars package:
+The following vignettes demonstrate some of the modules and sub-modules currently included in the youthvars package:
 
 - [Quality Assure Youth Mental Health Dataset Variables](V_01.html)
 - [Describe And Disseminate Youth Mental Health Datasets](V_02.html)
