@@ -1,5 +1,5 @@
 ---
-title: "Quality Assure Youth Mental Health Variables"
+title: "Quality Assure Youth Mental Health Dataset Variables"
 output: rmarkdown::html_vignette
 # output: 
 #   rmarkdown::html_vignette:
@@ -8,7 +8,7 @@ output: rmarkdown::html_vignette
 #     highlight: null
 #     number_sections: yes
 vignette: >
-  %\VignetteIndexEntry{Quality Assure Youth Mental Health Variables}
+  %\VignetteIndexEntry{Quality Assure Youth Mental Health Dataset Variables}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 ---

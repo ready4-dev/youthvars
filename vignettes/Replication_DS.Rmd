@@ -18,6 +18,6 @@ vignette: >
 library(youthvars)
 ```
 
-The synthetic dataset bundled with youthvars is now deprecated. Although this dataset can (for the time-being) be accessed via the command `data("repln_ds_dict_r3", package = "youthvars")`, we now recommend instead accessing the dataset and its data-dictionary from its [online data repository](https://doi.org/10.7910/DVN/HJXYKQ). The recommended commands to ingest the dataset and inspect the dataset and its data-dictionary are described in two vignettes - [one from youthvars](V_02.html) and another [from the ready4use package](https://ready4-dev.github.io/ready4use/articles/V_01.html). 
+The synthetic dataset bundled with youthvars is now deprecated. Although this dataset can (for the time-being) be accessed via the command `data("repln_ds_dict_r3", package = "youthvars")`, we now recommend instead accessing the dataset and its data-dictionary from its [online data repository](https://doi.org/10.7910/DVN/HJXYKQ). The recommended commands to ingest the dataset and inspect the dataset and its data-dictionary are described in two vignettes - [one from youthvars](V_02.html) and another from the [ready4use package](https://ready4-dev.github.io/ready4use/articles/V_01.html). 
 
 We plan removing the synthetic dataset from the `youthvars` package at a future data, whereupon it will only be accessible via the online data repository.
