@@ -4,9 +4,6 @@
     <loc>https://ready4-dev.github.io/youthvars/404.html</loc>
   </url>
   <url>
-    <loc>https://ready4-dev.github.io/youthvars/LICENSE-text.html</loc>
-  </url>
-  <url>
     <loc>https://ready4-dev.github.io/youthvars/LICENSE.html</loc>
   </url>
   <url>
@@ -122,6 +119,9 @@
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/deprecated.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/youthvars/reference/dotdata.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/exhibit-methods.html</loc>
@@ -263,6 +263,9 @@
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/manufacture-methods.html</loc>
+  </url>
+  <url>
+    <loc>https://ready4-dev.github.io/youthvars/reference/nseequals.html</loc>
   </url>
   <url>
     <loc>https://ready4-dev.github.io/youthvars/reference/pipe.html</loc>
