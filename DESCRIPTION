@@ -1,8 +1,8 @@
 Package: youthvars
 Title: Describe and Validate Youth Mental Health Dataset Variables
-Version: 0.0.0.9123
+Version: 0.0.0.9124
 Authors@R: c(
-    person("Matthew", "Hamilton", , "matthew.hamilton1@monash.edu", role = c("aut", "cre"),
+    person("Matthew", "Hamilton", , "matthew.hamilton1@monash.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-7407-9194")),
     person("Caroline", "Gao", , "caroline.gao@orygen.org.au", role = "aut",
            comment = c(ORCID = "0000-0002-0987-2759")),
@@ -10,22 +10,27 @@ Authors@R: c(
     person("Headspace", role = "fnd"),
     person("National Health and Medical Research Council", role = "fnd")
   )
-Description: Modules from the ready4 youth mental health economic model
-    (https://www.ready4-dev.com/docs/model/) that can be used to describe
-    and quality assure individual human record datasets.  The main
-    motivation for this package is to facilitate automated data integrity
-    checks, ensure that methods are applied to the appropriate data
-    structures and streamline reporting of descriptive statistics.  This
-    development version of the youthvars package has been made available
-    as part of the process of testing and documenting the package.  If you
-    have any questions, please contact the authors
+Description: Modules from the readyforwhatsnext youth mental health
+    economic model (https://readyforwhatsnext.org/) that can be used to
+    describe and quality assure individual human record datasets.  The
+    main motivation for this package is to facilitate automated data
+    integrity checks, ensure that methods are applied to the appropriate
+    data structures and streamline reporting of descriptive statistics.
+    This development version of the youthvars package has been made
+    available as part of the process of testing and documenting the
+    package.  If you have any questions, please contact the authors
     (matthew.hamilton1@monash.edu).
 License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/youthvars/,
-    https://github.com/ready4-dev/youthvars, https://www.ready4-dev.com/
+    https://github.com/ready4-dev/youthvars,
+    https://readyforwhatsnext.org/
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
+Suggests: 
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
 Imports: 
     arsenal,
     assertthat,
@@ -51,20 +56,18 @@ Imports:
     mice,
     psych,
     purrr,
-    ready4 (>= 0.0.0.9125),
-    ready4show (>= 0.0.0.9111),
-    ready4use (>= 0.0.0.9231),
+    ready4,
+    ready4show (>= 0.0.0.9112),
+    ready4use (>= 0.0.0.9232),
     rlang,
     scales,
     simstudy,
     stats,
     stringi,
     stringr,
-    testthat,
     tibble,
     tidyselect,
     utils
-VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
 LazyData: true
@@ -111,9 +114,6 @@ Collate:
     'mthd_renewSlot.R'
     'pkg_youthvars.R'
     'youthvars-package.R'
-Suggests: 
-    rmarkdown
 Remotes: 
-    ready4-dev/ready4,
     ready4-dev/ready4show,
     ready4-dev/ready4use
