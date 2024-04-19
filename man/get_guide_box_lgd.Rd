@@ -13,6 +13,6 @@ get_guide_box_lgd(plot_plt)
 Legend (a list)
 }
 \description{
-get_guide_box_lgd() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get guide box legend. Function argument plot_plt specifies the where to look for the required object. The function returns Legend (a list).
+get_guide_box_lgd() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get guide box legend. The function returns Legend (a list).
 }
 \keyword{internal}

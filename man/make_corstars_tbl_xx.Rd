@@ -26,6 +26,9 @@ make_corstars_tbl_xx(
 
 \item{result_chr}{Result (a character vector), Default: 'none'}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 make_corstars_tbl_xx() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make starred correlations table output object of multiple potential types. The function is called for its side effects and does not return a value.
 }

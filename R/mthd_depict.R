@@ -1,5 +1,5 @@
 #' 
-#' Depict (plot) features of a dataset
+#' Depict (plot) features of model module data
 #' @name depict-YouthvarsSeries
 #' @description depict method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
@@ -10,7 +10,7 @@
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
 #' @param ... Additional arguments
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname depict-methods
 #' @aliases depict,YouthvarsSeries-method
 #' @export 
@@ -39,7 +39,7 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, var_nms_chr, type_1
     plot_ls
 })
 #' 
-#' Depict (plot) features of a dataset
+#' Depict (plot) features of model module data
 #' @name depict-YouthvarsProfile
 #' @description depict method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile
@@ -48,7 +48,7 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, var_nms_chr, type_1
 #' @param y_label_1L_chr Y label (a character vector of length one), Default: 'Percentage'
 #' @param y_scale_scl_fn Y scale scale (a function), Default: scales::percent
 #' @param ... Additional arguments
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname depict-methods
 #' @aliases depict,YouthvarsProfile-method
 #' @export 

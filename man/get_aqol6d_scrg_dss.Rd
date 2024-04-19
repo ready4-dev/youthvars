@@ -10,6 +10,6 @@ get_aqol6d_scrg_dss()
 Assessment of Quality of Life Six Dimension scoring datasets (a list)
 }
 \description{
-get_aqol6d_scrg_dss() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get assessment of quality of life six dimension scoring datasets. The function returns Assessment of Quality of Life Six Dimension scoring datasets (a list).
+get_aqol6d_scrg_dss() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get assessment of quality of life six dimension scoring datasets. The function returns Assessment of Quality of Life Six Dimension scoring datasets (a list).
 }
 \keyword{internal}

@@ -1,5 +1,5 @@
 #' Get Assessment of Quality of Life Six Dimension scoring datasets
-#' @description get_aqol6d_scrg_dss() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get assessment of quality of life six dimension scoring datasets. The function returns Assessment of Quality of Life Six Dimension scoring datasets (a list).
+#' @description get_aqol6d_scrg_dss() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get assessment of quality of life six dimension scoring datasets. The function returns Assessment of Quality of Life Six Dimension scoring datasets (a list).
 
 #' @return Assessment of Quality of Life Six Dimension scoring datasets (a list)
 #' @rdname get_aqol6d_scrg_dss
@@ -18,7 +18,7 @@ get_aqol6d_scrg_dss <- function ()
     return(aqol6d_scrg_dss_ls)
 }
 #' Get guide box legend
-#' @description get_guide_box_lgd() is a Get function that retrieves a pre-existing data object from memory, local file system or online repository. Specifically, this function implements an algorithm to get guide box legend. Function argument plot_plt specifies the where to look for the required object. The function returns Legend (a list).
+#' @description get_guide_box_lgd() is a Get function that extracts data from an object. Specifically, this function implements an algorithm to get guide box legend. The function returns Legend (a list).
 #' @param plot_plt Plot (a plot)
 #' @return Legend (a list)
 #' @rdname get_guide_box_lgd

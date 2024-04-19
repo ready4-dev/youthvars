@@ -13,6 +13,6 @@ transform_csnl_example_ds(ds_df)
 Dataset (a tibble)
 }
 \description{
-transform_csnl_example_ds() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform cross-sectional example dataset. Function argument ds_df specifies the object to be updated. The function returns Dataset (a tibble).
+transform_csnl_example_ds() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform cross-sectional example dataset. The function returns Dataset (a tibble).
 }
 \keyword{internal}

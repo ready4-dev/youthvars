@@ -1,5 +1,5 @@
 #' 
-#' Ratify that a dataset meets validity criteria
+#' Ratify that input or output data meet validity criteria
 #' @name ratify-YouthvarsProfile
 #' @description ratify method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile
@@ -15,7 +15,7 @@ methods::setMethod("ratify", "YouthvarsProfile", function (x, ...)
     return(x)
 })
 #' 
-#' Ratify that a dataset meets validity criteria
+#' Ratify that input or output data meet validity criteria
 #' @name ratify-YouthvarsSeries
 #' @description ratify method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries

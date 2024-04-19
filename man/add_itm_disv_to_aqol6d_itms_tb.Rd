@@ -21,6 +21,6 @@ add_itm_disv_to_aqol6d_itms_tb(
 Assessment of Quality of Life Six Dimension items (a tibble)
 }
 \description{
-add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 }
 \keyword{internal}

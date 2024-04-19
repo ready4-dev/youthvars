@@ -27,6 +27,6 @@ add_wtd_dim_tots(
 Weighted and unweighted dimension (a tibble)
 }
 \description{
-add_wtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add weighted dimension totals. Function argument unwtd_dim_tb specifies the object to be updated. The function returns Weighted and unweighted dimension (a tibble).
+add_wtd_dim_tots() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add weighted dimension totals. The function returns Weighted and unweighted dimension (a tibble).
 }
 \keyword{internal}

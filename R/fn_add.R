@@ -1,5 +1,5 @@
 #' Add Assessment of Quality of Life Six Dimension (Adolescent version) scores
-#' @description add_adol6d_scores() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension (adolescent version) scores. Function argument unscored_aqol_tb specifies the object to be updated. The function returns Transformed Assessment of Quality of Life (a tibble).
+#' @description add_adol6d_scores() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension (adolescent version) scores. The function returns Transformed Assessment of Quality of Life (a tibble).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
 #' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
@@ -61,7 +61,7 @@ add_adol6d_scores <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls = NULL, id_v
     return(tfd_aqol_tb)
 }
 #' Add Assessment of Quality of Life Six Dimension adolescent dimension scoring equations
-#' @description add_aqol6d_adol_dim_scrg_eqs() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension adolescent dimension scoring equations. Function argument unscored_aqol_tb specifies the object to be updated. The function returns Unscored Assessment of Quality of Life (a tibble).
+#' @description add_aqol6d_adol_dim_scrg_eqs() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension adolescent dimension scoring equations. The function returns Unscored Assessment of Quality of Life (a tibble).
 #' @param unscored_aqol_tb Unscored Assessment of Quality of Life (a tibble)
 #' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @return Unscored Assessment of Quality of Life (a tibble)
@@ -91,7 +91,7 @@ add_aqol6d_adol_dim_scrg_eqs <- function (unscored_aqol_tb, aqol6d_scrg_dss_ls =
     return(unscored_aqol_tb)
 }
 #' Add Assessment of Quality of Life Six Dimension items to Assessment of Quality of Life Six Dimension tibbles list
-#' @description add_aqol6d_items_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension items to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Updated Assessment of Quality of Life Six Dimension tibbles (a list).
+#' @description add_aqol6d_items_to_aqol6d_tbs_ls() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension items to assessment of quality of life six dimension tibbles list. The function returns Updated Assessment of Quality of Life Six Dimension tibbles (a list).
 #' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
 #' @param prefix_chr Prefix (a character vector)
@@ -155,7 +155,7 @@ add_aqol6d_items_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_items_prpns_t
     return(updated_aqol6d_tbs_ls)
 }
 #' Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension items tibble
-#' @description add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+#' @description add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param coefs_lup_tb Coefficients lookup table (a tibble), Default: NULL
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
@@ -183,7 +183,7 @@ add_aqol6dU_to_aqol6d_items_tb <- function (aqol6d_items_tb, coefs_lup_tb = NULL
     return(aqol6d_items_tb)
 }
 #' Add Assessment of Quality of Life Six Dimension Health Utility to Assessment of Quality of Life Six Dimension tibbles list
-#' @description add_aqol6dU_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
+#' @description add_aqol6dU_to_aqol6d_tbs_ls() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension tibbles list. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
 #' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @param aqol6d_scrg_dss_ls Assessment of Quality of Life Six Dimension scoring datasets (a list), Default: NULL
 #' @param prefix_1L_chr Prefix (a character vector of length one), Default: 'aqol6d_q'
@@ -209,7 +209,7 @@ add_aqol6dU_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol6d_scrg_dss_ls = NU
     return(aqol6d_tbs_ls)
 }
 #' Add correlations and utilities to Assessment of Quality of Life Six Dimension tibbles list
-#' @description add_cors_and_utls_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add correlations and utilities to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
+#' @description add_cors_and_utls_to_aqol6d_tbs_ls() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add correlations and utilities to assessment of quality of life six dimension tibbles list. The function returns Assessment of Quality of Life Six Dimension tibbles (a list).
 #' @param aqol6d_tbs_ls Assessment of Quality of Life Six Dimension tibbles (a list)
 #' @param aqol_scores_pars_ls Assessment of Quality of Life scores pars (a list)
 #' @param aqol_items_prpns_tbs_ls Assessment of Quality of Life items proportions tibbles (a list)
@@ -242,7 +242,7 @@ add_cors_and_utls_to_aqol6d_tbs_ls <- function (aqol6d_tbs_ls, aqol_scores_pars_
     return(aqol6d_tbs_ls)
 }
 #' Add dimension disvalue to Assessment of Quality of Life Six Dimension items tibble
-#' @description add_dim_disv_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dimension disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+#' @description add_dim_disv_to_aqol6d_items_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dimension disvalue to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @param domains_chr Domains (a character vector)
@@ -284,7 +284,7 @@ add_dim_disv_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls, d
     return(aqol6d_items_tb)
 }
 #' Add dimension scores to Assessment of Quality of Life Six Dimension items tibble
-#' @description add_dim_scores_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dimension scores to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+#' @description add_dim_scores_to_aqol6d_items_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dimension scores to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @return Assessment of Quality of Life Six Dimension items (a tibble)
@@ -305,7 +305,7 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
     return(aqol6d_items_tb)
 }
 #' Add interval variable
-#' @description add_interval_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add interval variable. Function argument data_tb specifies the object to be updated. The function returns Updated data (a tibble).
+#' @description add_interval_var() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add interval variable. The function returns Updated data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param msrmnt_date_var_nm_1L_chr Measurement date variable name (a character vector of length one), Default: 'd_interview_date'
@@ -341,7 +341,7 @@ add_interval_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", msrmnt_d
     return(updated_data_tb)
 }
 #' Add item disvalue to Assessment of Quality of Life Six Dimension items tibble
-#' @description add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+#' @description add_itm_disv_to_aqol6d_itms_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add item disvalue to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 #' @param aqol6d_items_tb Assessment of Quality of Life Six Dimension items (a tibble)
 #' @param disvalues_lup_tb Disvalues lookup table (a tibble), Default: NULL
 #' @param pfx_1L_chr Prefix (a character vector of length one)
@@ -371,7 +371,7 @@ add_itm_disv_to_aqol6d_itms_tb <- function (aqol6d_items_tb, disvalues_lup_tb = 
     return(aqol6d_items_tb)
 }
 #' Add labels to Assessment of Quality of Life Six Dimension tibble
-#' @description add_labels_to_aqol6d_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels to assessment of quality of life six dimension tibble. Function argument aqol6d_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension (a tibble).
+#' @description add_labels_to_aqol6d_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add labels to assessment of quality of life six dimension tibble. The function returns Assessment of Quality of Life Six Dimension (a tibble).
 #' @param aqol6d_tb Assessment of Quality of Life Six Dimension (a tibble)
 #' @param labels_chr Labels (a character vector), Default: 'NA'
 #' @return Assessment of Quality of Life Six Dimension (a tibble)
@@ -418,7 +418,7 @@ add_labels_to_aqol6d_tb <- function (aqol6d_tb, labels_chr = NA_character_)
     return(aqol6d_tb)
 }
 #' Add participation variable
-#' @description add_participation_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add participation variable. Function argument data_tb specifies the object to be updated. The function returns Data (a tibble).
+#' @description add_participation_var() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add participation variable. The function returns Data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
 #' @param fup_round_nbr_1L_int Follow-up round number (an integer vector of length one), Default: 2
@@ -442,7 +442,7 @@ add_participation_var <- function (data_tb, id_var_nm_1L_chr = "fkClientID", fup
     return(data_tb)
 }
 #' Add unique identifiers to tibbles list
-#' @description add_uids_to_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add unique identifiers to tibbles list. Function argument tbs_ls specifies the object to be updated. The function returns Tibbles (a list).
+#' @description add_uids_to_tbs_ls() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add unique identifiers to tibbles list. The function returns Tibbles (a list).
 #' @param tbs_ls Tibbles (a list)
 #' @param prefix_1L_chr Prefix (a character vector of length one)
 #' @param id_var_nm_1L_chr Identity variable name (a character vector of length one), Default: 'fkClientID'
@@ -470,7 +470,7 @@ add_uids_to_tbs_ls <- function (tbs_ls, prefix_1L_chr, id_var_nm_1L_chr = "fkCli
     return(tbs_ls)
 }
 #' Add unweighted dimension totals
-#' @description add_unwtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add unweighted dimension totals. Function argument items_tb specifies the object to be updated. The function returns Items and domains (a tibble).
+#' @description add_unwtd_dim_tots() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add unweighted dimension totals. The function returns Items and domains (a tibble).
 #' @param items_tb Items (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @param domain_pfx_1L_chr Domain prefix (a character vector of length one)
@@ -493,7 +493,7 @@ add_unwtd_dim_tots <- function (items_tb, domain_items_ls, domain_pfx_1L_chr)
     return(items_and_domains_tb)
 }
 #' Add weighted dimension totals
-#' @description add_wtd_dim_tots() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add weighted dimension totals. Function argument unwtd_dim_tb specifies the object to be updated. The function returns Weighted and unweighted dimension (a tibble).
+#' @description add_wtd_dim_tots() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add weighted dimension totals. The function returns Weighted and unweighted dimension (a tibble).
 #' @param unwtd_dim_tb Unweighted dimension (a tibble)
 #' @param domain_items_ls Domain items (a list)
 #' @param domain_unwtd_pfx_1L_chr Domain unweighted prefix (a character vector of length one)

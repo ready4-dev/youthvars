@@ -9,6 +9,9 @@ make_csnl_example_dict(ds_tb)
 \arguments{
 \item{ds_tb}{Dataset (a tibble)}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
 make_csnl_example_dict() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make cross-sectional example dictionary. The function is called for its side effects and does not return a value.
 }

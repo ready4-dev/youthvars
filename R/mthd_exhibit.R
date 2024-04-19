@@ -1,5 +1,5 @@
 #' 
-#' Exhibit features of a dataset by printing them to the R console
+#' Exhibit features of model module data by printing them to the R console
 #' @name exhibit-YouthvarsSeries
 #' @description exhibit method applied to YouthvarsSeries
 #' @param x An object of class YouthvarsSeries
@@ -11,7 +11,7 @@
 #' @param type_1L_chr Type (a character vector of length one), Default: 'characterize'
 #' @param what_1L_chr What (a character vector of length one), Default: 'descriptives'
 #' @param ... Additional arguments
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname exhibit-methods
 #' @aliases exhibit,YouthvarsSeries-method
 #' @export 
@@ -60,7 +60,7 @@ methods::setMethod("exhibit", "YouthvarsSeries", function (x, captions_chr = NUL
     print_ls
 })
 #' 
-#' Exhibit features of a dataset by printing them to the R console
+#' Exhibit features of model module data by printing them to the R console
 #' @name exhibit-YouthvarsProfile
 #' @description exhibit method applied to YouthvarsProfile
 #' @param x An object of class YouthvarsProfile
@@ -72,7 +72,7 @@ methods::setMethod("exhibit", "YouthvarsSeries", function (x, captions_chr = NUL
 #' @param output_type_1L_chr Output type (a character vector of length one), Default: 'HTML'
 #' @param what_1L_chr What (a character vector of length one), Default: 'descriptives'
 #' @param ... Additional arguments
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname exhibit-methods
 #' @aliases exhibit,YouthvarsProfile-method
 #' @export 

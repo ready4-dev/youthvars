@@ -15,6 +15,6 @@ add_aqol6dU_to_aqol6d_items_tb(aqol6d_items_tb, coefs_lup_tb = NULL)
 Assessment of Quality of Life Six Dimension items (a tibble)
 }
 \description{
-add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+add_aqol6dU_to_aqol6d_items_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension health utility to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 }
 \keyword{internal}

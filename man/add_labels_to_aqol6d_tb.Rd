@@ -15,6 +15,6 @@ add_labels_to_aqol6d_tb(aqol6d_tb, labels_chr = NA_character_)
 Assessment of Quality of Life Six Dimension (a tibble)
 }
 \description{
-add_labels_to_aqol6d_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add labels to assessment of quality of life six dimension tibble. Function argument aqol6d_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension (a tibble).
+add_labels_to_aqol6d_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add labels to assessment of quality of life six dimension tibble. The function returns Assessment of Quality of Life Six Dimension (a tibble).
 }
 \keyword{internal}

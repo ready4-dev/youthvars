@@ -21,6 +21,6 @@ transform_ds_for_item_plt(
 Transformed data (a tibble)
 }
 \description{
-transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. Function argument data_tb specifies the object to be updated. Argument var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
+transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. The function returns Transformed data (a tibble).
 }
 \keyword{internal}

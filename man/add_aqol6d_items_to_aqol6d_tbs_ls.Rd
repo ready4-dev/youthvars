@@ -33,6 +33,6 @@ add_aqol6d_items_to_aqol6d_tbs_ls(
 Updated Assessment of Quality of Life Six Dimension tibbles (a list)
 }
 \description{
-add_aqol6d_items_to_aqol6d_tbs_ls() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension items to assessment of quality of life six dimension tibbles list. Function argument aqol6d_tbs_ls specifies the object to be updated. The function returns Updated Assessment of Quality of Life Six Dimension tibbles (a list).
+add_aqol6d_items_to_aqol6d_tbs_ls() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension items to assessment of quality of life six dimension tibbles list. The function returns Updated Assessment of Quality of Life Six Dimension tibbles (a list).
 }
 \keyword{internal}

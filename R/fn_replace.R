@@ -1,5 +1,5 @@
 #' Replace with missing values
-#' @description replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. Function argument data_tbl_tb specifies the object to be updated. Argument synth_data_spine_ls provides the object to be updated. The function is called for its side effects and does not return a value.
+#' @description replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. The function is called for its side effects and does not return a value.
 #' @param data_tbl_tb Data table (a tibble)
 #' @param synth_data_spine_ls Synthetic data spine (a list)
 #' @param idx_int Index (an integer vector)

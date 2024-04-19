@@ -5,7 +5,7 @@
 \alias{ratify,YouthvarsProfile-method}
 \alias{ratify-YouthvarsSeries}
 \alias{ratify,YouthvarsSeries-method}
-\title{Ratify that a dataset meets validity criteria}
+\title{Ratify that input or output data meet validity criteria}
 \usage{
 \S4method{ratify}{YouthvarsProfile}(x, ...)
 

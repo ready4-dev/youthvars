@@ -15,6 +15,6 @@ transform_tb_for_merged_col_1(df, output_type_1L_chr = "PDF")
 Data.frame (a data.frame)
 }
 \description{
-transform_tb_for_merged_col_1() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform tibble for merged column 1. Function argument df specifies the object to be updated. Argument output_type_1L_chr provides the object to be updated. The function returns Data.frame (a data.frame).
+transform_tb_for_merged_col_1() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform tibble for merged column 1. The function returns Data.frame (a data.frame).
 }
 \keyword{internal}

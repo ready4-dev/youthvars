@@ -36,5 +36,5 @@ add_interval_var(
 Updated data (a tibble)
 }
 \description{
-add_interval_var() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add interval variable. Function argument data_tb specifies the object to be updated. The function returns Updated data (a tibble).
+add_interval_var() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add interval variable. The function returns Updated data (a tibble).
 }

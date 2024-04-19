@@ -30,6 +30,6 @@ add_adol6d_scores(
 Transformed Assessment of Quality of Life (a tibble)
 }
 \description{
-add_adol6d_scores() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add assessment of quality of life six dimension (adolescent version) scores. Function argument unscored_aqol_tb specifies the object to be updated. The function returns Transformed Assessment of Quality of Life (a tibble).
+add_adol6d_scores() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add assessment of quality of life six dimension (adolescent version) scores. The function returns Transformed Assessment of Quality of Life (a tibble).
 }
 \keyword{internal}

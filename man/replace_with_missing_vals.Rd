@@ -17,6 +17,6 @@ replace_with_missing_vals(data_tbl_tb, synth_data_spine_ls, idx_int)
 Synthetic (a table)
 }
 \description{
-replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. Function argument data_tbl_tb specifies the object to be updated. Argument synth_data_spine_ls provides the object to be updated. The function is called for its side effects and does not return a value.
+replace_with_missing_vals() is a Replace function that edits an object, replacing a specified element with another specified element. Specifically, this function implements an algorithm to replace with missing values. The function is called for its side effects and does not return a value.
 }
 \keyword{internal}

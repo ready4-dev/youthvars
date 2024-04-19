@@ -200,7 +200,7 @@ make_cors_with_utl_tbl <- function (data_tb, ds_descvs_ls, dictionary_tb = NULL,
 #' @param method_chr Method (a character vector), Default: c("pearson", "spearman")
 #' @param removeTriangle_chr RemoveTriangle (a character vector), Default: c("upper", "lower")
 #' @param result_chr Result (a character vector), Default: 'none'
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname make_corstars_tbl_xx
 #' @export 
 #' @importFrom Hmisc rcorr
@@ -269,7 +269,7 @@ make_corstars_tbl_xx <- function (x, caption_1L_chr = NULL, mkdn_tbl_ref_1L_chr 
 #' Make cross-sectional example dictionary
 #' @description make_csnl_example_dict() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make cross-sectional example dictionary. The function is called for its side effects and does not return a value.
 #' @param ds_tb Dataset (a tibble)
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname make_csnl_example_dict
 #' @export 
 #' @importFrom dplyr filter arrange
@@ -905,10 +905,10 @@ make_tableby_ls <- function (data_tb, key_var_nm_1L_chr, variable_nms_chr, test_
         control = make_tableby_cntrls(test_1L_lgl))
     return(tableby_ls)
 }
-#' Make transformed replication dataset dictionary ready4 S3
-#' @description make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed replication dataset dictionary ready4 s3. The function returns Transformed replication dataset dictionary (a ready4 S3).
-#' @param repln_ds_dict_r3 Replication dataset dictionary (a ready4 S3), Default: NULL
-#' @return Transformed replication dataset dictionary (a ready4 S3)
+#' Make transformed replication dataset dictionary ready4 submodule
+#' @description make_tfd_repln_ds_dict_r3() is a Make function that creates a new R object. Specifically, this function implements an algorithm to make transformed replication dataset dictionary ready4 submodule. The function returns Transformed replication dataset dictionary (a ready4 submodule).
+#' @param repln_ds_dict_r3 Replication dataset dictionary (a ready4 submodule), Default: NULL
+#' @return Transformed replication dataset dictionary (a ready4 submodule)
 #' @rdname make_tfd_repln_ds_dict_r3
 #' @export 
 #' @importFrom dplyr mutate across case_when

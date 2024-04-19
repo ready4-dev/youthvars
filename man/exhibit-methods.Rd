@@ -5,7 +5,7 @@
 \alias{exhibit,YouthvarsSeries-method}
 \alias{exhibit-YouthvarsProfile}
 \alias{exhibit,YouthvarsProfile-method}
-\title{Exhibit features of a dataset by printing them to the R console}
+\title{Exhibit features of model module data by printing them to the R console}
 \usage{
 \S4method{exhibit}{YouthvarsSeries}(
   x,
@@ -53,6 +53,11 @@
 \item{header_1L_chr}{Header (a character vector of length one), Default: ''}
 
 \item{header_col_nms_chr}{Header column names (a character vector), Default: ' '}
+}
+\value{
+No return value, called for side effects.
+
+No return value, called for side effects.
 }
 \description{
 exhibit method applied to YouthvarsSeries

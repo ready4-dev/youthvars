@@ -5,7 +5,7 @@
 \alias{renew,YouthvarsDescriptives-method}
 \alias{renew-YouthvarsProfile}
 \alias{renew,YouthvarsProfile-method}
-\title{Renew values in a dataset}
+\title{Renew (update) values}
 \usage{
 \S4method{renew}{YouthvarsDescriptives}(x, type_1L_chr = "characterize", ...)
 

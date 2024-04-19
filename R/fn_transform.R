@@ -1,5 +1,5 @@
 #' Transform cross-sectional example dataset
-#' @description transform_csnl_example_ds() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform cross-sectional example dataset. Function argument ds_df specifies the object to be updated. The function returns Dataset (a tibble).
+#' @description transform_csnl_example_ds() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform cross-sectional example dataset. The function returns Dataset (a tibble).
 #' @param ds_df Dataset (a data.frame)
 #' @return Dataset (a tibble)
 #' @rdname transform_csnl_example_ds
@@ -62,7 +62,7 @@ transform_csnl_example_ds <- function (ds_df)
     return(ds_tb)
 }
 #' Transform dataset for item plot
-#' @description transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. Function argument data_tb specifies the object to be updated. Argument var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
+#' @description transform_ds_for_item_plt() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for item plot. The function returns Transformed data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param var_nm_1L_chr Variable name (a character vector of length one)
 #' @param round_var_nm_1L_chr Round variable name (a character vector of length one), Default: 'round'
@@ -89,7 +89,7 @@ transform_ds_for_item_plt <- function (data_tb, var_nm_1L_chr, round_var_nm_1L_c
     return(tfd_data_tb)
 }
 #' Transform dataset for testing
-#' @description transform_ds_for_tstng() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for testing. Function argument data_tb specifies the object to be updated. Argument depnt_var_nm_1L_chr provides the object to be updated. The function returns Transformed data (a tibble).
+#' @description transform_ds_for_tstng() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset for testing. The function returns Transformed data (a tibble).
 #' @param data_tb Data (a tibble)
 #' @param depnt_var_nm_1L_chr Dependent variable name (a character vector of length one), Default: 'aqol6d_total_w'
 #' @param depnt_var_max_val_1L_dbl Dependent variable maximum value (a double vector of length one), Default: 0.999
@@ -126,7 +126,7 @@ transform_ds_for_tstng <- function (data_tb, depnt_var_nm_1L_chr = "aqol6d_total
     return(tfd_data_tb)
 }
 #' Transform dataset with rename lookup table
-#' @description transform_ds_with_rename_lup() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset with rename lookup table. Function argument ds_tb specifies the object to be updated. Argument rename_lup provides the object to be updated. The function returns Tfmd dataset (a tibble).
+#' @description transform_ds_with_rename_lup() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset with rename lookup table. The function returns Tfmd dataset (a tibble).
 #' @param ds_tb Dataset (a tibble)
 #' @param rename_lup Rename (a lookup table)
 #' @param target_var_nms_chr Target variable names (a character vector), Default: NULL
@@ -147,7 +147,7 @@ transform_ds_with_rename_lup <- function (ds_tb, rename_lup, target_var_nms_chr 
     return(tfmd_ds_tb)
 }
 #' Transform raw dataset for analysis
-#' @description transform_raw_ds_for_analysis() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform raw dataset for analysis. Function argument raw_ds_tb specifies the object to be updated. The function returns Transformed dataset (a tibble).
+#' @description transform_raw_ds_for_analysis() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform raw dataset for analysis. The function returns Transformed dataset (a tibble).
 #' @param raw_ds_tb Raw dataset (a tibble)
 #' @return Transformed dataset (a tibble)
 #' @rdname transform_raw_ds_for_analysis
@@ -183,7 +183,7 @@ transform_raw_ds_for_analysis <- function (raw_ds_tb)
     return(transformed_ds_tb)
 }
 #' Transform tibble for merged column 1
-#' @description transform_tb_for_merged_col_1() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform tibble for merged column 1. Function argument df specifies the object to be updated. Argument output_type_1L_chr provides the object to be updated. The function returns Data.frame (a data.frame).
+#' @description transform_tb_for_merged_col_1() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform tibble for merged column 1. The function returns Data.frame (a data.frame).
 #' @param df Data.frame (a data.frame)
 #' @param output_type_1L_chr Output type (a character vector of length one), Default: 'PDF'
 #' @return Data.frame (a data.frame)

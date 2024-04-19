@@ -17,6 +17,6 @@ transform_ds_with_rename_lup(ds_tb, rename_lup, target_var_nms_chr = NULL)
 Tfmd dataset (a tibble)
 }
 \description{
-transform_ds_with_rename_lup() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset with rename lookup table. Function argument ds_tb specifies the object to be updated. Argument rename_lup provides the object to be updated. The function returns Tfmd dataset (a tibble).
+transform_ds_with_rename_lup() is a Transform function that edits an object in such a way that core object attributes - e.g. shape, dimensions, elements, type - are altered. Specifically, this function implements an algorithm to transform dataset with rename lookup table. The function returns Tfmd dataset (a tibble).
 }
 \keyword{internal}

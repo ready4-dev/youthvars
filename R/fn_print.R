@@ -1,5 +1,5 @@
 #' Print descriptive statistics table
-#' @description print_descv_stats_tbl() is a Print function that prints output to console Specifically, this function implements an algorithm to print descriptive statistics table. The function is called for its side effects and does not return a value.
+#' @description print_descv_stats_tbl() is a Print function that prints output to console. Specifically, this function implements an algorithm to print descriptive statistics table. The function is called for its side effects and does not return a value.
 #' @param df Data.frame (a data.frame)
 #' @param data_tb Data (a tibble)
 #' @param output_type_1L_chr Output type (a character vector of length one)
@@ -13,7 +13,7 @@
 #' @param scroll_box_args_ls Scroll box arguments (a list), Default: NULL
 #' @param test_1L_lgl Test (a logical vector of length one), Default: F
 #' @param ... Additional arguments
-#' @return NULL
+#' @return No return value, called for side effects.
 #' @rdname print_descv_stats_tbl
 #' @export 
 #' @importFrom dplyr mutate filter mutate_all

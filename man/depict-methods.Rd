@@ -5,7 +5,7 @@
 \alias{depict,YouthvarsSeries-method}
 \alias{depict-YouthvarsProfile}
 \alias{depict,YouthvarsProfile-method}
-\title{Depict (plot) features of a dataset}
+\title{Depict (plot) features of model module data}
 \usage{
 \S4method{depict}{YouthvarsSeries}(
   x,
@@ -43,6 +43,11 @@
 \item{y_scale_scl_fn}{Y scale scale (a function), Default: scales::percent}
 
 \item{...}{Additional arguments}
+}
+\value{
+No return value, called for side effects.
+
+No return value, called for side effects.
 }
 \description{
 depict method applied to YouthvarsSeries

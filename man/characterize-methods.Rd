@@ -3,7 +3,7 @@
 \name{characterize-YouthvarsDescriptives}
 \alias{characterize-YouthvarsDescriptives}
 \alias{characterize,YouthvarsDescriptives-method}
-\title{Characterize data by generating (tabular) descriptive statistics}
+\title{Characterize model module data by generating (tabular) descriptive statistics}
 \usage{
 \S4method{characterize}{YouthvarsDescriptives}(x, y_Ready4useDyad, ...)
 }

@@ -23,6 +23,9 @@ assert_ds_is_valid(
 
 \item{msrmnt_date_var_nm_1L_chr}{Measurement date variable name (a character vector of length one), Default: NULL}
 }
+\value{
+No return value, called for side effects.
+}
 \description{
-assert_ds_is_valid() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert dataset is valid. Function argument data_tb specifies the object on which assert validation checks are to be performed. Argument id_var_nm_1L_chr provides the object containing values used for validation tests. The function is called for its side effects and does not return a value.
+assert_ds_is_valid() is an Assert function that validates that an object conforms to required condition(s). If the object does not meet all required conditions, program execution will be stopped and an error message provided. Specifically, this function implements an algorithm to assert dataset is valid. The function is called for its side effects and does not return a value.
 }

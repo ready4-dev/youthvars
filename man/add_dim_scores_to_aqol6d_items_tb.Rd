@@ -15,6 +15,6 @@ add_dim_scores_to_aqol6d_items_tb(aqol6d_items_tb, domain_items_ls)
 Assessment of Quality of Life Six Dimension items (a tibble)
 }
 \description{
-add_dim_scores_to_aqol6d_items_tb() is an Add function that updates an object by adding data to that object. Specifically, this function implements an algorithm to add dimension scores to assessment of quality of life six dimension items tibble. Function argument aqol6d_items_tb specifies the object to be updated. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
+add_dim_scores_to_aqol6d_items_tb() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add dimension scores to assessment of quality of life six dimension items tibble. The function returns Assessment of Quality of Life Six Dimension items (a tibble).
 }
 \keyword{internal}

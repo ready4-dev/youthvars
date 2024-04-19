@@ -10,8 +10,8 @@ home:
     href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_User.pdf
   - text: Manual - Developer (PDF)
     href: https://github.com/ready4-dev/youthvars/releases/download/Documentation_0.0/youthvars_Developer.pdf
-  - text: Framework & Model
-    href:  https://www.ready4-dev.com/
+  - text: Model
+    href:  https://readyforwhatsnext.org/
 development:
   mode: auto
 reference:

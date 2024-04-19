@@ -23,7 +23,7 @@ library(ready4)
 library(youthvars)
 ```
 
-Youthvars provides two [ready4 framework modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/#ready4-model-modules) - `YouthvarsProfile` and `YouthvarsSeries` that form part of the [ready4 economic model of youth mental health](https://www.ready4-dev.com/docs/model/). The ready4 modules in `youthvars` extend the [Ready4useDyad module](https://www.ready4-dev.com/docs/framework/use/authoring-data/label-data/) and can be used to help describe key structural properties of youth mental health datasets.
+Youthvars provides two [ready4 framework modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/#ready4-model-modules) - `YouthvarsProfile` and `YouthvarsSeries` that form part of the [readyforwhatsnext economic model of youth mental health](https://readyforwhatsnext.org/). The ready4 modules in `youthvars` extend the [Ready4useDyad module](https://www.ready4-dev.com/docs/framework/use/authoring-data/label-data/) and can be used to help describe key structural properties of youth mental health datasets.
 
 ## Ingest data
 To start we ingest  `X`, a `Ready4useDyad` (dataset and data dictionary pair) that we can download from a remote repository.

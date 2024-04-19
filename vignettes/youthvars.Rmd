@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(youthvars)
 ```
-The [modules and sub-modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/) in youthvars are designed to make it easier to use youth mental health human record data (including synthetic data) in the [ready4 health economic model](https://www.ready4-dev.com/docs/model/).
+The [modules and sub-modules](https://www.ready4-dev.com/docs/framework/implementation/modularity/) in youthvars are designed to make it easier to use youth mental health human record data (including synthetic data) in the [readyforwhatsnext economic model of youth mental health](https://readyforwhatsnext.org/).
 
 The following vignettes demonstrate some of the modules and sub-modules currently included in the youthvars package:
 

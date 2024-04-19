@@ -2,24 +2,23 @@
 % Please edit documentation in R/pkg_youthvars.R, R/youthvars-package.R
 \docType{package}
 \name{youthvars-package}
-\alias{youthvars}
 \alias{youthvars-package}
 \title{youthvars: Describe and Validate Youth Mental Health Dataset Variables}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Modules from the ready4 youth mental health economic model (https://www.ready4-dev.com/docs/model/) that can be used to describe and quality assure individual human record datasets. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
+Modules from the readyforwhatsnext youth mental health economic model (https://readyforwhatsnext.org/) that can be used to describe and quality assure individual human record datasets. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Modules from the ready4 youth mental health economic model (https://www.ready4-dev.com/docs/model/) that can be used to describe and quality assure individual human record datasets. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
+Modules from the readyforwhatsnext youth mental health economic model (https://readyforwhatsnext.org/) that can be used to describe and quality assure individual human record datasets. The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics. This development version of the youthvars package has been made available as part of the process of testing and documenting the package. If you have any questions, please contact the authors (matthew.hamilton1@monash.edu).
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://ready4-dev.github.io/youthvars/}
   \item \url{https://github.com/ready4-dev/youthvars}
-  \item \url{https://www.ready4-dev.com/}
+  \item \url{https://readyforwhatsnext.org/}
 }
 
 
@@ -27,12 +26,12 @@ Useful links:
 \itemize{
   \item \url{https://ready4-dev.github.io/youthvars/}
   \item \url{https://github.com/ready4-dev/youthvars}
-  \item \url{https://www.ready4-dev.com/}
+  \item \url{https://readyforwhatsnext.org/}
 }
 
 }
 \author{
-\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton1@monash.edu} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID})
+\strong{Maintainer}: Matthew Hamilton \email{matthew.hamilton1@monash.edu} (\href{https://orcid.org/0000-0001-7407-9194}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{
