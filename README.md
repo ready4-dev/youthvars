@@ -1,6 +1,6 @@
 # youthvars
 
-## Describe and Validate Youth Mental Health Dataset Variables
+## Describe and Validate Youth Mental Health Economic Datasets
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)

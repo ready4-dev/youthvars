@@ -1,3 +1,22 @@
+add_discrete_palette <- function(plot_plt,
+                                 missing_1L_chr = "grey50",
+                                 type_1L_chr = c("ggsci", "viridis"),
+                                 what_1L_chr = "lancet"){
+  type_1L_chr <- match.arg(type_1L_chr)
+  if(type_1L_chr == "ggsci"){
+    one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
+    two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
+    plot_plt <- plot_plt +
+      one_fn(na.value = missing_1L_chr) +
+      two_fn(na.value = missing_1L_chr)
+  }
+  if(type_1L_chr == "viridis"){
+    plot_plt <- plot_plt +
+      viridis::scale_color_viridis(discrete = TRUE, option = what_1L_chr) +
+      viridis::scale_fill_viridis(discrete = TRUE, option = what_1L_chr)
+  }
+  return(plot_plt )
+}
 add_interval_var <- function(data_tb,
                              id_var_nm_1L_chr = "fkClientID",
                              msrmnt_date_var_nm_1L_chr = "d_interview_date",

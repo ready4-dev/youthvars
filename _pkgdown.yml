@@ -42,6 +42,7 @@ reference:
   - YouthvarsSeries
 - title: "Functions"
 - contents:
+  - add_discrete_palette
   - add_interval_var
   - add_participation_var
   - assert_ds_is_valid
@@ -53,6 +54,7 @@ reference:
   - make_sub_tot_plts
   - make_tfd_repln_ds_dict_r3
   - make_var_by_round_plt
+  - plot_descriptives
   - print_descv_stats_tbl
   - transform_ds_for_tstng
   - transform_raw_ds_for_analysis

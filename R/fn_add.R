@@ -304,6 +304,33 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
         "vD_dvD", "vD"))
     return(aqol6d_items_tb)
 }
+#' Add discrete palette
+#' @description add_discrete_palette() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add discrete palette. The function returns Plot (a plot).
+#' @param plot_plt Plot (a plot)
+#' @param missing_1L_chr Missing (a character vector of length one), Default: 'grey50'
+#' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "viridis")
+#' @param what_1L_chr What (a character vector of length one), Default: 'lancet'
+#' @return Plot (a plot)
+#' @rdname add_discrete_palette
+#' @export 
+#' @importFrom viridis scale_color_viridis scale_fill_viridis
+add_discrete_palette <- function (plot_plt, missing_1L_chr = "grey50", type_1L_chr = c("ggsci", 
+    "viridis"), what_1L_chr = "lancet") 
+{
+    type_1L_chr <- match.arg(type_1L_chr)
+    if (type_1L_chr == "ggsci") {
+        one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
+        two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
+        plot_plt <- plot_plt + one_fn(na.value = missing_1L_chr) + 
+            two_fn(na.value = missing_1L_chr)
+    }
+    if (type_1L_chr == "viridis") {
+        plot_plt <- plot_plt + viridis::scale_color_viridis(discrete = TRUE, 
+            option = what_1L_chr) + viridis::scale_fill_viridis(discrete = TRUE, 
+            option = what_1L_chr)
+    }
+    return(plot_plt)
+}
 #' Add interval variable
 #' @description add_interval_var() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add interval variable. The function returns Updated data (a tibble).
 #' @param data_tb Data (a tibble)

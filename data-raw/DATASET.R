@@ -4,7 +4,7 @@ library(ready4show)
 library(ready4use)
 fns_env_ls <- ready4fun::read_fns(c("data-raw/fns/","data-raw/mthds/"),
                                   fns_env = new.env(parent = globalenv()))
-x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth Mental Health Dataset Variables",
+x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth Mental Health Economic Datasets",
                                  pkg_desc_1L_chr = "Modules from the readyforwhatsnext youth mental health economic model (https://readyforwhatsnext.org/) that can be used to describe and quality assure individual human record datasets.
                             The main motivation for this package is to facilitate automated data integrity checks, ensure that methods are applied to the appropriate data structures and streamline reporting of descriptive statistics.
   This development version of the youthvars package has been made available as part of the process of testing and documenting the package.
@@ -24,6 +24,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth
                            check_type_1L_chr = "ready4",
                            copyright_holders_chr = "Matthew Hamilton and Orygen",
                            custom_dmt_ls = ready4fun::make_custom_dmt_ls(user_manual_fns_chr = c(#"add_adol6d_scores",
+                                                                                                 "add_discrete_palette",
                                                                                                  "add_interval_var",
                                                                                                  "add_participation_var",
                                                                                                  "assert_ds_is_valid",
@@ -35,6 +36,7 @@ x <- ready4fun::make_pkg_desc_ls(pkg_title_1L_chr = "Describe And Validate Youth
                                                                                                  "make_sub_tot_plts",
                                                                                                  "make_tfd_repln_ds_dict_r3",
                                                                                                  "make_var_by_round_plt",
+                                                                                                 "plot_descriptives",
                                                                                                  "print_descv_stats_tbl",
                                                                                                  "transform_ds_for_tstng",
                                                                                                  "transform_raw_ds_for_analysis",

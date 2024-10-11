@@ -49,3 +49,4 @@
 ^data-raw/Clippings\.R$
 ^data-raw/fns/reorder\.R$
 ^data-raw/s4_fns/manufacture\.R$
+^data-raw/fns/plot\.R$

@@ -3,7 +3,7 @@
 \docType{package}
 \name{youthvars-package}
 \alias{youthvars-package}
-\title{youthvars: Describe and Validate Youth Mental Health Dataset Variables}
+\title{youthvars: Describe and Validate Youth Mental Health Economic Datasets}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
