@@ -1,6 +1,6 @@
 Package: youthvars
-Title: Describe and Validate Youth Mental Health Dataset Variables
-Version: 0.0.0.9125
+Title: Describe and Validate Youth Mental Health Economic Datasets
+Version: 0.0.0.9126
 Authors@R: c(
     person("Matthew", "Hamilton", , "matthew.hamilton1@monash.edu", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-7407-9194")),
@@ -20,15 +20,14 @@ Description: Modules from the readyforwhatsnext youth mental health
     available as part of the process of testing and documenting the
     package.  If you have any questions, please contact the authors
     (matthew.hamilton1@monash.edu).
-License: GPL-3
+License: GPL-3 + file LICENSE
 URL: https://ready4-dev.github.io/youthvars/,
     https://github.com/ready4-dev/youthvars,
     https://readyforwhatsnext.org/
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
-    pkgload,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
@@ -40,6 +39,7 @@ Imports:
     dplyr,
     ggplot2,
     ggpubr,
+    ggsci,
     gridExtra,
     here,
     Hmisc,
@@ -58,8 +58,8 @@ Imports:
     psych,
     purrr,
     ready4,
-    ready4show (>= 0.0.0.9112),
-    ready4use (>= 0.0.0.9232),
+    ready4show (>= 0.0.0.9114),
+    ready4use (>= 0.0.0.9235),
     rlang,
     scales,
     simstudy,
@@ -68,7 +68,8 @@ Imports:
     stringr,
     tibble,
     tidyselect,
-    utils
+    utils,
+    viridis
 Depends: 
     R (>= 2.10)
 LazyData: true
@@ -99,6 +100,7 @@ Collate:
     'fn_get.R'
     'fn_impute.R'
     'fn_make.R'
+    'fn_plot.R'
     'fn_print.R'
     'fn_reorder.R'
     'fn_replace.R'
