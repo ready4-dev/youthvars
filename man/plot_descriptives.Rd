@@ -38,3 +38,4 @@ Plot (a plot)
 \description{
 plot_descriptives() is a Plot function that plots data. Specifically, this function implements an algorithm to plot descriptives. The function returns Plot (a plot).
 }
+\keyword{internal}

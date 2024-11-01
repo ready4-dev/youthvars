@@ -6,6 +6,7 @@
 \usage{
 add_discrete_palette(
   plot_plt,
+  colours_chr = c("#de2d26", "#fc9272"),
   missing_1L_chr = "grey50",
   type_1L_chr = c("ggsci", "viridis"),
   what_1L_chr = "lancet"
@@ -13,6 +14,8 @@ add_discrete_palette(
 }
 \arguments{
 \item{plot_plt}{Plot (a plot)}
+
+\item{colours_chr}{Colours (a character vector), Default: c("#de2d26", "#fc9272")}
 
 \item{missing_1L_chr}{Missing (a character vector of length one), Default: 'grey50'}
 
@@ -26,3 +29,4 @@ Plot (a plot)
 \description{
 add_discrete_palette() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add discrete palette. The function returns Plot (a plot).
 }
+\keyword{internal}

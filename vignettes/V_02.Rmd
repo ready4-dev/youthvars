@@ -71,7 +71,7 @@ Y %>%
 We can also plot the distributions of selected variables in our dataset.
 
 ```{r totalscsnlfig, fig.cap="SOFAS total scores", out.width = "600px"}
-depict(Y, var_nms_chr = c("c_sofas"), labels_chr = c("SOFAS"))
+depict(Y, x_vars_chr = c("c_sofas"), x_labels_chr = c("SOFAS"), as_percent_1L_lgl = T, style_1L_chr = "lancet" ,what_1L_chr = "histogram", bins = 10)
 ```
 
 
@@ -117,12 +117,9 @@ Z %>%
 The `depict` method can create plots, comparing numeric variables by timepoint.
 
 ```{r totalsfig, fig.cap="SOFAS total scores by data collection round", out.width = "600px"}
-depict(Z,
-       type_1L_chr = "by_time",
-       var_nms_chr = c("c_sofas"),
-       label_fill_1L_chr = "Time",#
-       labels_chr = c("SOFAS"),#
-       y_label_1L_chr = "")
+depict(Z, x_vars_chr = c("c_sofas"), x_labels_chr = c("SOFAS"), y_labels_chr = "", z_vars_chr = "round",
+       z_labels_chr = "Time", as_percent_1L_lgl = T, position_xx  ="dodge", style_1L_chr = "lancet",
+       what_1L_chr = "histogram", bins=10)
 ```
 
 ## Share data

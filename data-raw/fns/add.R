@@ -1,20 +1,23 @@
 add_discrete_palette <- function(plot_plt,
+                                 colours_chr = c("#de2d26", "#fc9272"),
                                  missing_1L_chr = "grey50",
                                  type_1L_chr = c("ggsci", "viridis"),
                                  what_1L_chr = "lancet"){
-  type_1L_chr <- match.arg(type_1L_chr)
-  if(type_1L_chr == "ggsci"){
-    one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
-    two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
-    plot_plt <- plot_plt +
-      one_fn(na.value = missing_1L_chr) +
-      two_fn(na.value = missing_1L_chr)
-  }
-  if(type_1L_chr == "viridis"){
-    plot_plt <- plot_plt +
-      viridis::scale_color_viridis(discrete = TRUE, option = what_1L_chr) +
-      viridis::scale_fill_viridis(discrete = TRUE, option = what_1L_chr)
-  }
+  lifecycle::deprecate_soft("0.0.0.9127","youthvars::add_discrete_palette()","ready4use::add_discrete_palette()")
+  plot_plt <- ready4use::add_discrete_palette(plot_plt, colours_chr = colours_chr, missing_1L_chr = missing_1L_chr, type_1L_chr = type_1L_chr, what_1L_chr = what_1L_chr)
+  # type_1L_chr <- match.arg(type_1L_chr)
+  # if(type_1L_chr == "ggsci"){
+  #   one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
+  #   two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
+  #   plot_plt <- plot_plt +
+  #     one_fn(na.value = missing_1L_chr) +
+  #     two_fn(na.value = missing_1L_chr)
+  # }
+  # if(type_1L_chr == "viridis"){
+  #   plot_plt <- plot_plt +
+  #     viridis::scale_color_viridis(discrete = TRUE, option = what_1L_chr) +
+  #     viridis::scale_fill_viridis(discrete = TRUE, option = what_1L_chr)
+  # }
   return(plot_plt )
 }
 add_interval_var <- function(data_tb,

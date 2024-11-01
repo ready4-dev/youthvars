@@ -6,6 +6,7 @@ plot_descriptives <- function(X_YouthvarsProfile,
                               type_1L_chr = c("ggsci", "viridis"),
                               x_ready4show_correspondences = ready4show::ready4show_correspondences(),
                               y_label_1L_chr = "Count"){
+  lifecycle::deprecate_soft("0.0.0.9127","youthvars::plot_descriptives()","youthvars::depict()")
   type_1L_chr <- match.arg(type_1L_chr)
   ds_tb <- X_YouthvarsProfile@a_Ready4useDyad@ds_tb
   if(is.na(missing_1L_chr)){
@@ -30,7 +31,7 @@ plot_descriptives <- function(X_YouthvarsProfile,
         axis.ticks.x=ggplot2::element_blank()) +
       ggplot2::guides(fill = ggplot2::guide_legend(title = what_1L_chr))
   }
-  plot_plt <- plot_plt %>% add_discrete_palette(missing_1L_chr = missing_1L_chr,
+  plot_plt <- plot_plt %>% ready4use::add_discrete_palette(missing_1L_chr = missing_1L_chr,
                                                 type_1L_chr = type_1L_chr,
                                                 what_1L_chr = palette_1L_chr)
   return(plot_plt)

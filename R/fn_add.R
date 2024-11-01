@@ -307,28 +307,24 @@ add_dim_scores_to_aqol6d_items_tb <- function (aqol6d_items_tb, domain_items_ls)
 #' Add discrete palette
 #' @description add_discrete_palette() is an Add function that updates an object by adding new values to new or empty fields. Specifically, this function implements an algorithm to add discrete palette. The function returns Plot (a plot).
 #' @param plot_plt Plot (a plot)
+#' @param colours_chr Colours (a character vector), Default: c("#de2d26", "#fc9272")
 #' @param missing_1L_chr Missing (a character vector of length one), Default: 'grey50'
 #' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "viridis")
 #' @param what_1L_chr What (a character vector of length one), Default: 'lancet'
 #' @return Plot (a plot)
 #' @rdname add_discrete_palette
 #' @export 
-#' @importFrom viridis scale_color_viridis scale_fill_viridis
-add_discrete_palette <- function (plot_plt, missing_1L_chr = "grey50", type_1L_chr = c("ggsci", 
-    "viridis"), what_1L_chr = "lancet") 
+#' @importFrom lifecycle deprecate_soft
+#' @importFrom ready4use add_discrete_palette
+#' @keywords internal
+add_discrete_palette <- function (plot_plt, colours_chr = c("#de2d26", "#fc9272"), missing_1L_chr = "grey50", 
+    type_1L_chr = c("ggsci", "viridis"), what_1L_chr = "lancet") 
 {
-    type_1L_chr <- match.arg(type_1L_chr)
-    if (type_1L_chr == "ggsci") {
-        one_fn <- get_journal_palette_fn("colour", what_1L_chr = what_1L_chr)
-        two_fn <- get_journal_palette_fn("fill", what_1L_chr = what_1L_chr)
-        plot_plt <- plot_plt + one_fn(na.value = missing_1L_chr) + 
-            two_fn(na.value = missing_1L_chr)
-    }
-    if (type_1L_chr == "viridis") {
-        plot_plt <- plot_plt + viridis::scale_color_viridis(discrete = TRUE, 
-            option = what_1L_chr) + viridis::scale_fill_viridis(discrete = TRUE, 
-            option = what_1L_chr)
-    }
+    lifecycle::deprecate_soft("0.0.0.9127", "youthvars::add_discrete_palette()", 
+        "ready4use::add_discrete_palette()")
+    plot_plt <- ready4use::add_discrete_palette(plot_plt, colours_chr = colours_chr, 
+        missing_1L_chr = missing_1L_chr, type_1L_chr = type_1L_chr, 
+        what_1L_chr = what_1L_chr)
     return(plot_plt)
 }
 #' Add interval variable

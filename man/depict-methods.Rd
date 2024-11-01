@@ -9,45 +9,126 @@
 \usage{
 \S4method{depict}{YouthvarsSeries}(
   x,
-  var_nms_chr,
-  type_1L_chr = "by_time",
-  labels_chr = NA_character_,
-  label_fill_1L_chr = "Data collection",
-  y_label_1L_chr = "Percentage",
-  y_scale_scl_fn = scales::percent,
+  x_vars_chr = character(0),
+  y_vars_chr = character(0),
+  z_vars_chr = character(0),
+  arrange_1L_lgl = FALSE,
+  arrange_args_ls = list(),
+  as_percent_1L_lgl = FALSE,
+  colours_chr = c("#de2d26", "#fc9272"),
+  drop_legend_1L_lgl = FALSE,
+  drop_missing_1L_lgl = FALSE,
+  drop_ticks_1L_lgl = FALSE,
+  fill_single_1L_lgl = FALSE,
+  line_1L_chr = "black",
+  position_xx = NULL,
+  recode_lup_r3 = ready4show::ready4show_correspondences(),
+  style_1L_chr = ready4use::get_styles(),
+  titles_chr = character(0),
+  type_1L_chr = c("ggsci", "manual", "viridis", "by_time"),
+  x_labels_chr = character(0),
+  y_labels_chr = character(0),
+  z_labels_chr = character(0),
+  what_1L_chr = ready4use::get_journal_plot_fn("names"),
+  label_fill_1L_chr = deprecated(),
+  labels_chr = deprecated(),
+  var_nms_chr = deprecated(),
+  y_label_1L_chr = deprecated(),
+  y_scale_scl_fn = deprecated(),
   ...
 )
 
 \S4method{depict}{YouthvarsProfile}(
   x,
-  var_nms_chr,
-  labels_chr = NA_character_,
-  y_label_1L_chr = "Percentage",
-  y_scale_scl_fn = scales::percent,
+  x_vars_chr = character(0),
+  y_vars_chr = character(0),
+  z_vars_chr = character(0),
+  arrange_1L_lgl = FALSE,
+  arrange_args_ls = list(),
+  as_percent_1L_lgl = FALSE,
+  colours_chr = c("#de2d26", "#fc9272"),
+  drop_legend_1L_lgl = FALSE,
+  drop_missing_1L_lgl = FALSE,
+  drop_ticks_1L_lgl = FALSE,
+  fill_single_1L_lgl = FALSE,
+  line_1L_chr = "black",
+  position_xx = NULL,
+  recode_lup_r3 = ready4show::ready4show_correspondences(),
+  style_1L_chr = ready4use::get_styles(),
+  titles_chr = character(0),
+  type_1L_chr = c("ggsci", "manual", "viridis"),
+  x_labels_chr = character(0),
+  y_labels_chr = character(0),
+  z_labels_chr = character(0),
+  what_1L_chr = ready4use::get_journal_plot_fn("names"),
+  labels_chr = deprecated(),
+  var_nms_chr = deprecated(),
+  y_label_1L_chr = deprecated(),
+  y_scale_scl_fn = deprecated(),
   ...
 )
 }
 \arguments{
 \item{x}{An object of class YouthvarsProfile}
 
-\item{var_nms_chr}{Variable names (a character vector)}
+\item{x_vars_chr}{X variables (a character vector), Default: character(0)}
 
-\item{type_1L_chr}{Type (a character vector of length one), Default: 'by_time'}
+\item{y_vars_chr}{Y variables (a character vector), Default: character(0)}
 
-\item{labels_chr}{Labels (a character vector), Default: 'NA'}
+\item{z_vars_chr}{Z variables (a character vector), Default: character(0)}
 
-\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: 'Data collection'}
+\item{arrange_1L_lgl}{Arrange (a logical vector of length one), Default: FALSE}
 
-\item{y_label_1L_chr}{Y label (a character vector of length one), Default: 'Percentage'}
+\item{arrange_args_ls}{Arrange arguments (a list), Default: list()}
 
-\item{y_scale_scl_fn}{Y scale scale (a function), Default: scales::percent}
+\item{as_percent_1L_lgl}{As percent (a logical vector of length one), Default: FALSE}
+
+\item{colours_chr}{Colours (a character vector), Default: c("#de2d26", "#fc9272")}
+
+\item{drop_legend_1L_lgl}{Drop legend (a logical vector of length one), Default: FALSE}
+
+\item{drop_missing_1L_lgl}{Drop missing (a logical vector of length one), Default: FALSE}
+
+\item{drop_ticks_1L_lgl}{Drop ticks (a logical vector of length one), Default: FALSE}
+
+\item{fill_single_1L_lgl}{Fill single (a logical vector of length one), Default: FALSE}
+
+\item{line_1L_chr}{Line (a character vector of length one), Default: 'black'}
+
+\item{position_xx}{Position (an output object of multiple potential types), Default: NULL}
+
+\item{recode_lup_r3}{Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()}
+
+\item{style_1L_chr}{Style (a character vector of length one), Default: ready4use::get_styles()}
+
+\item{titles_chr}{Titles (a character vector), Default: character(0)}
+
+\item{type_1L_chr}{Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")}
+
+\item{x_labels_chr}{X labels (a character vector), Default: character(0)}
+
+\item{y_labels_chr}{Y labels (a character vector), Default: character(0)}
+
+\item{z_labels_chr}{Z labels (a character vector), Default: character(0)}
+
+\item{what_1L_chr}{What (a character vector of length one), Default: ready4use::get_journal_plot_fn("names")}
+
+\item{label_fill_1L_chr}{Label fill (a character vector of length one), Default: deprecated()}
+
+\item{labels_chr}{Labels (a character vector), Default: deprecated()}
+
+\item{var_nms_chr}{Variable names (a character vector), Default: deprecated()}
+
+\item{y_label_1L_chr}{Y label (a character vector of length one), Default: deprecated()}
+
+\item{y_scale_scl_fn}{Y scale scale (a function), Default: deprecated()}
 
 \item{...}{Additional arguments}
 }
 \value{
-No return value, called for side effects.
+Plot (an output object of multiple potential types)
 
-No return value, called for side effects.
+Plot (an output object of multiple potential types)
 }
 \description{
 depict method applied to YouthvarsSeries
