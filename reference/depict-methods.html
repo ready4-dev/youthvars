@@ -9,7 +9,7 @@ depict method applied to YouthvarsProfile"><meta property="og:image" content="ht
 
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9126</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9127</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,22 +50,63 @@ depict method applied to YouthvarsProfile"><meta property="og:image" content="ht
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S4 method for class 'YouthvarsSeries'</span></span>
 <span><span class="fu">depict</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">var_nms_chr</span>,</span>
-<span>  type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,</span>
-<span>  labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
-<span>  label_fill_1L_chr <span class="op">=</span> <span class="st">"Data collection"</span>,</span>
-<span>  y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>,</span>
-<span>  y_scale_scl_fn <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span>,</span>
+<span>  x_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  y_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  z_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  arrange_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  arrange_args_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  as_percent_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  colours_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#de2d26"</span>, <span class="st">"#fc9272"</span><span class="op">)</span>,</span>
+<span>  drop_legend_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  drop_missing_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fill_single_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  line_1L_chr <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  position_xx <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  recode_lup_r3 <span class="op">=</span> <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/ready4show_correspondences.html" class="external-link">ready4show_correspondences</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  style_1L_chr <span class="op">=</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/get_styles.html" class="external-link">get_styles</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  titles_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ggsci"</span>, <span class="st">"manual"</span>, <span class="st">"viridis"</span>, <span class="st">"by_time"</span><span class="op">)</span>,</span>
+<span>  x_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  y_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  z_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  what_1L_chr <span class="op">=</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/get_journal_plot_fn.html" class="external-link">get_journal_plot_fn</a></span><span class="op">(</span><span class="st">"names"</span><span class="op">)</span>,</span>
+<span>  label_fill_1L_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  labels_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  var_nms_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  y_label_1L_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  y_scale_scl_fn <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># S4 method for class 'YouthvarsProfile'</span></span>
 <span><span class="fu">depict</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
-<span>  <span class="va">var_nms_chr</span>,</span>
-<span>  labels_chr <span class="op">=</span> <span class="cn">NA_character_</span>,</span>
-<span>  y_label_1L_chr <span class="op">=</span> <span class="st">"Percentage"</span>,</span>
-<span>  y_scale_scl_fn <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent</a></span>,</span>
+<span>  x_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  y_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  z_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  arrange_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  arrange_args_ls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  as_percent_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  colours_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#de2d26"</span>, <span class="st">"#fc9272"</span><span class="op">)</span>,</span>
+<span>  drop_legend_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  drop_missing_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  drop_ticks_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  fill_single_1L_lgl <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  line_1L_chr <span class="op">=</span> <span class="st">"black"</span>,</span>
+<span>  position_xx <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  recode_lup_r3 <span class="op">=</span> <span class="fu">ready4show</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4show/reference/ready4show_correspondences.html" class="external-link">ready4show_correspondences</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  style_1L_chr <span class="op">=</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/get_styles.html" class="external-link">get_styles</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  titles_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  type_1L_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ggsci"</span>, <span class="st">"manual"</span>, <span class="st">"viridis"</span><span class="op">)</span>,</span>
+<span>  x_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  y_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  z_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>,</span>
+<span>  what_1L_chr <span class="op">=</span> <span class="fu">ready4use</span><span class="fu">::</span><span class="fu"><a href="https://ready4-dev.github.io/ready4use/reference/get_journal_plot_fn.html" class="external-link">get_journal_plot_fn</a></span><span class="op">(</span><span class="st">"names"</span><span class="op">)</span>,</span>
+<span>  labels_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  var_nms_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  y_label_1L_chr <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  y_scale_scl_fn <span class="op">=</span> <span class="fu"><a href="deprecated.html">deprecated</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -78,28 +119,108 @@ depict method applied to YouthvarsProfile"><meta property="og:image" content="ht
 <dd><p>An object of class YouthvarsProfile</p></dd>
 
 
-<dt id="arg-var-nms-chr">var_nms_chr<a class="anchor" aria-label="anchor" href="#arg-var-nms-chr"></a></dt>
-<dd><p>Variable names (a character vector)</p></dd>
+<dt id="arg-x-vars-chr">x_vars_chr<a class="anchor" aria-label="anchor" href="#arg-x-vars-chr"></a></dt>
+<dd><p>X variables (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-y-vars-chr">y_vars_chr<a class="anchor" aria-label="anchor" href="#arg-y-vars-chr"></a></dt>
+<dd><p>Y variables (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-z-vars-chr">z_vars_chr<a class="anchor" aria-label="anchor" href="#arg-z-vars-chr"></a></dt>
+<dd><p>Z variables (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-arrange-l-lgl">arrange_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-arrange-l-lgl"></a></dt>
+<dd><p>Arrange (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-arrange-args-ls">arrange_args_ls<a class="anchor" aria-label="anchor" href="#arg-arrange-args-ls"></a></dt>
+<dd><p>Arrange arguments (a list), Default: list()</p></dd>
+
+
+<dt id="arg-as-percent-l-lgl">as_percent_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-as-percent-l-lgl"></a></dt>
+<dd><p>As percent (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-colours-chr">colours_chr<a class="anchor" aria-label="anchor" href="#arg-colours-chr"></a></dt>
+<dd><p>Colours (a character vector), Default: c("#de2d26", "#fc9272")</p></dd>
+
+
+<dt id="arg-drop-legend-l-lgl">drop_legend_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-drop-legend-l-lgl"></a></dt>
+<dd><p>Drop legend (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-drop-missing-l-lgl">drop_missing_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-drop-missing-l-lgl"></a></dt>
+<dd><p>Drop missing (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-drop-ticks-l-lgl">drop_ticks_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-drop-ticks-l-lgl"></a></dt>
+<dd><p>Drop ticks (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-fill-single-l-lgl">fill_single_1L_lgl<a class="anchor" aria-label="anchor" href="#arg-fill-single-l-lgl"></a></dt>
+<dd><p>Fill single (a logical vector of length one), Default: FALSE</p></dd>
+
+
+<dt id="arg-line-l-chr">line_1L_chr<a class="anchor" aria-label="anchor" href="#arg-line-l-chr"></a></dt>
+<dd><p>Line (a character vector of length one), Default: 'black'</p></dd>
+
+
+<dt id="arg-position-xx">position_xx<a class="anchor" aria-label="anchor" href="#arg-position-xx"></a></dt>
+<dd><p>Position (an output object of multiple potential types), Default: NULL</p></dd>
+
+
+<dt id="arg-recode-lup-r-">recode_lup_r3<a class="anchor" aria-label="anchor" href="#arg-recode-lup-r-"></a></dt>
+<dd><p>Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()</p></dd>
+
+
+<dt id="arg-style-l-chr">style_1L_chr<a class="anchor" aria-label="anchor" href="#arg-style-l-chr"></a></dt>
+<dd><p>Style (a character vector of length one), Default: ready4use::get_styles()</p></dd>
+
+
+<dt id="arg-titles-chr">titles_chr<a class="anchor" aria-label="anchor" href="#arg-titles-chr"></a></dt>
+<dd><p>Titles (a character vector), Default: character(0)</p></dd>
 
 
 <dt id="arg-type-l-chr">type_1L_chr<a class="anchor" aria-label="anchor" href="#arg-type-l-chr"></a></dt>
-<dd><p>Type (a character vector of length one), Default: 'by_time'</p></dd>
+<dd><p>Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")</p></dd>
 
 
-<dt id="arg-labels-chr">labels_chr<a class="anchor" aria-label="anchor" href="#arg-labels-chr"></a></dt>
-<dd><p>Labels (a character vector), Default: 'NA'</p></dd>
+<dt id="arg-x-labels-chr">x_labels_chr<a class="anchor" aria-label="anchor" href="#arg-x-labels-chr"></a></dt>
+<dd><p>X labels (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-y-labels-chr">y_labels_chr<a class="anchor" aria-label="anchor" href="#arg-y-labels-chr"></a></dt>
+<dd><p>Y labels (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-z-labels-chr">z_labels_chr<a class="anchor" aria-label="anchor" href="#arg-z-labels-chr"></a></dt>
+<dd><p>Z labels (a character vector), Default: character(0)</p></dd>
+
+
+<dt id="arg-what-l-chr">what_1L_chr<a class="anchor" aria-label="anchor" href="#arg-what-l-chr"></a></dt>
+<dd><p>What (a character vector of length one), Default: ready4use::get_journal_plot_fn("names")</p></dd>
 
 
 <dt id="arg-label-fill-l-chr">label_fill_1L_chr<a class="anchor" aria-label="anchor" href="#arg-label-fill-l-chr"></a></dt>
-<dd><p>Label fill (a character vector of length one), Default: 'Data collection'</p></dd>
+<dd><p>Label fill (a character vector of length one), Default: deprecated()</p></dd>
+
+
+<dt id="arg-labels-chr">labels_chr<a class="anchor" aria-label="anchor" href="#arg-labels-chr"></a></dt>
+<dd><p>Labels (a character vector), Default: deprecated()</p></dd>
+
+
+<dt id="arg-var-nms-chr">var_nms_chr<a class="anchor" aria-label="anchor" href="#arg-var-nms-chr"></a></dt>
+<dd><p>Variable names (a character vector), Default: deprecated()</p></dd>
 
 
 <dt id="arg-y-label-l-chr">y_label_1L_chr<a class="anchor" aria-label="anchor" href="#arg-y-label-l-chr"></a></dt>
-<dd><p>Y label (a character vector of length one), Default: 'Percentage'</p></dd>
+<dd><p>Y label (a character vector of length one), Default: deprecated()</p></dd>
 
 
 <dt id="arg-y-scale-scl-fn">y_scale_scl_fn<a class="anchor" aria-label="anchor" href="#arg-y-scale-scl-fn"></a></dt>
-<dd><p>Y scale scale (a function), Default: scales::percent</p></dd>
+<dd><p>Y scale scale (a function), Default: deprecated()</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -108,8 +229,8 @@ depict method applied to YouthvarsProfile"><meta property="og:image" content="ht
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>No return value, called for side effects.</p>
-<p>No return value, called for side effects.</p>
+    <p>Plot (an output object of multiple potential types)</p>
+<p>Plot (an output object of multiple potential types)</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

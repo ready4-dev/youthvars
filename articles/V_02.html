@@ -27,7 +27,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">youthvars</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9126</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Unreleased version">0.0.0.9127</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -335,7 +335,7 @@ Missing
 <p>We can also plot the distributions of selected variables in our
 dataset.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">Y</span>, var_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>, labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SOFAS"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">Y</span>, x_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>, x_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SOFAS"</span><span class="op">)</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, style_1L_chr <span class="op">=</span> <span class="st">"lancet"</span> ,what_1L_chr <span class="op">=</span> <span class="st">"histogram"</span>, bins <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="V_02_files/figure-html/totalscsnlfig-1.png" alt="SOFAS total scores" width="600px"><p class="caption">
 SOFAS total scores
@@ -1278,12 +1278,9 @@ Missing
 <p>The <code>depict</code> method can create plots, comparing numeric
 variables by timepoint.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">Z</span>,</span>
-<span>       type_1L_chr <span class="op">=</span> <span class="st">"by_time"</span>,</span>
-<span>       var_nms_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>,</span>
-<span>       label_fill_1L_chr <span class="op">=</span> <span class="st">"Time"</span>,<span class="co">#</span></span>
-<span>       labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SOFAS"</span><span class="op">)</span>,<span class="co">#</span></span>
-<span>       y_label_1L_chr <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ready4-dev.github.io/ready4/reference/depict-methods.html" class="external-link">depict</a></span><span class="op">(</span><span class="va">Z</span>, x_vars_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"c_sofas"</span><span class="op">)</span>, x_labels_chr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SOFAS"</span><span class="op">)</span>, y_labels_chr <span class="op">=</span> <span class="st">""</span>, z_vars_chr <span class="op">=</span> <span class="st">"round"</span>,</span>
+<span>       z_labels_chr <span class="op">=</span> <span class="st">"Time"</span>, as_percent_1L_lgl <span class="op">=</span> <span class="cn">T</span>, position_xx  <span class="op">=</span><span class="st">"dodge"</span>, style_1L_chr <span class="op">=</span> <span class="st">"lancet"</span>,</span>
+<span>       what_1L_chr <span class="op">=</span> <span class="st">"histogram"</span>, bins<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="V_02_files/figure-html/totalsfig-1.png" alt="SOFAS total scores by data collection round" width="600px"><p class="caption">
 SOFAS total scores by data collection round
