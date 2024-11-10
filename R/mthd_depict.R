@@ -17,6 +17,8 @@
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
+#' @param significance_1L_lgl Significance (a logical vector of length one), Default: F
+#' @param significance_args_ls Significance arguments (a list), Default: list()
 #' @param style_1L_chr Style (a character vector of length one), Default: ready4use::get_styles()
 #' @param titles_chr Titles (a character vector), Default: character(0)
 #' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis", "by_time")
@@ -46,9 +48,9 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
     drop_legend_1L_lgl = FALSE, drop_missing_1L_lgl = FALSE, 
     drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, line_1L_chr = "black", 
     position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
-    style_1L_chr = ready4use::get_styles(), titles_chr = character(0), 
-    type_1L_chr = c("ggsci", "manual", "viridis", "by_time"), 
-    x_labels_chr = character(0), y_labels_chr = character(0), 
+    significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = ready4use::get_styles(), 
+    titles_chr = character(0), type_1L_chr = c("ggsci", "manual", 
+        "viridis", "by_time"), x_labels_chr = character(0), y_labels_chr = character(0), 
     z_labels_chr = character(0), what_1L_chr = ready4use::get_journal_plot_fn("names"), 
     label_fill_1L_chr = deprecated(), labels_chr = deprecated(), 
     var_nms_chr = deprecated(), y_label_1L_chr = deprecated(), 
@@ -113,7 +115,8 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
         drop_legend_1L_lgl = drop_legend_1L_lgl, drop_missing_1L_lgl = drop_missing_1L_lgl, 
         drop_ticks_1L_lgl = drop_ticks_1L_lgl, fill_single_1L_lgl = fill_single_1L_lgl, 
         line_1L_chr = line_1L_chr, position_xx = position_xx, 
-        recode_lup_r3 = recode_lup_r3, style_1L_chr = style_1L_chr, 
+        recode_lup_r3 = recode_lup_r3, significance_1L_lgl = significance_1L_lgl, 
+        significance_args_ls = significance_args_ls, style_1L_chr = style_1L_chr, 
         titles_chr = titles_chr, type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
         y_labels_chr = y_labels_chr, z_labels_chr = z_labels_chr, 
         what_1L_chr = what_1L_chr), args_ls)
@@ -139,6 +142,8 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
+#' @param significance_1L_lgl Significance (a logical vector of length one), Default: F
+#' @param significance_args_ls Significance arguments (a list), Default: list()
 #' @param style_1L_chr Style (a character vector of length one), Default: ready4use::get_styles()
 #' @param titles_chr Titles (a character vector), Default: character(0)
 #' @param type_1L_chr Type (a character vector of length one), Default: c("ggsci", "manual", "viridis")
@@ -167,11 +172,11 @@ methods::setMethod("depict", "YouthvarsProfile", function (x, x_vars_chr = chara
     drop_legend_1L_lgl = FALSE, drop_missing_1L_lgl = FALSE, 
     drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, line_1L_chr = "black", 
     position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
-    style_1L_chr = ready4use::get_styles(), titles_chr = character(0), 
-    type_1L_chr = c("ggsci", "manual", "viridis"), x_labels_chr = character(0), 
-    y_labels_chr = character(0), z_labels_chr = character(0), 
-    what_1L_chr = ready4use::get_journal_plot_fn("names"), labels_chr = deprecated(), 
-    var_nms_chr = deprecated(), y_label_1L_chr = deprecated(), 
+    significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = ready4use::get_styles(), 
+    titles_chr = character(0), type_1L_chr = c("ggsci", "manual", 
+        "viridis"), x_labels_chr = character(0), y_labels_chr = character(0), 
+    z_labels_chr = character(0), what_1L_chr = ready4use::get_journal_plot_fn("names"), 
+    labels_chr = deprecated(), var_nms_chr = deprecated(), y_label_1L_chr = deprecated(), 
     y_scale_scl_fn = deprecated(), ...) 
 {
     style_1L_chr <- match.arg(style_1L_chr)
@@ -220,7 +225,8 @@ methods::setMethod("depict", "YouthvarsProfile", function (x, x_vars_chr = chara
         drop_legend_1L_lgl = drop_legend_1L_lgl, drop_missing_1L_lgl = drop_missing_1L_lgl, 
         drop_ticks_1L_lgl = drop_ticks_1L_lgl, fill_single_1L_lgl = fill_single_1L_lgl, 
         line_1L_chr = line_1L_chr, position_xx = position_xx, 
-        recode_lup_r3 = recode_lup_r3, style_1L_chr = style_1L_chr, 
+        recode_lup_r3 = recode_lup_r3, significance_1L_lgl = significance_1L_lgl, 
+        significance_args_ls = significance_args_ls, style_1L_chr = style_1L_chr, 
         titles_chr = titles_chr, type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
         y_labels_chr = y_labels_chr, z_labels_chr = z_labels_chr, 
         what_1L_chr = what_1L_chr), args_ls)

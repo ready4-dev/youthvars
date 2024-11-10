@@ -13,6 +13,8 @@ depict_YouthvarsProfile <- function(x,
                                     line_1L_chr = "black",
                                     position_xx = NULL,
                                     recode_lup_r3 = ready4show::ready4show_correspondences(),
+                                    significance_1L_lgl = F, #
+                                    significance_args_ls = list(), #
                                     style_1L_chr = ready4use::get_styles(),
                                     titles_chr = character(0),
                                     type_1L_chr = c("ggsci", "manual", "viridis"),
@@ -83,6 +85,8 @@ depict_YouthvarsProfile <- function(x,
                          line_1L_chr = line_1L_chr,
                          position_xx = position_xx,
                          recode_lup_r3 = recode_lup_r3,
+                         significance_1L_lgl = significance_1L_lgl, #
+                         significance_args_ls = significance_args_ls, #
                          style_1L_chr = style_1L_chr,
                          titles_chr = titles_chr,
                          type_1L_chr = type_1L_chr,
@@ -110,6 +114,8 @@ depict_YouthvarsSeries <- function(x,
                                    line_1L_chr = "black",
                                    position_xx = NULL,
                                    recode_lup_r3 = ready4show::ready4show_correspondences(),
+                                   significance_1L_lgl = F, #
+                                   significance_args_ls = list(), #
                                    style_1L_chr = ready4use::get_styles(),
                                    titles_chr = character(0),
                                    type_1L_chr = c("ggsci", "manual", "viridis", "by_time"),
@@ -200,6 +206,8 @@ depict_YouthvarsSeries <- function(x,
                          line_1L_chr = line_1L_chr,
                          position_xx = position_xx,
                          recode_lup_r3 = recode_lup_r3,
+                         significance_1L_lgl = significance_1L_lgl, #
+                         significance_args_ls = significance_args_ls, #
                          style_1L_chr = style_1L_chr,
                          titles_chr = titles_chr,
                          type_1L_chr = type_1L_chr,

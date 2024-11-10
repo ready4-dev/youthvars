@@ -23,6 +23,8 @@
   line_1L_chr = "black",
   position_xx = NULL,
   recode_lup_r3 = ready4show::ready4show_correspondences(),
+  significance_1L_lgl = F,
+  significance_args_ls = list(),
   style_1L_chr = ready4use::get_styles(),
   titles_chr = character(0),
   type_1L_chr = c("ggsci", "manual", "viridis", "by_time"),
@@ -54,6 +56,8 @@
   line_1L_chr = "black",
   position_xx = NULL,
   recode_lup_r3 = ready4show::ready4show_correspondences(),
+  significance_1L_lgl = F,
+  significance_args_ls = list(),
   style_1L_chr = ready4use::get_styles(),
   titles_chr = character(0),
   type_1L_chr = c("ggsci", "manual", "viridis"),
@@ -98,6 +102,10 @@
 \item{position_xx}{Position (an output object of multiple potential types), Default: NULL}
 
 \item{recode_lup_r3}{Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()}
+
+\item{significance_1L_lgl}{Significance (a logical vector of length one), Default: F}
+
+\item{significance_args_ls}{Significance arguments (a list), Default: list()}
 
 \item{style_1L_chr}{Style (a character vector of length one), Default: ready4use::get_styles()}
 
