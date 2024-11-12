@@ -20,6 +20,7 @@
   drop_missing_1L_lgl = FALSE,
   drop_ticks_1L_lgl = FALSE,
   fill_single_1L_lgl = FALSE,
+  flip_1L_lgl = F,
   line_1L_chr = "black",
   position_xx = NULL,
   recode_lup_r3 = ready4show::ready4show_correspondences(),
@@ -53,6 +54,7 @@
   drop_missing_1L_lgl = FALSE,
   drop_ticks_1L_lgl = FALSE,
   fill_single_1L_lgl = FALSE,
+  flip_1L_lgl = F,
   line_1L_chr = "black",
   position_xx = NULL,
   recode_lup_r3 = ready4show::ready4show_correspondences(),
@@ -96,6 +98,8 @@
 \item{drop_ticks_1L_lgl}{Drop ticks (a logical vector of length one), Default: FALSE}
 
 \item{fill_single_1L_lgl}{Fill single (a logical vector of length one), Default: FALSE}
+
+\item{flip_1L_lgl}{Flip (a logical vector of length one), Default: F}
 
 \item{line_1L_chr}{Line (a character vector of length one), Default: 'black'}
 

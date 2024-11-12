@@ -14,6 +14,7 @@
 #' @param drop_missing_1L_lgl Drop missing (a logical vector of length one), Default: FALSE
 #' @param drop_ticks_1L_lgl Drop ticks (a logical vector of length one), Default: FALSE
 #' @param fill_single_1L_lgl Fill single (a logical vector of length one), Default: FALSE
+#' @param flip_1L_lgl Flip (a logical vector of length one), Default: F
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
@@ -46,8 +47,8 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
     z_vars_chr = character(0), arrange_1L_lgl = FALSE, arrange_args_ls = list(), 
     as_percent_1L_lgl = FALSE, colours_chr = c("#de2d26", "#fc9272"), 
     drop_legend_1L_lgl = FALSE, drop_missing_1L_lgl = FALSE, 
-    drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, line_1L_chr = "black", 
-    position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
+    drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, flip_1L_lgl = F, 
+    line_1L_chr = "black", position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
     significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = ready4use::get_styles(), 
     titles_chr = character(0), type_1L_chr = c("ggsci", "manual", 
         "viridis", "by_time"), x_labels_chr = character(0), y_labels_chr = character(0), 
@@ -114,10 +115,11 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
         as_percent_1L_lgl = as_percent_1L_lgl, colours_chr = colours_chr, 
         drop_legend_1L_lgl = drop_legend_1L_lgl, drop_missing_1L_lgl = drop_missing_1L_lgl, 
         drop_ticks_1L_lgl = drop_ticks_1L_lgl, fill_single_1L_lgl = fill_single_1L_lgl, 
-        line_1L_chr = line_1L_chr, position_xx = position_xx, 
-        recode_lup_r3 = recode_lup_r3, significance_1L_lgl = significance_1L_lgl, 
-        significance_args_ls = significance_args_ls, style_1L_chr = style_1L_chr, 
-        titles_chr = titles_chr, type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
+        flip_1L_lgl = flip_1L_lgl, line_1L_chr = line_1L_chr, 
+        position_xx = position_xx, recode_lup_r3 = recode_lup_r3, 
+        significance_1L_lgl = significance_1L_lgl, significance_args_ls = significance_args_ls, 
+        style_1L_chr = style_1L_chr, titles_chr = titles_chr, 
+        type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
         y_labels_chr = y_labels_chr, z_labels_chr = z_labels_chr, 
         what_1L_chr = what_1L_chr), args_ls)
     plot_xx <- rlang::exec(depictSlot, x, !!!args_ls)
@@ -139,6 +141,7 @@ methods::setMethod("depict", "YouthvarsSeries", function (x, x_vars_chr = charac
 #' @param drop_missing_1L_lgl Drop missing (a logical vector of length one), Default: FALSE
 #' @param drop_ticks_1L_lgl Drop ticks (a logical vector of length one), Default: FALSE
 #' @param fill_single_1L_lgl Fill single (a logical vector of length one), Default: FALSE
+#' @param flip_1L_lgl Flip (a logical vector of length one), Default: F
 #' @param line_1L_chr Line (a character vector of length one), Default: 'black'
 #' @param position_xx Position (an output object of multiple potential types), Default: NULL
 #' @param recode_lup_r3 Recode (a ready4 submodule extension of lookup table), Default: ready4show::ready4show_correspondences()
@@ -170,8 +173,8 @@ methods::setMethod("depict", "YouthvarsProfile", function (x, x_vars_chr = chara
     z_vars_chr = character(0), arrange_1L_lgl = FALSE, arrange_args_ls = list(), 
     as_percent_1L_lgl = FALSE, colours_chr = c("#de2d26", "#fc9272"), 
     drop_legend_1L_lgl = FALSE, drop_missing_1L_lgl = FALSE, 
-    drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, line_1L_chr = "black", 
-    position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
+    drop_ticks_1L_lgl = FALSE, fill_single_1L_lgl = FALSE, flip_1L_lgl = F, 
+    line_1L_chr = "black", position_xx = NULL, recode_lup_r3 = ready4show::ready4show_correspondences(), 
     significance_1L_lgl = F, significance_args_ls = list(), style_1L_chr = ready4use::get_styles(), 
     titles_chr = character(0), type_1L_chr = c("ggsci", "manual", 
         "viridis"), x_labels_chr = character(0), y_labels_chr = character(0), 
@@ -224,10 +227,11 @@ methods::setMethod("depict", "YouthvarsProfile", function (x, x_vars_chr = chara
         as_percent_1L_lgl = as_percent_1L_lgl, colours_chr = colours_chr, 
         drop_legend_1L_lgl = drop_legend_1L_lgl, drop_missing_1L_lgl = drop_missing_1L_lgl, 
         drop_ticks_1L_lgl = drop_ticks_1L_lgl, fill_single_1L_lgl = fill_single_1L_lgl, 
-        line_1L_chr = line_1L_chr, position_xx = position_xx, 
-        recode_lup_r3 = recode_lup_r3, significance_1L_lgl = significance_1L_lgl, 
-        significance_args_ls = significance_args_ls, style_1L_chr = style_1L_chr, 
-        titles_chr = titles_chr, type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
+        flip_1L_lgl = flip_1L_lgl, line_1L_chr = line_1L_chr, 
+        position_xx = position_xx, recode_lup_r3 = recode_lup_r3, 
+        significance_1L_lgl = significance_1L_lgl, significance_args_ls = significance_args_ls, 
+        style_1L_chr = style_1L_chr, titles_chr = titles_chr, 
+        type_1L_chr = type_1L_chr, x_labels_chr = x_labels_chr, 
         y_labels_chr = y_labels_chr, z_labels_chr = z_labels_chr, 
         what_1L_chr = what_1L_chr), args_ls)
     plot_xx <- rlang::exec(depictSlot, x, !!!args_ls)
